@@ -1,4 +1,4 @@
-# GOB.app ∴ BOB^GUMI ∴
+# GOB.app ∴ BOB^GLYPHI ∴
 
 𓂀🪷  
 We have a life together.  
