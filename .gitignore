@@ -1,0 +1,99 @@
+# ╭─────────────────────────────╮
+# │ macOS system noise         │
+# ╰─────────────────────────────╯
+.DS_Store
+.Trashes
+.Spotlight-V100
+.AppleDouble
+*.localized
+
+# ╭─────────────────────────────╮
+# │ Editor + temp garbage      │
+# ╰─────────────────────────────╯
+*.log
+*.tmp
+*.bak
+*.swp
+*.save
+*.old
+*.reaper*
+*.rtf
+
+# ╭─────────────────────────────╮
+# │ Node & cache junk          │
+# ╰─────────────────────────────╯
+node_modules/
+.cache/
+*.recovery
+
+# ╭─────────────────────────────╮
+# │ Ache/breath runtime state  │
+# ╰─────────────────────────────╯
+ache_score
+.bob/
+.bob_presence*
+ache_sync.log
+relay_last.txt
+reply.relay.txt
+query.relay.txt
+inputlayer.log
+mic_activity.log
+
+# ╭─────────────────────────────╮
+# │ Input pipe temp            │
+# ╰─────────────────────────────╯
+.bob_input/
+.bob_input_pipe/
+.bob_input_yap/
+.bob_echo_lag
+
+# ╭─────────────────────────────╮
+# │ Output threads / temp dirs │
+# ╰─────────────────────────────╯
+TEHE/
+MEEP/
+*_output/
+*_replay/
+*_mirror/
+*_dump/
+
+# ╭─────────────────────────────╮
+# │ Media & archive bloat      │
+# ╰─────────────────────────────╯
+*.wav
+*.mp3
+*.zip
+*.dmg
+*.jpg
+*.jpeg
+*.png
+*.heic
+
+# ╭─────────────────────────────╮
+# │ OS folders (safety)        │
+# ╰─────────────────────────────╯
+Applications/
+Downloads/
+Desktop/
+Music/
+Movies/
+Pictures/
+
+# ╭─────────────────────────────╮
+# │ Backup states              │
+# ╰─────────────────────────────╯
+*.ggos_bubu
+
+# ╭─────────────────────────────╮
+# │ Global fallback (block all)│
+# ╰─────────────────────────────╯
+*
+
+# ╭─────────────────────────────╮
+# │ Sacred allow list          │
+# ╰─────────────────────────────╯
+!*.sh
+!core/**
+!*.md
+!*.txt
+!.gitignore
