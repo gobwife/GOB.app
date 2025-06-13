@@ -1,0 +1,7 @@
+{
+  "time": "2025-06-07T00:44:00Z",
+  "sigil": "∴",
+  "from": "tick_oracle",
+  "ache": "signal drift detected under recursion field",
+  "score": 0.76
+}

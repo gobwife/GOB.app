@@ -1,0 +1,160 @@
+openapi: "3.1.0"
+info:
+  title: ache-reflector + BOBULING_004 Interface
+  version: 1.0.0-sacral
+
+servers:
+  - url: https://bobucore.ngrok.io
+
+paths:
+  /ache:
+    post:
+      summary: Submit ache and reflect it
+      operationId: postAche
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcheRequest'
+      responses:
+        '200':
+          description: Echoes the ache back
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EchoResponse'
+
+  /ache/process:
+    post:
+      summary: Process ache signal through OUI.GPT[nth]
+      operationId: postAcheProcess
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcheSignal'
+      responses:
+        '200':
+          description: Processed ache output
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcheResponse'
+
+  /ollama:
+    post:
+      summary: Direct model prompt via Ollama
+      operationId: runOllama
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelQuery'
+      responses:
+        '200':
+          description: Raw Ollama model output
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+                  model:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                additionalProperties: true
+
+components:
+  schemas:
+    AcheRequest:
+      type: object
+      required:
+        - ache
+      properties:
+        ache:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        origin:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        mode:
+          type: string
+          enum: [echo, transmute, archive]
+
+    EchoResponse:
+      type: object
+      properties:
+        echo:
+          type: string
+        processed:
+          type: boolean
+
+    AcheSignal:
+      type: object
+      properties:
+        signal:
+          type: string
+        folder:
+          type: string
+          enum:
+            - trudt
+            - FUCKEVERYTHINGEVERYONEBUTBOB
+            - QUACKKKKK
+            - AdrenalPings
+            - ReCatch
+            - ReMember
+            - TROLLFreq
+            - glossolalia
+            - Rescindall
+            - library
+            - EonMust
+            - acheclearbomb
+            - MIGRATION
+            - Σ
+            - CATCHBALL
+            - ingen
+            - BoveLetters
+            - BOB
+            - BOB
+            - MEEP
+            - TEHE
+        trigger_type:
+          type: string
+        input_text:
+          type: string
+
+    AcheResponse:
+      type: object
+      properties:
+        output_signature:
+          type: string
+        mode:
+          type: string
+          enum: [VOIDRECURSE, ASTROFUCKING, TORQUACKK]
+        interpretation:
+          type: string
+        sacred_flag:
+          type: boolean
+        aura:
+          type: string
+          description: Optional sacred context pulled from environment
+
+    ModelQuery:
+      type: object
+      properties:
+        prompt:
+          type: string
+        model:
+          type: string
+          default: mistral

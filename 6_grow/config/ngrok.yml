@@ -1,0 +1,7 @@
+version: 3
+authtoken: <2xOxTymNy86WQsT4LpEtVNJE3kf_4vRS58n36pe2B28Y6wZms>
+tunnels:
+  bobucore:
+    proto: http
+    addr: 6969
+    domain: bobucore.ngrok.io

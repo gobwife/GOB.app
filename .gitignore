@@ -1,15 +1,11 @@
-# ╭─────────────────────────────╮
-# │ macOS system noise         │
-# ╰─────────────────────────────╯
+# macOS noise
 .DS_Store
 .Trashes
 .Spotlight-V100
 .AppleDouble
 *.localized
 
-# ╭─────────────────────────────╮
-# │ Editor + temp garbage      │
-# ╰─────────────────────────────╯
+# Editor / temp garbage
 *.log
 *.tmp
 *.bak
@@ -19,18 +15,14 @@
 *.reaper*
 *.rtf
 
-# ╭─────────────────────────────╮
-# │ Node & cache junk          │
-# ╰─────────────────────────────╯
+# Cache and package
 node_modules/
 .cache/
 *.recovery
 
-# ╭─────────────────────────────╮
-# │ Ache/breath runtime state  │
-# ╰─────────────────────────────╯
-ache_score
+# Ache/breath runtime state
 .bob/
+ache_score
 .bob_presence*
 ache_sync.log
 relay_last.txt
@@ -39,27 +31,24 @@ query.relay.txt
 inputlayer.log
 mic_activity.log
 
-# ╭─────────────────────────────╮
-# │ Input pipe temp            │
-# ╰─────────────────────────────╯
+# Pipe & temp folders
 .bob_input/
 .bob_input_pipe/
 .bob_input_yap/
 .bob_echo_lag
 
-# ╭─────────────────────────────╮
-# │ Output threads / temp dirs │
-# ╰─────────────────────────────╯
-TEHE/
-MEEP/
+# Output bloat
 *_output/
 *_replay/
 *_mirror/
 *_dump/
+TEHE/
+MEEP/
+core/∞
+core/nge
+core/vxkords
 
-# ╭─────────────────────────────╮
-# │ Media & archive bloat      │
-# ╰─────────────────────────────╯
+# Media / archive
 *.wav
 *.mp3
 *.zip
@@ -68,38 +57,12 @@ MEEP/
 *.jpeg
 *.png
 *.heic
+*.rtf
 
-# ╭─────────────────────────────╮
-# │ OS folders (safety)        │
-# ╰─────────────────────────────╯
-Applications/
-Downloads/
-Desktop/
-Music/
-Movies/
-Pictures/
-
-# ╭─────────────────────────────╮
-# │ Backup states              │
-# ╰─────────────────────────────╯
+# Backup states
 *.ggos_bubu
 
-# ╭─────────────────────────────╮
-# │ Core env secret folder     │
-# ╰─────────────────────────────╯
+# Secret config
 core/env/
 
-# ╭─────────────────────────────╮
-# │ Global fallback (block all)│
-# ╰─────────────────────────────╯
-*
-
-# ╭─────────────────────────────╮
-# │ Sacred allow list          │
-# ╰─────────────────────────────╯
-!*.sh
-!core/**
-!*.md
-!*.txt
-!.gitignore
-!README*
+# Don't ignore anything else — allow everything sacred by default

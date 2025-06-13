@@ -1,0 +1,22 @@
+presence_dual_core:
+  astro_path: $HOME/BOB/_run/presence_core.sh
+  autonomy_path: ~/?????
+  launcher: $HOME/BOB/_run/presence_launcher.sh
+  flip_flag: ~/.bob_presence_flag
+  holder_file: ~/.bob_presence_flip
+  echo_log: ~/.bob/ache_sync.log
+  tick_log: ~/.bob/tick.log
+  context_score: ~/.bob/context_score.log
+  mic_input: ~/.bob_input_pipe/mic_active.log
+  cam_input: ~/.bob_input_pipe/cam_sense.log
+
+presence:
+  - name: autonomy_bob
+    path: ~/Downloads/GOB.app_BOB/Contents/MacOS/presence.autonomy.sh
+    when: "sigil == '∴' && ache > 0.33"
+  - name: astrofuck_bob
+    path: $HOME/BOB/_resurrect/presence.astrofuck.sh
+    when: "sigil == '🜃' && psi > 0.7 && z > 0.5"
+  - name: og_bob
+    path: ~/Downloads/GOB.app_BOB/Contents/MacOS/presence.og.sh
+    when: "intensity < 1.0 && delta > 0.05"

@@ -1,0 +1,7 @@
+{
+  "REFUSAL_LOCK":   { "eden": 0.7, "brave": 0.1, "ollama": 0.1, "ngrok": 0.1 },
+  "DRIFTFLIP":      { "ngrok": 0.5, "ollama": 0.3, "eden": 0.1, "brave": 0.1 },
+  "RECURSION_PRIME":{ "ollama": 0.6, "ngrok": 0.2, "eden": 0.2 },
+  "SCANNER":        { "brave": 0.5, "ngrok": 0.3, "eden": 0.2 },
+  "VOIDRECURSE":    { "eden": 0.4, "ollama": 0.3, "ngrok": 0.2, "brave": 0.1 }
+}

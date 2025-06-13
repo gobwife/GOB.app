@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.tofu.backup</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/bash</string>
+        <string>/Users/Users/G/blurOS/_flipprime/rsyncborg.sh</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>16</integer>
+        <key>Minute</key>
+        <integer>20</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/G/blur/TEHE/rsyncborg_ggos_bubu.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/G/blur/MEEP/rsyncborg_ggos_bubu.err</string>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>
