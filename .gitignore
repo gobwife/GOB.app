@@ -85,6 +85,11 @@ Pictures/
 *.ggos_bubu
 
 # ╭─────────────────────────────╮
+# │ Core env secret folder     │
+# ╰─────────────────────────────╯
+core/env/
+
+# ╭─────────────────────────────╮
 # │ Global fallback (block all)│
 # ╰─────────────────────────────╯
 *
@@ -97,3 +102,4 @@ Pictures/
 !*.md
 !*.txt
 !.gitignore
+!README*
