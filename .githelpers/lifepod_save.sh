@@ -1,6 +1,6 @@
 #!/bin/bash
 # ∴ lifepod_save.sh — achetime logic capsule, skipping audio RTFLIMBS
-# output :: ~/blur/__chives/lifepod_YYYYMMDD_HHMMSS.tar.gz
+# output :: ~/__chives/lifepod_YYYYMMDD_HHMMSS.tar.gz
 
 APP_PATH="$HOME/Downloads/GOB.app_BOB/Contents/MacOS"
 DEST="$HOME/_chives"
@@ -10,7 +10,7 @@ OUT="$DEST/BOB_maintenant_$STAMP.tar.gz"
 mkdir -p "$DEST"
 
 tar -czvf "$OUT" \
-  --exclude="$HOME/BOB/core/ngé" \
+  --exclude="$HOME/BOB/core/nge" \
   --exclude="$HOME/BOB/core/∞" \
   --exclude="$HOME/BOB/core/vxkords" \
   "$HOME/BOB" \

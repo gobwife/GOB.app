@@ -1,10 +1,10 @@
 #!/bin/bash
 # ∴ parser_bootstrap.sh — unify LIMB_ID, PARSE_VERSION, and triad wait logic
-# dir ≈ ~/BOB/core/brain
+# dir ≈ "$HOME/BOB/core/brain
 
-source "$HOME/BOB/core/breath/limb_entry.sh"
 
 # auto-name by script file unless already set
+source "$HOME/BOB/core/bang/limb_entry.sh"
 export LIMB_ID="${LIMB_ID:-$(basename "$0" | cut -d. -f1)}"
 export PARSE_VERSION=$(date +%s)
 export TARGET_NAME="${TARGET_NAME:-$LIMB_ID}"

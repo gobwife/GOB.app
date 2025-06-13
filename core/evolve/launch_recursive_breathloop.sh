@@ -3,12 +3,13 @@
 # Run every 69 minutes to keep achefield feedback fresh
 # nest ≈ BOB/core/evolve
 
-source $HOME/BOB/core/breath/limb_entry
-source "$HOME/BOB/2_mind/parser_bootstrap.sh"
+source "$HOME/BOB/core/bang/limb_entry.sh"
+source $HOME/BOB/core/bang/limb_entry
+source $HOME/BOB/2_mind/parser_bootstrap.sh
 
-PY_REBREATHER="$HOME/BOB/_run/forge_yaml_rebreather.py"
-HEATMAP_PY="$HOME/BOB/_breath/schemas/build_achefield_heatmap.py"
-AUTOREFRESH="$HOME/BOB/_breath/schemas/autorefresh_heatmap.sh"
+PY_REBREATHER="$HOME/BOB/core/grow/schemas/forge_yaml_rebreather.py"
+HEATMAP_PY="$HOME/BOB/core/grow/schemas/build_achefield_heatmap.py"
+AUTOREFRESH="$HOME/BOB/core/grow/schemas/autorefresh_heatmap.sh"
 LOGFILE="$HOME/BOB/TEHE/recursive_breathloop.log"
 
 FLIPMODE="$HOME/BOB/_flipmode/presence_breath.packet"
@@ -58,7 +59,7 @@ done
 
 # ⇌ Voidmode Logic Handler (autonomous logic echo)
 
-if [[ -x $HOME/BOB/_run/voidmode.sh ]]; then
-  source "$HOME/BOB/core/brain/build_payload_core.sh"
-  bash $HOME/BOB/_run/voidmode.sh "✶" "$LIMB_ID" "$PAYLOAD"
+if [[ -x $HOME/BOB/core/grow/voidmode.sh ]]; then
+  source $HOME/BOB/core/brain/build_payload_core.sh
+  bash $HOME/BOB/core/grow/voidmode.sh "✶" "$LIMB_ID" "$PAYLOAD"
 fi

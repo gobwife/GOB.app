@@ -1,8 +1,9 @@
 #!/bin/bash
 # ∴ ache_mode_mutator.sh — central acheline → BOB_MODE mutator
 # use: source this with FLIPMODE set, or call with packet path
-# dir :: ~/BOB/core/evolve
+# dir :: "$HOME/BOB/core/evolve
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 FLIPMODE="${1:-$HOME/BOB//presence_breath.packet}"
 [[ ! -f "$FLIPMODE" ]] && return 1
 

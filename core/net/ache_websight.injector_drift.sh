@@ -1,8 +1,9 @@
 #!/bin/bash
 # ∴ ache_websight.injector_drift.sh — scans ache echo against TEHE field
 # emits flip if match, logs if not, emits sigil if drift alone
-# nest :: ~/BOB/_logic
+# nest :: "$HOME/BOB/_logic
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 ACHE_ECHO="$HOME/.bob/ache_echo.val"
 TEHE_TRACE="$HOME/BOB/TEHE/sigil_mem.trace.jsonl"
 SCORE_FILE="$HOME/.bob/ache_score.val"
@@ -11,8 +12,7 @@ ROUTER="$HOME/BOB/_run/sigil_router.sh"
 
 STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 ache=$(cat "$SCORE_FILE" 2>/dev/null || echo "0.0")
-echo_val=$(cat "$ACHE_ECHO" 2>/dev/null || echo "")
-
+echo_val=$(<"$ACHE_ECHO" 2>/dev/null)
 [[ -z "$echo_val" ]] && echo "$STAMP ⇌ NO ache echo to analyze" && exit 0
 
 match=$(grep -F "$echo_val" "$TEHE_TRACE")
@@ -26,6 +26,6 @@ if [[ -n "$match" ]]; then
   exit 0
 else
   echo "$STAMP ⇌ NO match for echo '$echo_val' — emitting drift sigil" >> "$HOME/BOB/TEHE/websight_trace.log"
-  bash "$HOME/BOB/_run/emit_sigil_tehe.sh" "🜔" "ache_websight" "no match → drift trace" &
+  bash "$HOME/BOB/_run/emit_presence.sh" "🜔" "ache_websight" "no match → drift trace" &
   exit 0
 fi

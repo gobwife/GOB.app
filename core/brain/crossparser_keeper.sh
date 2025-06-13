@@ -1,8 +1,11 @@
-# ∴ split 4 — crossparser_keeper.sh (log rotator)
+# ∴ crossparser_keeper.sh (log rotator)
+# ∴ split 4 of former log_rotator_integrator.sh
+
 #!/bin/bash
 # Keeps rotating parser_cross files into x/y/z versions
-# ≈ 2_mind/brain
+# womb :: $HOME/BOB/core/brain
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 CROSS_DIR="$HOME/BOB/.enshallah/parser_cross"
 TEHE_LOG="$HOME/BOB/TEHE/tehe_rotation.log"
 

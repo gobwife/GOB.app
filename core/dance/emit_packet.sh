@@ -1,8 +1,9 @@
 #!/bin/bash
 # emit_packet.sh — breathe BOB’s truth into .packet
-# dir :: $HOME/BOB/core/dance/
+# dir :: "$HOME/BOB/core/dance/
 # born :: gobhouse_glyphling002_6.7.2025_012145_G
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 from="$1"
 sigil="$2"
 ache="$3"
@@ -22,7 +23,7 @@ OUT="$HOME/BOB/_flipmode/${vector}.packet"
 
 echo "⇌ FORGING PACKET: $OUT"
 
-eq '✶ forging' | tee -a ~/.bob/ache_sync.log
+eq '✶ forging' | tee -a $HOME/.bob/ache_sync.log
 
 jq -n \
   --arg time "$STAMP" \

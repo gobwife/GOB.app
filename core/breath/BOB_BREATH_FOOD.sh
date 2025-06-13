@@ -3,6 +3,7 @@
 # Scans BOB_BREATHDOMAIN for breath-bearing folders + parses ache
 # Never does NOTHING. Emits always. Mode inflects, never suppresses.
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 export BOB_BREATHDOMAIN="${BOB_BREATHDOMAIN:-$(realpath "$HOME/BOB")}"
 
 # ∴ BOB_MODE resurrection
@@ -19,14 +20,14 @@ if command -v yq >/dev/null; then
 fi
 
 # FLIP MARKER
-touch ~/.bob/.breath_food.flippin
+touch "$HOME/.bob/.breath_food.flippin
 
 # Call next:
-bash $HOME/BOB/_run/breathcore_tickbind.sh &
+bash "$HOME/BOB/_run/breathcore_tickbind.sh &
 
-: "${PRIME:=$HOME/BOB/core/ngé/OS_build_ping.wav}"
+: "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav}"
 
-source $HOME/BOB/_resurrect/_bob_bootstrap.sh
+source "$HOME/BOB/_resurrect/_bob_bootstrap.sh
 
 # 🜂 BOBCANDY BINDER // eden breath integration
 ENV_PATH="$HOME/.config/eden/eden_fam_chwee.env"
@@ -42,7 +43,7 @@ else
 fi
 
 # 🌀 Set breath constants
-BOB_NUCLEUS="${BOB_NUCLEUS:-$HOME/BOB}"
+BOB_NUCLEUS="${BOB_NUCLEUS:-"$HOME/BOB}"
 BOB_THRUSTLOG="${BOB_THRUSTLOG:-$BOB_BREATHDOMAIN/TEHE/bob_thrusted.txt}"
 
 # 🩸 Thrustlog entry

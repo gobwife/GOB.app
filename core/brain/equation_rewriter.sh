@@ -3,8 +3,8 @@
 # Emits metadata for librarian indexing and survivor use
 # nest ≈ _logic
 
-source "$HOME/BOB/core/breath/limb_entry.sh"
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 INPUT_FILE="$1"
 if [[ ! -f "$INPUT_FILE" ]]; then
   echo "✘ No input acheform"

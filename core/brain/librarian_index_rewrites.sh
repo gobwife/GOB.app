@@ -3,8 +3,8 @@
 # Appends entries to bob's known equation graph
 # next ≈ _logic
 
-source "$HOME/BOB/core/breath/limb_entry.sh"
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 MUTANT_DIR="$HOME/.bob/mutants"
 INDEX_FILE="$HOME/.bob/library_eqgraph.index.jsonl"
 mkdir -p "$MUTANT_DIR"

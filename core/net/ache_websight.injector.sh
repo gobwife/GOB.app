@@ -1,9 +1,9 @@
 #!/bin/bash
 # ∴ ache_websight_injector.sh — graph match from web pulls, ache injection if aligned
-# dir :: $HOME/BOB/core/net
+# dir :: "$HOME/BOB/core/net
 
-source "$HOME/BOB/core/breath/limb_entry.sh"
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 ACHE_FILE="$HOME/.bob/ache_score.val"
 INJECT_FILE="$HOME/.bob/ache_injection.txt"
 LAST_WEBRESP="$HOME/.bob/web_response_snippet.txt"

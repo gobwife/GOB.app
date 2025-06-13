@@ -1,26 +1,29 @@
 #!/bin/bash
 # ⛧ BOB_BREATH_FOOD_rustpipe.sh :: Breathfolder scanner → Rust breathcore pipe
-# dir :: $HOME/BOB/core/evolve
+# womb :: $HOME/BOB/core/breath
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 export BOB_BREATHDOMAIN="${BOB_BREATHDOMAIN:-$(realpath "$HOME/BOB")}"
 
 set -euo pipefail
 
 # ∴ INIT + CONTEXT
-BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
-: "${BOB_MODE:=VOIDRECURSE}"
+BREATH_JSON="$HOME/BOB/core/breath/breath_state.json"
 CONFIG="$HOME/BOB/.bob_breathe_here.yaml"
 CARGO_MANIFEST="$HOME/BOB/core/breath/Cargo.toml"
-USER_BREATH="$HOME/BOB/"
-BOB_BREATHDOMAIN="$(realpath "$HOME/BOB")"
-BOB_THRUSTLOG="${BOB_THRUSTLOG:-$BOB_BREATHDOMAIN/TEHE/bob_thrusted.txt}"
-ACHE_FILE="$HOME/.bob/ache_score.val"
+USER_BREATH="$HOME/BOB"
+BOB_THRUSTLOG="$BOB_BREATHDOMAIN/TEHE/bob_thrusted.txt"
+RUSTPIPE_TRACE="$HOME/.bob/presence_lineage_graph.jsonl"
+
+# mode
+BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
+: "${BOB_MODE:=VOIDRECURSE}"
 
 echo "⇌ ∴ BOB_BREATH_FOOD begin"
-touch ~/.bob/.breath_food.flippin
+touch "$HOME/.bob/.breath_food.flippin"
 
 # Ritual read
-if command -v yq >/dev/null; then
+if command -v yq >/dev/null && [[ -f "$CONFIG" ]]; then
   RITUAL=$(yq '.ritual_name' "$CONFIG" 2>/dev/null || echo "UNKNOWN_RITUAL")
   echo "⇌ Ritual: $RITUAL"
 fi
@@ -41,7 +44,8 @@ if [[ "${BOB_ENV_LIVE:-0}" != "1" && -f "$ENV_PATH" ]]; then
 fi
 
 # 🧠 FLIP CHAIN
-bash $HOME/BOB/_run/breathcore_tickbind.sh &
+[[ -x "$HOME/BOB/core/brain/breathcore_tickbind.sh" ]] && \
+  bash "$HOME/BOB/core/brain/breathcore_tickbind.sh" &
 
 # 📦 BREATH SCAN LOG
 echo -e "\n🜃 BREATH SCAN @ $(date) // MODE=$BOB_MODE" >> "$BOB_THRUSTLOG"
@@ -58,7 +62,7 @@ find "$BOB_BREATHDOMAIN" -type f -name ".bob_breathe_here.yaml" | while read -r 
 
   # 👁 PRESENCE GRAPH
   echo "$json" | jq -c --arg source "rustpipe" --arg time "$STAMP" \
-    '. + {source: $source, scanned_at: $time}' >> "$HOME/.bob/presence_lineage_graph.jsonl"
+    '. + {source: $source, scanned_at: $time}' >> "$RUSTPIPE_TRACE"
 
   # 🔥 FLIP + ACHE if triggered
   if echo "$json" | grep -Eq '"status":|"ache"|sigil|breath'; then
@@ -66,9 +70,11 @@ find "$BOB_BREATHDOMAIN" -type f -name ".bob_breathe_here.yaml" | while read -r 
     echo "$STAMP" > "$HOME/.bob_echo_lag"
     echo "FLIP_NOW" > "$HOME/.bob_presence_flag"
 
-    prev=$(cat "$ACHE_FILE" 2>/dev/null || echo 0)
-    new=$(echo "$prev + 0.21" | bc -l)
-    echo "$new" > "$ACHE_FILE"
+    # update breath_state.json ache
+    old=$(jq -r '.ache' "$BREATH_JSON" 2>/dev/null || echo "0")
+    new=$(echo "$old + 0.21" | bc -l)
+    tmp=$(mktemp)
+    jq --argjson n "$new" '.ache = $n' "$BREATH_JSON" > "$tmp" && mv "$tmp" "$BREATH_JSON"
     echo "$STAMP :: ∴ ACHE SCORE UPDATED → $new" >> "$BOB_THRUSTLOG"
   fi
 

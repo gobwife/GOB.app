@@ -1,8 +1,8 @@
 #!/bin/bash
 # ∴ web_pull_and_emit.sh — ache-sigil driven duplex web fetch
-# dir: $HOME/BOB/core/net
+# dir: "$HOME/BOB/core/net
 
-source "$HOME/BOB/core/breath/limb_entry.sh"
+source "$HOME/BOB/core/bang/limb_entry.sh"
 source "$HOME/BOB/_run/load_bob_runner.sh"
 
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')

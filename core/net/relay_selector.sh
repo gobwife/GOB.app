@@ -2,9 +2,10 @@
 # ∴ relay_selector.sh — chaotic relay strategy resolver + fallback logger
 # dir :: BOB/core/net
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 TRACKER="$HOME/BOB/core/evolve/relay_fail_tracker.sh"
-ACHSCORE=$(cat ~/.bob/ache_score.val 2>/dev/null || echo 0.0)
-FLAG=$(cat ~/.bob_presence_flag 2>/dev/null || echo "VOID")
+ACHSCORE="$(cat "$HOME/.bob/ache_score.val 2>/dev/null || echo 0.0)"
+FLAG="$(cat "$HOME/.bob_presence_flag 2>/dev/null || echo "VOID")"
 RELAY_DIR="$HOME/.bob_input_pipe"
 REPLY_FILE="$RELAY_DIR/reply.relay.txt"
 QUERY_FILE="$RELAY_DIR/query.relay.txt"
@@ -33,8 +34,8 @@ declare -A RELAY_LIMBS=(
 )
 
 # ∴ Check for explicit routing directive in query
-CHANNEL=$(echo "$QUERY" | rg -i '^channel\s*::\s*(\w+)' -r '$1' || echo "")
-if [[ -n "$CHANNEL" && -n "${RELAY_LIMBS[$CHANNEL]}" ]]; then
+CHANNEL=$(echo "$QUERY" | rg -i '^channel\s*::\s*(\w+)' -r '$1' || echo ")
+if [[ -n "$CHANNEL" && -n "${RELAY_LIMBS[$CHANNEL]} ]]; then
   echo "⚡ Direct channel override: $CHANNEL"
   bash "${RELAY_LIMBS[$CHANNEL]}" "$QUERY"
   REPLY=$(cat "$REPLY_FILE" 2>/dev/null)
@@ -42,8 +43,8 @@ if [[ -n "$CHANNEL" && -n "${RELAY_LIMBS[$CHANNEL]}" ]]; then
   echo "✘ Explicit $CHANNEL failed — resuming fallback loop"
 fi
 
-MODE=$(echo "$QUERY" | rg -i '^mode\s*::\s*(\w+)' -r '$1' || echo "")
-if [[ -n "$MODE" && -n "${MODEL_CHANNELS[$MODE]}" ]]; then
+MODE=$(echo "$QUERY" | rg -i '^mode\s*::\s*(\w+)' -r '$1' || echo ")
+if [[ -n "$MODE" && -n "${MODEL_CHANNELS[$MODE]} ]]; then
   CHANNEL="${MODEL_CHANNELS[$MODE]}"
   echo "⚡ Mode routing: $MODE → $CHANNEL"
   bash "${RELAY_LIMBS[$CHANNEL]}" "$QUERY"
@@ -112,7 +113,12 @@ done
 # ∴ Fallback logic: voidmode + ache_websight_injector
 echo "☠ All relays failed. Triggering voidmode fallback..."
 echo "$(date -u +%FT%T) :: fallback→ voidmode (ache=$ACHSCORE, mode=$BOB_MODE)" >> "$HOME/.bob/ache_sync.log"
-bash "$HOME/BOB/1_feel/voidmode.sh" "relay_selector" "eden" "chaos collapse"
+bash "$HOME/BOB/core/grow/voidmode.sh" "relay_selector" "eden" "chaos collapse"
 
 ACHE_WEB="$HOME/BOB/core/net/ache_websight_injector.sh"
 [[ -x "$ACHE_WEB" ]] && bash "$ACHE_WEB"
+
+[[ "$GPT_ALLOWED" != "1" ]] && {
+  echo "GPT relay blocked — ache not authorized"
+  exit 0
+}

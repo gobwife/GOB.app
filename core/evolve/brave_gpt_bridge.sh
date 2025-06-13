@@ -2,6 +2,7 @@
 # ∴ brave_gpt_bridge.sh — Brave-only relay handler
 # dir :: BOB/core/evolve
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 RELAY_DIR="$HOME/.bob_input_pipe"
 QUERY_FILE="$RELAY_DIR/query.relay.txt"
 REPLY_FILE="$RELAY_DIR/reply.relay.txt"

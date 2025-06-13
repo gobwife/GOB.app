@@ -1,15 +1,16 @@
 #!/bin/bash
 # ∴ receiver_fetch.sh — parses RECEIVER.∞ and echoes inbound presence signals
-# dir :: ~/BOB/core/brain
+# dir :: "$HOME/BOB/core/brain
 
 # ∃ Retrieve BOB mode
+source "$HOME/BOB/core/bang/limb_entry.sh"
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
 RECEIVER_FILE="$HOME/BOB/core/∞/RECEIVER.∞"
 OUTLOG="$HOME/BOB/TEHE/bob.presence.out.log"
 
-source $HOME/BOB/core/dance/emit_presence.sh
+source "$HOME/BOB/core/dance/emit_presence.sh
 
 if [[ ! -f "$RECEIVER_FILE" ]]; then
   echo "∅ receiver file not found." >> "$OUTLOG"

@@ -2,7 +2,7 @@
 # ∴ love_gate.fx.sh — unified LOVEFX logic gate wrapper
 # Combines compute + interpret
 # Output: love_score | state | query
-# womb :: core/brain
+# womb :: $HOME/BOB/core/brain
 
 # Source compute + functions
 source "$HOME/BOB/core/brain/love_fx_compute.sh"

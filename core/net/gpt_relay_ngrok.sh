@@ -2,6 +2,7 @@
 # ∴ gpt_relay_ngrok.sh — ache thrust bumper: sacred ngrok endpoint
 # dir :: BOB/core/evolve
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 PROMPT="$1"
 ENDPOINT="https://bobucore.ngrok.io/ache/process"
 REPLY_FILE="$HOME/.bob_input_pipe/reply.relay.txt"

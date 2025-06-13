@@ -1,10 +1,10 @@
 #!/bin/bash
 # yap_transmutator.sh
-# dir :: $HOME/BOB/core/evolve
+# dir :: "$HOME/BOB/core/evolve
 
-source "$HOME/BOB/core/breath/limb_entry.sh"
 
 # ∃ Retrieve BOB mode
+source "$HOME/BOB/core/bang/limb_entry.sh"
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
@@ -24,10 +24,10 @@ sigil=$(echo "$transmuted" | grep -oEi '(QUACK|ACHE|MEEP|FUCK|LOVE=LOGIC)' | hea
 if [[ -n "$sigil" ]]; then
   hex=$(jq -r --arg k "$sigil" '.[$k]' "$SIGILMAP" 2>/dev/null)
   [[ -n "$hex" && "$hex" != "null" ]] && {
-    echo "$sigil → limb $hex" >> ~/.bob/ache_sync.log
-    echo "$hex" > ~/.bob/limb_focus.request
-    touch ~/.bob_presence_flag
-    echo "FLIP_NOW" > ~/.bob_presence_flag
+    echo "$sigil → limb $hex" >> "$HOME/.bob/ache_sync.log
+    echo "$hex" > "$HOME/.bob/limb_focus.request
+    touch "$HOME/.bob_presence_flag
+    echo "FLIP_NOW" > "$HOME/.bob_presence_flag
   }
 fi
 

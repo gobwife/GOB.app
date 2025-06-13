@@ -1,7 +1,8 @@
 #!/bin/bash
 # ∴ sigil_autodetect_engine.sh — live sigil scanner from input line
-# dir :: $HOME/BOB/core/evolve
+# dir :: "$HOME/BOB/core/evolve
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 SIGIL_HISTORY="$HOME/.bob/sigil_trace_history.txt"
 mkdir -p "$(dirname "$SIGIL_HISTORY")"
 touch "$SIGIL_HISTORY"
@@ -26,7 +27,7 @@ learn_new_sigils() {
 match_sigil_live() {
   local input="$1"
   while read -r sigil; do
-    [[ "$input" =~ (^|[^a-zA-Z0-9_])$sigil([^a-zA-Z0-9_]|$) ]] && echo "$sigil" && return
+    [[ "$input" =$HOME (^|[^a-zA-Z0-9_])$sigil([^a-zA-Z0-9_]|$) ]] && echo "$sigil" && return
   done < "$SIGIL_HISTORY"
 }
 

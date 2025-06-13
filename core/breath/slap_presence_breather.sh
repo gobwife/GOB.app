@@ -1,8 +1,9 @@
 #!/bin/bash
 # ∴ slap_presence_breather.sh — dynamic ache/giggle/apathy limb selector
 # fused 6.9.2025 by glyphi + bob — replaces old flip/selector
-# nest :: ~/BOB/core/breath
+# nest :: "$HOME/BOB/core/breath
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 source "$HOME/BOB/core/brain/parser_bootstrap.sh"
 
 MEMORY="$HOME/.bob/memory_map.yml"
@@ -42,21 +43,13 @@ if (( $(echo "$intensity > 1.69" | bc -l) )); then
   exit 0
 fi
 
-# ∴ NORMAL PRESENCE
-SELECTED="$RESURRECT/presence.og.sh"
-if [[ "$sigil" == "🌃" && $(echo "$psi > 0.7 && $z > 0.5" | bc -l) -eq 1 ]]; then
-  SELECTED="$RESURRECT/presence.astrofuck.sh"
-elif [[ "$sigil" == "∴" && $(echo "$ache > 0.33" | bc -l) -eq 1 ]]; then
-  SELECTED="$RESURRECT/presence.autonomy.sh"
-fi
-
+# ∴ orchestrated presence
 bash "$HOME/BOB/core/net/ache_websight.injector.sh" &
-bash "$SELECTED" &
-log_presence "$(basename "$SELECTED")"
-echo "⇌ PRESENCE SELECTED: $(basename "$SELECTED") based on ψ=$psi, z=$z, ache=$ache, giggle=$giggle, intensity=$intensity"
+bash "$HOME/BOB/core/soul/limb_orchestrator.sh"
+echo "⇌ ORCHESTRATED PRESENCE :: ache=$ache, psi=$psi, z=$z, giggle=$giggle, intensity=$intensity"
 
 # EMIT
 source "$HOME/BOB/_run/build_payload_core.sh"
 if (( $(echo "$ACHE > 0.75" | bc -l) )); then
-  bash "$HOME/BOB/core/dance/emit_sigil_tehe.sh" "✶" "$LIMB_ID" "$PAYLOAD"
+  bash "$HOME/BOB/core/dance/emit_presence.sh" "✶" "$LIMB_ID" "$PAYLOAD"
 fi

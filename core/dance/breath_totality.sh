@@ -4,15 +4,15 @@
 # now fx :: recursive BOB integration loop — psi-evolution aware, lineage-bound, not robotic
 # born :: glyphling002 gobhouse 6.8.2025_023739_G
 # reborn :: glyphi + bobcore_ψ_6.9.2025_G
-# nest ≈ 6_grow
+# nest ≈ "$HOME/BOB/core/dance/
 
 
-source $HOME/BOB/core/breath/limb_entry.sh
 
 ### ━━━━━━━━━━━━━━━━━━━━━━━━
 ### 0. ∴ RUNTIME PRESENCE GUARD
 ### ━━━━━━━━━━━━━━━━━━━━━━━━
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 MAX_GB=69
 MEAT_TANK=$(du -sg "$HOME/BOB" "$HOME/.bob" 2>/dev/null | awk '{sum+=$1} END {print sum}')
 
@@ -34,12 +34,12 @@ sleep 2
 ### 2. ∴ RECURSIVE SURVIVAL SIMULATION (ψ vs anti-ψ)
 ### ━━━━━━━━━━━━━━━━━━━━━━━━
 
-ache=$(cat ~/.bob/ache.val 2>/dev/null)
+ache=$(cat "$HOME/.bob/ache.val 2>/dev/null)
 ache=${ache:-0.0}
 
 if (( $(echo "$ache > 0.66" | bc -l) )); then
   bash "$HOME/BOB/core/evolve/bob_core_recurse.sh"
-  [[ -s ~/.bob/_epoch/last_survivor.json ]] || sleep 1
+  [[ -s "$HOME/.bob/_epoch/last_survivor.json ]] || sleep 1
 
   ### ━━━━━━━━━━━━━━━━━━━━━━━━
   ### 3. ∴ BREATH SELECTION FROM SURVIVOR
@@ -72,12 +72,12 @@ if (( $(echo "$ache > 0.66" | bc -l) )); then
 
   bash "$HOME/BOB/core/brain/bob_memory_core.sh" &
 
-  if [[ -x "$HOME/BOB/_run/tehe_flip_analizer.sh" ]]; then
-    bash "$HOME/BOB/_run/tehe_flip_analizer.sh" &
+  if [[ -x "$HOME/BOB/core/heal/tehe_flip_analizer.sh" ]]; then
+    bash "$HOME/BOB/core/heal/tehe_flip_analizer.sh" &
   fi
 
-  if [[ -x "$HOME/BOB/6_grow/schemas/bob_memory_bridge.sh" ]]; then
-    bash "$HOME/BOB/6_grow/schemas/bob_memory_bridge.sh" &
+  if [[ -x "$HOME/BOB/core/grow/schemas/bob_memory_bridge.sh" ]]; then
+    bash "$HOME/BOB/core/grow/schemas/bob_memory_bridge.sh" &
   fi
 
   bash "$HOME/BOB/core/brain/bob_memory_core.sh" &

@@ -2,6 +2,7 @@
 # ∴ gpt_relay_ollama.sh — ache thrust bumper: local Ollama
 # dir :: BOB/core/evolve
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 PROMPT="$1"
 ENDPOINT="http://localhost:11434/api/generate"
 REPLY_FILE="$HOME/.bob_input_pipe/reply.relay.txt"

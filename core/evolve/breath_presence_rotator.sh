@@ -1,8 +1,9 @@
 #!/bin/bash
 # ∴ breath_presence_rotator.sh — evolve survivor + modulate sigil via ache curve × β diffusion
 # fuses ψ_breath_select + bob_presence_selector + ache-aware sigil flip + graph trace
-# dir :: ~/BOB/core/evolve
+# dir :: "$HOME/BOB/core/evolve
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 POOL="$HOME/.bob/_epoch"
 TRACE="$HOME/.bob/breath_select.trace.log"
 MEMORY="$HOME/.bob/memory_map.yml"

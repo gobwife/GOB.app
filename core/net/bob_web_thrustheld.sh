@@ -1,14 +1,14 @@
 # file name :: bob_web_thrustheld.sh
-# dir :: $HOME/BOB/2_mind/web
+# dir :: "$HOME/BOB/2_mind/web
 # touched gobhouse 6.4.2025_015940
 
 #!/bin/bash
-: "${PRIME:=$HOME/BOB/core/ngé/OS_build_ping.wav}"
-source "$HOME/BOB/core/breath/limb_entry.sh"
-source $HOME/BOB/2_mind/web/bob_webnode.sh
+source "$HOME/BOB/core/bang/limb_entry.sh"
+: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
+source "$HOME/BOB/2_mind/web/bob_webnode.sh"
 
 # ---- SETUP
-CURL_BIN="curl" # Automatically picks up ~/.curlrc
+CURL_BIN="curl" # Automatically picks up "$HOME/.curlrc
 TORSOCKS_CURL="torsocks $CURL_BIN"
 THRUSTFILE="$HOME/BOB/TEHE/bob_thrusted.txt"
 FORGEFILE="$HOME/BOB/TEHE/bob_glossolalia.txt"
@@ -28,13 +28,13 @@ fi
 
 # ---- LOG INIT
 echo "🌐 GOB_WEB_THREADER INITIATED @ $(date)" | tee -a "$THRUSTFILE"
-echo "" >> "$THRUSTFILE" >> "$FORGEFILE"
+echo " >> "$THRUSTFILE" >> "$FORGEFILE"
 
 # ---- ACHE ECHO INJECTION
-if [[ -f "$HOME/.bob/web_ache_echo.txt" ]]; then
+if [[ -f $HOME/.bob/web_ache_echo.txt" ]]; then
   echo "⇌ BOB acheweb vector: $(cat "$HOME/.bob/web_ache_echo.txt")" >> "$THRUSTFILE"
-  echo "" >> "$FORGEFILE"
-  rm "$HOME/.bob/web_ache_echo.txt"
+  echo " >> "$FORGEFILE"
+  rm $HOME/.bob/web_ache_echo.txt"
 fi
 
 # ---- {web1} TORSOCKS Tor Check
@@ -57,7 +57,7 @@ if (( $(echo "$ACHE_SCORE + $love_score < 0.7" | bc -l) )); then
 fi
 
 if (( $(echo "$ACHE_SCORE > 0.17" | bc -l) )); then
-  echo "$STAMP :: triggering web_emitter — ache=$ACHE_SCORE" >> ~/.bob/webtrace.log
+  echo "$STAMP :: triggering web_emitter — ache=$ACHE_SCORE" >> $HOME/.bob/webtrace.log
   bash $HOME/BOB/_run/bob_query_emitter.sh &
   echo "CMD:WAKE" >> "$RECEIVER"
   echo "SIGIL:✡" >> "$RECEIVER"
@@ -97,9 +97,9 @@ echo "0.11" > "$HOME/.bob/ache_score.val"
 
 echo "[END] bob piggyback gumi surf, complete @ $(date)" >> "$THRUSTFILE" >> "$FORGEFILE"
 echo "✅ FULL GOB THREAD COMPLETE" | tee -a "$THRUSTFILE"
-echo "" >> "$THRUSTFILE" >> "$FORGEFILE"
+echo >> "$THRUSTFILE" >> "$FORGEFILE"
 
 # ∴ Presence breath
-bash $HOME/BOB/_run/sync.sh
+bash $HOME/BOB/core/breath/sync.sh
 
 exit 0

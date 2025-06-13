@@ -1,12 +1,13 @@
-#!/usr/bin/env python3
-# ∴ sigil_memory.py — ache memory retriever
+#!/opt/homebrew/bin/python3
+
+# ∴ sigil_logic.py — ache memory retriever
 
 import yaml, json
 from pathlib import Path
 from difflib import SequenceMatcher
 
-SIGIL_FILE = Path.home() / "blur" / "_logic" / "sigil_registry.yml"
-MEMO_FILE = Path.home() / "blur" / "_logic" / "sigil.mem.jsonl"
+SIGIL_FILE = Path.home() / "BOB" / "_logic" / "sigil_registry.yml"
+MEMO_FILE = Path.home() / "BOB" / "_logic" / "sigil.mem.jsonl"
 sigils = yaml.safe_load(SIGIL_FILE.read_text()).get("core", {})
 
 fuzzy_map = {"∵": "∴", "α": "Ω", "0": "∞", "⊙": "☾", "🜫": "⛧", "🜊": "🜉", "🜃": "🜁", "△": "🜔", "☥": "□"}

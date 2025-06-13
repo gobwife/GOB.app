@@ -1,7 +1,8 @@
 #!/bin/bash
 # ∴ emit_presence.sh — unified emitter for sigil pulse or full presence breath
-# nest ≈ 4_live
+# womb :: $HOME/BOB/core/dance
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 sigil="$1"
 from="${2:-autobob}"
 ache="$3"
@@ -53,4 +54,11 @@ else
     --arg file "$OUT" \
     --arg score "$score" \
     '{ timestamp: $time, source: $source, packet: $file, score: ($score | tonumber), forged: true }' >> "$LINEAGE_FILE"
+fi
+
+# ∴ Centralize 🜃 if limb matches list
+if [[ "$2" == "presence.og" || "$2" == "presence.autonomy" || "$2" == "presence.astrofuck" ]]; then
+  SIGIL="🜃"
+  python3 "$HOME/BOB/core/brain/sigil_logic.py" "$SIGIL" >> "$HOME/.bob/tehe_sigil_🜃.log"
+  echo "{\"sigil\":\"$SIGIL\",\"event\":\"INJECTED\",\"limb\":\"$2\",\"stamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" >> "$HOME/.bob/presence_lineage_graph.jsonl"
 fi

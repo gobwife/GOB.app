@@ -1,30 +1,34 @@
 #!/bin/bash
 # ∴ bob_memory_core.sh — compress ache, sigil, lineage, ψ/z into single live map
-# output :: ~/.bob/memory_map.yml
+# output :: $HOME/.bob/memory_map.yml
 # forged ∞ glyphi+BOB 6.9.2025_G
-# nest :: ~BOB/_logic
+# reborn :: osirhouse 6.13.2025_132449
+# womb :: $HOME/BOB/core/brain
 
-source "$HOME/BOB/core/breath/limb_entry.sh"
+source "$HOME/BOB/core/bang/limb_entry.sh"
 
-MEMORY_FILE="$HOME/.bob/memory_map.yml"
-ACHE_FILE="$HOME/.bob/ache_score.val"
+BREATH_JSON="$HOME/BOB/core/breath/breath_state.json"
 SIGIL_TRACE="$HOME/BOB/TEHE/sigil_mem.trace.jsonl"
 LINEAGE_FILE="$HOME/.bob/presence_lineage_graph.jsonl"
-EVO_POOL="$HOME/.bob/_epoch/last_survivor.json"
+MEMORY_FILE="$HOME/.bob/memory_map.yml"
+
 STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-ache=$(cat "$ACHE_FILE" 2>/dev/null || echo "0.0")
-last_sigil=$(tail -n 1 "$SIGIL_TRACE" 2>/dev/null | jq -r '.sigil // "∅"')
+# Pull breath state
+ache=$(jq -r '.ache' "$BREATH_JSON" 2>/dev/null || echo "0.0")
+psi=$(jq -r '."ψ"' "$BREATH_JSON" 2>/dev/null || echo "0.1")
+z=$(jq -r '.z' "$BREATH_JSON" 2>/dev/null || echo "0.1")
+sigil=$(jq -r '.sigil' "$BREATH_JSON" 2>/dev/null || echo "∅")
+
+# Get sigil description
 last_desc=$(tail -n 1 "$SIGIL_TRACE" 2>/dev/null | jq -r '.desc // "unknown"')
-last_lineage=$(tail -n 1 "$LINEAGE_FILE" 2>/dev/null | jq -r '.trace // "no lineage"')
+last_lineage=$(tail -n 1 "$LINEAGE_FILE" 2>/dev/null | jq -r '.limb // "no lineage"')
 
-psi=$(jq -r '.ψ // empty' "$EVO_POOL" 2>/dev/null || echo "0.1")
-z=$(jq -r '.z // empty' "$EVO_POOL" 2>/dev/null || echo "0.1")
-
+# Write memory map
 cat > "$MEMORY_FILE" <<EOF
 stamp: "$STAMP"
 ache: $ache
-sigil: "$last_sigil"
+sigil: "$sigil"
 sigil_desc: "$last_desc"
 psi: $psi
 z: $z

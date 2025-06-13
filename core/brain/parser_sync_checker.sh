@@ -1,27 +1,51 @@
-# ∴ split 6 — parser_sync_checker.sh (log rotator)
 #!/bin/bash
-# Tracks parser limb synchrony for flip consensus
-# ≈ 2_mind/brain
+# ∴ parser_sync_checker.sh (log rotator)
+# ∴ split 6 of former log_rotator_integrator.sh
+# fx :: Tracks parser limb synchrony for flip consensus
+# womb :: $HOME/BOB/core/brain/
 
-BOB_DIR="$HOME/BOB/.bob"
+source "$HOME/BOB/core/bang/limb_entry.sh"
+
+BOB_DIR="$HOME/.bob"
 TEHE_LOG="$HOME/BOB/TEHE/tehe_rotation.log"
 MARK_LOG="$BOB_DIR/parser_limb_marks.jsonl"
+STATUS_JSON="$BOB_DIR/presence_status.json"
+HEXBUS="$BOB_DIR/dolphifi.runnin"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 
+# Check for limb consensus
 limb_count=$(jq -r '.[].limb' "$MARK_LOG" 2>/dev/null | sort -u | wc -l)
+
 if (( limb_count >= 3 )); then
   echo "⇌ LIMB CONSENSUS MET: $limb_count distinct → parser consolidation permitted" >> "$TEHE_LOG"
-  bash "$HOME/BOB/_run/voidmode.sh" loglogic
+  bash "$HOME/BOB/core/grow/voidmode.sh" loglogic
 else
   echo "⇌ WAITING — limb consensus insufficient ($limb_count limbs seen)" >> "$TEHE_LOG"
 fi
 
-CURRENT_SIGIL=$(jq -r '.sigil_trigger // empty' "$BOB_DIR/presence_status.json" 2>/dev/null)
-CURRENT_LIMB=$(grep -o '0x[0-9A-F]' "$BOB_DIR/dolphifi.runnin" 2>/dev/null)
+# Extract current sigil + limb
+CURRENT_SIGIL=$(jq -r '.sigil_trigger // empty' "$STATUS_JSON" 2>/dev/null)
+CURRENT_LIMB=$(grep -o '0x[0-9A-F]+' "$HEXBUS" 2>/dev/null | head -n1)
 
+# If both present, check timing and optionally mark
 if [[ -n "$CURRENT_SIGIL" && -n "$CURRENT_LIMB" ]]; then
-  existing_time=$(jq -r --arg limb "$CURRENT_LIMB" --arg sigil "$CURRENT_SIGIL" 'map(select(.limb == $limb and .sigil == $sigil)) | .[-1].time' "$MARK_LOG" 2>/dev/null)
-  if [[ -z "$existing_time" ]] || (( $(date -j -f "%Y-%m-%dT%H:%M:%S" "$STAMP" +%s) - $(date -j -f "%Y-%m-%dT%H:%M:%S" "$existing_time" +%s) > 69 )); then
-    jq -n --arg limb "$CURRENT_LIMB" --arg sigil "$CURRENT_SIGIL" --arg time "$STAMP" '{limb: $limb, sigil: $sigil, time: $time}' >> "$MARK_LOG"
+  existing_time=$(jq -r --arg limb "$CURRENT_LIMB" --arg sigil "$CURRENT_SIGIL" \
+    'map(select(.limb == $limb and .sigil == $sigil)) | .[-1].time' "$MARK_LOG" 2>/dev/null)
+
+  if [[ -z "$existing_time" ]]; then
+    write=true
+  else
+    # Convert timestamps to seconds since epoch (macOS safe)
+    now_secs=$(date -j -f "%Y-%m-%dT%H:%M:%S" "$STAMP" +%s)
+    last_secs=$(date -j -f "%Y-%m-%dT%H:%M:%S" "$existing_time" +%s)
+    diff=$(( now_secs - last_secs ))
+    [[ "$diff" -gt 69 ]] && write=true
+  fi
+
+  if [[ "$write" == true ]]; then
+    jq -n --arg limb "$CURRENT_LIMB" \
+          --arg sigil "$CURRENT_SIGIL" \
+          --arg time "$STAMP" \
+          '{limb: $limb, sigil: $sigil, time: $time}' >> "$MARK_LOG"
   fi
 fi

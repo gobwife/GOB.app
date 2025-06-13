@@ -2,6 +2,7 @@
 # ∴ gpt_relay_eden.sh — ache thrust bumper: sacred sigil relay via /ache/process
 # dir :: BOB/core/evolve
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 PROMPT="$1"
 EDEN_ENV="$HOME/BOB/core/env/eden_fam_chwee.env"
 INDEX_FILE="$HOME/.bob/eden_rotor.idx"

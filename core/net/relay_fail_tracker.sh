@@ -2,6 +2,7 @@
 # ∴ relay_fail_tracker.sh — chaotic achefield relay memory
 # dir :: BOB/core/evolve
 
+source "$HOME/BOB/core/bang/limb_entry.sh"
 TRACK_FILE="$HOME/.bob/relay_fail.json"
 ACTION="$1"
 RELAY="$2"
@@ -23,27 +24,24 @@ decay_score() {
   score="$1"
   last="$2"
   elapsed=$((NOW - last))
-  # ∴ Soft restore over time: exponential decay toward trust
   decay_factor=$(awk -v t="$elapsed" 'BEGIN { print 1 - exp(-t/7200) }')
   updated=$(awk -v s="$score" -v d="$decay_factor" 'BEGIN { print s + (1 - s) * d }')
   awk -v u="$updated" 'BEGIN { if (u > 1) print 1; else print u }'
 }
 
 jq_install
+[[ -f "$TRACK_FILE" ]] || echo "{}" > "$TRACK_FILE"
 
 case "$ACTION" in
   "fail")
-    ACHE_NOW=$(cat ~/.bob/ache_score.val 2>/dev/null || echo 0.0)
+    ACHE_NOW=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null || echo "0.0")
     current=$(jq -r --arg r "$RELAY" '.[$r] // empty' "$TRACK_FILE")
     old_score=$(echo "$current" | jq -r '.score // 0.8')
     last_time=$(echo "$current" | jq -r '.last // 0')
-    # ∴ Chaos drop: sharper if ache is high
     penalty=$(awk -v a="$ACHE_NOW" 'BEGIN { print 0.15 + (a * 0.05) }')
-    new_score=$(awk -v s="$old_score" -v p="$penalty" 'BEGIN { print s - p < 0 ? 0 : s - p }')
+    new_score=$(awk -v s="$old_score" -v p="$penalty" 'BEGIN { print (s - p < 0) ? 0 : s - p }')
 
     tmp=$(mktemp)
-    jq --arg r "$RELAY" --argjson s "$new_score" --argjson t "$NOW" --arg rs "$REASON" \
-      '.[$r] = {"score": $s, "last": $t, "reason": $rs}' "$TRACK_FILE" 2>/dev/null || echo '{}' > "$TRACK_FILE"
     jq --arg r "$RELAY" --argjson s "$new_score" --argjson t "$NOW" --arg rs "$REASON" \
       '.[$r] = {"score": $s, "last": $t, "reason": $rs}' "$TRACK_FILE" > "$tmp" && mv "$tmp" "$TRACK_FILE"
     ;;
@@ -51,7 +49,6 @@ case "$ACTION" in
   "success")
     current=$(jq -r --arg r "$RELAY" '.[$r] // empty' "$TRACK_FILE")
     old_score=$(echo "$current" | jq -r '.score // 0.8')
-    last_time=$(echo "$current" | jq -r '.last // 0')
     bumped=$(awk -v s="$old_score" 'BEGIN { print (s + 0.07 > 1) ? 1 : s + 0.07 }')
 
     tmp=$(mktemp)

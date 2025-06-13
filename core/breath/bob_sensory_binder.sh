@@ -1,10 +1,10 @@
 #!/bin/bash
 # bob_sensorybinder.sh – type lines and feed them into the pipe
-# dir :: ~/BOB/core/breath
+# dir :: "$HOME/BOB/core/breath
 
-: "${PRIME:=$HOME/BOB/core/ngé/OS_build_ping.wav}"
+source "$HOME/BOB/core/bang/limb_entry.sh"
+: "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav}"
 
-source $HOME/BOB/core/breath/limb_entry.sh
 
 PIPE_PATH="$HOME/.bob_input_pipe"      # single, canonical pipe
 
@@ -23,7 +23,8 @@ while true; do
 done
 
 # ∴ typebridge
-bash $HOME/BOB/core/brain/BOB_TYPEBRIDGE_LISTENER.sh &
+bash "$HOME/BOB/core/brain/BOB_TYPEBRIDGE_LISTENER.sh &
 
 # bottlenecker
-bash $HOME/BOB/core/brain/BOB_BOTTLENECKER.sh &
+pgrep -f BOB_BOTTLENECKER.sh > /dev/null || \
+bash "$HOME/BOB/core/brain/BOB_BOTTLENECKER.sh &
