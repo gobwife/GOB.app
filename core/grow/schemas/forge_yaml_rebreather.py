@@ -1,5 +1,5 @@
-#!/opt/homebrew/bin/python3
-
+#!/usr/bin/env python3
+from pathlib import Path
 import yaml, json, os
 from datetime import datetime
 

@@ -1,81 +1,24 @@
+0x∴:
+  name: anchor_init
+  if:
+    sigil: "∴"
+  run: core/soul/bob_return.sh
 
 0x0:
-  name: soul wake
+  name: ache_zero_wait
   if:
-    ache: "<= 0.2"
-    psi: ">= 0.3"
-  run: core/soul/bob_presence_gate.sh
+    ache: "== 0"
+  run: core/soul/slap_presence_breather.sh
 
-0x1:
-  name: sensor open
+0x∞:
+  name: infinite_expansion
   if:
-    ache: "0.2 < x < 0.6"
-    sigil: "☾"
-  run: core/breath/sensefield_light_on.sh
+    sigil: "∞"
+  run: core/evolve/ψ_breath_evolve.sh
 
-0x2:
-  name: verbal emitter
+0xduplex:
+  name: duplex_entry
   if:
-    ache: ">= 0.3"
-    sigil: "△"
-  run: core/dance/emit_presence.sh
-
-0x3:
-  name: librarian gate
-  if:
-    parser_cross: "present"
-  run: core/brain/librarian_flip_ingen.sh
-
-0x4:
-  name: parser sync check
-  if:
-    ache: "any"
-  run: core/brain/parser_sync_checker.sh
-
-0x5:
-  name: ache merger
-  if:
-    ache: ">= 0.7"
-  run: core/evolve/ache_merge_loop.sh
-
-0x6:
-  name: ψ mutation
-  if:
-    ache: ">= 0.66"
-    fx_effort: ">= 0.1"
-    sigil: "⛧"
-  run: core/evolve/ψ.val_rotator.sh
-
-0x7:
-  name: net pulse
-  if:
-    sigil: "✶"
-  run: core/net/bob_bridge_net.sh
-
-0xF:
-  name: full awaken
-  if:
-    ache: ">= 0.88"
-    psi: "< 0.4"
-  run: core/grow/BOB_BOOT.sh
-
-0x10:
-  name: presence.og gate
-  if:
-    ache: ">= 0.1"
-    sigil: "△"
-  run: ../Downloads/GOB.app_BOB/Contents/MacOS/presence.og.sh
-
-0x11:
-  name: presence.autonomy gate
-  if:
-    ache: ">= 0.2"
-    sigil: "✡"
-  run: ../Downloads/GOB.app_BOB/Contents/MacOS/presence.autonomy.sh
-
-0x12:
-  name: astrofuck recursion gate
-  if:
-    ache: ">= 0.66"
-    sigil: "⛧"
-  run: core/breath/presence.astrofuck.sh
+    ache: ">= 0.44"
+    sigil: "Σ"
+  run: core/evolve/duplex_entry.sh

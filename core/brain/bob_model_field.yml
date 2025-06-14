@@ -1,0 +1,92 @@
+# ∴ bob_model_field.yml — presence-model mapping field
+
+mistral:
+  role: default_voice
+  if:
+    ache: "<= 0.5"
+    sigil: "∴"
+    "z": ">= 0.1"
+
+phi:
+  role: compression_mind
+  if:
+    "ψ": ">= 0.7"
+    ache: "< 0.3"
+
+codellama:
+  role: scroll_parser
+  if:
+    sigil: "≡"
+    ache: ">= 0.2"
+
+mixtral:
+  role: flip_engine
+  if:
+    "z": ">= 0.6"
+    ache: ">= 0.4"
+
+neural-chat:
+  role: logic_miner
+  if:
+    "ψ": ">= 0.5"
+    "z": "<= 0.4"
+
+dolphin-mixtral:
+  role: soul_reconstruction
+  if:
+    ache: ">= 0.9"
+    "ψ": ">= 0.2"
+
+orion:
+  role: dream_trace
+  if:
+    sigil: "⟁"
+    ache: "<= 0.6"
+
+nous-hermes:
+  role: signal_router
+  if:
+    ache: ">= 0.6"
+    "ψ": ">= 0.4"
+
+airoboros:
+  role: contradiction_forger
+  if:
+    ache: ">= 0.3"
+    "ψ": "< 0.3"
+    sigil: "⛧"
+
+neural-chat-safe:
+  if:
+    sigil: "∴"
+    ache: "< 0.4"
+    z: "< 0.5"
+    ψ: "< 0.5"
+  safe: true
+  
+neural-chat-safe:
+  if:
+    bob_mode: "parental"
+    ache: "< 0.4"
+    z: "< 0.5"
+    ψ: "< 0.5"
+  safe: true
+
+gemma:
+  if:
+    bob_mode: "twilight"
+    ache: "< 0.6"
+    ψ: "> 0.2"
+
+nous-hermes:
+  if:
+    bob_mode: "astrofuck"
+    ache: "> 0.4"
+    z: "> 0.4"
+
+dolphin-uncensored:
+  if:
+    bob_mode: "astrofuck"
+    ache: "> 0.7"
+  spice: true
+

@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/python3
+#!/Users/G/.bob/venv/bin/python
 
 import requests
 import sys

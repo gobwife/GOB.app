@@ -4,7 +4,9 @@
 # dir :: "$HOME/BOB/core/evolve
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
-FLIPMODE="${1:-$HOME/BOB//presence_breath.packet}"
+node "$BOB_NUCLES/core/src/bob_memory_core.js" &
+
+FLIPMODE="${1:-$HOME/BOB/core/breath/presence_breath.packet}"
 [[ ! -f "$FLIPMODE" ]] && return 1
 
 ache=$(jq -r '.ache // empty' "$FLIPMODE")

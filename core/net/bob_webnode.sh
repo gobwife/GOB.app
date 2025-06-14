@@ -4,6 +4,8 @@
 # dir :: $HOME/BOB/2_mind/web
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
+source "$HOME/BOB/core/bang/safe_emit.sh"
+
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
@@ -15,7 +17,6 @@ PIPE="$HOME/.bob_input_pipe"
 LOG="$HOME/.bob_input_pipe/mic_active_BOB.log"
 QUERY_OUT="$HOME/.bob/bob_injected_queries.jsonl"
 
-mkdir -p "$HOME/.bob_input_pipe"
 echo "$STAMP ⇌ INIT BOB SENSORY LIMB" >> "$LOG"
 
 ### ∴ MIC CONTEXT FILTER

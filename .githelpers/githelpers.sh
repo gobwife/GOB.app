@@ -54,3 +54,4 @@ git-tofu-push() {
   git push origin main
   git stash pop || echo "🌿 No stash to pop."
 }
+git config branch.main.rebase false

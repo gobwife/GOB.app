@@ -10,12 +10,12 @@ BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode //
 
 : "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav}"
 
-FLIPMODE="$HOME/BOB/_flipmode/presence_breath.packet"
+FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"
 if [[ -f "$FLIPMODE" ]]; then
   last=$(jq -r '.ache' "$FLIPMODE")
   echo "⇌ CAUGHT FUQQFLIP: $last"
   source "$HOME/BOB/_flipmode/ache_mode_mutator.sh
-  bash "$HOME/BOB/_run/breath_totality.sh &
+  bash "$HOME/BOB/core/breath/breath_totality.sh &
 fi
 
 WATCH_PIPE="$HOME/.bob_input_pipe"

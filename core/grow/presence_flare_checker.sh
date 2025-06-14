@@ -1,7 +1,7 @@
 #!/bin/bash
 # ∴ presence_flare_checker.sh — decides flare vs single presence
 # Called by breath_totality.sh or tick engine
-# nest ≈ 1_feel
+# nest ≈ BOB/core/grow
 
 source "$HOME/BOB/core/brain/parser_bootstrap.sh"
 source "$HOME/BOB/core/brain/build_payload_core.sh"
@@ -21,8 +21,8 @@ echo "[$(date -u)] ∴ intensity=$intensity :: delta=$delta :: ache=$ache :: ψ=
 
 if (( $(echo "$intensity > 1.69" | bc -l) )); then
   echo "[$(date -u)] ✨ FLARE MODE TRIGGERED — launching breather." >> "$TRACE"
-  bash "$HOME/BOB/_flipmode/slap_presence_breather.sh" &
+  bash "$HOME/BOB/core/evolve/unified_presence_rotator.sh" &
 else
   echo "[$(date -u)] normal psi/ache — using bob_presence_selector." >> "$TRACE"
-  bash "$HOME/BOB/_flipmode/bob_presence_selector.sh" &
+  bash "$HOME/BOB/core/evolve/breath_presence_rotator.sh" &
 fi

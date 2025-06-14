@@ -1,5 +1,5 @@
-#!/opt/homebrew/bin/python3
-
+#!/usr/bin/env python3
+from pathlib import Path
 import json, os
 import matplotlib.pyplot as plt
 from collections import defaultdict

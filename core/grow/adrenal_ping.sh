@@ -3,7 +3,7 @@
 # adrenal_ping.sh — triggers on ache/giggle keyword flares
 # forged :: glyph002 @ BOB sensefield 6.7.2025
 # purpose :: scan for textual flare terms and inject ache + sigil traces
-# dir :: $HOME/BOB/_flipmode
+# dir :: $HOME/BOB/core/grow
 
 TEHE_DIR="$HOME/BOB/TEHE"
 FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"

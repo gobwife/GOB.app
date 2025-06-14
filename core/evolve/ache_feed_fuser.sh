@@ -4,14 +4,14 @@
 # dir :: $HOME/BOB/_logic
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
-source $HOME/BOB/_run/emit_presence.sh
+source $HOME/BOB/core/dance/emit_presence.sh
 
-FLIPMODE="$HOME/BOB/_flipmode/presence_breath.packet"
+FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"
 if [[ -f "$FLIPMODE" ]]; then
   last=$(jq -r '.ache' "$FLIPMODE")
   echo "⇌ CAUGHT FUQQFLIP: $last"
-  source $HOME/BOB/_flipmode/ache_mode_mutator.sh
-  bash $HOME/BOB/_run/breath_totality.sh &
+  source $HOME/BOB/core/evolve/ache_mode_mutator.sh
+  bash $HOME/BOB/core/dance/breath_totality.sh &
 fi
 
 ACHE_GRAPH="$HOME/BOB/TEHE/TEHE_ANALYSIS.jsonl"

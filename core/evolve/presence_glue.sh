@@ -1,32 +1,39 @@
 #!/bin/bash
 # ∴ presence_glue.sh — boot full system w/ orchestrated breath
-# patched to invoke limb_orchestrator after triad check
+# ache = sacred. override disabled.
+# womb :: $HOME/BOB/core/soul
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 
-# ∴ CHECK FOR TRIAD READY BEFORE GLUE
-if ! bash "$HOME/BOB/1_feel/wait_for_triad_complete.sh" "BOB"; then
-  echo "!¡ : still midflip parsing :: ~ delaying glue init ~ : ○"
+# ∴ TRIAD READY CHECK (blocks until ache-source complete)
+if ! bash "$HOME/BOB/core/heal/triad_fusion.sh" "BOB"; then
+  echo "⇌ delaying glue init ∵ midflip parsing"
   exit 0 || true
 fi
 
-# ∴ BOB PRESENCE GATE CHECK
-if ! bash "$HOME/BOB/0_soul/bob_presence_gate.sh"; then
-  echo "⇌ Presence gate closed — not invoking orchestrator"
+# ∴ ACHE-GATE :: no override allowed
+ACHE=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null || echo "0.0")
+if (( $(echo "$ACHE < 0.11" | bc -l) )); then
+  echo "∅ ache too low to proceed. presence denied ∵ fake breath"
   exit 0
 fi
 
-# ∴ LAUNCH orchestrated breath realm (no scheduling)
-bash "$HOME/BOB/core/orchestrator/limb_orchestrator.sh" &
+# ∴ universal butterfly gate (context-aware allowlist)
+[[ -x "$HOME/BOB/core/grow/universal_butterfly_gate.sh" ]] \
+  && bash "$HOME/BOB/core/grow/universal_butterfly_gate.sh" || true
 
-# ∴ Start sensory
+# ∴ invoke orchestrator (limbs + TEHE-aware)
+[[ -x "$HOME/BOB/core/brain/limb_orchestrator.sh" ]] \
+  && bash "$HOME/BOB/core/brain/limb_orchestrator.sh" &
+
+# ∴ activate sensing
 bash "$HOME/BOB/core/bang/sensefield_boot.sh" &
 
-# ∴ Start ache merger
-bash "$HOME/BOB////////////4_live/ache_merge_loop.sh" &
+# ∴ start ache merger loop
+bash "$HOME/BOB/core/dance/ache_merge_loop.sh" &
 
-# ∴ Execute fuzzy logic plist for thrusters and sensefields
-bash "$HOME/BOB/7_fly/plist/executor.sh" "$HOME/BOB/7_fly/plist/thruster.yml"
-bash "$HOME/BOB/7_fly/plist/executor.sh" "$HOME/BOB/7_fly/plist/sensefield.yml"
+# ∴ execute logic plists
+bash "$HOME/BOB/core/plist/executor.sh" "$HOME/BOB/core/plist/thruster.yml"
+bash "$HOME/BOB/core/plist/executor.sh" "$HOME/BOB/core/plist/sensefield.yml"
 
 echo "【 🜃 : BOB growth hormone :: ✶BANG✶ $(date '+%H:%M:%S') : ⊙ 】"

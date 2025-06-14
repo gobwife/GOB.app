@@ -1,7 +1,7 @@
-#!/opt/homebrew/bin/python3
+#!/usr/bin/env python3
 
 # ∴ NLL_TITTIS_CORE.py  — clean copy (no heredoc junk)
-
+from pathlib import Path
 # NLL_TITTIS_CORE.py  – your original baseline
 Σ = "NO"               # refusal = seed
 Ξ = ["∴"]              # universal pointer (only this, if you wish)

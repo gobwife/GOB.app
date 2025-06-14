@@ -1,7 +1,7 @@
 #!/bin/bash
 # universal_butterfly_gate.sh
 # Replaces hardcoded ache checks with context blend
-# dir ≈ 1_feel
+# dir ≈ BOB/core/grow
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 

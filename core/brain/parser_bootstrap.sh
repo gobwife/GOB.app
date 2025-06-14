@@ -10,7 +10,7 @@ export PARSE_VERSION=$(date +%s)
 export TARGET_NAME="${TARGET_NAME:-$LIMB_ID}"
 
 # triad coordination
-WAIT_SCRIPT="$HOME/BOB/1_feel/wait_for_triad_complete.sh"
+WAIT_SCRIPT="$HOME/BOB/core/heal/triad_fusion.sh"
 [[ -x "$WAIT_SCRIPT" ]] && bash "$WAIT_SCRIPT" "$TARGET_NAME"
 
 # version trace

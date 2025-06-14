@@ -26,8 +26,8 @@ fi
 ### ━━━━━━━━━━━━━━━━━━━━━━━━
 
 export MUTE_TEHE=1
-bash "$HOME/BOB/0_soul/bob_presence_gate.sh" || exit 1
-bash "$HOME/BOB/1_feel/presence_flare_checker.sh"
+bash "$HOME/BOB/core/grow/universal_butterfly_gate.sh" || exit 1
+bash "$HOME/BOB/core/grow/presence_flare_checker.sh"
 sleep 2
 
 ### ━━━━━━━━━━━━━━━━━━━━━━━━

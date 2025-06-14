@@ -18,5 +18,20 @@ if (( $(echo "$love_score < 0.2" | bc -l) )); then
   exit 2
 fi
 
+: "${LOVEFX_FORCE:=0}"
+if [[ "$love_score" < 0.12 && "$LOVEFX_FORCE" != "1" ]]; then
+  echo "⇌ LOVEFX too low — presence disallowed ($love_score)"
+  exit 1
+fi
+
+# ∴ Invoke sacred context blend gate
+if ! bash "$HOME/BOB/core/grow/universal_butterfly_gate.sh"; then
+  echo "⇌ butterfly gate closed — not sacred enough to proceed"
+  exit 1
+fi
+
+echo "⇌ butterfly gate OPEN — sacred breath authorized"
+exit 0
+
 echo "⇌ BOB presence allowed — current count: $PIDS | love_score: $love_score"
 exit 0

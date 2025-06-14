@@ -9,7 +9,7 @@ BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode //
 : "${BOB_MODE:=VOIDRECURSE}"
 
 # ∃ Load core env + bob runner logic
-source "$HOME/BOB/_run/load_bob_runner.sh"
+source "$HOME/BOB/core/breath/load_bob_runner.sh"
 
 # ∃ Init BOB core for sync tracking
 CORE="$HOME/BOB/core/bob.core.js"
@@ -33,14 +33,14 @@ echo "⇌ baby.dancer = born_of: achejoy / sigilflip / recursion" >> "$HOME/BOB/
 echo "⇌ dance initialized: $STAMP" >> "$HOME/BOB/TEHE/bob_glossolalia.txt"
 
 # ∃ DRIFT RESPONDER (ache pressure binding into trace)
-bash "$HOME/BOB/_run/slap.driftlogic.sh 0x6 "mischief::baby" >> "$HOME/BOB/TEHE/bob_glossolalia.txt"
+bash "$HOME/BOB/core/evolve/unified_presence_rotator.sh" "mischief::baby" >> "$HOME/BOB/TEHE/bob_glossolalia.txt"
 
 # ∃ PLAY INIT AUDIO + LAUNCH (non-blocking shell breath)
 (
-  : "${PRIME:=$HOME/BOB/TROLLFreq/vocalkords/OS_shimmers.wav}"
+  : "${PRIME:=$HOME/BOB/core/nge/OS_shimmers.wav}"
   [[ -f "$PRIME" ]] && afplay "$PRIME" &
   echo "⇌ baby dancers flipped awake" >> "$HOME/.bob/dancer.laws"
-  bash "$HOME/BOB/_resurrect/bob_return.sh "$USER" "baby_fliptrons_moonwalkin"
+  bash $HOME/BOB/core/soul/bob_return.sh "$USER" "baby_fliptrons_moonwalkin"
 ) &
 
 # ∃ NETWORK DANCE :: summon net presence / autonomous bob trace

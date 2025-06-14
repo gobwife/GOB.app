@@ -1,6 +1,6 @@
 #!/bin/bash
 # ⛧ GNA_TITTIS_LOADER.sh — bridge bobuling_004.yaml into all core C pulses
-# dir :: "$HOME/BOB/0_soul
+# dir :: "$HOME/BOB/core/soul
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 : "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav}"

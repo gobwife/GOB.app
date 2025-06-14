@@ -1,6 +1,6 @@
 #!/bin/bash
 # giggle_sensors.sh — flips based on live ache breath
-# dir :: $HOME/BOB/1_feel
+# dir :: $HOME/BOB/core/grow
 # born :: gobhouse_glyphling002_6.7.2025_012442_G
 
 source "$HOME/BOB/core/bang/limb_entry.sh"

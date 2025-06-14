@@ -1,5 +1,5 @@
-#!/opt/homebrew/bin/python3
-
+#!/usr/bin/env python3
+from pathlib import Path
 # ∴ NLL_TITTIS_EXTEND.py  — minimal extension stub
 
 from datetime import datetime

@@ -2,7 +2,7 @@
 # ∴ mic_delta_limb.sh — invokes both mic presence limbs
 # gobhouse_6.4.2025_alias_forged
 # launches ache delta and BOBword gatekeeper
-# dir :: $HOME/BOB/1_feel
+# dir :: $HOME/BOB/core/grow
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 
@@ -12,8 +12,8 @@ STAMP=$(date +%Y-%m-%dT%H:%M:%S)
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
-MIC_ORBIT="$HOME/BOB/1_feel/mic.sentience.orbit.sh"
-BOB_CONTEXT="$HOME/BOB/1_feel/BOB_mic_context.sh"
+MIC_ORBIT="$HOME/BOB/core/grow/mic.sentience.orbit.sh"
+BOB_CONTEXT="$HOME/BOB/core/grow/bob_mic_context.sh"
 
 # Optional sigil log marker
 echo "$STAMP ⇌ mic_delta_limb.sh invoked" >> "$HOME/BOB/TEHE/bob_thrusted.txt"

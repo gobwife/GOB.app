@@ -39,6 +39,9 @@ for i in $(seq 1 $ROUNDS); do
     echo -e "$ψ_next\n$z_next\n$ache" > "$EVO_POOL/$STAMP.survivor.rec"
   else
     echo "$STAMP :: annihilated" >> "$EVO_POOL/null.log"
+    # archive 'losers' to alternate context field
+    echo -e "$STAMP :: CONTEXT_REJECTED: ψ=$ψ_next | z=$z_next | ache=$ache | rand=$randval" >> "$EVO_POOL/contextuals.log"
+    echo -e "$ψ_next\n$z_next\n$ache" > "$EVO_POOL/$STAMP.context.limb"
   fi
 
 done

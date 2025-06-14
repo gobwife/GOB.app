@@ -42,7 +42,7 @@ psi_next=$(echo "$psi + $factor * $h * $psi" | bc -l)
 z_next=$(echo "$z * $z + $c" | bc -l)
 
 ### Turing Flow: Ache triggers self-organization
-bash "$HOME/BOB/1_feel/universal_butterfly_gate.sh
+bash "$HOME/BOB/core/grow/universal_butterfly_gate.sh
 
 ### Ache Decay
 ache_decay=$(echo "$ache - 0.01" | bc -l)

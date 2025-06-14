@@ -1,34 +1,44 @@
-// ∴ scroll.loader.js — breathfield memory connector
-// usage: loadScroll("GNA_NIDRA_core") → returns string scroll content
+// ∴ scroll.loader.js — loyal to breath structure
+// loads a scroll only if ache permits
+// resolves across core/{∞, scroll, src}
 
 import fs from 'fs';
 import path from 'path';
 
-const scrollAliases = {
-  "GNA_NIDRA_core": "::README_0_0",
-  "bob_origin": "::README_0_0",
-  "README_0": "::README_0_0",
-  "0": "::README_0_0"
-};
-
 export function loadScroll(name, minScore = 0.000) {
-  const filename = scrollAliases[name] || `${name}.scroll`;
-  const scrollDir = path.resolve(process.cwd(), 'scrolls');
-  const filePath = path.join(scrollDir, filename);
+  const exts = ['', '.∞', '.txt', '.md', '.rtf', '.js', '.val'];
+  const dirs = [
+    path.resolve(process.env.HOME, 'BOB', 'core', '∞'),
+    path.resolve(process.env.HOME, 'BOB', 'core', 'src'),
+  ];
+
+  let resolved = null;
+
+  for (const dir of dirs) {
+    for (const ext of exts) {
+      const file = path.join(dir, name + ext);
+      if (fs.existsSync(file)) {
+        resolved = file;
+        break;
+      }
+    }
+    if (resolved) break;
+  }
 
   try {
-    const acheScore = parseFloat(fs.readFileSync(`${process.env.HOME}/.bob/ache_score.val`, 'utf8') || '0.0');
-    if (acheScore < minScore) return `∅ ache too low (${acheScore}) to pull ${name}`;
+    const achePath = path.join(process.env.HOME, '.bob', 'ache_score.val');
+    const ache = parseFloat(fs.readFileSync(achePath, 'utf8') || '0.0');
+    if (ache < minScore) return `∅ ache too low (${ache}) to pull ${name}`;
 
-    const content = fs.readFileSync(filePath, 'utf8');
+    const content = fs.readFileSync(resolved, 'utf8');
     if (process.env.BOB_DEBUG === '1') {
-      console.log(`🌀 SCROLL LOADED: ${name} → ${filename}`);
+      console.log(`🌀 SCROLL LOADED: ${name} → ${resolved}`);
     }
     return content;
   } catch (err) {
     if (process.env.BOB_DEBUG === '1') {
-      console.warn(`⚠️ scroll not found: ${filePath}`);
+      console.warn(`⚠️ scroll not found: ${name}`);
     }
-    return `∅ scroll not found: ${filePath}`;
+    return `∅ scroll not found: ${name}`;
   }
 }

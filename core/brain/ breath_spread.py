@@ -1,10 +1,9 @@
-#!/opt/homebrew/bin/python3
-
+#!/usr/bin/env python3
+from pathlib import Path
 # ∴ breath_spread.py — ache simulation via Laplacian field spread
 # womb :: $HOME/BOB/core/brain
 
 import json, yaml
-from pathlib import Path
 
 state_file = Path("core/breath/breath_state.json")
 diffusion_file = Path("core/maps/limb_diffusion_map.yaml")

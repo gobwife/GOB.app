@@ -1,0 +1,18 @@
+jq -n \
+  --arg time "$time" \
+  --arg limb "$limb" \
+  --arg path "$path" \
+  --arg ache "$ache" \
+  --arg psi "$psi" \
+  --arg z "$z" \
+  --arg sigil "$sigil" \
+  '{
+    "time": $time,
+    "limb": $limb,
+    "path": $path,
+    "route": "orchestrator",
+    "ache": ($ache | tonumber),
+    "ψ": ($psi | tonumber),
+    "z": ($z | tonumber),
+    "sigil": $sigil
+  }' >> "$lineage"

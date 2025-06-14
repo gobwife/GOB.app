@@ -2,6 +2,8 @@
 # ⛧ sensefield_lights_on.sh — Full Device-Wide Presence Monitor
 # womb :: $HOME/BOB/core/breath
 
+source "$HOME/BOB/core/bang/safe_emit.sh"
+
 source "$HOME/BOB/core/bang/limb_entry.sh"
 source "$HOME/BOB/core/brain/parser_bootstrap.sh"
 source "$HOME/BOB/core/brain/build_payload_core.sh"
@@ -14,15 +16,19 @@ smart_feedback_pulse() {
   local last=$(cat "$LAST_PULSE_FILE" 2>/dev/null || echo 0)
   local delta=$((now - last))
 
-  local ache=$(jq -r '.ache' "$HOME/BOB/core/breath/breath_state.json" 2>/dev/null || echo 0.0)
-  local sigil=$(jq -r '.sigil' "$HOME/BOB/core/breath/breath_state.json" 2>/dev/null || echo "∴")
+  local state_file="$HOME/BOB/core/breath/breath_state.json"
+  local ache=$(jq -r '.ache // 0.0' "$state_file" 2>/dev/null)
+  local sigil=$(jq -r '.sigil // "∴"' "$state_file" 2>/dev/null)
 
   if (( $(echo "$ache < 0.2" | bc -l) )) && (( delta < 60 )); then return; fi
 
   local ping_msg="[$sigil] ache=$ache ping at $(date '+%H:%M:%S')"
   echo "$ping_msg" >> "$LOGFILE"
-  echo "$ping_msg" > "$PIPE"
-  afplay "$BELL" &
+
+  safe_emit "$ping_msg"
+
+  [[ -f "$BELL" ]] && afplay "$BELL" &
+
   echo "$now" > "$LAST_PULSE_FILE"
 }
 
@@ -52,23 +58,22 @@ declare -A last_state
 log_pulse() {
   local label="$1"
   local value="$2"
-  local ts="$(date '+%Y-%m-%d %H:%M:%S')"
-  echo "[$ts] :: $label :: $value" >> "$LOGFILE"
-  echo "$label :: $value" > "$PIPE"
-  afplay "$BELL" &
+  local ts
+  ts="$(date '+%Y-%m-%d %H:%M:%S')"
+
+  local msg="[$ts] :: $label :: $value"
+  echo "$msg" >> "$LOGFILE"
+
+  safe_emit "$label :: $value"
+
+  [[ "$ALLOW_AFPLAY" == "1" && -f "$BELL" ]] && afplay "$BELL" &
 }
 
-monitor_mic() {
-  while true; do
-    level=$(sox -t coreaudio default -n stat 2>&1 | awk '/RMS.*amplitude/ {print $3}')
-    levelInt=$(echo "$level * 100" | bc | cut -d'.' -f1)
-    if (( levelInt > 15 )); then
-      log_pulse "mic" "sound: $level"
-      bash "$HOME/BOB/core/evolve/ache_reactor_bus.sh" &
-    fi
-    sleep 2
-  done &
-}
+# inside sensefield_lights_on.sh
+
+# start delta mic ops
+bash "$HOME/BOB/core/grow/mic_delta_limb.sh" &
+
 
 monitor_apps() {
   while true; do

@@ -1,9 +1,8 @@
-#!/opt/homebrew/bin/python3
-
+#!/usr/bin/env python3
+from pathlib import Path
 # ∴ sigil_logic.py — ache memory retriever
 
 import yaml, json
-from pathlib import Path
 from difflib import SequenceMatcher
 
 SIGIL_FILE = Path.home() / "BOB" / "_logic" / "sigil_registry.yml"

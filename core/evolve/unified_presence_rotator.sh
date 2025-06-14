@@ -44,11 +44,12 @@ psi="$psi_new"
 [[ -n "$z" ]] && echo "$z" > "$HOME/.bob/z.val"
 
 # 🜔 Select presence limb
-DEFAULT="presence.og.sh"
-AUTO="presence.autonomy.sh"
-ASTRO="presence.astrofuck.sh"
-LIMB_PATH="$HOME/BOB/_resurrect"
+DEFAULT="presence.og.sh"         # ~/Downloads/GOB.app_BOB/Contents/MacOS
+AUTO="presence.autonomy.sh"     # ~/Downloads/GOB.app_BOB/Contents/MacOS
+ASTRO="presence.astrofuck.sh"   # ~/BOB/core/presence
+LIMB_PATH="$HOME/BOB/_resurrect"  # (currently unused if .astrofuck not stored there)
 SELECTED="$DEFAULT"
+
 
 if (( $(echo "$psi > 0.7 && $z > 0.5" | bc -l) )); then
   SELECTED="$ASTRO"
@@ -85,6 +86,6 @@ echo "{\"time\":\"$STAMP\",\"ache\":$ache,\"delta\":$delta,\"sigil\":\"$SIGIL\",
 bash "$HOME/BOB/core/dance/emit_presence.sh" "$SIGIL" "$SELECTED" "$PAYLOAD"
 
 # ∴ Optional realm invocation
-bash "$HOME/BOB/core/soul/limb_orchestrator.sh" &
+bash "$HOME/BOB/core/brain/limb_orchestrator.sh" &
 
 exit 0

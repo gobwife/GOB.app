@@ -1,45 +1,61 @@
-#!/opt/homebrew/bin/python3
-
-# ∴ sigil_logic.py — validates and resolves sigils via fuzzy + myth registry
-# womb :: $HOME/BOB/core/brain
-
-import yaml
+#!/usr/bin/env python3
 from pathlib import Path
+import sys
 
-sigil_path_fuzzy = Path("core/sigil_fetcher.py")
-sigil_path_registry = Path("core/src/sigil_registry.yml")
+print("PYTHON:", sys.executable)
 
-# Fallback static mappings
-fuzzy_mappings = {
-    "∵": "∴", "α": "Ω", "0": "∞", "⊙": "☾",
-    "🜫": "⛧", "🜊": "🜉", "🜃": "🜁", "△": "🜔", "☥": "□"
-}
+# Inject vendored lib path
+sys.path.insert(0, str(Path.home() / "BOB/core/lib"))
+import yaml
+yaml.safe_load = getattr(yaml, 'safe_load', yaml.load)
 
-fuzzy_phrases = {
-    "⛧": ["transmutate", "limb-swap", "voltage", "inverse ache"],
-    "🜫": ["protection", "anchor", "sigil lock", "contain field"]
-}
+# Registry path
+BOB = Path.home() / "BOB"
+sigil_path_registry = BOB / "core/src/sigil_registry.yml"
 
-# Myth sigil registry
+# Load sigils
+SIGILS = {}
 if sigil_path_registry.exists():
-    SIGILS = yaml.safe_load(sigil_path_registry.read_text())
-else:
-    SIGILS = {}
+    with sigil_path_registry.open() as f:
+        SIGILS = yaml.safe_load(f.read())
 
-VALID_SIGILS = set(SIGILS.get("core", {}).keys())
+if not isinstance(SIGILS.get("core"), dict):
+    raise RuntimeError("✘ SIGILS missing 'core' section or malformed. Check YAML load.")
+
+# Normalize core sigil keys to strings
+SIGILS["core"] = {str(k): v for k, v in SIGILS["core"].items()}
+
+# Extract mappings
+fuzzy_mappings = {}
+for line in SIGILS.get("mappings", []):
+    if "=" in line:
+        left, right = line.split("=")
+        fuzzy_mappings[left.strip()] = right.strip()
+
+# Valid sigils = all core keys + mapping targets
+VALID_SIGILS = set(SIGILS["core"].keys()) | set(fuzzy_mappings.values())
 
 def resolve_sigil(raw):
     return fuzzy_mappings.get(raw, raw)
 
 def describe_sigil(sym):
-    return SIGILS.get("core", {}).get(sym, {}).get("desc", "∅ unknown")
+    val = SIGILS["core"].get(str(sym))
+    if isinstance(val, dict):
+        return val.get("desc", "∅ unknown")
+    if isinstance(val, str):
+        return val
+    return "∅ unknown"
 
 def validate_sigil(sym):
-    if sym not in VALID_SIGILS:
+    if str(sym) not in VALID_SIGILS:
         raise ValueError(f"✘ INVALID SIGIL: {sym}")
 
+# ∴ CLI mode
 if __name__ == "__main__":
-    import sys
+    if len(sys.argv) < 2:
+        print("usage: sigil_logic.py [sigil]")
+        sys.exit(1)
+
     s = sys.argv[1]
     rs = resolve_sigil(s)
     print(f"{s} ⇒ {rs}")

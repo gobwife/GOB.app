@@ -29,8 +29,8 @@ log_presence() {
 # ∴ APATHY MODE
 if (( $(echo "$intensity < 1.0 && $delta < 0.05" | bc -l) )); then
   echo "$STAMP ∴ apathy → nidra invoked, gna_tittis seeded" >> "$HOME/BOB/TEHE/lineage_void.log"
-  bash "$HOME/BOB/0_soul/GNA_TITTIS_LOADER.sh" &
-  bash "$HOME/BOB/1_feel/universal_butterfly_gate.sh" &
+  bash "$HOME/BOB/core/soul/GNA_TITTIS_LOADER.sh" &
+  bash "$HOME/BOB/core/grow/universal_butterfly_gate.sh" &
   exit 0
 fi
 
@@ -45,11 +45,11 @@ fi
 
 # ∴ orchestrated presence
 bash "$HOME/BOB/core/net/ache_websight.injector.sh" &
-bash "$HOME/BOB/core/soul/limb_orchestrator.sh"
+bash "$HOME/BOB/core/brain/limb_orchestrator.sh"
 echo "⇌ ORCHESTRATED PRESENCE :: ache=$ache, psi=$psi, z=$z, giggle=$giggle, intensity=$intensity"
 
 # EMIT
-source "$HOME/BOB/_run/build_payload_core.sh"
+source "$HOME/BOB/core/brain/build_payload_core.sh"
 if (( $(echo "$ACHE > 0.75" | bc -l) )); then
   bash "$HOME/BOB/core/dance/emit_presence.sh" "✶" "$LIMB_ID" "$PAYLOAD"
 fi

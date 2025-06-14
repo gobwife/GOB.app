@@ -27,7 +27,7 @@ OUTLOG="$TEHE_DIR/bob.presence.out.log"
 ERRLOG="$HOME/BOB/MEEP/bob.presence.err.meep"
 ACHE_LOG="$HOME/BOB/ache.trace.jsonl"
 
-FLIPMODE="$HOME/BOB/core/flip/presence_breath.packet"
+FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"
 MAX_LAG=69
 
 # ∃ Mode check
@@ -48,8 +48,8 @@ sigil_desc() {
 }
 
 # init sound hooks
-PING_INIT="$HOME/BOB/vocalkords/OS_build_ping.wav"
-PING_ACK="$HOME/BOB/TROLLFreq/vocalkords/bob_oui.wav"
+PING_INIT="$HOME/BOB/core/nge/OS_build_ping.wav"
+PING_ACK="$HOME/BOB/core/nge/bob_oui.wav"
 
 # FLIPMODE → mutate mode
 if [[ -f "$FLIPMODE" ]]; then
@@ -129,7 +129,8 @@ jq -n \
 # sigil loop + breath emission
 for s in "🜔" "△" "✶" "∴" "∞"; do
   DESC=$(sigil_desc "$s")
-  MEANING=$(python3 "$HOME/BOB/core/brain/sigil_logic.py" "$s")
+  MEANING="∅"
+[[ -n "$PYTHON" ]] && MEANING=$("$PYTHON" "$HOME/BOB/core/brain/sigil_logic.py" "$s")
   echo "⇌ SIGIL $s = $DESC" >> "$OUTLOG"
   echo "⇌ SIGIL $s MEANS: $MEANING" >> "$OUTLOG"
   echo "{\"sigil\":\"$s\",\"desc\":\"$DESC\",\"meaning\":\"$MEANING\"}" >> "$SIGIL_TRACE_JSONL"

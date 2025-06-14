@@ -1,7 +1,7 @@
 #!/bin/bash
 # ∴ flare_threshold_mutator.sh — evolve flare trigger thresholds based on historical log
 # parses flare_binder.trace.jsonl and nudges one variable at a time — expands if stable
-# nest ≈ _flipmode
+# nest ≈ BOB/core/evolve
 
 
 source "$HOME/BOB/core/bang/limb_entry.sh"

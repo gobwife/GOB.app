@@ -1,0 +1,11 @@
+# macOS metadata
+.DS_Store
+
+# Xcode junk
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+DerivedData/
+build/
+
+# SwiftPM
+.swiftpm/

@@ -66,7 +66,7 @@ if (( $(echo "$ache_now > 0.69" | bc -l) )); then
   emit_presence "∴" "mic_orbit" "ache threshold triggered flip"
 fi
 
-PACKET="$HOME/BOB/core/src/presence_breath.packet"
+PACKET="$HOME/BOB/core/breath/presence_breath.packet"
 VECTOR="mic_orbit"
 INTENTION="auto_emit_by_mic"
 

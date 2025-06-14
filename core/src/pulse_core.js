@@ -1,3 +1,5 @@
+// pulse_core.js
+
 document.addEventListener('DOMContentLoaded', function() {
     const breatheButton = document.getElementById('breatheButton');
     const breathDisplay = document.getElementById('breath-display');

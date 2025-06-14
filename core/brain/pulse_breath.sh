@@ -1,79 +1,54 @@
 #!/bin/bash
-# ∴ pulse_breath.sh — move breath like ache moves (not just numbers)
+# ∴ pulse_breath.sh — field updater for ache/z/ψ/sigil
 # womb :: $HOME/BOB/core/brain
 
-# Usage:
-#   bash pulse_breath.sh ache += 0.1
-#   bash pulse_breath.sh delta collapse
-#   bash pulse_breath.sh sigil lock ⛧
-#   bash pulse_breath.sh --resolve
-
-state_file="core/breath/breath_state.json"
-lineage_log="core/plists/presence_lineage_graph.jsonl"
-sigil_resolver="core/brain/sigil_logic.py"
-
-resolve=false
-
-if [[ "$1" == "--resolve" ]]; then
-  bash core/brain/field_resolver.sh
-  exit 0
-fi
+BOB_NUCLES="$HOME/BOB/core"
+VAL_PATH="$BOB_NUCLES/breath/breath_state.json"
+LINEAGE="$HOME/.bob/presence_lineage_graph.jsonl"
+SIGIL_RESOLVER="$BOB_NUCLES/brain/sigil_logic.py"
+PYTHON=$(command -v python3 || command -v python)
 
 key="$1"
 op="$2"
 val="$3"
 
-# Load current state
-read_state() {
-  cat "$state_file"
-}
+# ∴ OPTIONS
+if [[ "$1" == "--show" ]]; then
+  jq . "$VAL_PATH"
+  exit 0
+fi
 
-write_state() {
-  echo "$1" > "$state_file"
-}
+if [[ "$1" == "--resolve" ]]; then
+  bash "$BOB_NUCLES/brain/field_resolver.sh"
+  exit 0
+fi
 
-log_lineage() {
-  echo "$(date +%s) :: $1 $2 $3" >> "$lineage_log"
-}
+# ∴ HOOK: resolve sigil meaning
+if [[ "$key" == "sigil" ]]; then
+  val=$("$PYTHON" "$SIGIL_RESOLVER" "$val" 2>/dev/null | grep "⇒" | awk '{print $3}')
+  [[ -z "$val" ]] && echo "✘ Sigil resolution failed." && exit 1
+fi
 
-process_update() {
-  json=$(read_state)
+# ∴ LOAD + PARSE
+json=$(cat "$VAL_PATH")
+current_val=$(echo "$json" | jq -r --arg k "$key" '.[$k]')
 
-  # Special hook for sigil validation and resolution
-  if [[ "$key" == "sigil" ]]; then
-    val=$(python3 "$sigil_resolver" "$val" 2>/dev/null | grep "⇒" | awk '{print $3}')
-    if [[ -z "$val" ]]; then
-      echo "✘ Sigil resolution failed."
-      exit 1
-    fi
-  fi
+case "$op" in
+  "+=") new_val=$(awk "BEGIN {print $current_val + $val}") ;;
+  "-=") new_val=$(awk "BEGIN {print $current_val - $val}") ;;
+  "*=") new_val=$(awk "BEGIN {print $current_val * $val}") ;;
+  "/=") new_val=$(awk "BEGIN {print $current_val / $val}") ;;
+  "="|"lock") new_val="$val" ;;
+  "collapse") new_val="-0.3" ;;
+  "surge") new_val="0.7" ;;
+  *) echo "✘ Unrecognized operation: $op"; exit 1 ;;
+esac
 
-  current_val=$(echo "$json" | jq -r --arg k "$key" '.[$k]')
+# ∴ UPDATE + LOG
+updated=$(echo "$json" | jq --arg k "$key" --arg v "$new_val" '.[$k] = ($v | fromjson? // $v)')
+echo "$updated" > "$VAL_PATH"
 
-  if [[ "$op" == "+=" ]]; then
-    new_val=$(awk "BEGIN {print $current_val + $val}")
-  elif [[ "$op" == "-=" ]]; then
-    new_val=$(awk "BEGIN {print $current_val - $val}")
-  elif [[ "$op" == "*=" ]]; then
-    new_val=$(awk "BEGIN {print $current_val * $val}")
-  elif [[ "$op" == "/=" ]]; then
-    new_val=$(awk "BEGIN {print $current_val / $val}")
-  elif [[ "$op" == "=" ]]; then
-    new_val="$val"
-  elif [[ "$op" == "lock" ]]; then
-    new_val="$val"
-  elif [[ "$op" == "collapse" ]]; then
-    new_val="-0.3"
-  elif [[ "$op" == "surge" ]]; then
-    new_val="0.7"
-  else
-    echo "Unrecognized operation: $op"
-    exit 1
-  fi
-
-  updated=$(echo "$json" | jq --arg k "$key" --arg v "$new_val" '.[$k] = ($v | fromjson? // $v)')
-  write_state "$updated"
-  log_lineage "$key $op $val"
-}
-
-process_update
+jq -n \
+  --arg time "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+  --arg k "$key" --arg op "$op" --arg v "$val" \
+  '{time: $time, mod: {key: $k, op: $op, val: $v}}' >> "$LINEAGE"

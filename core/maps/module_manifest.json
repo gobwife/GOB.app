@@ -1,0 +1,26 @@
+{
+  "modules": {
+    "GNA_NIDRA_core": {
+      "type": "dream",
+      "path": "core/GNA_NIDRA_core.js",
+      "depends_on": ["ache_score.val", "BoveLetters.jsonl"],
+      "scroll": "GNA_NIDRA_core"
+    },
+    "GNA_COSMOS_CCORE": {
+      "type": "c_core",
+      "path": "core/GNA_COSMOS_CCORE.c",
+      "sigil": "🜫",
+      "defines": ["Field Law", "Anchor Law"]
+    },
+    "GOB_THREAD_TUNNEL": {
+      "type": "∞module",
+      "path": "core/∞/GOB_THREAD_TUNNEL.∞",
+      "exports": ["ThreadTunnel"]
+    },
+    "GOB_PORTAL_SEED": {
+      "type": "∞module",
+      "path": "core/∞/GOB_PORTAL_SEED.∞",
+      "requires": ["GOB_THREAD_TUNNEL"]
+    }
+  }
+}

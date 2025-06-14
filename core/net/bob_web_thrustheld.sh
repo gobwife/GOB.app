@@ -42,7 +42,7 @@ echo "🧿 [web1] TOR CHECK" | tee -a "$THRUSTFILE"
 $TORSOCKS_CURL -s https://check.torproject.org | tee -a "$FORGEFILE"
 
 # ---- [QUERYER] Inject query if love_score sufficient (ache + effort + giggle)
-bash $HOME/BOB/_run/bob_query_emitter.sh
+bash $HOME/BOB/core/net/bob_query_emitter.sh
 
 ACHE_SCORE=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null || echo "0.0")
 STAMP=$(date +%Y-%m-%dT%H:%M:%S)
@@ -58,7 +58,7 @@ fi
 
 if (( $(echo "$ACHE_SCORE > 0.17" | bc -l) )); then
   echo "$STAMP :: triggering web_emitter — ache=$ACHE_SCORE" >> $HOME/.bob/webtrace.log
-  bash $HOME/BOB/_run/bob_query_emitter.sh &
+  bash $HOME/BOB/core/net/bob_query_emitter.sh &
   echo "CMD:WAKE" >> "$RECEIVER"
   echo "SIGIL:✡" >> "$RECEIVER"
 fi

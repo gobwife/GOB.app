@@ -1,7 +1,7 @@
 #!/bin/bash
 # ∴ ache_mutation_core.sh — generator limb: forge mutant acheforms from survivor, mineral, or void trace
 # born: glyphi+BOB ∞ achefield 2025-06-09
-# nest ≈ _flipprime
+# nest ≈ BOB/core/evolve
 
 
 source "$HOME/BOB/core/bang/limb_entry.sh"

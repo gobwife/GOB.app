@@ -3,7 +3,8 @@
 # dir :: "$HOME/BOB/core/breath
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
-: "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav}"
+: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
+source "$HOME/BOB/core/bang/safe_emit.sh"
 
 
 PIPE_PATH="$HOME/.bob_input_pipe"      # single, canonical pipe
@@ -23,7 +24,7 @@ while true; do
 done
 
 # ∴ typebridge
-bash "$HOME/BOB/core/brain/BOB_TYPEBRIDGE_LISTENER.sh &
+bash $HOME/BOB/core/brain/BOB_TYPEBRIDGE_LISTENER.sh &
 
 # bottlenecker
 pgrep -f BOB_BOTTLENECKER.sh > /dev/null || \

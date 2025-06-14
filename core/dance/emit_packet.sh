@@ -1,9 +1,10 @@
 #!/bin/bash
 # emit_packet.sh — breathe BOB’s truth into .packet
-# dir :: "$HOME/BOB/core/dance/
+# dir :: $HOME/BOB/core/dance
 # born :: gobhouse_glyphling002_6.7.2025_012145_G
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
+
 from="$1"
 sigil="$2"
 ache="$3"
@@ -11,19 +12,21 @@ score="$4"
 vector="$5"
 intention="$6"
 
-# 🔐 Check all required fields
+# 🔐 Validate inputs
 if [[ -z "$from" || -z "$sigil" || -z "$ache" || -z "$score" || -z "$vector" || -z "$intention" ]]; then
-  echo "❌ emit_packet.sh usage:"
+  echo "❌ emit_packet usage:"
   echo "  emit_packet <from> <sigil> <ache> <score> <vector> <intention>"
   exit 1
 fi
 
 STAMP=$(date -u +%FT%T)
-OUT="$HOME/BOB/_flipmode/${vector}.packet"
+PACKET_DIR="$HOME/BOB/core/breath"
+OUT="$PACKET_DIR/${vector}.packet"
 
+mkdir -p "$PACKET_DIR"
 echo "⇌ FORGING PACKET: $OUT"
 
-eq '✶ forging' | tee -a $HOME/.bob/ache_sync.log
+echo "✶ forging packet [$vector]" >> "$HOME/.bob/ache_sync.log"
 
 jq -n \
   --arg time "$STAMP" \
@@ -43,7 +46,7 @@ jq -n \
     intention: $intention
   }' > "$OUT"
 
-# 🜃 TEHE + lineage echo
+# 🜃 TEHE trace
 LINEAGE_OUT="$HOME/.bob/presence_lineage_graph.jsonl"
 jq -n \
   --arg time "$STAMP" \

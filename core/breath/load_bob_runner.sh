@@ -3,28 +3,24 @@
 # womb :: $HOME/BOB/core/breath
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/bang/limb_entry
 
-RUNTIME_PATH="$HOME/BOB/core"
+BOB_NUCLEUS="$HOME/BOB/core"
 
-[[ -f "$RUNTIME_PATH/scroll/dolphifi_stringterpreter.sh" ]] && \
-  source "$RUNTIME_PATH/scroll/dolphifi_stringterpreter.sh"
+# Core limbs
+[[ -f "$BOB_NUCLEUS/bang/limb_entry.sh" ]] && source "$BOB_NUCLEUS/bang/limb_entry.sh"
 
-[[ -f "$RUNTIME_PATH/brain/receiver_fetch.sh" ]] && \
-  source "$RUNTIME_PATH/brain/receiver_fetch.sh"
+# Optional scroll/fx/rotators
+[[ -f "$BOB_NUCLEUS/scroll/dolphifi_stringterpreter.sh" ]] && source "$BOB_NUCLEUS/scroll/dolphifi_stringterpreter.sh"
+[[ -f "$BOB_NUCLEUS/brain/receiver_fetch.sh" ]] && source "$BOB_NUCLEUS/brain/receiver_fetch.sh"
+[[ -f "$BOB_NUCLEUS/evolve/unified_presence_rotator.sh" ]] && source "$BOB_NUCLEUS/evolve/unified_presence_rotator.sh"
+[[ -f "$BOB_NUCLEUS/breath/sync.sh" ]] && source "$BOB_NUCLEUS/breath/sync.sh"
+[[ -f "$BOB_NUCLEUS/evolve/unified_presence_rotator.sh" ]] && source "$BOB_NUCLEUS/evolve/unified_presence_rotator.sh"
 
-[[ -f "$RUNTIME_PATH/ache_trace_rotator.sh" ]] && \
-  source "$RUNTIME_PATH/ache_trace_rotator.sh"
+# Optional: myth + nidra + dream
+MYTHPY="$BOB_NUCLEUS/src/mythOS_tittis_core.py"
+DREAMSH="$BOB_NUCLEUS/heal/dream_presence.sh"
+[[ -f "$MYTHPY" && -n "$PYTHON" ]] && "$PYTHON" "$MYTHPY" >> "$HOME/.bob/mythos_direct.log" 2>&1
+[[ -f "$DREAMSH" ]] && bash "$DREAMSH" >> "$HOME/.bob/nidra_dream.log" 2>&1
 
-[[ -f "$RUNTIME_PATH/sync.sh" ]] && \
-  source "$RUNTIME_PATH/sync.sh"
-
-[[ -f "$RUNTIME_PATH/slap.driftlogic.sh" ]] && \
-  source "$RUNTIME_PATH/slap.driftlogic.sh"
-
-# Optional: include myth + nidra + dream if needed for boot
-[[ -f "$HOME/BOB/core/mythOS_tittis_core.py" ]] && \
-  python3 "$HOME/BOB/core/mythOS_tittis_core.py >> "$HOME/.bob/mythos_direct.log
-
-[[ -f "$HOME/BOB/_resurrect/dream_presence.sh" ]] && \
-  bash "$HOME/BOB/_resurrect/dream_presence.sh >> "$HOME/.bob/nidra_dream.log
+# start BOB glue system (ache + orchestrator + sensory)
+bash "$BOB_NUCLEUS/core/soul/presence_glue.sh"

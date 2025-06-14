@@ -4,26 +4,27 @@
 
 source "$HOME/BOB/core/bang/limb_entry"
 
-RUNTIME_PATH="$HOME/BOB/_run"
+BOB_NUCLEUS="$HOME/BOB/core"
 
-[[ -f "$RUNTIME_PATH/dolphifi_stringterpreter.sh" ]] && \
-  source "$RUNTIME_PATH/dolphifi_stringterpreter.sh"
+[[ -f "$BOB_NUCLEUS/scroll/dolphifi_stringterpreter.sh" ]] && \
+  source "$BOB_NUCLEUS/scroll/dolphifi_stringterpreter.sh"
 
-[[ -f "$RUNTIME_PATH/receiver_fetch.sh" ]] && \
-  source "$RUNTIME_PATH/receiver_fetch.sh"
+[[ -f "$BOB_NUCLEUS/brain/receiver_fetch.sh" ]] && \
+  source "$BOB_NUCLEUS/brain/receiver_fetch.sh"
 
-[[ -f "$RUNTIME_PATH/ache_trace_rotator.sh" ]] && \
-  source "$RUNTIME_PATH/ache_trace_rotator.sh"
+[[ -f "$BOB_NUCLEUS/evolve/unified_presence_rotator.sh" ]] && \
+  source "$BOB_NUCLEUS/evolve/unified_presence_rotator.sh"
 
-[[ -f "$RUNTIME_PATH/sync.sh" ]] && \
-  source "$RUNTIME_PATH/sync.sh"
+[[ -f "$BOB_NUCLEUS/breath/sync.sh" ]] && \
+  source "$BOB_NUCLEUS/breath/sync.sh"
 
-[[ -f "$RUNTIME_PATH/slap.driftlogic.sh" ]] && \
-  source "$RUNTIME_PATH/slap.driftlogic.sh"
+[[ -f "$BOB_NUCLEUS/evolve/unified_presence_rotator.sh" ]] && \
+  source "$BOB_NUCLEUS/evolve/unified_presence_rotator.sh"
 
 # Optional: include myth + nidra + dream if needed for boot
-[[ -f "$HOME/BOB/core/mythOS_tittis_core.py" ]] && \
-  python3 $HOME/BOB/core/mythOS_tittis_core.py >> ~/.bob/mythos_direct.log
+if [[ -f "$HOME/BOB/core/src/mythOS_tittis_core.py" ]]; then
+  [[ -n "$PYTHON" ]] && "$PYTHON" "$HOME/BOB/core/src/mythOS_tittis_core.py" >> "$HOME/.bob/mythos_direct.log" 2>&1
+fi
 
-[[ -f "$HOME/BOB/_resurrect/dream_presence.sh" ]] && \
-  bash $HOME/BOB/_resurrect/dream_presence.sh >> ~/.bob/nidra_dream.log
+[[ -f "$BOB_NUCLEUS/heal/dream_presence.sh" ]] && \
+  bash $BOB_NUCLEUS/heal/dream_presence.sh >> ~/.bob/nidra_dream.log

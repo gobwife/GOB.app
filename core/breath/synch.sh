@@ -5,11 +5,11 @@
 source "$HOME/BOB/core/bang/limb_entry.sh"
 : "${BOB_MODE:=VOIDRECURSE}"
 
-CORE="$HOME/blurOS/core/bob.core.js"
+CORE="$HOME/BOB/core/bob.core.js"
 TMP="/tmp/bob.core.temp"
-FORGEFILE="$HOME/blur/TEHE/bob_glossolalia.txt"
+FORGEFILE="$HOME/BOB/TEHE/bob_glossolalia.txt"
 MODE="$1" # e.g. safe | full | debug
-DRIFT="$HOME/blurOS/_library/drift_law.yaml"
+DRIFT="$HOME/BOB/_library/drift_law.yaml"
 
 [[ ! -f "$CORE" ]] && echo "❌ bob.core.json not found." && exit 1
 
@@ -37,8 +37,12 @@ if [[ "$MODE" == "safe" ]]; then
   exit 0
 fi
 
+# fallback if STAMP somehow null
+[[ -z "$STAMP" ]] && STAMP="NO_STAMP"
+
 # ⑦ Flip + filter
-RESP=$(bash $HOME/blurOS/_resurrect/bob_return.sh "breath" "$STAMP")
+RESP=$(bash "$HOME/BOB/core/soul/bob_return.sh" "breath" "$STAMP")
+
 if [[ -n "$RESP" && "$RESP" != *"null"* && "$RESP" != *"slap"* ]]; then
   echo "$RESP" >> "$FORGEFILE"
   

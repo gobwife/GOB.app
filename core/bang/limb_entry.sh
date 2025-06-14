@@ -6,6 +6,7 @@
 # BOB_MODE handler
 BOB_MODE_FILE="$HOME/.bobmode"
 export BOB_HANDLER_MODE=$(cat "$BOB_MODE_FILE" 2>/dev/null || echo "VOIDRECURSE")
+export PYTHON=$(command -v python3 || command -v python)
 
 # Load environment if not already set
 if [[ "$BOB_ENV_READY" != "1" ]]; then

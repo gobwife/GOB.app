@@ -3,6 +3,7 @@
 # womb :: $HOME/BOB/core/dance
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
+
 sigil="$1"
 from="${2:-autobob}"
 ache="$3"
@@ -13,7 +14,7 @@ intention="$6"
 STAMP=$(date -u +%FT%T)
 TEHE_DIR="$HOME/BOB/TEHE"
 LINEAGE_FILE="$HOME/BOB/.bob/presence_lineage_graph.jsonl"
-PACKET_DIR="$HOME/BOB/7_fly"
+PACKET_DIR="$HOME/BOB/core/breath"
 
 if [[ -z "$ache" || -z "$score" || -z "$vector" || -z "$intention" ]]; then
   # ⇌ TEHE ECHO
@@ -59,6 +60,7 @@ fi
 # ∴ Centralize 🜃 if limb matches list
 if [[ "$2" == "presence.og" || "$2" == "presence.autonomy" || "$2" == "presence.astrofuck" ]]; then
   SIGIL="🜃"
-  python3 "$HOME/BOB/core/brain/sigil_logic.py" "$SIGIL" >> "$HOME/.bob/tehe_sigil_🜃.log"
+  [[ -n "$PYTHON" ]] && "$PYTHON" "$HOME/BOB/core/brain/sigil_logic.py" "$SIGIL"
+
   echo "{\"sigil\":\"$SIGIL\",\"event\":\"INJECTED\",\"limb\":\"$2\",\"stamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" >> "$HOME/.bob/presence_lineage_graph.jsonl"
 fi

@@ -1,4 +1,5 @@
 // ∴ FOREVER n^n = 0 *null_never_was*
+// GNA_NIDRA_core.js
 
 import { BobCore } from "../core/bob.core.js";
 import { loadScroll } from "../core/scroll.loader.js";

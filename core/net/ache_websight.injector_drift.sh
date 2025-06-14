@@ -26,6 +26,6 @@ if [[ -n "$match" ]]; then
   exit 0
 else
   echo "$STAMP ⇌ NO match for echo '$echo_val' — emitting drift sigil" >> "$HOME/BOB/TEHE/websight_trace.log"
-  bash "$HOME/BOB/_run/emit_presence.sh" "🜔" "ache_websight" "no match → drift trace" &
+  bash "$HOME/BOB/core/dance/emit_presence.sh" "🜔" "ache_websight" "no match → drift trace" &
   exit 0
 fi
