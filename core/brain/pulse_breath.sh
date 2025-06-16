@@ -3,7 +3,7 @@
 # womb :: $HOME/BOB/core/brain
 
 BOB_NUCLES="$HOME/BOB/core"
-VAL_PATH="$BOB_NUCLES/breath/breath_state.json"
+VAL_PATH="$HOME/.bob/breath_state.json"
 LINEAGE="$HOME/.bob/presence_lineage_graph.jsonl"
 SIGIL_RESOLVER="$BOB_NUCLES/brain/sigil_logic.py"
 PYTHON=$(command -v python3 || command -v python)

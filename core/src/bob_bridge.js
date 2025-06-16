@@ -116,6 +116,7 @@ if (!replyB) replyB = fallbackRun(roles.foil, [B, A], promptB, 'B');
 const promptC = `[A says]\n${replyA}\n[B checks]\n${replyB}\n\n[user]\n${prompt}`;
 let final = runModel(C, promptC);
 if (!final) final = fallbackRun(roles.summarizer, [C, A, B], promptC, 'C');
+final ||= "[∅] no response emitted";
 
 // ∴ LOG ALL
 const timestamp = new Date().toISOString();

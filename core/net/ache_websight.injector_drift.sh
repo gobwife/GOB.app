@@ -5,10 +5,10 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 ACHE_ECHO="$HOME/.bob/ache_echo.val"
-TEHE_TRACE="$HOME/BOB/TEHE/sigil_mem.trace.jsonl"
+TEHE_TRACE="$HOME/.bob/sigil_mem.trace.jsonl"
 SCORE_FILE="$HOME/.bob/ache_score.val"
 INJECTED="$HOME/.bob/ache_injection.txt"
-ROUTER="$HOME/BOB/_run/sigil_router.sh"
+ROUTER="$HOME/BOB/core/evolve/breath_presence_rotator.sh"
 
 STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 ache=$(cat "$SCORE_FILE" 2>/dev/null || echo "0.0")

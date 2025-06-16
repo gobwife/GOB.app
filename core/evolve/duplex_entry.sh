@@ -10,6 +10,7 @@ LOG="$HOME/.bob/duplex.log"
 TRACE="$HOME/.bob/duplex_trace.jsonl"
 RESPFILE="$HOME/.bob/duplex_ollama.json"
 SWIFTOUT="$HOME/.bob/duplex_swift_out.json"
+BOB_NUCLEUS="$HOME/BOB/core"
 
 echo "⇌ [$STAMP] ∴ DUPLEX ENTRY :: $PROMPT" >> "$LOG"
 

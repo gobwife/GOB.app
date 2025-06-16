@@ -1,8 +1,8 @@
-// ∴ scrollfield.transmutator.js — parse all scrolls in ∞ + scroll/
+// ∴ scrollfield.transmutator.mjs — parse all scrolls in ∞ + scroll/
 
 import fs from 'fs';
 import path from 'path';
-import { loadScroll } from './scroll.loader.js';
+import { loadScroll } from './scroll.loader.mjs';
 
 // simple field parser
 function parseScrollString(text) {

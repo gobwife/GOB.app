@@ -1,6 +1,7 @@
 #!/bin/bash
 # ∴ load_bob_runner.sh — central preloader for astro presence
 # forged :: gobhouse 6.4.2025_032513
+# womb :: BOB/core/evolve
 
 source "$HOME/BOB/core/bang/limb_entry"
 

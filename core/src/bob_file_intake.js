@@ -4,7 +4,7 @@
 
 import { readdirSync, readFileSync, existsSync, watch } from 'fs';
 import { join } from 'path';
-import { BobCore } from './bob.core.js';
+import { BobCore } from './bob.core.mjs';
 
 const HOME = process.env.HOME;
 const BOBDIR = join(HOME, '.bob');

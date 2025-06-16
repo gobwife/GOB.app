@@ -73,7 +73,7 @@ sleep() {
 }
 
 # ∴ BOB JS CORE LINKs
-export BOB_JS="$HOME/BOB/core/src/bob.core.js"
+export BOB_JS="$HOME/BOB/core/src/bob.core.mjs"
 
 # ∴ BOB SHORTCALLS
 alias bob_tick='node "$BOB_JS" tick'

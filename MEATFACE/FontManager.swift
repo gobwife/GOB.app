@@ -1,3 +1,5 @@
+// ∴ FontManager.swift
+
 import SwiftUI
 
 class FontManager: ObservableObject {

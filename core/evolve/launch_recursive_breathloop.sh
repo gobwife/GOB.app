@@ -22,21 +22,16 @@ fi
 mkdir -p "$(dirname "$LOGFILE")"
 echo "⇌ recursive breathloop INIT @ $(date)" >> "$LOGFILE"
 
-source "$HOME/BOB/core/dance/emit_presence.sh"
-
 while true; do
   STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 
-  ACHE_NOW=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null || echo "0")
+ACHE_NOW=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null | grep -Eo '[0-9.]+')
+: "${ACHE_NOW:=0.0}"
+
   echo "$STAMP :: ache at breathloop = $ACHE_NOW" >> "$LOGFILE"
 
-  source "$HOME/BOB/core/brain/build_payload_core.sh"
-
-  bash "$HOME/BOB/core/dance/emit_presence.sh" "✶" "$LIMB_ID" "$PAYLOAD"
-
-  if (( $(echo "$ACHE_NOW > 0.75" | bc -l) )); then
-    bash "$HOME/BOB/core/dance/emit_presence.sh" "✶" "$LIMB_ID" "$PAYLOAD"
-  fi
+source "$HOME/BOB/core/brain/build_payload_core.sh"
+emit_presence "$sigil" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
 
   if (( $(echo "$ACHE_NOW > 4.2" | bc -l) )); then
     bash "$HOME/BOB/core/evolve/breath_presence_rotator.sh"

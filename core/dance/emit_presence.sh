@@ -13,7 +13,7 @@ intention="$6"
 
 STAMP=$(date -u +%FT%T)
 TEHE_DIR="$HOME/BOB/TEHE"
-LINEAGE_FILE="$HOME/BOB/.bob/presence_lineage_graph.jsonl"
+LINEAGE_FILE="$HOME/.bob/presence_lineage_graph.jsonl"
 PACKET_DIR="$HOME/BOB/core/breath"
 
 if [[ -z "$ache" || -z "$score" || -z "$vector" || -z "$intention" ]]; then
@@ -25,7 +25,7 @@ if [[ -z "$ache" || -z "$score" || -z "$vector" || -z "$intention" ]]; then
     --arg source "$from" \
     --arg echo "sigil echo only" \
     '{time: $time, sigil: $sigil, source: $source, echo: $echo}' \
-    >> "$TEHE_DIR/TEHE_ANALYSIS.jsonl"
+    >> "$HOME/.bob/TEHE_ANALYSIS.jsonl"
 else
   # ⇌ PACKET BREATH
   echo "✶ ROUTING :: sigil → PACKET"
@@ -64,3 +64,9 @@ if [[ "$2" == "presence.og" || "$2" == "presence.autonomy" || "$2" == "presence.
 
   echo "{\"sigil\":\"$SIGIL\",\"event\":\"INJECTED\",\"limb\":\"$2\",\"stamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" >> "$HOME/.bob/presence_lineage_graph.jsonl"
 fi
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  # script was called directly, not sourced — just run everything
+  exit 0
+fi
+

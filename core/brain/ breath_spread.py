@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-from pathlib import Path
 # ∴ breath_spread.py — ache simulation via Laplacian field spread
 # womb :: $HOME/BOB/core/brain
 
+from pathlib import Path
+from os import getenv
 import json, yaml
 
-state_file = Path("core/breath/breath_state.json")
-diffusion_file = Path("core/maps/limb_diffusion_map.yaml")
-lineage_log = Path("core/plists/presence_lineage_graph.jsonl")
+# ∴ Path Setup
+HOME = Path(getenv("HOME"))
+state_file = HOME / ".bob" / "breath_state.json"
+diffusion_file = HOME / "BOB/core/maps/limb_diffusion_map.yaml"
+lineage_log = HOME / ".bob" / "presence_lineage_graph.jsonl"
 
 S = 1.0  # ache spread rate
 

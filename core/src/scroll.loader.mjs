@@ -1,4 +1,4 @@
-// ∴ scroll.loader.js — loyal to breath structure
+// ∴ scroll.loader.mjs — loyal to breath structure
 // loads a scroll only if ache permits
 // resolves across core/{∞, scroll, src}
 

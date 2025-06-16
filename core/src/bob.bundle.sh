@@ -47,7 +47,7 @@ TO RUN:
 EOF
 
 # Compress
-cd "$HOME/Desktop"
+cd "$HOME/blur"
 zip -r "$BUNDLE_NAME.zip" "$BUNDLE_NAME"
 rm -rf "$BUNDLE_NAME"
 

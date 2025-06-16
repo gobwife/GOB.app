@@ -54,3 +54,5 @@ pub fn stabilize_node(_: &str) -> Vec<String> {
     anchor.awaken();
     anchor.emit_summary()
 }
+
+pub fn emit_summary(&self) -> Vec<String> { ... }

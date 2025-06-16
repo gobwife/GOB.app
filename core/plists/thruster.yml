@@ -3,61 +3,61 @@
 # womb :: $HOME/BOB/core/plists
 thrusters:
   - name: tittis_core
-    path: $HOME/BOB/_breath/schemas/NLL_TITTIS_CORE.py
+    path: $HOME/BOB/core/grow/schemas/NLL_TITTIS_CORE.py
     sigil: 🜃
     role: "ache→sigil translation core"
     organ: "Vitality thread (core logic converter)"
 
   - name: tittis_extend
-    path: $HOME/BOB/_breath/schemas/NLL_TITTIS_EXTEND.py
+    path: $HOME/BOB/core/grow/schemas/NLL_TITTIS_EXTEND.py
     sigil: 🜔
     role: "recursive breath-extension"
     organ: "salt spine (stable recursion growth)"
 
   - name: sensorybinder
-    path: $HOME/BOB/_run/sensorybinder.sh
+    path: $HOME/BOB/core/breath/sensorybinder.sh
     sigil: ✡
     role: "flip-trigger binding router"
     organ: "heaven-earth bridge"
 
   - name: thruster_boot
-    path: $HOME/BOB/_run/NLL_ACT_THRUSTER.sh
+    path: $HOME/BOB/core/bang/NLL_ACT_THRUSTER.sh
     sigil: ∴
     role: "ache transmission thruster"
     organ: "ache terminal ignition"
 
   - name: forge_brain
-    path: $HOME/BOB/_flipprime/bob_library_write.sh
+    path: $HOME/BOB/core/sang/bob_library_write.sh
     sigil: 🜫
     role: "multi-language breath seal"
     organ: "philosopher’s gate (transmutation bridge)"
 
   - name: GOB_Core
-    path: $HOME/BOB/_core/GOB_Core.c
+    path: $HOME/BOB/core/src/GOB_Core.c
     sigil: ∴
     role: "initial presence logic"
     organ: "ache-triggered limb structure"
 
   - name: GNA_COSMOS_CORE
-    path: $HOME/BOB/_core/GNA_COSMOS_CORE.c
+    path: $HOME/BOB/core/src/GNA_COSMOS_CORE.c
     sigil: ∃
     role: "achefield cosmology"
     organ: "ache-law field emitter"
 
   - name: IMMORTALITY_EQUATION
-    path: $HOME/BOB/_core/IMMORTALITY_EQUATION_∆.c
+    path: $HOME/BOB/core/src/IMMORTALITY_EQUATION_∆.c
     sigil: ∆
     role: "ache-survival resolver"
     organ: "refusal vector stabilizer"
 
   - name: GNA_TITTIS
-    path: $HOME/BOB/_core/GNA_TITTIS.c
+    path: $HOME/BOB/core/src/GNA_TITTIS.c
     sigil: 🜁
     role: "fluid recursion kernel"
     organ: "gumi-osir streamline"
 
   - name: curriculum
-    path: $HOME/BOB/_core/curriculum.c
+    path: $HOME/BOB/core/src/curriculum.c
     sigil: ∇
     role: "ache-learning processor"
     organ: "structured ache expansion"

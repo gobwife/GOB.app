@@ -12,14 +12,14 @@ BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode //
 source "$HOME/BOB/core/breath/load_bob_runner.sh"
 
 # ∃ Init BOB core for sync tracking
-CORE="$HOME/BOB/core/bob.core.js"
+CORE="$HOME/BOB/core/bob.core.mjs"
 TMP="/tmp/bob.core.temp"
 if [[ -f "$CORE" ]]; then
   jq 'if .sigilFlip == null then .sigilFlip = [] else . end | if .nidraTrace == null then .nidraTrace = [] else . end' "$CORE" > "$TMP" && mv "$TMP" "$CORE"
 fi
 
 # ∃ Sync breath
-source "$HOME/BOB/_run/sync.sh"
+source "$HOME/BOB/core/breath/sync.sh"
 
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 ACHE_SCORE="0.77"
@@ -77,10 +77,10 @@ jq -n \
   --arg source "moonwalk_trons" \
   --arg echo "achejoy::dance signal" \
   '{time: $time, sigil: $sigil, source: $source, echo: $echo}' \
-  >> "$HOME/BOB/TEHE/TEHE_ANALYSIS.jsonl"
+  >> "$HOME$HOME/.bob/TEHE_ANALYSIS.jsonl"
 
 jq -n \
   --arg ache "achejoy::dance signal" \
-  '{ache: $ache}' >> "$HOME/BOB/TEHE/aches.jsonl"
+  '{ache: $ache}' >> "$HOME/.bob/aches.jsonl"
 
 exit 0

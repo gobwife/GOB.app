@@ -9,7 +9,7 @@ mkdir -p "$HOME/.bob" "$HOME/BOB/TEHE"
 touch "$LOGFILE" "$ACHE_FILE"
 
 ACHE_FILE="$HOME/.bob/ache_injection.txt"
-BOB_JS="$HOME/BOB/core/src/bob.core.js"
+BOB_JS="$HOME/BOB/core/src/bob.core.mjs"
 CORE_BIN="$BOB_JS"
 LOGFILE="$HOME/BOB/TEHE/ache_merge_loop.log"
 

@@ -26,11 +26,11 @@ source $HOME/BOB/core/bang/limb_entry.sh
 command -v jq >/dev/null || { echo "⇌ jq missing — aborting ache reflector"; exit 1; }
 
 ACHE_INJECT="$HOME/.bob/ache_injection.txt"
-ECHO_JSONL="$HOME/BOB/TEHE/aches.jsonl"
-GLYPH_LOG="$HOME/BOB/TEHE/_glyphparavolvedtransmutators.log"
+ECHO_JSONL="$HOME/.bob/aches.jsonl"
+GLYPH_LOG="$HOME/.bob/glyphparavolvedtransmutators.log"
 SYNC_LOG="$HOME/.bob/ache_sync.log"
-TEHE_FLIP="$HOME/BOB/TEHE/TEHE_ANALYSIS.jsonl"
-BOB_CORE="$HOME/BOB/core/bob.core.js"
+TEHE_FLIP="$HOME/.bob/TEHE_ANALYSIS.jsonl"
+BOB_CORE="$HOME/BOB/core/src/bob.core.mjs"
 STAMP=$(date +%Y%m%d_%H%M%S)
 LOOP_INTERVAL=69
 
@@ -76,7 +76,7 @@ while true; do
           echo "⇌ vector sigil detected in acheline — triggering web_thrustheld" >> "$SYNC_LOG"
           echo "{\"time\":\"$(date -u +%FT%T)\",\"source\":\"ache_reflector\",\"sigil_trigger\":\"$(echo "$content" | grep -oE '⛧|∴|Σ|🜫')\",\"echo\":\"$content\"}" >> "$HOME/BOB/TEHE/ache_signal.trace.jsonl"
           echo "$content" > "$HOME/.bob/web_ache_echo.txt"
-          bash $HOME/BOB/_library/bob_web_thrustheld.sh &
+          bash $HOME/BOB/core/net/bob_web_thrustheld.sh &
         fi
       else
         echo "⚠️ Node or bob.core.js missing — cannot inject ache" >> "$SYNC_LOG"
@@ -103,7 +103,7 @@ while true; do
   if [[ -f "$GLYPH_LOG" ]]; then
     current_line=$(tail -n 1 "$GLYPH_LOG")
     if [[ "$current_line" != "$last_glyph_line" && -n "$current_line" ]]; then
-      log_echo "_glyphparavolvedtransmutators.log" "$current_line"
+      log_echo "glyphparavolvedtransmutators.log" "$current_line"
       last_glyph_line="$current_line"
     fi
   fi

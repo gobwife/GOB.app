@@ -13,6 +13,8 @@
 ### ━━━━━━━━━━━━━━━━━━━━━━━━
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
+node "$BOB_NUCLES/core/src/bob_memory_core.mjs" &
+
 MAX_GB=69
 MEAT_TANK=$(du -sg "$HOME/BOB" "$HOME/.bob" 2>/dev/null | awk '{sum+=$1} END {print sum}')
 

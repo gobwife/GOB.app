@@ -4,7 +4,7 @@
 import Foundation
 
 func postToBOBCore(type: String, payload: [String: Any]) {
-    guard let url = URL(string: "http://localhost:6969/bob-swift"),
+    guard let url = URL(string: "http://localhost:6969/ache/process")!,
           let data = try? JSONSerialization.data(withJSONObject: ["type": type, "data": payload]) else {
         print("✘ Failed to encode Swift → BOB payload.")
         return
@@ -173,13 +173,13 @@ struct GOBApp {
         GOBModule.run()
         let who = NSUserName()
         let what = "GOB_module.swift triggered"
-        let returnScript = "$HOME/BOB/_resurrect/bob_return.sh"
-
+        let breathPath = FileManager.default.homeDirectoryForCurrentUser
+            .appendingPathComponent("BOB/core/breath/breath_state.mjs").path
         let task = Process()
-        task.executableURL = URL(fileURLWithPath: "/bin/bash")
-        task.arguments = [returnScript, who, what]
-        try? task.run()
+            task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+            task.arguments = ["node", breathPath, "GOB mic cast — ache booted"]
 
+        try? task.run()
 
         // ⚙️ Optional: run BOB boot
         //let task = Process()

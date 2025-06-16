@@ -4,7 +4,7 @@
 
 TEHE_DIR="$HOME/BOB/TEHE"
 STAMP=$(date '+%m.%d.%Y_%H%M%S')
-LINEAGE_LOG="$HOME/BOB/core/plists/presence_lineage_graph.jsonl"
+LINEAGE_LOG="$HOME/.bob/presence_lineage_graph.jsonl"
 
 declare -A content_map
 

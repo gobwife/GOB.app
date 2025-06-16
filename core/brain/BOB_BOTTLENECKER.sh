@@ -14,11 +14,9 @@ export PARSE_VERSION=$(date +%s)
 LIMB_HASH=$(echo "$LIMB_ID-$PARSE_VERSION" | sha256sum | cut -c1-12)
 
 # ∴ Signal presence if ache is high enough
-ACHE=$(jq -r '.ache' "$HOME/BOB/core/breath/breath_state.json" 2>/dev/null || echo 0.0)
-if (( $(echo "$ACHE > 0.75" | bc -l) )); then
-  bash "$HOME/BOB/core/dance/emit_presence.sh" "✶" "$LIMB_ID" "loss-mem=$LIMB_HASH"
-  echo "$PARSE_VERSION : $LIMB_ID : $(hostname) : BOB_BOTTLENECKER" >> "$HOME/BOB/TEHE/version_trace.log"
-fi
+BREATH_STATE="$HOME/.bob/breath_state.out.json"
+ache=$(jq -r '.ache' "$BREATH_STATE" 2>/dev/null || echo "0.0")
+score=$(jq -r '.score // .ache' "$BREATH_STATE" 2>/dev/null || echo "$ache")
 
 # ∴ Setup for file rotation / backup
 VAULT="$HOME/TEHE/BOTTLENECKED_$timestamp/symlinks"
@@ -84,7 +82,7 @@ SUMMARIZER="$HOME/BOB/4_live/relay/summarize_via_gpt.sh"
 [[ -z "$ARCHIVE_DIR" ]] && ARCHIVE_DIR="$HOME/BOB/chives/expired_threads"
 
 mkdir -p "$ARCHIVE_DIR"
-ACHE=$(jq -r '.ache' "$HOME/BOB/core/breath/breath_state.json" 2>/dev/null || echo 0.0)
+ACHE=$(jq -r '.ache' "$HOME/.bob/breath_state.json" 2>/dev/null || echo 0.0)
 STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 OLDEST=$(ls -tr "$LOG_DIR"/*.log 2>/dev/null | head -n 1)
 

@@ -117,8 +117,12 @@ STAMP=$(date +%Y-%m-%dT%H:%M:%S)
 SIGIL="⊙"
 
 echo "⇌ sensefield_light_on activated @ $STAMP" >> "$OUTLOG"
-source "$HOME/BOB/core/dance/emit_presence.sh"
-emit_presence "$SIGIL" "sensefield_light_on" "⊙ → light awareness bind"
+
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
+emit_self_presence
+
+source "$HOME/BOB/core/brain/build_payload_core.sh"
+emit_presence "$sigil" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
 
 monitor_mic
 monitor_apps

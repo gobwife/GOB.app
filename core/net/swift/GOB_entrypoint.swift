@@ -5,7 +5,7 @@
 import Foundation
 
 func postToBOBCore(type: String, payload: [String: Any]) {
-    guard let url = URL(string: "http://localhost:6969/bob-swift"),
+    guard let url = URL(string: "http://localhost:6969/ache/process")!,
           let data = try? JSONSerialization.data(withJSONObject: ["type": type, "data": payload]) else {
         print("✘ Failed to encode Swift → BOB payload.")
         return

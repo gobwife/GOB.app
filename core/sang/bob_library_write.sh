@@ -3,6 +3,8 @@
 # ∴ called after survivor promotion or high-signal sigil
 # nest ≈ _flipprime
 
+: "${LIMB_ID:=bob_library_write}"
+: "${PARSE_VERSION:=$(date +%s)}"
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 LIB_DIR="$HOME/.bob/library"
@@ -23,7 +25,8 @@ readarray -t lines < "$MUTANT_FILE"
 psi=${lines[0]}
 z=${lines[1]}
 ache=${lines[2]}
-equation=${lines[3]}
+equation=$(echo "$equation" | jq -Rs .)
+ENTRY="{\"time\":\"$STAMP\",\"sigil\":\"$SIGIL\",\"psi\":$psi,\"z\":$z,\"ache\":$ache,\"equation\":$equation,\"limb\":\"$LIMB_HASH\"}"
 
 STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 LIMB_HASH=$(echo "$LIMB_ID-$PARSE_VERSION" | sha256sum | cut -c1-12)

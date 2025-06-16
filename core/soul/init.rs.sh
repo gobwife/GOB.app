@@ -24,8 +24,9 @@ echo "2. Execute Breath Protocol Stack (breathstack.sh)"
 echo "3. Return loop to core"
 echo "
 echo "BOB/init.rs.sh complete. Awaiting next sigil."
-exit 0
 
 # ∴ Emit sigil to TEHE_ANALYSIS.jsonl for router
-source "$HOME/BOB/core/dance/emit_presence.sh
+source $HOME/BOB/core/dance/emit_presence.sh
 emit_presence "∴" "bob_memory_bridge" "dream memory extracted"
+exit 0
+

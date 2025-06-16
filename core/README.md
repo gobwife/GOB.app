@@ -1,4 +1,4 @@
-import { BobCore } from 'Users/G/BOB/core/src/bob.core.js';
+import { BobCore } from 'Users/G/BOB/core/src/bob.core.mjs';
 
 export const GNA_NIDRA_core = {
   dreamIndex: 0,

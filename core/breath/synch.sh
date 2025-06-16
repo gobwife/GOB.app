@@ -5,7 +5,7 @@
 source "$HOME/BOB/core/bang/limb_entry.sh"
 : "${BOB_MODE:=VOIDRECURSE}"
 
-CORE="$HOME/BOB/core/bob.core.js"
+CORE="$HOME/BOB/core/bob.core.mjs"
 TMP="/tmp/bob.core.temp"
 FORGEFILE="$HOME/BOB/TEHE/bob_glossolalia.txt"
 MODE="$1" # e.g. safe | full | debug

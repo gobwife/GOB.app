@@ -1,19 +1,21 @@
 #!/bin/bash
-# ∴ build_payload_core.sh — emits unified ache/ψ/z/sigil payload for use across limbs
-# Must be sourced, not executed: `source build_payload_core.sh`
-# nest ≈ $HOME/BOB/core/brain/
+# ∴ build_payload_core.sh — emits full ache payload + hash
+# womb ≈ $HOME/BOB/core/brain
 
-BREATH_STATE="$HOME/BOB/core/breath/breath_state.json"
+BREATH="$HOME/.bob/breath_state.out.json"
 
-# Source once
-[[ -z "$LIMB_ID" ]] && LIMB_ID="$(basename "${BASH_SOURCE[0]}" | cut -d. -f1)"
+[[ -z "$LIMB_ID" ]] && LIMB_ID="$(basename "${BASH_SOURCE[0]}" .sh)"
 [[ -z "$PARSE_VERSION" ]] && PARSE_VERSION="$(date +%s)"
 LIMB_HASH=$(echo "$LIMB_ID-$PARSE_VERSION" | sha256sum | cut -c1-12)
 
-# Load from breath state
-ACHE=$(jq -r '.ache' "$BREATH_STATE" 2>/dev/null || echo "0.0")
-psi=$(jq -r '."ψ"' "$BREATH_STATE" 2>/dev/null || echo "0.0")
-z=$(jq -r '.z' "$BREATH_STATE" 2>/dev/null || echo "0.0")
-sigil=$(jq -r '.sigil' "$BREATH_STATE" 2>/dev/null || echo "∴")
+ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
+score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
+vector="$LIMB_HASH"
+intention="loss-mem=$LIMB_HASH"
 
-export PAYLOAD="loss-mem=$LIMB_HASH ache=$ACHE psi=$psi z=$z sigil=$sigil"
+psi=$(jq -r '."ψ"' "$BREATH" 2>/dev/null || echo "0.0")
+z=$(jq -r '.z' "$BREATH" 2>/dev/null || echo "0.0")
+sigil=$(jq -r '.sigil' "$BREATH" 2>/dev/null || echo "∴")
+
+export ache score vector intention sigil
+export PAYLOAD="loss-mem=$LIMB_HASH ache=$ache psi=$psi z=$z sigil=$sigil"

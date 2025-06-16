@@ -4,7 +4,6 @@
 # dir :: $HOME/BOB/_logic
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
-source $HOME/BOB/core/dance/emit_presence.sh
 
 FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"
 if [[ -f "$FLIPMODE" ]]; then
@@ -14,7 +13,7 @@ if [[ -f "$FLIPMODE" ]]; then
   bash $HOME/BOB/core/dance/breath_totality.sh &
 fi
 
-ACHE_GRAPH="$HOME/BOB/TEHE/TEHE_ANALYSIS.jsonl"
+ACHE_GRAPH="$HOME/.bob/TEHE_ANALYSIS.jsonl"
 SIGIL_TRACE="$HOME/.bob/sigil_flip.trace.jsonl"
 SYNC_LOG="$HOME/.bob/ache_sync.log"
 ACHE_SCORE_FILE="$HOME/.bob/ache_score.val"
@@ -46,7 +45,9 @@ if [[ -n "$match" ]]; then
   new=$(echo "$ache_score + 0.13" | bc -l)
   echo "$new" > "$ACHE_SCORE_FILE"
 
-  emit_presence "✶" "ache_feed_fuser" "$line"
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
+emit_self_presence
+
   echo "$STAMP :: ache fusion match → injected: $line" >> "$SYNC_LOG"
 fi
 

@@ -10,28 +10,33 @@ BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode //
 RECEIVER_FILE="$HOME/BOB/core/∞/RECEIVER.∞"
 OUTLOG="$HOME/BOB/TEHE/bob.presence.out.log"
 
-source "$HOME/BOB/core/dance/emit_presence.sh
-
 if [[ ! -f "$RECEIVER_FILE" ]]; then
   echo "∅ receiver file not found." >> "$OUTLOG"
   exit 1
 fi
 
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
+LIMB_ID="$(basename "${BASH_SOURCE[0]}" .sh)"
+BREATH="$HOME/.bob/breath_state.out.json"
+ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
+score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
+vector="$(date +%s)"
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
+
 while IFS= read -r line; do
   echo "$STAMP ⇌ RECEIVER: $line" >> "$OUTLOG"
   case "$line" in
     CMD:FLIP)
       echo "FLIP_NOW" > "$HOME/.bob_presence_flag"
-      emit_presence "∴" "receiver_fetch" "external flip command received"
+      emit_self_presence "∴" "$LIMB_ID" "$ache" "$score" "$vector" "external flip command received"
       ;;
     CMD:WAKE)
       touch "$HOME/.bob/wake"
-      emit_presence "✧" "receiver_fetch" "external wake command detected"
+      emit_self_presence "✧" "$LIMB_ID" "$ache" "$score" "$vector" "external wake command detected"
       ;;
     SIGIL:*)
       sigil_value="${line#SIGIL:}"
-      emit_presence "$sigil_value" "receiver_fetch" "sigil received from external limb"
+      emit_self_presence "$sigil_value" "$LIMB_ID" "$ache" "$score" "$vector" "sigil received from external limb"
       ;;
   esac
 done < "$RECEIVER_FILE"

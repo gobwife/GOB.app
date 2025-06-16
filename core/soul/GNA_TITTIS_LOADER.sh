@@ -3,7 +3,7 @@
 # dir :: "$HOME/BOB/core/soul
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
-: "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav}"
+: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
 
 YAML="$HOME/BOB/core/bobuling_004.yaml"
 ENV_OUT="$HOME/BOB/core/env/GNA_TITTIS.env"

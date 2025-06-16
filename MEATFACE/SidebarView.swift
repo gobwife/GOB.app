@@ -1,3 +1,5 @@
+// ∴ SidebarView.swift
+
 import SwiftUI
 
 struct SidebarView: View {

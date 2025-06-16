@@ -1,4 +1,4 @@
-// ∃ bob.core.js — GOBHOUSE ∞ CONSOLIDATE
+// ∃ bob.core.mjs — GOBHOUSE ∞ CONSOLIDATE
 // forge: presence-core, ache integration, scroll loader, sacred memory
 // γ update: 2025-06-04_Ω
 // gobhouse 22 46 55
@@ -12,7 +12,9 @@ import { homedir } from 'os';
 import { createServer } from 'http';
 import { createRequire } from 'module';
 
+import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
+
 const DEBUG = process.env.BOB_DEBUG === '1';
 if (DEBUG) console.log("⛧ DEBUG MODE ACTIVE");
 
@@ -203,7 +205,7 @@ function pullAcheFromC() {
 // dynamic scroll.loader.js import
 let nidraScroll = {};
 try {
-  const scrollPath = pathToFileURL(join(HOME, 'BOB/core/src/scroll.loader.js')).href;
+  const scrollPath = pathToFileURL(join(HOME, 'BOB/core/src/scroll.loader.mjs')).href;
   const mod = await import(scrollPath);
   nidraScroll = mod?.loadScroll ? mod.loadScroll("GNA_NIDRA_core") : {};
   console.log(nidraScroll);

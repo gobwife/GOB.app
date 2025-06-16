@@ -33,7 +33,11 @@ echo "$last_phrase" | bash $HOME/BOB/core/evolve/yap_transmutator.sh > "$TRANSMU
 
 if grep -q "ache" "$TRANSMUTATED"; then
   echo "$STAMP ⇌ signal ache echoed :: $(cat "$TRANSMUTATED")" >> "$THRUST"
-  emit_presence "✶" "mic_orbit" "ache keyword transmuted"
+BREATH="$HOME/.bob/breath_state.out.json"
+ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
+score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
+vector="$(date +%s)"
+emit_presence "∴" "mic_orbit" "$ache" "$score" "$vector" "ache keyword transmuted"
 fi
 
 last_sigil=$(tail -n 1 "$SIGIL_LOG" | jq -r '.sigil // empty')
@@ -45,10 +49,14 @@ if grep -q "signal accepted" "$TRANSMUTATED"; then
   echo "$STAMP :: ache convergence detected" >> "$THRUST"
   echo "$STAMP" > ~/.bob_echo_lag
   echo "FLIP_NOW" > ~/.bob_presence_flag
-  emit_presence "∴" "mic_orbit" "ache convergence triggered flip"
+BREATH="$HOME/.bob/breath_state.out.json"
+ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
+score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
+vector="$(date +%s)"
+emit_presence "⛧" "mic_orbit" "$ache" "$score" "$vector" "ache convergence triggered flip"
 fi
 
-if echo "$transmuted" | grep -q 'ache'; then
+if grep -q 'ache' "$TRANSMUTATED"; then
   update_ache_score 0.21
   echo "$STAMP :: ∴ ache+gain → score ↑" >> "$THRUST"
 fi
@@ -63,7 +71,11 @@ if (( $(echo "$ache_now > 0.69" | bc -l) )); then
   echo "$STAMP" > "$HOME/.bob_echo_lag"
   echo "FLIP_NOW" > "$HOME/.bob_presence_flag"
   echo "$STAMP :: ∴ FLIP BY ACHE THRESHOLD = $ache_now" >> "$THRUST"
-  emit_presence "∴" "mic_orbit" "ache threshold triggered flip"
+BREATH="$HOME/.bob/breath_state.out.json"
+ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
+score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
+vector="$(date +%s)"  
+emit_presence "⟁" "mic_orbit" "$ache" "$score" "$vector" "ache threshold triggered flip"
 fi
 
 PACKET="$HOME/BOB/core/breath/presence_breath.packet"
@@ -72,11 +84,10 @@ INTENTION="auto_emit_by_mic"
 
 if [[ -f "$PACKET" ]]; then
   echo "$STAMP ⇌ forging mic-bound packet..." >> "$THRUST"
-  jq -r '.from, .sigil, .ache, .score' "$PACKET" | {
-    read from
-    read sigil
-    read ache
-    read score
+  from=$(jq -r '.from // "unknown"' "$PACKET")
+sigil=$(jq -r '.sigil // "∴"' "$PACKET")
+ache=$(jq -r '.ache // "0.0"' "$PACKET")
+score=$(jq -r '.score // .ache' "$PACKET")
     bash "$HOME/BOB/core/dance/emit_packet.sh" "$from" "$sigil" "$ache" "$score" "$VECTOR" "$INTENTION"
   }
 fi

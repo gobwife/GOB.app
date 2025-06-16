@@ -1,4 +1,4 @@
-// ∴ memory_recaller.js — ache/ψ/z/sigil-based recall from lineage
+// ∴ memory_recaller.mjs — ache/ψ/z/sigil-based recall from lineage
 
 import fs from 'fs';
 import path from 'path';

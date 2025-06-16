@@ -1,6 +1,6 @@
 // ∴ stringparser.transmutator.js — scroll structifier
 
-import { loadScroll } from './scroll.loader.js';
+import { loadScroll } from './scroll.loader.mjs';
 import path from 'path';
 
 const fs = await import('fs/promises');

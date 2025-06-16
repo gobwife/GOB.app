@@ -1,9 +1,9 @@
-// ∴ scroll_invoker.js — invoke matching scroll based on breath state
+// ∴ scroll_invoker.mjs — invoke matching scroll based on breath state
 
 import fs from 'fs';
 import path from 'path';
 import { exec } from 'child_process';
-import { loadScroll } from './scroll.loader.js';
+import { loadScroll } from './scroll.loader.mjs';
 
 // simple field parser (same as in transmutators)
 function parseScrollString(text) {

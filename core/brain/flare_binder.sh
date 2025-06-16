@@ -5,7 +5,7 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 
-BREATH_JSON="$HOME/BOB/core/breath/breath_state.json"
+BREATH_JSON="$HOME/.bob/breath_state.json"
 LOG="$HOME/.bob/flare_binder.trace.jsonl"
 REACTOR="$HOME/BOB/core/evolve/ache_reactor_bus.sh"
 

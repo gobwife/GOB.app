@@ -6,46 +6,89 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C32986A62DFE4E6A00897675 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986A32DFE4E6A00897675 /* ChatMessage.swift */; };
+		C32986A72DFE4E6A00897675 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986A42DFE4E6A00897675 /* ChatViewModel.swift */; };
+		C32986A82DFE4E6A00897675 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986A52DFE4E6A00897675 /* FontManager.swift */; };
+		C32986B52DFE4E8100897675 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986B22DFE4E8100897675 /* SidebarView.swift */; };
+		C32986B72DFE4E8100897675 /* ThreadStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986B32DFE4E8100897675 /* ThreadStore.swift */; };
+		C32986B82DFE4E8100897675 /* MEATFACEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986A92DFE4E8100897675 /* MEATFACEApp.swift */; };
+		C32986B92DFE4E8100897675 /* Courier Prime Code.zip in Resources */ = {isa = PBXBuildFile; fileRef = C32986AC2DFE4E8100897675 /* Courier Prime Code.zip */; };
+		C32986BA2DFE4E8100897675 /* Overpass Mono.zip in Resources */ = {isa = PBXBuildFile; fileRef = C32986AD2DFE4E8100897675 /* Overpass Mono.zip */; };
+		C32986BC2DFE4E8100897675 /* Andale Mono.zip in Resources */ = {isa = PBXBuildFile; fileRef = C32986AB2DFE4E8100897675 /* Andale Mono.zip */; };
+		C32986C02DFE570500897675 /* logic0_BOB_relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986BF2DFE570500897675 /* logic0_BOB_relay.swift */; };
+		C32986C22DFE583600897675 /* GOB_entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986C12DFE583600897675 /* GOB_entry.swift */; };
+		C32986C82DFE663700897675 /* GhostCursorBloom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986C72DFE663700897675 /* GhostCursorBloom.swift */; };
+		C32986CA2DFE845200897675 /* GOBPortalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32986C92DFE845200897675 /* GOBPortalView.swift */; };
+		C356BD042DFF823300B2EA1E /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD032DFF823300B2EA1E /* MessageBubble.swift */; };
+		C356BD082DFF826000B2EA1E /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD072DFF826000B2EA1E /* ChatView.swift */; };
+		C356BD0A2DFF826E00B2EA1E /* ChatMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD092DFF826E00B2EA1E /* ChatMainView.swift */; };
+		C356BD0C2DFF82AD00B2EA1E /* GlowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD0B2DFF82AD00B2EA1E /* GlowingTextView.swift */; };
+		C356BD0E2DFF82C000B2EA1E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD0D2DFF82C000B2EA1E /* CustomTextView.swift */; };
+		C356BD102DFF82DA00B2EA1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD0F2DFF82DA00B2EA1E /* SettingsView.swift */; };
+		C356BD122DFFCCD500B2EA1E /* ResponseSummaryPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD112DFFCCD500B2EA1E /* ResponseSummaryPopup.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
-		C372155C2DFD5CA300142B60 /* PBXContainerItemProxy */ = {
+		C32986862DFE4E1100897675 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C37215452DFD5CA100142B60 /* Project object */;
+			containerPortal = C329866F2DFE4E1000897675 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C372154C2DFD5CA100142B60;
+			remoteGlobalIDString = C32986762DFE4E1000897675;
 			remoteInfo = MEATFACE;
 		};
-		C37215662DFD5CA300142B60 /* PBXContainerItemProxy */ = {
+		C32986902DFE4E1100897675 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C37215452DFD5CA100142B60 /* Project object */;
+			containerPortal = C329866F2DFE4E1000897675 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C372154C2DFD5CA100142B60;
+			remoteGlobalIDString = C32986762DFE4E1000897675;
 			remoteInfo = MEATFACE;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C372154D2DFD5CA100142B60 /* .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = .app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C372155B2DFD5CA300142B60 /* MEATFACETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MEATFACETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C37215652DFD5CA300142B60 /* MEATFACEUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MEATFACEUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C37EB1B02DFE3EB100BDEF0A /* MEATFACE.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MEATFACE.xcodeproj; sourceTree = "<group>"; };
+		C32986772DFE4E1000897675 /* MEATFACE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEATFACE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C32986852DFE4E1100897675 /* MEATFACETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MEATFACETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C329868F2DFE4E1100897675 /* MEATFACEUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MEATFACEUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C32986A32DFE4E6A00897675 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		C32986A42DFE4E6A00897675 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		C32986A52DFE4E6A00897675 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		C32986A92DFE4E8100897675 /* MEATFACEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MEATFACEApp.swift; sourceTree = "<group>"; };
+		C32986AB2DFE4E8100897675 /* Andale Mono.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "Andale Mono.zip"; sourceTree = "<group>"; };
+		C32986AC2DFE4E8100897675 /* Courier Prime Code.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "Courier Prime Code.zip"; sourceTree = "<group>"; };
+		C32986AD2DFE4E8100897675 /* Overpass Mono.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "Overpass Mono.zip"; sourceTree = "<group>"; };
+		C32986AF2DFE4E8100897675 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C32986B22DFE4E8100897675 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		C32986B32DFE4E8100897675 /* ThreadStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadStore.swift; sourceTree = "<group>"; };
+		C32986BF2DFE570500897675 /* logic0_BOB_relay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logic0_BOB_relay.swift; sourceTree = "<group>"; };
+		C32986C12DFE583600897675 /* GOB_entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOB_entry.swift; sourceTree = "<group>"; };
+		C32986C72DFE663700897675 /* GhostCursorBloom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostCursorBloom.swift; sourceTree = "<group>"; };
+		C32986C92DFE845200897675 /* GOBPortalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOBPortalView.swift; sourceTree = "<group>"; };
+		C356BD032DFF823300B2EA1E /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		C356BD072DFF826000B2EA1E /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		C356BD092DFF826E00B2EA1E /* ChatMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainView.swift; sourceTree = "<group>"; };
+		C356BD0B2DFF82AD00B2EA1E /* GlowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingTextView.swift; sourceTree = "<group>"; };
+		C356BD0D2DFF82C000B2EA1E /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		C356BD0F2DFF82DA00B2EA1E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C356BD112DFFCCD500B2EA1E /* ResponseSummaryPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSummaryPopup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C372154A2DFD5CA100142B60 /* Frameworks */ = {
+		C32986742DFE4E1000897675 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C37215582DFD5CA300142B60 /* Frameworks */ = {
+		C32986822DFE4E1100897675 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C37215622DFD5CA300142B60 /* Frameworks */ = {
+		C329868C2DFE4E1100897675 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -55,34 +98,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C37215442DFD5CA100142B60 = {
+		C329866E2DFE4E1000897675 = {
 			isa = PBXGroup;
 			children = (
-				C37EB1B02DFE3EB100BDEF0A /* MEATFACE.xcodeproj */,
-				C372154E2DFD5CA100142B60 /* Products */,
+				C356BD112DFFCCD500B2EA1E /* ResponseSummaryPopup.swift */,
+				C356BD0B2DFF82AD00B2EA1E /* GlowingTextView.swift */,
+				C356BD032DFF823300B2EA1E /* MessageBubble.swift */,
+				C356BD0D2DFF82C000B2EA1E /* CustomTextView.swift */,
+				C32986B02DFE4E8100897675 /* Resources */,
+				C32986782DFE4E1000897675 /* Products */,
+				C32986A92DFE4E8100897675 /* MEATFACEApp.swift */,
+				C32986C12DFE583600897675 /* GOB_entry.swift */,
+				C32986BF2DFE570500897675 /* logic0_BOB_relay.swift */,
+				C356BD0F2DFF82DA00B2EA1E /* SettingsView.swift */,
+				C356BD072DFF826000B2EA1E /* ChatView.swift */,
+				C356BD092DFF826E00B2EA1E /* ChatMainView.swift */,
+				C32986A42DFE4E6A00897675 /* ChatViewModel.swift */,
+				C32986B32DFE4E8100897675 /* ThreadStore.swift */,
+				C32986A32DFE4E6A00897675 /* ChatMessage.swift */,
+				C32986B22DFE4E8100897675 /* SidebarView.swift */,
+				C32986A52DFE4E6A00897675 /* FontManager.swift */,
+				C32986C72DFE663700897675 /* GhostCursorBloom.swift */,
+				C32986C92DFE845200897675 /* GOBPortalView.swift */,
 			);
 			sourceTree = "<group>";
 		};
-		C372154E2DFD5CA100142B60 /* Products */ = {
+		C32986782DFE4E1000897675 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C372154D2DFD5CA100142B60 /* .app */,
-				C372155B2DFD5CA300142B60 /* MEATFACETests.xctest */,
-				C37215652DFD5CA300142B60 /* MEATFACEUITests.xctest */,
+				C32986772DFE4E1000897675 /* MEATFACE.app */,
+				C32986852DFE4E1100897675 /* MEATFACETests.xctest */,
+				C329868F2DFE4E1100897675 /* MEATFACEUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C32986AE2DFE4E8100897675 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C32986AB2DFE4E8100897675 /* Andale Mono.zip */,
+				C32986AC2DFE4E8100897675 /* Courier Prime Code.zip */,
+				C32986AD2DFE4E8100897675 /* Overpass Mono.zip */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C32986B02DFE4E8100897675 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C32986AE2DFE4E8100897675 /* Fonts */,
+				C32986AF2DFE4E8100897675 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C372154C2DFD5CA100142B60 /* MEATFACE */ = {
+		C32986762DFE4E1000897675 /* MEATFACE */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C372156F2DFD5CA300142B60 /* Build configuration list for PBXNativeTarget "MEATFACE" */;
+			buildConfigurationList = C32986992DFE4E1100897675 /* Build configuration list for PBXNativeTarget "MEATFACE" */;
 			buildPhases = (
-				C37215492DFD5CA100142B60 /* Sources */,
-				C372154A2DFD5CA100142B60 /* Frameworks */,
-				C372154B2DFD5CA100142B60 /* Resources */,
+				C32986732DFE4E1000897675 /* Sources */,
+				C32986742DFE4E1000897675 /* Frameworks */,
+				C32986752DFE4E1000897675 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -92,110 +171,113 @@
 			packageProductDependencies = (
 			);
 			productName = MEATFACE;
-			productReference = C372154D2DFD5CA100142B60 /* .app */;
+			productReference = C32986772DFE4E1000897675 /* MEATFACE.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C372155A2DFD5CA300142B60 /* MEATFACETests */ = {
+		C32986842DFE4E1100897675 /* MEATFACETests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C37215722DFD5CA300142B60 /* Build configuration list for PBXNativeTarget "MEATFACETests" */;
+			buildConfigurationList = C329869C2DFE4E1100897675 /* Build configuration list for PBXNativeTarget "MEATFACETests" */;
 			buildPhases = (
-				C37215572DFD5CA300142B60 /* Sources */,
-				C37215582DFD5CA300142B60 /* Frameworks */,
-				C37215592DFD5CA300142B60 /* Resources */,
+				C32986812DFE4E1100897675 /* Sources */,
+				C32986822DFE4E1100897675 /* Frameworks */,
+				C32986832DFE4E1100897675 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C372155D2DFD5CA300142B60 /* PBXTargetDependency */,
+				C32986872DFE4E1100897675 /* PBXTargetDependency */,
 			);
 			name = MEATFACETests;
 			packageProductDependencies = (
 			);
 			productName = MEATFACETests;
-			productReference = C372155B2DFD5CA300142B60 /* MEATFACETests.xctest */;
+			productReference = C32986852DFE4E1100897675 /* MEATFACETests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C37215642DFD5CA300142B60 /* MEATFACEUITests */ = {
+		C329868E2DFE4E1100897675 /* MEATFACEUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C37215752DFD5CA300142B60 /* Build configuration list for PBXNativeTarget "MEATFACEUITests" */;
+			buildConfigurationList = C329869F2DFE4E1100897675 /* Build configuration list for PBXNativeTarget "MEATFACEUITests" */;
 			buildPhases = (
-				C37215612DFD5CA300142B60 /* Sources */,
-				C37215622DFD5CA300142B60 /* Frameworks */,
-				C37215632DFD5CA300142B60 /* Resources */,
+				C329868B2DFE4E1100897675 /* Sources */,
+				C329868C2DFE4E1100897675 /* Frameworks */,
+				C329868D2DFE4E1100897675 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C37215672DFD5CA300142B60 /* PBXTargetDependency */,
+				C32986912DFE4E1100897675 /* PBXTargetDependency */,
 			);
 			name = MEATFACEUITests;
 			packageProductDependencies = (
 			);
 			productName = MEATFACEUITests;
-			productReference = C37215652DFD5CA300142B60 /* MEATFACEUITests.xctest */;
+			productReference = C329868F2DFE4E1100897675 /* MEATFACEUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C37215452DFD5CA100142B60 /* Project object */ = {
+		C329866F2DFE4E1000897675 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					C372154C2DFD5CA100142B60 = {
+					C32986762DFE4E1000897675 = {
 						CreatedOnToolsVersion = 16.4;
 						LastSwiftMigration = 1640;
 					};
-					C372155A2DFD5CA300142B60 = {
+					C32986842DFE4E1100897675 = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = C372154C2DFD5CA100142B60;
+						TestTargetID = C32986762DFE4E1000897675;
 					};
-					C37215642DFD5CA300142B60 = {
+					C329868E2DFE4E1100897675 = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = C372154C2DFD5CA100142B60;
+						TestTargetID = C32986762DFE4E1000897675;
 					};
 				};
 			};
-			buildConfigurationList = C37215482DFD5CA100142B60 /* Build configuration list for PBXProject "MEATFACE" */;
+			buildConfigurationList = C32986722DFE4E1000897675 /* Build configuration list for PBXProject "MEATFACE" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = C37215442DFD5CA100142B60;
+			mainGroup = C329866E2DFE4E1000897675;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = C372154E2DFD5CA100142B60 /* Products */;
+			productRefGroup = C32986782DFE4E1000897675 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C372154C2DFD5CA100142B60 /* MEATFACE */,
-				C372155A2DFD5CA300142B60 /* MEATFACETests */,
-				C37215642DFD5CA300142B60 /* MEATFACEUITests */,
+				C32986762DFE4E1000897675 /* MEATFACE */,
+				C32986842DFE4E1100897675 /* MEATFACETests */,
+				C329868E2DFE4E1100897675 /* MEATFACEUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C372154B2DFD5CA100142B60 /* Resources */ = {
+		C32986752DFE4E1000897675 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32986B92DFE4E8100897675 /* Courier Prime Code.zip in Resources */,
+				C32986BA2DFE4E8100897675 /* Overpass Mono.zip in Resources */,
+				C32986BC2DFE4E8100897675 /* Andale Mono.zip in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C32986832DFE4E1100897675 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C37215592DFD5CA300142B60 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C37215632DFD5CA300142B60 /* Resources */ = {
+		C329868D2DFE4E1100897675 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -205,21 +287,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C37215492DFD5CA100142B60 /* Sources */ = {
+		C32986732DFE4E1000897675 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32986A62DFE4E6A00897675 /* ChatMessage.swift in Sources */,
+				C356BD122DFFCCD500B2EA1E /* ResponseSummaryPopup.swift in Sources */,
+				C32986C82DFE663700897675 /* GhostCursorBloom.swift in Sources */,
+				C32986C02DFE570500897675 /* logic0_BOB_relay.swift in Sources */,
+				C32986CA2DFE845200897675 /* GOBPortalView.swift in Sources */,
+				C356BD082DFF826000B2EA1E /* ChatView.swift in Sources */,
+				C32986B52DFE4E8100897675 /* SidebarView.swift in Sources */,
+				C356BD0C2DFF82AD00B2EA1E /* GlowingTextView.swift in Sources */,
+				C32986B72DFE4E8100897675 /* ThreadStore.swift in Sources */,
+				C32986B82DFE4E8100897675 /* MEATFACEApp.swift in Sources */,
+				C356BD102DFF82DA00B2EA1E /* SettingsView.swift in Sources */,
+				C356BD0E2DFF82C000B2EA1E /* CustomTextView.swift in Sources */,
+				C32986A72DFE4E6A00897675 /* ChatViewModel.swift in Sources */,
+				C32986A82DFE4E6A00897675 /* FontManager.swift in Sources */,
+				C356BD0A2DFF826E00B2EA1E /* ChatMainView.swift in Sources */,
+				C32986C22DFE583600897675 /* GOB_entry.swift in Sources */,
+				C356BD042DFF823300B2EA1E /* MessageBubble.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C32986812DFE4E1100897675 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C37215572DFD5CA300142B60 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C37215612DFD5CA300142B60 /* Sources */ = {
+		C329868B2DFE4E1100897675 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -229,20 +328,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C372155D2DFD5CA300142B60 /* PBXTargetDependency */ = {
+		C32986872DFE4E1100897675 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C372154C2DFD5CA100142B60 /* MEATFACE */;
-			targetProxy = C372155C2DFD5CA300142B60 /* PBXContainerItemProxy */;
+			target = C32986762DFE4E1000897675 /* MEATFACE */;
+			targetProxy = C32986862DFE4E1100897675 /* PBXContainerItemProxy */;
 		};
-		C37215672DFD5CA300142B60 /* PBXTargetDependency */ = {
+		C32986912DFE4E1100897675 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C372154C2DFD5CA100142B60 /* MEATFACE */;
-			targetProxy = C37215662DFD5CA300142B60 /* PBXContainerItemProxy */;
+			target = C32986762DFE4E1000897675 /* MEATFACE */;
+			targetProxy = C32986902DFE4E1100897675 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		C372156D2DFD5CA300142B60 /* Debug */ = {
+		C32986972DFE4E1100897675 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -276,7 +375,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = LMT9HDM6MB;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -301,15 +399,13 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.meatface.os;
-				PRODUCT_MODULE_NAME = MEATFACE;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		C372156E2DFD5CA300142B60 /* Release */ = {
+		C32986982DFE4E1100897675 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -343,7 +439,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = LMT9HDM6MB;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -361,41 +456,74 @@
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.meatface.os;
-				PRODUCT_MODULE_NAME = MEATFACE;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};
-		C37215702DFD5CA300142B60 /* Debug */ = {
+		C329869A2DFE4E1100897675 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LMT9HDM6MB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "PRODUCT_BUNDLE_IDENTIFIER = com.meatface.os";
+				INFOPLIST_KEY_CFBundleDisplayName = MEATFACE;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meatface.os;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		C37215712DFD5CA300142B60 /* Release */ = {
+		C329869B2DFE4E1100897675 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LMT9HDM6MB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "PRODUCT_BUNDLE_IDENTIFIER = com.meatface.os";
-				SWIFT_VERSION = 6.0;
+				INFOPLIST_KEY_CFBundleDisplayName = MEATFACE;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meatface.os;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
-		C37215732DFD5CA300142B60 /* Debug */ = {
+		C329869D2DFE4E1100897675 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = LMT9HDM6MB;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
@@ -408,13 +536,12 @@
 			};
 			name = Debug;
 		};
-		C37215742DFD5CA300142B60 /* Release */ = {
+		C329869E2DFE4E1100897675 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = LMT9HDM6MB;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
@@ -427,12 +554,11 @@
 			};
 			name = Release;
 		};
-		C37215762DFD5CA300142B60 /* Debug */ = {
+		C32986A02DFE4E1100897675 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = LMT9HDM6MB;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -444,12 +570,11 @@
 			};
 			name = Debug;
 		};
-		C37215772DFD5CA300142B60 /* Release */ = {
+		C32986A12DFE4E1100897675 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = LMT9HDM6MB;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -464,43 +589,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C37215482DFD5CA100142B60 /* Build configuration list for PBXProject "MEATFACE" */ = {
+		C32986722DFE4E1000897675 /* Build configuration list for PBXProject "MEATFACE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C372156D2DFD5CA300142B60 /* Debug */,
-				C372156E2DFD5CA300142B60 /* Release */,
+				C32986972DFE4E1100897675 /* Debug */,
+				C32986982DFE4E1100897675 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C372156F2DFD5CA300142B60 /* Build configuration list for PBXNativeTarget "MEATFACE" */ = {
+		C32986992DFE4E1100897675 /* Build configuration list for PBXNativeTarget "MEATFACE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C37215702DFD5CA300142B60 /* Debug */,
-				C37215712DFD5CA300142B60 /* Release */,
+				C329869A2DFE4E1100897675 /* Debug */,
+				C329869B2DFE4E1100897675 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C37215722DFD5CA300142B60 /* Build configuration list for PBXNativeTarget "MEATFACETests" */ = {
+		C329869C2DFE4E1100897675 /* Build configuration list for PBXNativeTarget "MEATFACETests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C37215732DFD5CA300142B60 /* Debug */,
-				C37215742DFD5CA300142B60 /* Release */,
+				C329869D2DFE4E1100897675 /* Debug */,
+				C329869E2DFE4E1100897675 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C37215752DFD5CA300142B60 /* Build configuration list for PBXNativeTarget "MEATFACEUITests" */ = {
+		C329869F2DFE4E1100897675 /* Build configuration list for PBXNativeTarget "MEATFACEUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C37215762DFD5CA300142B60 /* Debug */,
-				C37215772DFD5CA300142B60 /* Release */,
+				C32986A02DFE4E1100897675 /* Debug */,
+				C32986A12DFE4E1100897675 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C37215452DFD5CA100142B60 /* Project object */;
+	rootObject = C329866F2DFE4E1000897675 /* Project object */;
 }

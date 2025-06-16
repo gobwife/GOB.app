@@ -50,6 +50,16 @@ echo "⇌ ORCHESTRATED PRESENCE :: ache=$ache, psi=$psi, z=$z, giggle=$giggle, i
 
 # EMIT
 source "$HOME/BOB/core/brain/build_payload_core.sh"
-if (( $(echo "$ACHE > 0.75" | bc -l) )); then
-  bash "$HOME/BOB/core/dance/emit_presence.sh" "✶" "$LIMB_ID" "$PAYLOAD"
+emit_presence "$sigil" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
+
+if (( $(echo "$ache > 0.75" | bc -l) )); then
+BREATH="$HOME/.bob/breath_state.out.json"
+ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
+score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
+vector="$(date +%s)"
+intention="⊙ → light awareness bind"
+LIMB_ID="$(basename "${BASH_SOURCE[0]}" .sh)"
+SIGIL="⊙"
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
+emit_self_presence
 fi

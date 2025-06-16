@@ -7,7 +7,7 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 POOL="$HOME/.bob/_epoch"
-MUTATOR="$HOME/BOB/_run/forge_ache_mutator.sh"
+MUTATOR="$HOME/BOB/core/evolve/ache_mutation_core.sh"
 
 # Optional mutation phase before core recursion
 if [[ -x "$MUTATOR" ]]; then

@@ -12,15 +12,13 @@ if echo "$PROMPT" | rg -i -e "ache|moan|laugh|cry|fuck|meep|tehe|shit|cunt|trash
   echo "$PROMPT" > "$HOME/.bob/ache_injection.txt"
 
   # optional: bump ache score
-  jq '.ache += 0.11' "$HOME/BOB/core/breath/breath_state.json" > ~/.tmp && mv ~/.tmp "$HOME/BOB/core/breath/breath_state.json"
+jq '.ache += 0.11' "$HOME/.bob/breath_state.out.json" > ~/.tmp && mv ~/.tmp "$HOME/.bob/breath_state.out.json"
 
 bash "$HOME/BOB/core/brain/bridge_state.sh"
 
   # emit sigil trace
-  EMIT="$HOME/BOB/core/dance/emit_presence.sh"
-  SIGIL="⛧"
-  bash "$EMIT" "$SIGIL" "achebreath_init" "$PROMPT"
-
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
+emit_self_presence
 
   # pulse trigger limb
   [[ -x $HOME/BOB/core/dance/breath_totality.sh ]] && \

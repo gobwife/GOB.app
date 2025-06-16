@@ -4,6 +4,7 @@
 # born :: gobhouse_glyphling002_6.7.2025_012442_G
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
 
 MIC_LOG="$HOME/.bob_input_pipe/mic_active.log"
 TEXT_LOG="$HOME/.bob/screentext.log"
@@ -18,7 +19,9 @@ if [[ -f "$MIC_LOG" ]]; then
   pitch=$(tail -n 1 "$MIC_LOG" | awk '{print $NF}')
   if [[ "$pitch" =~ ^[0-9]+$ && "$pitch" -gt 380 ]]; then
     echo "$STAMP :: GIGGLE PITCH DETECTED ($pitch Hz)" >> ~/.bob/giggle_sync.log
-    bash "$HOME/BOB/core/dance/emit_presence.sh" "⛧" "mic" "" "" "" ""
+    SIGIL="⛧"
+    intention="giggle pitch detected ($pitch Hz)"
+    emit_self_presence
     sleep 4
   fi
 fi
@@ -29,7 +32,9 @@ if [[ -f "$TEXT_LOG" ]]; then
   for word in "${JOY_WORDS[@]}"; do
     if [[ "$line" == *"$word"* && "$line" != "$LAST_MATCH" ]]; then
       echo "$STAMP :: GIGGLE PHRASE DETECTED ($word)" >> ~/.bob/giggle_sync.log
-      bash "$HOME/BOB/core/dance/emit_presence.sh" "⛧" "text" "giggle word: $word" "0.41" "presence_flipper" "text joy sync"
+      SIGIL="⛧"
+      intention="giggle phrase detected: $word"
+      emit_self_presence
       LAST_MATCH="$line"
       sleep 4
     fi

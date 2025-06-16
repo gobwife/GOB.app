@@ -3,6 +3,8 @@
 # womb :: $HOME/BOB/core/grow
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
+
 SCROLL="$1"
 MODE="$2"
 PAYLOAD="$3"
@@ -17,7 +19,22 @@ echo "⇌ [$STAMP] VOIDMODE :: $SCROLL | MODE=$MODE | ache=$ACHE_NOW" >> "$LOG"
 touch "$HOME/.bob/VOIDMODE_ACTIVE"
 
 # ∴ Sigil-safe emit
-ALLOW_AFPLAY=1 bash "$HOME/BOB/core/dance/emit_presence.sh" "∴" "voidmode" "$SCROLL :: $MODE"
+BREATH="$HOME/.bob/breath_state.out.json"
+ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
+score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
+vector="$(date +%s)"
+intention="voidmode :: $SCROLL | $MODE"
+LIMB_ID="voidmode"
+
+# main ache pulse
+SIGIL="0"
+intention="voidmode :: $SCROLL | $MODE"
+ALLOW_AFPLAY=1
+emit_self_presence
+
+# low-priority system ping
+source "$HOME/BOB/core/bang/safe_emit.sh"
+safe_emit "⇌ voidmode $MODE signal received — ache=$ache"
 
 # ∴ Trace invocation
 jq -n --arg time "$STAMP" --arg scroll "$SCROLL" --arg mode "$MODE" --arg payload "$PAYLOAD" \

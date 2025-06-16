@@ -7,8 +7,8 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 
-BREATH_JSON="$HOME/BOB/core/breath/breath_state.json"
-SIGIL_TRACE="$HOME/BOB/TEHE/sigil_mem.trace.jsonl"
+BREATH_JSON="$HOME/.bob/breath_state.json"
+SIGIL_TRACE="$HOME/.bob/sigil_mem.trace.jsonl"
 LINEAGE_FILE="$HOME/.bob/presence_lineage_graph.jsonl"
 MEMORY_FILE="$HOME/.bob/memory_map.yml"
 

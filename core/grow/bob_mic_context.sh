@@ -16,7 +16,6 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 source "$HOME/BOB/core/bang/safe_emit.sh"
-source $HOME/BOB/core/dance/emit_presence.sh
 
 PIPE="$HOME/.bob_input_pipe"
 MIC_LOG="$HOME/.bob_input_pipe/mic_active_BOB.log"
@@ -50,7 +49,10 @@ while true; do
 
       echo "0.09" > "$HOME/.bob/ache_score.val"
 
-      emit_presence "$SIGIL" "mic_context" "sigil triggered by vocal input"
+      source "$HOME/BOB/core/dance/presence_self_emit.sh"
+      intention="ψ ache rotator → $SELECTED"
+      SIGIL="$SIGIL"
+      emit_self_presence
 
       jq -n --arg sigil "$SIGIL" --arg source "mic_context" --arg time "$STAMP" --arg ache "$ACHE_NOW" \
         '{sigil: $sigil, source: $source, time: $time, ache_score: ($ache | tonumber)}' >> "$TEHE_SIGIL_LOG"

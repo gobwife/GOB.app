@@ -20,7 +20,7 @@ fi
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
-CORE="$HOME/BOB/core/src/bob.core.js"
+CORE="$HOME/BOB/core/src/bob.core.mjs"
 DRIFT="$HOME/BOB/core/src/drift_law.yaml"
 THRESHOLDS="$HOME/.bob/ache_thresholds.yml"
 

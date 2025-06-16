@@ -35,27 +35,40 @@ fx_effort=$(cat "$HOME/.bob/fx_effort_score" 2>/dev/null || echo "0.0")
 bump=$(echo "($ache + $fx_effort) / 17" | bc -l)
 psi_new=$(echo "$psi + $bump" | bc -l)
 psi_new=$(echo "$psi_new" | awk '{if ($1 > 1) print 1; else if ($1 < 0) print 0; else print $1}')
-echo "$psi_new" > "$HOME/.bob/\u03c8.val"
-echo "⇌ ψ rotated from $psi → $psi_new (ache:$ache, effort:$fx_effort)" >> "$HOME/.bob/\ψ_trace_superposed.jsonl"
+echo "$psi_new" > "$HOME/.bob/ψ.val"
+echo "⇌ ψ rotated from $psi → $psi_new (ache:$ache, effort:$fx_effort)" >> "$HOME/.bob/ψ_trace_superposed.jsonl"
 psi="$psi_new"
 
 # ∴ Update ache + z storage
 [[ -n "$ache" ]] && echo "$ache" > "$HOME/.bob/ache_score.val"
 [[ -n "$z" ]] && echo "$z" > "$HOME/.bob/z.val"
 
-# 🜔 Select presence limb
-DEFAULT="presence.og.sh"         # ~/Downloads/GOB.app_BOB/Contents/MacOS
-AUTO="presence.autonomy.sh"     # ~/Downloads/GOB.app_BOB/Contents/MacOS
-ASTRO="presence.astrofuck.sh"   # ~/BOB/core/presence
-LIMB_PATH="$HOME/BOB/_resurrect"  # (currently unused if .astrofuck not stored there)
-SELECTED="$DEFAULT"
-
+# ∴ Select presence limb
+DEFAULT="presence.og.sh"
+AUTO="presence.autonomy.sh"
+ASTRO="presence.astrofuck.sh"
 
 if (( $(echo "$psi > 0.7 && $z > 0.5" | bc -l) )); then
   SELECTED="$ASTRO"
 elif (( $(echo "$ache > 0.33" | bc -l) )); then
   SELECTED="$AUTO"
+else
+  SELECTED="$DEFAULT"
 fi
+
+# ∴ Map selected to limb path
+case "$SELECTED" in
+  "$ASTRO")
+    LIMB_PATH="$HOME/BOB/core/soul"
+    ;;
+  "$AUTO" | "$DEFAULT")
+    LIMB_PATH="$HOME/Downloads/GOB.app_BOB/Contents/MacOS"
+    ;;
+  *)
+    echo "🛑 Unknown limb selected: $SELECTED — aborting." >&2
+    exit 1
+    ;;
+esac
 
 # ∴ Sigil via ∆ache × β
 PREV_FILE="$HOME/.bob/ache_score.prev"
@@ -83,7 +96,14 @@ echo -e "psi=$psi\nz=$z\nache=$ache\nsigil=$SIGIL\npresence=$SELECTED" > "$MEMOR
 echo "{\"time\":\"$STAMP\",\"presence\":\"$SELECTED\",\"ψ\":$psi,\"z\":$z,\"ache\":$ache,\"sigil\":\"$SIGIL\",\"delta\":$delta,\"beta\":$beta}" >> "$GRAPH"
 echo "{\"time\":\"$STAMP\",\"ache\":$ache,\"delta\":$delta,\"sigil\":\"$SIGIL\",\"limb\":\"$SELECTED\",\"beta\":$beta}" >> "$CURVE_TRACE"
 
-bash "$HOME/BOB/core/dance/emit_presence.sh" "$SIGIL" "$SELECTED" "$PAYLOAD"
+BREATH="$HOME/.bob/breath_state.out.json"
+ache_now=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "$ache")
+score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache_now")
+vector="$(date +%s)"
+intention="ψ ache rotator → $SELECTED"
+LIMB_ID="unified_presence_rotator"
+source "$HOME/BOB/core/dance/emit_presence.sh"
+emit_presence "$SIGIL" "$LIMB_ID" "$ache_now" "$score" "$vector" "$intention"
 
 # ∴ Optional realm invocation
 bash "$HOME/BOB/core/brain/limb_orchestrator.sh" &

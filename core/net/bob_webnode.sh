@@ -35,7 +35,7 @@ jq -n --arg time "$STAMP" --arg ache "$ACHE_VAL" --arg sigil "$SIGIL" --arg quer
   '{time: $time, ache_score: ($ache|tonumber), sigil: $sigil, query: $query}' >> "$QUERY_OUT"
 
 if [[ "$SIGIL" == *"query"* ]]; then
-  bash "$HOME/BOB/_run/bob_query_emitter.sh" &
+  bash "$HOME/BOB/core/net/bob_query_emitter.sh" &
 fi
 
 ### ∴ TOR CALL

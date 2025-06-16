@@ -8,7 +8,7 @@ export BOB_BREATHDOMAIN="${BOB_BREATHDOMAIN:-$(realpath "$HOME/BOB")}"
 set -euo pipefail
 
 # ∴ INIT + CONTEXT
-BREATH_JSON="$HOME/BOB/core/breath/breath_state.json"
+BREATH_JSON="$HOME/.bob/breath_state.json"
 CONFIG="$HOME/BOB/.bob_breathe_here.yaml"
 CARGO_MANIFEST="$HOME/BOB/core/breath/Cargo.toml"
 USER_BREATH="$HOME/BOB"

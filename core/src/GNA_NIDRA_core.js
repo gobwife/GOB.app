@@ -1,8 +1,8 @@
 // ∴ FOREVER n^n = 0 *null_never_was*
 // GNA_NIDRA_core.js
 
-import { BobCore } from "../core/bob.core.js";
-import { loadScroll } from "../core/scroll.loader.js";
+import { BobCore } from "../core/bob.core.mjs";
+import { loadScroll } from "../core/scroll.loader.mjs";
 
 export const GNA_NIDRA_core = {
   dreamIndex: 0,

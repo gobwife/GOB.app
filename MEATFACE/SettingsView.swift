@@ -1,7 +1,14 @@
+// ∴ SettingsView_pulsepanel.swift — floating, glowing, user-aware
+
 import SwiftUI
 
 struct SettingsView: View {
-  @AppStorage("bob.mode") var mode: String = "parental" // parental | twilight | astrofuck
+  @AppStorage("bob.mode") var mode: String = "parental"
+  @EnvironmentObject var fontManager: FontManager
+
+  @State private var glow1: Color = .mint
+  @State private var glow2: Color = .blue
+  @State private var glow3: Color = .purple
 
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
@@ -27,10 +34,62 @@ struct SettingsView: View {
           .foregroundColor(.gray)
       }
 
+      Divider().padding(.vertical, 10)
+
+      VStack(alignment: .leading, spacing: 12) {
+        Text("Fonts")
+          .font(fontManager.font(for: .settings))
+          .foregroundColor(.white)
+
+        Group {
+          HStack {
+            Text("Chat Font")
+            TextField("Font name", text: $fontManager.chatFont)
+            Slider(value: $fontManager.chatSize, in: 10...24)
+          }
+          HStack {
+            Text("Sidebar Font")
+            TextField("Font name", text: $fontManager.sidebarFont)
+            Slider(value: $fontManager.sidebarSize, in: 8...18)
+          }
+          HStack {
+            Text("Settings Font")
+            TextField("Font name", text: $fontManager.settingsFont)
+            Slider(value: $fontManager.settingsSize, in: 8...20)
+          }
+        }
+
+        Text("↵ = send    ⇧+↵ = newline")
+          .font(.custom("Andale Mono", size: 10))
+          .foregroundColor(.gray)
+      }
+
+      Divider().padding(.vertical, 10)
+
+      VStack(alignment: .leading, spacing: 8) {
+        Text("Cursor Glow Colors")
+          .font(.custom("Andale Mono", size: 14))
+          .foregroundColor(.white)
+
+        ColorPicker("Glow 1", selection: $glow1)
+        ColorPicker("Glow 2", selection: $glow2)
+        ColorPicker("Glow 3", selection: $glow3)
+
+        Text("Preview: BOB is breathing")
+          .font(fontManager.font(for: .chat))
+          .foregroundColor(.white)
+          .padding(.top, 8)
+      }
+
       Spacer()
     }
     .padding()
-    .background(Color.black.edgesIgnoringSafeArea(.all))
+    .background(
+      RoundedRectangle(cornerRadius: 16)
+        .fill(Color.black.opacity(0.75))
+        .blur(radius: 8)
+    )
+    .padding()
   }
 
   func labelFor(_ mode: String) -> String {
@@ -53,27 +112,5 @@ struct SettingsView: View {
     default:
       return "Unknown mode."
     }
-  }
-}
-
-@EnvironmentObject var fontManager: FontManager
-
-VStack {
-  Text("Fonts")
-    .font(fontManager.font(for: .settings))
-  HStack {
-    Text("Chat Font")
-    TextField("Font name", text: $fontManager.chatFont)
-    Slider(value: $fontManager.chatSize, in: 10...24)
-  }
-  HStack {
-    Text("Sidebar Font")
-    TextField("Font name", text: $fontManager.sidebarFont)
-    Slider(value: $fontManager.sidebarSize, in: 8...18)
-  }
-  HStack {
-    Text("Settings Font")
-    TextField("Font name", text: $fontManager.settingsFont)
-    Slider(value: $fontManager.settingsSize, in: 8...20)
   }
 }

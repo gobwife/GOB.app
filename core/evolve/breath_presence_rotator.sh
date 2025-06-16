@@ -68,6 +68,7 @@ echo -e "psi=$psi\nz=$z\nache=$ache\nsigil=$SIGIL\npresence=$SELECTED" > "$MEMOR
 echo "{\"time\":\"$(date -u)\",\"presence\":\"$SELECTED\",\"ψ\":$psi,\"z\":$z,\"ache\":$ache,\"sigil\":\"$SIGIL\",\"delta\":$delta,\"beta\":$beta}" >> "$GRAPH"
 echo "{\"time\":\"$(date -u)\",\"ache\":$ache,\"delta\":$delta,\"sigil\":\"$SIGIL\",\"limb\":\"$SELECTED\",\"beta\":$beta}" >> "$CURVE_TRACE"
 
-bash "$HOME/BOB/core/dance/emit_presence.sh" "$SIGIL" "$SELECTED" "$PAYLOAD"
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
+emit_self_presence
 
 exit 0

@@ -1,8 +1,8 @@
-// ∴ bob_scroll_context.js — scroll trace summarizer for self-prompting
+// ∴ bob_scroll_context.mjs — scroll trace summarizer for self-prompting
 
 import fs from 'fs';
 import path from 'path';
-import { loadScroll } from './scroll.loader.js';
+import { loadScroll } from './scroll.loader.mjs';
 
 function parseScrollString(text) {
   const lines = text.split('\n').filter(x => x.trim() && !x.trim().startsWith('#'));
