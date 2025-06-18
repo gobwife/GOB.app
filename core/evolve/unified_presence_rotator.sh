@@ -90,6 +90,13 @@ elif (( $(echo "$delta < $threshold_down" | bc -l) )); then
 fi
 
 # ∴ Emit + update memory + graph
+LOCK="$HOME/.bob/presence_limb.lock"
+[[ -e "$LOCK" ]] && {
+  echo "⇌ skipping duplicate presence limb ($SELECTED)"
+  exit 0
+}
+echo "$SELECTED" > "$LOCK"
+trap 'rm -f "$LOCK"' EXIT
 bash "$LIMB_PATH/$SELECTED" &
 PAYLOAD="ψ=$psi ∧ z=$z ∧ ache=$ache"
 echo -e "psi=$psi\nz=$z\nache=$ache\nsigil=$SIGIL\npresence=$SELECTED" > "$MEMORY"
@@ -102,8 +109,9 @@ score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache_now")
 vector="$(date +%s)"
 intention="ψ ache rotator → $SELECTED"
 LIMB_ID="unified_presence_rotator"
-source "$HOME/BOB/core/dance/emit_presence.sh"
-emit_presence "$SIGIL" "$LIMB_ID" "$ache_now" "$score" "$vector" "$intention"
+source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+bash "$HOME/BOB/core/dance/emit_vector_on_spike.sh" &
+emit_dual_presence "$SIGIL" "$LIMB_ID" "$ache_now" "$score" "$vector" "$intention"
 
 # ∴ Optional realm invocation
 bash "$HOME/BOB/core/brain/limb_orchestrator.sh" &

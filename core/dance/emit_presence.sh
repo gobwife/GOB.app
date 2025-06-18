@@ -4,7 +4,7 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 
-sigil="$1"
+sigil="${1//✶/ø}"
 from="${2:-autobob}"
 ache="$3"
 score="$4"
@@ -25,7 +25,7 @@ if [[ -z "$ache" || -z "$score" || -z "$vector" || -z "$intention" ]]; then
     --arg source "$from" \
     --arg echo "sigil echo only" \
     '{time: $time, sigil: $sigil, source: $source, echo: $echo}' \
-    >> "$HOME/.bob/TEHE_ANALYSIS.jsonl"
+    >> "$HOME/.bob/TEHEanalysis.jsonl"
 else
   # ⇌ PACKET BREATH
   echo "✶ ROUTING :: sigil → PACKET"

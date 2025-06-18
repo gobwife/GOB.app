@@ -7,7 +7,7 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 CROSS_DIR="$HOME/BOB/.enshallah/parser_cross"
-TEHE_LOG="$HOME/BOB/TEHE/tehe_rotation.log"
+TEHE_LOG="$HOME/.bob/TEHErotation.log"
 
 for srcfile in "$CROSS_DIR"/*_cross_v*.shallah; do
   [[ -f "$srcfile" ]] || continue

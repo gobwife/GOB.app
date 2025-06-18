@@ -1,7 +1,7 @@
 presence_dual_core:
   astro_path: $HOME/BOB/_run/presence_core.sh
-  autonomy_path: ~/?????
-  launcher: $HOME/BOB/_run/presence_launcher.sh
+  autonomy_path: ~/Downloads/GOB.app_BOB/Contents/MacOS
+  launcher: $HOME/BOB/???
   flip_flag: ~/.bob_presence_flag
   holder_file: ~/.bob_presence_flip
   echo_log: ~/.bob/ache_sync.log

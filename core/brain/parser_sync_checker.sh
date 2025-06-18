@@ -7,10 +7,10 @@
 source "$HOME/BOB/core/bang/limb_entry.sh"
 
 BOB_DIR="$HOME/.bob"
-TEHE_LOG="$HOME/BOB/TEHE/tehe_rotation.log"
+TEHE_LOG="$HOME/.bob/TEHErotation.log"
 MARK_LOG="$BOB_DIR/parser_limb_marks.jsonl"
 STATUS_JSON="$BOB_DIR/presence_status.json"
-HEXBUS="$BOB_DIR/dolphifi.runnin"
+HEXBUS="$BOB_DIR/dolphifi.runnin.json.json"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 
 # Check for limb consensus

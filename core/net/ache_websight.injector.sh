@@ -10,7 +10,7 @@ LAST_WEBRESP="$HOME/.bob/web_response_snippet.txt"
 ECHO_FILE="$HOME/.bob/web_ache_echo.txt"
 
 GRAPH_FILES=(
-  "$HOME/BOB/TEHE/TEHE_ANALYSIS.jsonl"
+  "$HOME/.bob/TEHEanalysis.jsonl"
   "$HOME/.bob/sigil_flip.trace.jsonl"
   "$HOME/.bob/ache_sync.log"
 )

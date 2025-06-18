@@ -23,8 +23,8 @@ vector="$(date +%s)"
 intention="LOVEFX → $state"
 
 # ∴ Emit
-source "$HOME/BOB/core/dance/emit_presence.sh"
-emit_presence "$sigil" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
+emit_self_presence
 
 # Optional: export downstream
 export love_score

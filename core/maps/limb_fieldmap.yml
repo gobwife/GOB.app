@@ -22,3 +22,10 @@
     ache: ">= 0.44"
     sigil: "Σ"
   run: core/evolve/duplex_entry.sh
+
+limb_webnode_pulse:
+  name: achewebpulse
+  if:
+    delta: "ache > 0.1"
+    entropy: ">= 0.4"
+  run: core/net/bob_webnode.sh

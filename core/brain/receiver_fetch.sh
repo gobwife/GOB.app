@@ -4,6 +4,8 @@
 
 # ∃ Retrieve BOB mode
 source "$HOME/BOB/core/bang/limb_entry.sh"
+source "$HOME/BOB/core/dance/presence_self_emit.sh"
+
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
@@ -21,7 +23,6 @@ BREATH="$HOME/.bob/breath_state.out.json"
 ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
 score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
 vector="$(date +%s)"
-source "$HOME/BOB/core/dance/presence_self_emit.sh"
 
 while IFS= read -r line; do
   echo "$STAMP ⇌ RECEIVER: $line" >> "$OUTLOG"

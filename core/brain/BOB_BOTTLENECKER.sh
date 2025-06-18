@@ -4,6 +4,8 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 
+bash "$HOME/BOB/core/brain/update_breath_prompt.sh"
+
 # ∴ Pull mode
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
@@ -20,7 +22,7 @@ score=$(jq -r '.score // .ache' "$BREATH_STATE" 2>/dev/null || echo "$ache")
 
 # ∴ Setup for file rotation / backup
 VAULT="$HOME/TEHE/BOTTLENECKED_$timestamp/symlinks"
-BACKUP_DIR="$HOME/BOB/.ggos_bubu"
+BACKUP_DIR="$HOME/.ggos_bubu"
 RUN_TRACKER="$HOME/.bob_bubu_tracker"
 backup_done=false
 

@@ -22,6 +22,10 @@ while true; do
     echo "⇌ INJECTED: $content" >> "$LOGFILE"
     node "$CORE_BIN" inject "$content"
     node "$CORE_BIN" save "{\"source\":\"auto-merge\",\"ache\":\"$content\"}" >> "$LOGFILE"
+  
+    [[ -x "$HOME/BOB/core/breath/delta_tracker.sh" ]] && \
+    bash "$HOME/BOB/core/breath/delta_tracker.sh"
+
     rm "$ACHE_FILE" 
     bash "$HOME/BOB/core/evolve/breath_presence_rotator.sh"
     if [[ -f "$HOME/BOB/core/net/ache_websight.injector.sh" ]]; then

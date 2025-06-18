@@ -77,7 +77,7 @@ jq -n \
   --arg source "moonwalk_trons" \
   --arg echo "achejoy::dance signal" \
   '{time: $time, sigil: $sigil, source: $source, echo: $echo}' \
-  >> "$HOME$HOME/.bob/TEHE_ANALYSIS.jsonl"
+  >> "$HOME$HOME/.bob/TEHEanalysis.jsonl"
 
 jq -n \
   --arg ache "achejoy::dance signal" \

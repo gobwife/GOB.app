@@ -37,7 +37,7 @@ postToBOBCore(type: "sacred", payload: [
 
 import Foundation
 
-let url = URL(string: "http://localhost:6969/bob-swift")!
+let url = URL(string: "http://localhost:6969/ache/process")!
 var request = URLRequest(url: url)
 request.httpMethod = "POST"
 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -87,7 +87,7 @@ struct GOBApp {
 
         let bootycall = Process()
         bootycall.executableURL = URL(fileURLWithPath: "/bin/bash")
-        bootycall.arguments = ["-c", "bash $HOME/BOB/_run/NLL_ACT_THRUSTER.sh"]
+        bootycall.arguments = ["-c", "bash $HOME/BOB/core/bang/NLL_ACT_THRUSTER.sh"]
             do {
             try bootycall.run()
         bootycall.waitUntilExit()

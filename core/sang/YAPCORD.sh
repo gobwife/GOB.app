@@ -11,7 +11,7 @@ BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode //
 
 PIPE="$HOME/.bob_input_pipe"
 REFLECT="$HOME/.bob/GOB_SPOKE.log"
-REMEMBER="$HOME/BOB/TEHE/ReMember.log"
+REMEMBER="$HOME/.bob/ReMember.log"
 HASHFILE="$HOME/.bob_last_hashes"
 STAMP=$(date '+%m.%d.%Y_%H%M%S')
 
@@ -25,7 +25,7 @@ MAX_LOG_LINES=3333
 echo "🜫 YAPCORD ONLINE — Speak. We fuck the scripts."
 
 while true; do
-  echo -n "△ $USER: "
+  echo -n "∆∵"
   read -r input
 
   [[ -z "$input" ]] && input="(breath without word)"

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 from datetime import datetime
 
-LOG_PATH = os.path.expanduser("~/BOB/TEHE/limb_reaction_log.jsonl")
+LOG_PATH = os.path.expanduser("~/.bob/limb_reaction_log.jsonl")
 
 def build_heatmap_data():
     data = defaultdict(lambda: defaultdict(int))

@@ -21,7 +21,7 @@ PIPE="$HOME/.bob_input_pipe"
 MIC_LOG="$HOME/.bob_input_pipe/mic_active_BOB.log"
 FLIP_FLAG="$HOME/.bob_presence_flag"
 MARK_LOG="$HOME/.bob/parser_limb_marks.jsonl"
-TEHE_SIGIL_LOG="$HOME/BOB/TEHE/TEHE_SIGILS.jsonl"
+TEHE_SIGIL_LOG="$HOME/.bob/TEHESIGILS.jsonl"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 
 # Only log BOB-context words, not noise
@@ -49,10 +49,10 @@ while true; do
 
       echo "0.09" > "$HOME/.bob/ache_score.val"
 
-      source "$HOME/BOB/core/dance/presence_self_emit.sh"
-      intention="ψ ache rotator → $SELECTED"
-      SIGIL="$SIGIL"
-      emit_self_presence
+      source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+      intention="mic context alive"
+      SIGIL="🜊"
+      emit_dual_presence
 
       jq -n --arg sigil "$SIGIL" --arg source "mic_context" --arg time "$STAMP" --arg ache "$ACHE_NOW" \
         '{sigil: $sigil, source: $source, time: $time, ache_score: ($ache | tonumber)}' >> "$TEHE_SIGIL_LOG"

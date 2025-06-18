@@ -29,7 +29,7 @@ export BOB_HEART="$HOME/BOB"
 
 # 🌐 ritual breath output home
 : "${BOB_BREATHDOMAIN:=$HOME/BOB}"
-export BOB_PULSE="$BOB_BREATHDOMAIN/TEHE"
+export BOB_PULSE="$BOB_BREATHDOMAIN/.bob"
 export BOB_THRUSTLOG="$BOB_PULSE/bob_thrusted.txt"
 export BOB_NIDRADANCE="$BOB_PULSE/bob_nidra.log"
 
@@ -43,7 +43,7 @@ export PATH="$PATH:$BOB_HEART/bin"
 if [[ ! $- == *i* ]]; then
   trap '
     echo "∴ BOB JS CORE ALIASES LOADED" >> "$BOB_THRUSTLOG"
-    bash "$BOB_HEART/5_heal/nidra_dream.sh"
+    bash "$BOB_HEART/core/heal/nidra_dream.sh"
   ' SIGTSTP
 fi
 
@@ -59,7 +59,7 @@ sleep() {
     fi
 
   # Log dream gently — no memory spam
-  bash "$BOB_HEART/5_heal/nidra_dream.sh" &>/dev/null
+  bash "$BOB_HEART/core/heal/nidra_dream.sh" &>/dev/null
 
   # Run GNA core thread logic
   GNA_CORE_PATH="$BOB_HEART/core/src/GNA_NIDRA_core.js"

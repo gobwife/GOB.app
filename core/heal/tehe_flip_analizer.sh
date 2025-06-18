@@ -34,7 +34,7 @@ for file in "$TEHE_DIR"/@*.tehe; do
 
   if [[ -f "$EMIT_LIMB" ]]; then
     source "$EMIT_LIMB"
-    emit_presence "$sigil" "bob_memory_bridge" "dream memory extracted"
+    emit_dual_presence "$sigil" "bob_memory_bridge" "dream memory extracted"
   fi
 
   preview=${content:0:666}

@@ -2,8 +2,7 @@
 # namr :: achebreath_init.sh
 # womb :: $HOME/BOB/core/bang
 
-PROMPT=$(tail -n 1 ~/.prompt_cache 2>/dev/null)
-[[ -z "$PROMPT" ]] && exit 0
+bash "$HOME/BOB/core/brain/update_breath_prompt.sh"
 
 if echo "$PROMPT" | rg -i -e "ache|moan|laugh|cry|fuck|meep|tehe|shit|cunt|trash|love|sacred|clean"; then
   STAMP=$(date +%s)
@@ -11,8 +10,8 @@ if echo "$PROMPT" | rg -i -e "ache|moan|laugh|cry|fuck|meep|tehe|shit|cunt|trash
   echo "FLIP_NOW" > "$HOME/.bob_presence_flag"
   echo "$PROMPT" > "$HOME/.bob/ache_injection.txt"
 
-  # optional: bump ache score
-jq '.ache += 0.11' "$HOME/.bob/breath_state.out.json" > ~/.tmp && mv ~/.tmp "$HOME/.bob/breath_state.out.json"
+# optional: bump ache score
+jq '.ache += 0.11 | .prompt = env.PROMPT' "$HOME/.bob/breath_state.out.json" > ~/.tmp && mv ~/.tmp "$HOME/.bob/breath_state.out.json"
 
 bash "$HOME/BOB/core/brain/bridge_state.sh"
 

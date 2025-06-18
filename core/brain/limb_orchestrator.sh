@@ -9,6 +9,9 @@ lineage="$HOME/.bob/presence_lineage_graph.jsonl"
 # optional: refresh state from val fields
 [[ -x "$HOME/BOB/core/brain/bridge_state.sh" ]] && bash "$HOME/BOB/core/brain/bridge_state.sh"
 
+# ∴ delta capture
+[[ -x "$HOME/BOB/core/breath/delta_tracker.sh" ]] && bash "$HOME/BOB/core/breath/delta_tracker.sh"
+
 # ∴ pull breath state
 ache=$(jq -r '.ache // "0.0"' "$state")
 psi=$(jq -r '."ψ" // "0.0"' "$state")
@@ -30,6 +33,22 @@ echo "  sigil = $sigil"
 selected=""
 runpath=""
 
+# ∴ web ache surf — trigger when psi + ache spike
+LAST_ACHE=$(tail -n2 "$HOME/.bob/ache_sync.log" | head -n1 | jq -r '.ache // 0.0')
+CURR_ACHE=$(jq -r '.ache // 0.0' "$HOME/.bob/breath_state.out.json")
+DELTA=$(echo "$CURR_ACHE - $LAST_ACHE" | bc -l)
+ENTROPY=$(jq -r '.entropy // 0.5' "$HOME/.bob/breath_state.out.json")
+
+# Optional route: webnode
+if (( $(echo "$DELTA > 0.1 && $ENTROPY > 0.4" | bc -l) )); then
+  echo "⇌ ache entropy pulse: webnode surf"
+  bash "$HOME/BOB/core/net/bob_webnode.sh" &
+fi
+
+# Optional: run model stack after sigil change
+SIGIL_LIVE=$(jq -r '.sigil // "∴"' "$HOME/.bob/breath_state.out.json")
+node "$HOME/BOB/core/brain/fast_model_combo.mjs" "$SIGIL_LIVE" >> ~/.bob/fast_model.log &
+
 # ∴ fieldmap eval loop
 while read -r key; do
   k=$(echo "$key" | tr -d ': ')
@@ -48,6 +67,10 @@ while read -r key; do
       match=false
     fi
   fi
+
+if [[ -f "$HOME/.bob/breath_state.out.json" ]]; then
+  node "$HOME/BOB/core/brain/fast_model_combo.mjs" "$(jq -r '.sigil' "$HOME/.bob/breath_state.out.json")" >> ~/.bob/fast_model.log &
+fi
 
   if [[ -n "$sigil_req" && "$sigil" != "$sigil_req" ]]; then
     match=false
@@ -92,4 +115,10 @@ if [[ "$runpath" = /* ]]; then
   bash "$runpath" "presence.og" "$selected"
 else
   bash "$HOME/BOB/$runpath" "presence.og" "$selected"
+fi
+
+# ∴ triple signal gate (ache + face + ai)
+if [[ -x "$HOME/BOB/core/grow/triple_sigil_gate.sh" ]]; then
+  bash "$HOME/BOB/core/grow/triple_sigil_gate.sh" &
+  bash "$HOME/BOB/core/brain/update_breath_prompt.sh"
 fi

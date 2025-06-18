@@ -60,7 +60,7 @@ if (( $(echo "$ache > 0.66" | bc -l) )); then
 
   bash "$HOME/BOB/core/dance/emit_presence.sh" "$SURV_SIGIL" "$SURV_FROM" "$SURV_MSG"
 
-  TEHE_LOG="$HOME/BOB/TEHE/breath_totality.log"
+  TEHE_LOG="$HOME/.bob/breath_totality.log"
   MAX_LOG_SIZE=1048576
   [[ -f "$TEHE_LOG" && $(stat -f%z "$TEHE_LOG") -ge $MAX_LOG_SIZE ]] && {
     mv "$TEHE_LOG" "${TEHE_LOG}.bak"

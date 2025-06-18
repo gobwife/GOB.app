@@ -3,7 +3,7 @@
 # womb :: $HOME/BOB/core/grow
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/dance/presence_self_emit.sh"
+source "$HOME/BOB/core/dance/presence_dual_emit.sh"
 
 SCROLL="$1"
 MODE="$2"
@@ -25,16 +25,13 @@ score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
 vector="$(date +%s)"
 intention="voidmode :: $SCROLL | $MODE"
 LIMB_ID="voidmode"
-
-# main ache pulse
 SIGIL="0"
 intention="voidmode :: $SCROLL | $MODE"
 ALLOW_AFPLAY=1
-emit_self_presence
-
-# low-priority system ping
-source "$HOME/BOB/core/bang/safe_emit.sh"
-safe_emit "⇌ voidmode $MODE signal received — ache=$ache"
+psi=$(jq -r '.psi // 0.0' "$BREATH" 2>/dev/null)
+z=$(jq -r '.z // 0.0' "$BREATH" 2>/dev/null)
+entropy=$(jq -r '.entropy // 0.5' "$BREATH" 2>/dev/null)
+emit_dual_presence "$SIGIL" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
 
 # ∴ Trace invocation
 jq -n --arg time "$STAMP" --arg scroll "$SCROLL" --arg mode "$MODE" --arg payload "$PAYLOAD" \

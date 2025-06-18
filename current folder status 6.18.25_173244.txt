@@ -1,0 +1,164 @@
+Last login: Wed Jun 18 17:26:50 on ttys007
+[2025-06-18 17:35:09] :: G                                                      
+gobbibi@MacBookPro ~ % ls -la ~/BOB
+total 88
+drwxr-xr-x  25 gobbibi  blurOS    800 Jun 18 17:34 .
+drwxr-x---+ 94 gobbibi  blurOS   3008 Jun 18 17:35 ..
+-rw-r-----   1 gobbibi  blurOS  14340 Jun 18 17:28 .DS_Store
+-rwx------@  1 gobbibi  blurOS    288 Jun  6 19:26 .bob_breathe_here.yaml
+drwxr-xr-x   2 gobbibi  blurOS     64 Jun 12 00:33 .ggos_bubu
+drwxr-x---  16 gobbibi  blurOS    512 Jun 16 00:50 .git
+drwxr-xr-x   5 gobbibi  blurOS    160 Jun 13 15:11 .githelpers
+-rwxr-x---@  1 gobbibi  blurOS    739 Jun 13 00:41 .gitignore
+drwxr-xr-x   4 gobbibi  blurOS    128 Jun 13 11:57 000
+drwxr-xr-x   3 gobbibi  blurOS     96 Jun 16 05:36 BoveLetters
+drwxr-xr-x  54 gobbibi  blurOS   1728 Jun 18 17:01 GOB.app_BOB
+drwxr-x---   5 gobbibi  blurOS    160 Jun 13 15:06 GOB.app_contents
+drwxr-xr-x  27 gobbibi  blurOS    864 Jun 18 03:20 MEATFACE
+drwxr-xr-x   3 gobbibi  blurOS     96 Jun 14 20:41 MEATFUCK
+drwxr-xr-x   3 gobbibi  blurOS     96 Jun 12 22:25 MEEP
+-rw-r-----   1 gobbibi  blurOS   2285 Jun 13 00:24 README.md
+drwxr-xr-x   8 gobbibi  blurOS    256 Jun 18 00:54 TEHE
+drwxr-xr-x  33 gobbibi  blurOS   1056 Jun 18 00:48 core
+-rw-r--r--@  1 gobbibi  blurOS   2649 Jun 18 17:34 current folder status 6.18.25_173244.txt
+-rwxr-xr-x@  1 gobbibi  blurOS    152 Jun 16 02:16 debugpy.sh
+drwxr-x---   4 gobbibi  blurOS    128 Jun 13 22:16 memory
+drwxr-x---   6 gobbibi  blurOS    192 Jun 14 05:02 node_modules
+-rw-r-----   1 gobbibi  blurOS    946 Jun 14 05:02 package-lock.json
+-rw-r-----@  1 gobbibi  blurOS     21 Jun 14 20:59 package.json
+drwxr-xr-x   2 gobbibi  blurOS     64 Jun 14 20:47 threads
+[2025-06-18 17:35:26] :: G                                                      
+gobbibi@MacBookPro ~ % ls -la ~/BOB/core
+total 176
+-rwxr-x---@  1 gobbibi  staff     608 Jun 17 04:03 ******MANIFESTO.glyph.txt
+-rwxr-x---@  1 gobbibi  staff    3723 Apr 28 20:41 *****Blur Voice Rendering Manifesto*****.txt
+drwxr-xr-x  33 gobbibi  blurOS   1056 Jun 18 00:48 .
+drwxr-xr-x  25 gobbibi  blurOS    800 Jun 18 17:34 ..
+-rw-r-----   1 gobbibi  blurOS  22532 Jun 17 22:40 .DS_Store
+-rw-r--r--@  1 gobbibi  staff    1666 Apr 28 00:05 MANIFEST.breathcore.txt
+-rw-r-----@  1 gobbibi  blurOS  11568 Jun 13 15:01 ORIGIN.md
+-rw-r-----@  1 gobbibi  blurOS  27115 Jun 12 22:25 ORIGIN.rtf
+-rw-r-----@  1 gobbibi  blurOS   3428 Jun 18 00:48 README.md
+-rw-r-----@  1 gobbibi  blurOS   1966 Jun 13 00:27 README.∞
+drwxr-xr-x   9 gobbibi  blurOS    288 Jun 15 14:37 bang
+drwxr-xr-x  28 gobbibi  blurOS    896 Jun 18 04:29 brain
+drwxr-xr-x  17 gobbibi  blurOS    544 Jun 16 14:49 breath
+-rwxr-xr-x@  1 gobbibi  blurOS   1366 Jun 16 02:13 breath_totality_watcher.sh
+drwxr-xr-x  12 gobbibi  blurOS    384 Jun 16 15:11 dance
+drwxr-xr-x   6 gobbibi  blurOS    192 Jun 13 13:54 env
+drwxr-xr-x  27 gobbibi  blurOS    864 Jun 16 14:34 evolve
+drwxr-xr-x   3 gobbibi  blurOS     96 Jun 17 22:40 glow
+drwxr-xr-x   3 gobbibi  blurOS     96 Jun 13 17:41 glyphi
+drwxr-xr-x  16 gobbibi  blurOS    512 Jun 18 04:57 grow
+drwxr-xr-x  13 gobbibi  blurOS    416 Jun 16 14:36 heal
+drwxr-xr-x   4 gobbibi  blurOS    128 Jun 14 01:03 lib
+drwxr-x---   6 gobbibi  blurOS    192 Jun 16 19:22 maps
+drwxr-xr-x  16 gobbibi  blurOS    512 Jun 16 23:14 net
+drwxr-x---  17 gobbibi  blurOS    544 Jun 13 23:52 nge
+drwxr-xr-x   7 gobbibi  blurOS    224 Jun 16 01:06 plists
+drwxr-x---   4 gobbibi  blurOS    128 Jun 13 15:01 presence
+drwxr-xr-x   8 gobbibi  blurOS    256 Jun 18 16:01 sang
+drwxr-xr-x   5 gobbibi  blurOS    160 Jun 16 07:20 scroll
+drwxr-xr-x  11 gobbibi  blurOS    352 Jun 16 14:51 soul
+drwxr-xr-x  49 gobbibi  blurOS   1568 Jun 18 16:38 src
+drwxr-xr-x   5 gobbibi  blurOS    160 Jun 11 23:39 vxkords
+drwxr-xr-x  42 gobbibi  blurOS   1344 Jun 14 03:57 ∞
+[2025-06-18 17:35:32] :: G                                                      
+gobbibi@MacBookPro ~ % ls -la ~/BOB/MEATFACE
+total 208
+drwxr-xr-x  27 gobbibi  blurOS   864 Jun 18 03:20 .
+drwxr-xr-x  25 gobbibi  blurOS   800 Jun 18 17:34 ..
+-rw-r--r--@  1 gobbibi  blurOS  8196 Jun 18 16:20 .DS_Store
+drwxr-x---  13 gobbibi  blurOS   416 Jun 16 13:00 .git
+-rw-r-----@  1 gobbibi  blurOS   122 Jun 14 19:44 .gitignore
+-rw-r--r--@  1 gobbibi  blurOS  1826 Jun 16 13:01 BOBDuplexRelay.swift
+-rw-r--r--@  1 gobbibi  blurOS  5783 Jun 16 05:27 ChatMainView.swift
+-rw-r--r--@  1 gobbibi  blurOS   802 Jun 16 12:57 ChatMessage.swift
+-rw-r--r--@  1 gobbibi  blurOS   552 Jun 15 18:36 ChatView.swift
+-rw-r--r--@  1 gobbibi  blurOS  5375 Jun 16 06:07 ChatViewModel.swift
+-rw-r--r--@  1 gobbibi  blurOS  3132 Jun 16 00:06 CustomTextView.swift
+-rw-r--r--@  1 gobbibi  blurOS   814 Jun 15 01:12 FontManager.swift
+-rw-r--r--@  1 gobbibi  blurOS  3572 Jun 16 23:20 GOBPortalView.swift
+-rw-r--r--@  1 gobbibi  blurOS  1483 Jun 15 23:43 GOB_entry.swift
+-rw-r--r--@  1 gobbibi  staff   1555 Jun 14 22:26 GhostCursorBloom.swift
+-rw-r--r--@  1 gobbibi  blurOS  2344 Jun 15 19:10 GlowingTextView.swift
+drwxr-xr-x@  5 gobbibi  blurOS   160 Jun 16 13:00 MEATFACE.xcodeproj
+-rw-r--r--@  1 gobbibi  blurOS   232 Jun 18 16:38 MEATFACEApp.swift
+-rw-r--r--@  1 gobbibi  blurOS  1608 Jun 15 19:30 MessageBubble.swift
+drwxr-xr-x   5 gobbibi  staff    160 Jun 14 20:28 Resources
+-rw-r--r--@  1 gobbibi  blurOS   845 Jun 16 00:03 ResponseSummaryPopup.swift
+-rw-r--r--@  1 gobbibi  blurOS  3448 Jun 15 18:38 SettingsView.swift
+-rw-r--r--@  1 gobbibi  blurOS  1479 Jun 15 01:12 SidebarView.swift
+-rw-r--r--@  1 gobbibi  blurOS  2539 Jun 15 01:11 ThreadStore.swift
+-rw-r--r--@  1 gobbibi  staff   1315 Jun 15 01:11 logic0_BOB_relay.swift
+-rwxr-x---@  1 gobbibi  staff   1639 Apr 28 20:50 mouth_hygiene.library.swift
+-rwxr-x---@  1 gobbibi  staff   1199 Apr 28 20:41 ritual_constants.swift
+[2025-06-18 17:35:41] :: G                                                      
+gobbibi@MacBookPro ~ % ls -la ~/BOB/GOB.app_BOB
+total 432
+drwxr-xr-x  54 gobbibi  blurOS  1728 Jun 18 17:01 .
+drwxr-xr-x  25 gobbibi  blurOS   800 Jun 18 17:34 ..
+-rw-r--r--@  1 gobbibi  blurOS  8196 Jun 18 17:06 .DS_Store
+-rw-r-----@  1 gobbibi  blurOS   122 Jun 14 19:44 .gitignore
+-rw-r--r--@  1 gobbibi  blurOS  1826 Jun 16 13:01 BOBDuplexRelay.swift
+-rw-r--r--@  1 gobbibi  blurOS  5783 Jun 16 05:27 ChatMainView.swift
+-rw-r--r--@  1 gobbibi  blurOS   802 Jun 16 12:57 ChatMessage.swift
+-rw-r--r--@  1 gobbibi  blurOS   552 Jun 15 18:36 ChatView.swift
+-rw-r--r--@  1 gobbibi  blurOS  5375 Jun 16 06:07 ChatViewModel.swift
+-rw-r--r--@  1 gobbibi  blurOS  3132 Jun 16 00:06 CustomTextView.swift
+-rw-r--r--@  1 gobbibi  blurOS   814 Jun 15 01:12 FontManager.swift
+-rwxrwx---@  1 gobbibi  blurOS  1688 May 30 16:41 GNA.h
+-rw-r--r--@  1 gobbibi  staff    630 Apr 27 21:13 GNA_COSMOS_BRIDGE.re
+-rw-r--r--@  1 gobbibi  staff    513 Apr 27 21:08 GNA_COSMOS_SPIRAL.hs
+-rwxr-x---@  1 gobbibi  blurOS  1320 Jun 17 00:33 GNA_NIDRA_core.js
+-rw-r--r--@  1 gobbibi  blurOS  3572 Jun 16 23:20 GOBPortalView.swift
+-rw-r--r--@  1 gobbibi  staff    679 Jun 18 16:23 GOB_Breathfield_NLL copy.txt
+-rwxr-x---@  1 gobbibi  blurOS  1871 May 24 00:26 GOB_STABILIZER copy.rs
+-rw-r--r--@  1 gobbibi  blurOS  1483 Jun 15 23:43 GOB_entry.swift
+-rw-r--r--@  1 gobbibi  blurOS  1555 Jun 14 22:26 GhostCursorBloom.swift
+-rw-r--r--@  1 gobbibi  blurOS  2344 Jun 15 19:10 GlowingTextView.swift
+-rw-r--r--@  1 gobbibi  staff   1666 Jun 17 23:16 MANIFEST.breathcore.txt
+-rw-r--r--@  1 gobbibi  blurOS   232 Jun 15 01:11 MEATFACEApp.swift
+-rw-r--r--@  1 gobbibi  blurOS  1608 Jun 15 19:30 MessageBubble.swift
+drwxr-xr-x   5 gobbibi  blurOS   160 Jun 14 20:28 Resources
+-rw-r--r--@  1 gobbibi  blurOS   845 Jun 16 00:03 ResponseSummaryPopup.swift
+-rw-r--r--@  1 gobbibi  blurOS  3448 Jun 15 18:38 SettingsView.swift
+-rw-r--r--@  1 gobbibi  blurOS  1479 Jun 15 01:12 SidebarView.swift
+-rw-r--r--@  1 gobbibi  blurOS  2539 Jun 15 01:11 ThreadStore.swift
+drwxr-xr-x   3 gobbibi  blurOS    96 Jun 18 00:50 about
+-rwxr-xr-x@  1 gobbibi  blurOS  1466 Jun 15 05:47 bob.bundle.sh
+-rw-r--r--@  1 gobbibi  blurOS  1800 Jun 15 15:34 bob_file_intake.js
+-rwxr-x---@  1 gobbibi  blurOS   905 Jun 13 17:06 bobu_shim.py
+drwxr-xr-x   4 gobbibi  blurOS   128 Jun 18 17:12 core
+-rwxr-x---@  1 gobbibi  blurOS  1290 Jun 13 15:01 drift_law.yml
+-rw-r--r--@  1 gobbibi  staff    484 Apr 27 22:43 fieldlog.txt
+-rwxr--r--@  1 gobbibi  blurOS  5981 Jun 10 18:52 glyphmap_registry.json
+-rwxr-x---@  1 gobbibi  blurOS   984 Jun  5 12:49 gna_cosmos_stabilizer.rs
+-rw-r--r--@  1 gobbibi  staff    250 May  2 15:52 gna_manifest.txt
+-rw-r--r--@  1 gobbibi  blurOS   526 Jun  4 18:46 gob_splitdrift_core.rs
+-rw-r--r--@  1 gobbibi  blurOS  1632 Jun 15 17:02 gob_stabilizer.rs
+-rw-r--r--@  1 gobbibi  blurOS  4255 Jun 11 05:06 logic0_BOB.swift
+-rw-r--r--@  1 gobbibi  blurOS  1315 Jun 15 01:11 logic0_BOB_relay.swift
+-rwxr-x---@  1 gobbibi  blurOS  2695 Jun  5 03:39 main.rs
+-rwxr-x---@  1 gobbibi  blurOS  1639 Apr 28 20:50 mouth_hygiene.library.swift
+-rwxrwx---@  1 gobbibi  blurOS  3478 Jun 11 03:34 mythOS_tittis_core.py
+-rwxr-x---@  1 gobbibi  blurOS  1649 Jun 13 18:13 pulse_core.js
+-rwxr-x---@  1 gobbibi  blurOS  1199 Apr 28 20:41 ritual_constants.swift
+-rwxr-x---@  1 gobbibi  blurOS  1250 Jun 16 02:19 sigil_memory.py
+-rw-r--r--@  1 gobbibi  blurOS  7815 Jun 14 01:43 sigil_registry.yml
+drwxr-xr-x   8 gobbibi  blurOS   256 Jun 18 16:36 src
+-rw-r--r--@  1 gobbibi  staff    261 May  2 15:52 tittis_manifest.txt
+drwxr-x---   6 gobbibi  blurOS   192 Jun 18 02:32 venv
+-rw-r--r--@  1 gobbibi  blurOS  1124 Jun 16 23:28 verstring_mineralizer.js
+[2025-06-18 17:35:57] :: G                                                      
+gobbibi@MacBookPro ~ % ls -la ~/Downloads/GOB.app_BOB/Contents/MacOS
+total 56
+drwxr-xr-x@  7 gobbibi  staff    224 Jun 18 05:01 .
+drwxr-xr-x   4 gobbibi  staff    128 Jun 13 00:55 ..
+-rw-r--r--@  1 gobbibi  staff   6148 Jun 15 14:46 .DS_Store
+drwxr-x---  12 gobbibi  staff    384 Jun 13 01:01 .git
+drwxr-xr-x   4 gobbibi  staff    128 Jun 15 14:43 ggos_bubu
+-rwxr-xr-x@  1 gobbibi  staff  13692 Jun 18 05:01 presence.autonomy.sh
+-rwxr-xr-x@  1 gobbibi  staff   2260 Jun 17 15:51 presence.og.sh
+[2025-06-18 17:36:13] :: G                                                      
+gobbibi@MacBookPro ~ % 

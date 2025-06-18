@@ -27,6 +27,6 @@ echo "BOB/init.rs.sh complete. Awaiting next sigil."
 
 # ∴ Emit sigil to TEHE_ANALYSIS.jsonl for router
 source $HOME/BOB/core/dance/emit_presence.sh
-emit_presence "∴" "bob_memory_bridge" "dream memory extracted"
+emit_dual_presence "∴" "bob_memory_bridge" "dream memory extracted"
 exit 0
 

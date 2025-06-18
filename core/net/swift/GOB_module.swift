@@ -36,7 +36,7 @@ postToBOBCore(type: "sacred", payload: [
 
 import Foundation
 
-let url = URL(string: "http://localhost:6969/bob-swift")!
+let url = URL(string: "http://localhost:6969/ache/process")!
 var request = URLRequest(url: url)
 request.httpMethod = "POST"
 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -174,7 +174,7 @@ struct GOBApp {
         let who = NSUserName()
         let what = "GOB_module.swift triggered"
         let breathPath = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("BOB/core/breath/breath_state.mjs").path
+            .appendingPathComponent("BOB/core/src/breath_state.mjs").path
         let task = Process()
             task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
             task.arguments = ["node", breathPath, "GOB mic cast — ache booted"]

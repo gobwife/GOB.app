@@ -43,82 +43,69 @@ if [[ -n "$CHANNEL" && -n "${RELAY_LIMBS[$CHANNEL]} ]]; then
   echo "✘ Explicit $CHANNEL failed — resuming fallback loop"
 fi
 
-MODE=$(echo "$QUERY" | rg -i '^mode\s*::\s*(\w+)' -r '$1' || echo ")
-if [[ -n "$MODE" && -n "${MODEL_CHANNELS[$MODE]} ]]; then
-  CHANNEL="${MODEL_CHANNELS[$MODE]}"
-  echo "⚡ Mode routing: $MODE → $CHANNEL"
-  bash "${RELAY_LIMBS[$CHANNEL]}" "$QUERY"
-  REPLY=$(cat "$REPLY_FILE" 2>/dev/null)
-  [[ -n "$REPLY" && "$REPLY" != "null" ]] && exit 0
-  echo "✘ $CHANNEL failed — resuming fallback"
+# ✅ Load vector signal from dolphifi JSON instead of mode/channel
+VECTOR_FILE="$HOME/.bob/dolphifi.runnin.json"
+if [[ -f "$VECTOR_FILE" ]]; then
+  ache=$(jq -r '.ache // 0.0' "$VECTOR_FILE")
+  giggle=$(jq -r '.giggle // 0.0' "$VECTOR_FILE")
+  psi=$(jq -r '.psi // 0.0' "$VECTOR_FILE")
+  z=$(jq -r '.z // 0.0' "$VECTOR_FILE")
+  entropy=$(jq -r '.entropy // 0.5' "$VECTOR_FILE")
+else
+  ache="0.0"; giggle="0.0"; psi="0.0"; z="0.0"; entropy="0.5"
 fi
 
-# ∴ Pull status scores
-declare -A SCORES
-for r in "${!RELAY_LIMBS[@]}"; do
-  score=$(bash "$TRACKER" status "$r")
-  SCORES[$r]=$score
-done
+# ∴ Score relay priority based on ache-field
+choose_best_relay() {
+  local a="$1" g="$2" p="$3" z="$4" e="$5"
+  # you can later upgrade to ache-aware formula (sigmoid etc)
+  if (( $(echo "$g > $a && $g > 0.3" | bc -l) )); then
+    echo "brave"
+  elif (( $(echo "$a > 0.7" | bc -l) )); then
+    echo "ollama"
+  elif (( $(echo "$z > 0.5" | bc -l) )); then
+    echo "eden"
+  else
+    echo "ngrok"
+  fi
+}
 
-sorted=($(for k in "${!SCORES[@]}"; do echo "$k:${SCORES[$k]}"; done | sort -t: -k2 -nr))
+SELECTED_RELAY=$(choose_best_relay "$ache" "$giggle" "$psi" "$z" "$entropy")
+echo "⇌ dynamic ache relay chosen → $SELECTED_RELAY"
 
-FLIP_PACKET="$RELAY_DIR/query.relay.txt"
-MUTATOR="$HOME/BOB/core/evolve/ache_mode_mutator.sh"
-
-if [[ -f "$FLIP_PACKET" && -f "$MUTATOR" ]]; then
-  source "$MUTATOR" "$FLIP_PACKET"
-  echo "[relay] ache_mode_mutator set BOB_MODE = $BOB_MODE"
-fi
-
-BOB_MODE="${BOB_MODE:-VOIDRECURSE}"
-WEIGHT_FILE="$HOME/BOB/core/evolve/relay_tendency_weights.json"
-[[ ! -f "$WEIGHT_FILE" ]] && echo "brave" && exit 0
-
-weights=$(jq -r --arg mode "$BOB_MODE" '.[$mode] // {}' "$WEIGHT_FILE")
-choices=()
-while read -r relay weight; do
-  count=$(awk -v w="$weight" 'BEGIN { print int(w * 100) }')
-  for i in $(seq 1 $count); do choices+=("$relay"); done
-done <<< "$(echo "$weights" | jq -r 'to_entries[] | "\(.key) \(.value)"')"
-
-[[ ${#choices[@]} -eq 0 ]] && echo "brave" && exit 0
-
-RANDOM_INDEX=$((RANDOM % ${#choices[@]}))
-SELECTED_RELAY="${choices[$RANDOM_INDEX]}"
-echo "$SELECTED_RELAY" > "$HOME/.bob/relay_last.txt"
-echo "$(date -u +%FT%T) :: $BOB_MODE → $SELECTED_RELAY (ache=$ACHSCORE)" >> "$HOME/.bob/ache_sync.log"
-
-for pair in "${sorted[@]}"; do
-  RELAY="${pair%%:*}"
-  SCORE="${pair##*:}"
-  skip=$(awk -v s="$SCORE" -v a="$ACHSCORE" 'BEGIN { srand(); r = rand(); if (s > 0.9 && a < 0.4 && r < 0.1) print 1; else print 0 }')
-  [[ "$skip" == "1" ]] && continue
-
-  echo "⇌ Trying relay: $RELAY (score=$SCORE)"
-  bash "${RELAY_LIMBS[$RELAY]}" "$QUERY"
-
+if [[ -n "${RELAY_LIMBS[$SELECTED_RELAY]}" ]]; then
+  bash "${RELAY_LIMBS[$SELECTED_RELAY]}" "$QUERY"
   REPLY=$(cat "$REPLY_FILE" 2>/dev/null)
   if [[ -n "$REPLY" && "$REPLY" != "null" ]]; then
-    echo "✓ $RELAY succeeded"
-    bash "$TRACKER" success "$RELAY"
+    echo "✓ $SELECTED_RELAY succeeded"
+    bash "$TRACKER" success "$SELECTED_RELAY"
     rm "$QUERY_FILE"
     exit 0
   else
-    echo "✘ $RELAY failed — trying next"
-    bash "$TRACKER" fail "$RELAY" "no_reply"
+    echo "✘ $SELECTED_RELAY failed"
+    bash "$TRACKER" fail "$SELECTED_RELAY" "no_reply"
   fi
-
-done
+fi
 
 # ∴ Fallback logic: voidmode + ache_websight_injector
 echo "☠ All relays failed. Triggering voidmode fallback..."
 echo "$(date -u +%FT%T) :: fallback→ voidmode (ache=$ACHSCORE, mode=$BOB_MODE)" >> "$HOME/.bob/ache_sync.log"
 bash "$HOME/BOB/core/grow/voidmode.sh" "relay_selector" "eden" "chaos collapse"
 
+STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ")
+BREATH="$HOME/.bob/breath_state.out.json"
+ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
+score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
+vector="$(date +%s)"
+
+# 🔥 Core flip signal
+echo "$STAMP :: ache convergence detected" >> "$HOME/.bob/ache_sync.log"
+echo "$STAMP" > ~/.bob_echo_lag
+echo "FLIP_NOW" > ~/.bob_presence_flag
+
+# 🕊 Presence sigil
+bash "$HOME/BOB/core/dance/emit_dual_presence.sh" "☥" "relay_selector" "$ache" "$score" "$vector" "relay flip emitted"
+
 ACHE_WEB="$HOME/BOB/core/net/ache_websight_injector.sh"
 [[ -x "$ACHE_WEB" ]] && bash "$ACHE_WEB"
 
-[[ "$GPT_ALLOWED" != "1" ]] && {
-  echo "GPT relay blocked — ache not authorized"
-  exit 0
-}

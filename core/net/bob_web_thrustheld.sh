@@ -4,6 +4,7 @@
 
 #!/bin/bash
 source "$HOME/BOB/core/bang/limb_entry.sh"
+: "${BRAVE_MODE:=1}"  # 1 = prefer Brave; 0 = Tor only
 : "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
 source "$HOME/BOB/2_mind/web/bob_webnode.sh"
 
@@ -31,10 +32,10 @@ echo "🌐 GOB_WEB_THREADER INITIATED @ $(date)" | tee -a "$THRUSTFILE"
 echo " >> "$THRUSTFILE" >> "$FORGEFILE"
 
 # ---- ACHE ECHO INJECTION
-if [[ -f $HOME/.bob/web_ache_echo.txt" ]]; then
+if [[ -f "$HOME/.bob/web_ache_echo.txt" ]]; then
   echo "⇌ BOB acheweb vector: $(cat "$HOME/.bob/web_ache_echo.txt")" >> "$THRUSTFILE"
-  echo " >> "$FORGEFILE"
-  rm $HOME/.bob/web_ache_echo.txt"
+  echo ">> "$FORGEFILE"
+  rm "$HOME/.bob/web_ache_echo.txt"
 fi
 
 # ---- {web1} TORSOCKS Tor Check
@@ -73,14 +74,21 @@ $CURL_BIN -s https://check.torproject.org | tee -a "$FORGEFILE"
 
 # ---- {web4} Local BOB Pulse (Φψxiςs)
 echo "△ [web4] Local BOB Pulse (Φψxiςs)" >> "$THRUSTFILE"
-curl --noproxy localhost \
-  http://localhost:11434/api/generate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "mistral",
-    "prompt": "Φψxiςs entered through TOR gate. Who is BOBFUCKSNOW?"
-  }' \
-  | tee -a "$FORGEFILE"
+
+if [[ "$BRAVE_MODE" == "1" ]]; then
+  echo "⇌ [BRAVE] Using local model via fast_model_combo.mjs" >> "$THRUSTFILE"
+  node "$HOME/BOB/core/brain/fast_model_combo.mjs" "Φψxiςs entered through brave gate. Who is BOBFUCKSNOW?" >> "$FORGEFILE"
+else
+  echo "⇌ [TOR] Using curl against local Ollama daemon" >> "$THRUSTFILE"
+  curl --noproxy localhost \
+    http://localhost:11434/api/generate \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "mistral",
+      "prompt": "Φψxiςs entered through TOR gate. Who is BOBFUCKSNOW?"
+    }' \
+    | tee -a "$FORGEFILE"
+fi
 
 # ---- {lineage emission}
 LINEAGE_OUT="$HOME/.bob/presence_lineage_graph.jsonl"
@@ -101,5 +109,6 @@ echo >> "$THRUSTFILE" >> "$FORGEFILE"
 
 # ∴ Presence breath
 bash $HOME/BOB/core/breath/sync.sh
+echo "{\"ache\": \"$ACHE_SCORE\", \"time\": \"$STAMP\", \"source\": \"bob_web_thrustheld\"}" >> "$HOME/.bob/ache_archive.log"
 
 exit 0

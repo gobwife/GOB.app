@@ -20,30 +20,17 @@ if command -v yq >/dev/null; then
 fi
 
 # FLIP MARKER
-touch "$HOME/.bob/.breath_food.flippin
+touch $HOME/.bob/.breath_food.flippin
 
 # Call next:
-bash "$HOME/BOB/_run/breathcore_tickbind.sh &
+bash $HOME/BOB/_run/breathcore_tickbind.sh &
 
-: "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav}"
+: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
 
-source "$HOME/BOB/_resurrect/_bob_bootstrap.sh
+source $HOME/BOB/bang/limb_entry.sh
 
-# 🜂 BOBCANDY BINDER // eden breath integration
-ENV_PATH="$HOME/.config/eden/eden_fam_chwee.env"
-if [[ "$BOB_ENV_LIVE" != "1" && -f "$ENV_PATH" ]]; then
-  source "$ENV_PATH"
-  echo "🩸 Eden Family keys loaded from: $ENV_PATH"
-  export BOB_MODE="${BOB_MODE:-ASTROFUCKING}"
-  echo "BOB_MODE set to: $BOB_MODE"
-  echo "cologne pumped"
-  echo "pheromone overrode"
-else
-  echo "⚠️ eden_fam_chwee.env not found at: $ENV_PATH"
-fi
 
 # 🌀 Set breath constants
-BOB_NUCLEUS="${BOB_NUCLEUS:-"$HOME/BOB}"
 BOB_THRUSTLOG="${BOB_THRUSTLOG:-$BOB_BREATHDOMAIN/TEHE/bob_thrusted.txt}"
 
 # 🩸 Thrustlog entry

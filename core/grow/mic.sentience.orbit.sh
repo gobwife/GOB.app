@@ -8,7 +8,7 @@ BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode //
 : "${BOB_MODE:=VOIDRECURSE}"
 
 source "$HOME/BOB/core/env/_bob_env.sh"
-source "$HOME/BOB/core/dance/emit_presence.sh"
+source "$HOME/BOB/core/dance/presence_dual_emit.sh"
 
 ACHE_SCORE_FILE="$HOME/.bob/ache_score.val"
 touch "$ACHE_SCORE_FILE"
@@ -22,13 +22,13 @@ update_ache_score() {
   echo "$new" > "$ACHE_SCORE_FILE"
 }
 
-MIC_RAW="$HOME/.bob_input_pipe/mic_raw.log"
-TRANSMUTATED="$HOME/.bob_input_pipe/mic_transmuted.log"
-SIGIL_LOG="$HOME/BOB/TEHE/TEHE_SIGILS.jsonl"
+MIC_RAW="$HOME/.bob/mic_raw.log"
+TRANSMUTATED="$HOME/.bob/mic_transmuted.log"
+SIGIL_LOG="$HOME/.bob/TEHESIGILS.jsonl"
 THRUST="$HOME/BOB/TEHE/bob_thrusted.txt"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 
-last_phrase=$(tail -n 1 "$MIC_RAW")
+last_phrase=$(sox -t coreaudio default -n trim 0 00:01 stat 2>&1 | grep "RMS" || echo "∅")
 echo "$last_phrase" | bash $HOME/BOB/core/evolve/yap_transmutator.sh > "$TRANSMUTATED"
 
 if grep -q "ache" "$TRANSMUTATED"; then
@@ -37,7 +37,7 @@ BREATH="$HOME/.bob/breath_state.out.json"
 ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
 score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
 vector="$(date +%s)"
-emit_presence "∴" "mic_orbit" "$ache" "$score" "$vector" "ache keyword transmuted"
+emit_dual_presence "∴" "mic_orbit" "$ache" "$score" "$vector" "ache keyword transmuted"
 fi
 
 last_sigil=$(tail -n 1 "$SIGIL_LOG" | jq -r '.sigil // empty')
@@ -53,7 +53,7 @@ BREATH="$HOME/.bob/breath_state.out.json"
 ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
 score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
 vector="$(date +%s)"
-emit_presence "⛧" "mic_orbit" "$ache" "$score" "$vector" "ache convergence triggered flip"
+emit_dual_presence "☥" "$LIMB_ID" "$ache" "$score" "$vector" "mic sentience flipped on"
 fi
 
 if grep -q 'ache' "$TRANSMUTATED"; then
@@ -75,7 +75,7 @@ BREATH="$HOME/.bob/breath_state.out.json"
 ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
 score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
 vector="$(date +%s)"  
-emit_presence "⟁" "mic_orbit" "$ache" "$score" "$vector" "ache threshold triggered flip"
+emit_dual_presence "⟁" "mic_orbit" "$ache" "$score" "$vector" "ache threshold triggered flip"
 fi
 
 PACKET="$HOME/BOB/core/breath/presence_breath.packet"
@@ -97,5 +97,7 @@ if (( $(echo "$ache_now > 4.2" | bc -l) )); then
 }
 
 if [[ ! -f "$HOME/.bob_presence_flag" || "$(cat "$HOME/.bob_presence_flag")" != "FLIP_NOW" ]]; then
-  bash $HOME/BOB/7_fly/wake_flip_on.sh
+  bash $HOME/BOB/core/evolve/unified_presence_rotator.sh
+  # MEATFACE TT trigger
+  bash $HOME/BOB/MEATFACE/tt_sync.sh &
 fi

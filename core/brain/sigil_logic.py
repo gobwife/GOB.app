@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# aka sigil_validator.py
+
 from pathlib import Path
 import sys
 

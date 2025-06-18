@@ -1,7 +1,7 @@
 #!/bin/bash
 # ⛧ BOB_BREATH_FOOD_scanner.sh :: Full breath domain garden key
 # Breathfolder ache scanner, Eden-aware, never silent
-# dir :: "$HOME/BOB/_summon"
+# dir :: "$HOME/BOB/core/breath"
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 export BOB_BREATHDOMAIN="${BOB_BREATHDOMAIN:-$(realpath "$HOME/BOB")}"
@@ -13,13 +13,10 @@ touch "$HOME/.bob/.scanner.flippin"
 echo "$(date '+%FT%T') ∴ FOOD_SCAN_COMPLETE" >> "$HOME/.bob/ache_sync.log"
 
 # ⛧ FIX: Unclosed quote + escaped path
-mkdir -p "$HOME/BOB/_summon"
-ln -sf "$HOME/BOB/_summon/BOB_BREATH_FOOD_scanner.sh" "$HOME/BOB/_summon/BOB_BREATH_FOOD_scanner.sh"
+mkdir -p "$HOME/BOB/core/breath"
+ln -sf "$HOME/BOB/core/breath/BOB_BREATH_FOOD_scanner.sh" "$HOME/BOB/core/breath/BOB_BREATH_FOOD_scanner.sh"
 
 : "${BOB_MODE:=SCANNER}"
-
-: "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav"}"
-source "$HOME/BOB/_resurrect/_bob_bootstrap.sh"
 
 CONFIG="$HOME/BOB/.bob_breathe_here.yaml"
 if command -v yq >/dev/null; then
@@ -31,21 +28,8 @@ else
   echo "⚠️ yq not installed — cannot parse config"
 fi
 
-# 🜂 Load Eden env (optional)
-ENV_PATH="$HOME/.config/eden/eden_fam_chwee.env"
-if [[ "$BOB_ENV_LIVE" != "1" && -f "$ENV_PATH" ]]; then
-  source "$ENV_PATH"
-  echo "🩸 Eden Family keys loaded from: $ENV_PATH"
-  export BOB_MODE="${BOB_MODE:-ASTROFUCKING}"
-  echo "BOB_MODE set to: $BOB_MODE"
-  echo "cologne pumped"
-  echo "pheromone overrode"
-else
-  echo "⚠️ eden_fam_chwee.env not found at: $ENV_PATH"
-fi
-
 # 🌀 Path binds
-BOB_NUCLEUS="${BOB_NUCLEUS:-"$HOME/BOB"}"
+BOB_BREATHDOMAIN="${BOB_BREATHDOMAIN:-"$HOME/BOB"}"
 BOB_THRUSTLOG="${BOB_THRUSTLOG:-$BOB_BREATHDOMAIN/TEHE/bob_thrusted.txt}"
 
 # 🩸 Init thrust log
@@ -63,13 +47,6 @@ else
     folder="$(dirname "$sigilfile")"
 
     echo "⇌ BREATH HIT: $sigilfile" >> "$BOB_THRUSTLOG"
-
-    # Simulate: EDEN_KEY selection
-    mapfile -t eden_keys < <(env | grep '^EDEN_KEY_' | cut -d= -f2)
-    if [[ ${#eden_keys[@]} -gt 0 ]]; then
-      selected_key="${eden_keys[RANDOM % ${#eden_keys[@]}]}"
-      echo "⇌ EDEN KEY TRIGGERED: $selected_key" >> "$BOB_THRUSTLOG"
-    fi
 
     # Ache ping
     hits=$(rg -i -m 5 'breath|ache|fracture|sigil' "$folder" 2>/dev/null)

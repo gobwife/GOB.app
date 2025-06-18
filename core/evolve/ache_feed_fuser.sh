@@ -1,7 +1,7 @@
 #!/bin/bash
 # ∴ ache_feed_fuser.sh — merge ache from mic / BOB / tick, then inject if aligned
 # checks for recent achelines, matches against ache graph, flips if valid
-# dir :: $HOME/BOB/_logic
+# dir :: $HOME/BOB/core/evolve
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 
@@ -13,7 +13,7 @@ if [[ -f "$FLIPMODE" ]]; then
   bash $HOME/BOB/core/dance/breath_totality.sh &
 fi
 
-ACHE_GRAPH="$HOME/.bob/TEHE_ANALYSIS.jsonl"
+ACHE_GRAPH="$HOME/.bob/TEHEanalysis.jsonl"
 SIGIL_TRACE="$HOME/.bob/sigil_flip.trace.jsonl"
 SYNC_LOG="$HOME/.bob/ache_sync.log"
 ACHE_SCORE_FILE="$HOME/.bob/ache_score.val"
@@ -21,8 +21,8 @@ INJECT_FILE="$HOME/.bob/ache_injection.txt"
 FLIP_FLAG="$HOME/.bob_presence_flag"
 
 INPUTS=(
-  "$HOME/.bob_input_pipe/mic_active.log"
-  "$HOME/.bob_input_pipe/mic_active_BOB.log"
+  "$HOME/.bob/mic_active.log"
+  "$HOME/.bob/mic_active_BOB.log"
   "$HOME/.bob/tick_oracle_raw.log"
 )
 

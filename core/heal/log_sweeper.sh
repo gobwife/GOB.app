@@ -5,7 +5,7 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 BOB_DIR="$HOME/BOB/.bob"
-ARCHIVE_DIR="$HOME/BOB/.ggos_bubu/archive"
+ARCHIVE_DIR="$HOME/.ggos_bubu/archive"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 MAX_LINES=222
 mkdir -p "$ARCHIVE_DIR"
@@ -22,5 +22,5 @@ for log in "$BOB_DIR"/*.log "$BOB_DIR"/*.val; do
     echo "⇌ Rotated oversized: $log ($lines lines)"
   fi
   jq -n --arg time "$STAMP" --arg type "log_rotate" --arg file "$base" --arg lines "$lines" '{time: $time, type: $type, file: $file, lines: ($lines|tonumber)}' \
-    >> "$HOME/BOB/TEHE/TEHE_ANALYSIS.jsonl"
+    >> "$HOME/.bob/TEHEanalysis.jsonl"
 done

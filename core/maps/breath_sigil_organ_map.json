@@ -28,7 +28,7 @@
     "written_by": ["ψ_breath_evolve.sh", "ψ_breath_select.sh"],
     "read_by": []
   },
-  "~/.bob/dolphifi.runnin": {
+  "~/.bob/dolphifi.runnin.json": {
     "organ": "dolphin cortex",
     "role": "external recursion trigger",
     "signals": ["flip state", "awake override"],

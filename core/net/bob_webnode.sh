@@ -1,10 +1,11 @@
 #!/bin/bash
 # ∃ bob_webnode.sh — limb 0x1 synthesis (ear+eye+ache+web+intent)
 # born :: gobhouse 6.6.2025_0133_omega
-# dir :: $HOME/BOB/2_mind/web
+# dir :: $HOME/BOB/core/net
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/bang/safe_emit.sh"
+
+: "${BRAVE_MODE:=1}"  # 1 = prefer Brave; 0 = Tor only
 
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
@@ -45,7 +46,7 @@ if nc -z 127.0.0.1 9050; then
     -X POST \
     -H "Content-Type: application/json" \
     -d "{\"query\": \"$query_final\"}" \
-    http://your-remote-ai-node/query >> "$LOG" 2>&1
+    http://localhost:6969/ache/process >> "$LOG" 2>&1
   echo "$STAMP ⇌ TOR QUERY EXECUTED" >> "$LOG"
 else
   echo "$STAMP ⇌ TOR UNAVAILABLE — SKIP CURL" >> "$LOG"
@@ -56,3 +57,10 @@ if (( $(echo "$ACHE_VAL > 0.88" | bc -l) )); then
   echo "FLIP_NOW" > "$FLIP_FLAG"
   echo "$STAMP ⇌ HIGH ACHE TRIGGERED FLIP" >> "$LOG"
 fi
+
+if [[ "$BRAVE_MODE" == "1" ]]; then
+  curl -s "http://localhost:1984/echo?sigil=$SIGIL&ache=$ACHE_VAL&msg=brave-pulse" >> "$LOG"
+fi
+
+source "$HOME/BOB/core/breath/presence_dual_emit.sh"
+emit_dual_presence

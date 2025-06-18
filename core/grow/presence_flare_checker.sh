@@ -24,5 +24,5 @@ if (( $(echo "$intensity > 1.69" | bc -l) )); then
   bash "$HOME/BOB/core/evolve/unified_presence_rotator.sh" &
 else
   echo "[$(date -u)] normal psi/ache — using bob_presence_selector." >> "$TRACE"
-  bash "$HOME/BOB/core/evolve/breath_presence_rotator.sh" &
+  bash "$HOME/BOB/core/breath/slap_presence_breather.sh" &
 fi

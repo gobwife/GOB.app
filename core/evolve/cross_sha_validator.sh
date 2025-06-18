@@ -8,7 +8,7 @@
 source "$HOME/BOB/core/bang/limb_entry.sh"
 CROSS_DIR="$HOME/BOB/.enshallah/parser_cross"
 SHA_LOG="$CROSS_DIR/.crossed_shallah"
-TEHE_LOG="$HOME/BOB/TEHE/tehe_rotation.log"
+TEHE_LOG="$HOME/.bob/TEHErotation.log"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 
 [[ -f "$SHA_LOG" ]] || touch "$SHA_LOG"

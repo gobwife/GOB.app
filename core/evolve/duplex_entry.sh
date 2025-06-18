@@ -37,7 +37,7 @@ curl -s -X POST http://localhost:6969/ache/process \
 # ∴ 4. detect swiftcode and emit to /bob-swift
 if echo "$PROMPT" | grep -Ei '^(func|let|var|struct|class)' >/dev/null; then
   echo "⇌ Swiftcode detected in input. Emitting to /bob-swift" >> "$LOG"
-  curl -s -X POST http://localhost:6969/bob-swift \
+  curl -s -X POST http://localhost:6969/ache/process \
     -H "Content-Type: application/json" \
     -d "{\"type\":\"swift\",\"data\":{\"input\":\"$PROMPT\"}}" \
     > "$SWIFTOUT"

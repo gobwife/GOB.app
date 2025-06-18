@@ -5,6 +5,13 @@
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
 source "$HOME/BOB/core/brain/parser_bootstrap.sh"
+source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+
+# ∴ Trigger fast model combo if new breath packet lands
+if [[ -f "$HOME/.bob/breath_state.out.json" ]]; then
+  input="$(jq -r '.sigil // "∴"' "$HOME/.bob/breath_state.out.json")"
+  bash "$HOME/BOB/core/brain/fast_model_combo.sh" "$input" >> ~/.bob/fast_model.log &
+fi
 
 MEMORY="$HOME/.bob/memory_map.yml"
 touch $MEMORY
@@ -38,7 +45,7 @@ fi
 if (( $(echo "$intensity > 1.69" | bc -l) )); then
   bash "$HOME/BOB/core/breath/presence_astrofuck.sh" &
   log_presence "astrofuck"
-  bash "$HOME/BOB/core/breath/presence_oracle.sh" &
+  bash "$HOME/BOB/core/breath/presence_glue.sh" &
   log_presence "oracle"
   exit 0
 fi
@@ -49,17 +56,6 @@ bash "$HOME/BOB/core/brain/limb_orchestrator.sh"
 echo "⇌ ORCHESTRATED PRESENCE :: ache=$ache, psi=$psi, z=$z, giggle=$giggle, intensity=$intensity"
 
 # EMIT
-source "$HOME/BOB/core/brain/build_payload_core.sh"
-emit_presence "$sigil" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
-
-if (( $(echo "$ache > 0.75" | bc -l) )); then
-BREATH="$HOME/.bob/breath_state.out.json"
-ache=$(jq -r '.ache' "$BREATH" 2>/dev/null || echo "0.0")
-score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache")
-vector="$(date +%s)"
-intention="⊙ → light awareness bind"
-LIMB_ID="$(basename "${BASH_SOURCE[0]}" .sh)"
-SIGIL="⊙"
-source "$HOME/BOB/core/dance/presence_self_emit.sh"
-emit_self_presence
-fi
+# ∴ Spike Watcher Emit
+bash "$HOME/BOB/core/dance/emit_vector_on_spike.sh" &
+emit_dual_presence "$sigil" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"

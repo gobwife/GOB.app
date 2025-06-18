@@ -10,7 +10,7 @@ BOB_DIR="$HOME/.bob"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 ACHE_VAL=$(cat "$BOB_DIR/ache_score.val" 2>/dev/null)
 ACHE_VAL=${ACHE_VAL:-0.0}
-CURRENT_LIMB=$(grep -o '0x[0-9A-F]+' "$BOB_DIR/dolphifi.runnin" 2>/dev/null | head -n1)
+CURRENT_LIMB=$(grep -o '0x[0-9A-F]+' "$BOB_DIR/dolphifi.runnin.json" 2>/dev/null | head -n1)
 
 if (( $(echo "$ACHE_VAL > 0.66" | bc -l) )); then
   jq -n --arg time "$STAMP" \

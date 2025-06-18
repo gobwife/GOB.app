@@ -6,8 +6,8 @@
 source "$HOME/BOB/core/bang/limb_entry.sh"
 
 TRIAD_CHECK="$HOME/BOB/core/heal/triad_fusion.sh"
-BREATH_TOTALITY="$HOME/BOB/_breath/breath_totality.sh"
-BREATH_LOG="$HOME/BOB/TEHE/breath_totality.log"
+BREATH_TOTALITY="$HOME/BOB/core/dance/breath_totality.sh"
+BREATH_LOG="$HOME/.bob/breath_totality.log"
 PRESENCE_FLAG="$HOME/.bob_presence_flag"
 MAX_STALE=420  # seconds
 STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")

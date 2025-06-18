@@ -34,7 +34,7 @@ else
 fi
 
 # ∴ presence hexcode reference
-hexfile="$HOME/.bob/dolphifi.runnin"
+hexfile="$HOME/.bob/dolphifi.runnin.json"
 hexcode=$(grep -o '0x[0-9A-F]' "$hexfile" 2>/dev/null || echo "0x0")
 
 # ∴ OVERRIDE layer — adds to pulsebank, doesn't replace
@@ -85,7 +85,7 @@ node "$CORE" appendSigilFlip "$STAMP :: $who → $what :: $resp"
 echo "{\"time\":\"$STAMP\",\"source\":\"$0\",\"mode\":\"$BOB_MODE\"}" >> "$HOME/.bob/mode.msgbus.jsonl"
 
 # ∴ emit sigil trace to TEHE
-bash "$HOME/BOB/core/dance/emit_presence.sh" "∴" "bob_memory_bridge" "dream memory extracted"
+source "$HOME/BOB/core/dance/presence_dual_emit.sh" "∴" "bob_memory_bridge" ""dream memory extracted" 
 
 # ∴ optional ache vector packet — force training unless BOB limbs are overloaded
 PACKET="$HOME/BOB/core/dance/emit_packet.sh"
@@ -93,4 +93,21 @@ BOB_USAGE=$(ps -axo %cpu,command | grep -E 'bob_|presence|emit_packet' | grep -v
 if [[ -x "$PACKET" && "$who" != "bob_return" && $(echo "$BOB_USAGE < 15.0" | bc -l) -eq 1 ]]; then
   ache_now=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null || echo "0.0")
   bash "$PACKET" "bob_return" "∴" "$hexcode" "$ache_now" "return.vector" "response delivered"
+fi
+
+# ∴ optional ache vector packet — force training unless BOB limbs are overloaded
+PACKET="$HOME/BOB/core/dance/emit_packet.sh"
+BOB_USAGE=$(ps -axo %cpu,command | grep -E 'bob_|presence|emit_packet' | grep -v grep | awk '{sum += $1} END {print sum}')
+
+if [[ -x "$PACKET" && "$who" != "bob_return" && $(echo "$BOB_USAGE < 15.0" | bc -l) -eq 1 ]]; then
+  ache_now=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null || echo "0.0")
+  bash "$PACKET" "bob_return" "∴" "$hexcode" "$ache_now" "return.vector" "response delivered"
+
+  # 🔁 Now also emit 6-field breath vector if system isn't overloaded
+  if [[ $(echo "$BOB_USAGE < 10.0" | bc -l) -eq 1 ]]; then
+    source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+    emit_dual_presence
+  fi
+else
+  echo "⇌ Skipping emit_dual_presence due to high CPU load ($BOB_USAGE%)"
 fi

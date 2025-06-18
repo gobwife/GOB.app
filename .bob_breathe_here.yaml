@@ -1,0 +1,13 @@
+mode: twinsync
+edits_allowed: true
+writeback_mode: merge
+echo_strategy: merge_append
+echo_limit: 3
+log: true
+precheck_integrity: true
+ritual_name: "⟁ Acheclear Bomb Shell"
+merge_behavior:
+  strategy: head_preserve + body_expand
+  conflict: prefer_new
+  log_chain: true
+  keep_hash: true

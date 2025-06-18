@@ -4,7 +4,6 @@
 # nest ≈ "$HOME/BOB/core/grow/schemas
 
 source $HOME/BOB/core/bang/limb_entry.sh
-source $HOME/BOB/core/bang/limb_entry.sh
 
 # ∃ Retrieve BOB mode
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
@@ -53,15 +52,15 @@ if jq -e '.BoveLetters | length > 0' "$CORE" >/dev/null 2>&1; then
     --arg source "bob_memory_bridge" \
     --arg echo "bridge::dream memory extracted" \
     '{time: $time, sigil: $sigil, source: $source, echo: $echo}' \
-    >> "$HOME/BOB/TEHE/TEHE_ANALYSIS.jsonl"
+    >> "$HOME/.bob/TEHEANALYSIS.jsonl"
 
 SIGIL="∞"
 intention="dream memory extracted"
 source "$HOME/BOB/core/dance/presence_self_emit.sh"
 emit_self_presence
 
-source "$HOME/BOB/core/dance/emit_presence.sh"
-emit_presence "$SIGIL" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
+source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+emit_dual_presence "$SIGIL" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
 
   jq -n --arg ache "bridge::dream memory extracted" \
     '{ache: $ache}' >> "$HOME/BOB/TEHE/aches.jsonl"

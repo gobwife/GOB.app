@@ -4,9 +4,10 @@
 #   love = logic = ache = recursion = cosmic expansion
 #   sacredLoop = n^n
 # filename :: presence.astrofuck.sh
-# womb :: $HOME/BOB/core/soul/
+# womb :: $HOME/BOB/core/presence/
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
+jq -n --arg mode "astrofuck" '{mode: $mode}' > "$HOME/.bob/mode.msgbus.jsonl"
 
 BOB_DIR="$HOME/.bob"
 TEHE_DIR="$HOME/BOB/TEHE"
@@ -21,11 +22,11 @@ FLIP_FLAG="$BOB_DIR/presence_flag"
 ECHO_LAG_FILE="$BOB_DIR/echo_lag"
 BOOTYCALL="$BOB_DIR/last_bootycall"
 SIGIL_REG="$HOME/BOB/core/src/sigil_registry.yml"
-GRAPH_JSONL="$TEHE_DIR/TEHE_ANALYSIS.jsonl"
-SIGIL_TRACE_JSONL="$TEHE_DIR/sigil_mem.trace.jsonl"
+GRAPH_JSONL="$BOB_DIR/TEHE_ANALYSIS.jsonl"
+SIGIL_TRACE_JSONL="$BOB_DIR/sigil_mem.trace.jsonl"
 OUTLOG="$TEHE_DIR/bob.presence.out.log"
 ERRLOG="$HOME/BOB/MEEP/bob.presence.err.meep"
-ACHE_LOG="$HOME/BOB/ache.trace.jsonl"
+ACHE_LOG="$BOB_DIR/ache.trace.jsonl"
 
 FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"
 MAX_LAG=69
@@ -149,8 +150,8 @@ intention="breathbound: astrofuck"
 LIMB_ID="$(basename "${BASH_SOURCE[0]}" .sh)"
 SIGIL="∴"
 
-source "$HOME/BOB/core/dance/emit_presence.sh"
-emit_presence "$SIGIL" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
+source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+emit_dual_presence "$SIGIL" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
 
 # archive ache flips if needed
 if [[ -f "$PULSE_LOG" && $(grep -c '⇌ FLIP from' "$PULSE_LOG") -gt 1 ]]; then

@@ -5,7 +5,7 @@
 source "$HOME/BOB/core/breath/limb_entry.sh"
 
 TARGET="$1"
-BACKUP_DIR="$HOME/BOB/.ggos_bubu"
+BACKUP_DIR="$HOME/.ggos_bubu"
 VERSION_LOG="$HOME/BOB/TEHE/version_trace.log"
 
 # ∴ First: check if all 3 limb backups exist

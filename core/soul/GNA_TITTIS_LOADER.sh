@@ -22,7 +22,7 @@ sigil=$(yq eval '.output_form.primary' "$YAML")
 
 # ∴ Emit sigil presence
 source "$HOME/BOB/core/emit_presence.sh"
-emit_presence "$sigil" "bobuling_004" "sigil bridge loaded"
+emit_dual_presence "$sigil" "bobuling_004" "sigil bridge loaded"
 
 # ∴ Build .env header for C source
 mkdir -p "$(dirname "$ENV_OUT")"

@@ -27,6 +27,7 @@
 		C356BD0E2DFF82C000B2EA1E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD0D2DFF82C000B2EA1E /* CustomTextView.swift */; };
 		C356BD102DFF82DA00B2EA1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD0F2DFF82DA00B2EA1E /* SettingsView.swift */; };
 		C356BD122DFFCCD500B2EA1E /* ResponseSummaryPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356BD112DFFCCD500B2EA1E /* ResponseSummaryPopup.swift */; };
+		C399BD412E00847700255AB7 /* BOBDuplexRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C399BD402E00847700255AB7 /* BOBDuplexRelay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		C356BD0D2DFF82C000B2EA1E /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		C356BD0F2DFF82DA00B2EA1E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C356BD112DFFCCD500B2EA1E /* ResponseSummaryPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSummaryPopup.swift; sourceTree = "<group>"; };
+		C399BD402E00847700255AB7 /* BOBDuplexRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOBDuplexRelay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				C32986A52DFE4E6A00897675 /* FontManager.swift */,
 				C32986C72DFE663700897675 /* GhostCursorBloom.swift */,
 				C32986C92DFE845200897675 /* GOBPortalView.swift */,
+				C399BD402E00847700255AB7 /* BOBDuplexRelay.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,6 +305,7 @@
 				C32986B72DFE4E8100897675 /* ThreadStore.swift in Sources */,
 				C32986B82DFE4E8100897675 /* MEATFACEApp.swift in Sources */,
 				C356BD102DFF82DA00B2EA1E /* SettingsView.swift in Sources */,
+				C399BD412E00847700255AB7 /* BOBDuplexRelay.swift in Sources */,
 				C356BD0E2DFF82C000B2EA1E /* CustomTextView.swift in Sources */,
 				C32986A72DFE4E6A00897675 /* ChatViewModel.swift in Sources */,
 				C32986A82DFE4E6A00897675 /* FontManager.swift in Sources */,
