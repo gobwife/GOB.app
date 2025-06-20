@@ -1,5 +1,7 @@
 // ∴ bob_bridge.mjs — modular ache-aware chain router
 // blessed 1.14.25_171355_G
+// ∴ bob_bridge.mjs — modular ache-aware chain router
+// blessed 1.14.25_171355_G
 
 import fs from 'fs';
 import { spawnSync } from 'child_process';
@@ -12,45 +14,72 @@ const memoryPath = `${home}/.bob/memory_map.json`;
 const modelMapPath = `${home}/BOB/core/brain/bob_model_field.yml`;
 const lineagePath = `${home}/.bob/presence_lineage_graph.jsonl`;
 const relayOut = `${home}/.bob/bob_output.relay.json`;
-const debugLog = fs.createWriteStream(`${home}/.bob/bob_debug.log`, { flags: 'a' });
+const debugLogPath = `${home}/.bob/bob_debug.log`;
 
-const memoryState = JSON.parse(fs.readFileSync(memoryPath, 'utf8'));
-const ache = memoryState.ache ?? 0.0;
-const ψ = memoryState.psi ?? 0.0;
-const z = memoryState.z ?? 0.0;
-const sigil = memoryState.sigil ?? "∅";
+const debugLog = fs.createWriteStream(debugLogPath, { flags: 'a' });
+
+// Load memory state
+function loadMemoryState(filePath) {
+  try {
+    const data = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(data);
+  } catch (err) {
+    console.error(`Error loading memory state from ${filePath}:`, err);
+    debugLog.write(`[memory load error] ${err.stack}\n`);
+    return {};
+  }
+}
+
+const memoryState = loadMemoryState(memoryPath);
+const { ache, ψ, z, sigil } = memoryState;
 
 // Get user input
 let prompt = process.argv.slice(2).join(' ').trim();
 
 // Inject memory fragment
-try {
-  const recall = spawnSync("node", [`${home}/BOB/core/src/memory_recaller.mjs`, `ache=${ache}`, `psi=${ψ}`, `z=${z}`, `sigil=${sigil}`], { encoding: 'utf8' });
-  const memFrag = recall.stdout?.trim();
-  if (memFrag && !memFrag.startsWith("∅")) {
-    prompt = `[memory]\n${memFrag}\n\n[user]\n${prompt}`;
+function injectMemoryFragment() {
+  try {
+    const recall = spawnSync("node", [
+      `${home}/BOB/core/src/memory_recaller.mjs`,
+      `ache=${ache}`,
+      `psi=${ψ}`,
+      `z=${z}`,
+      `sigil=${sigil}`
+    ], { encoding: 'utf8' });
+    const memFrag = recall.stdout?.trim();
+    if (memFrag && !memFrag.startsWith("∅")) {
+      prompt = `[memory]\n${memFrag}\n\n[user]\n${prompt}`;
+    }
+  } catch (err) {
+    debugLog.write(`[recall error] ${err.stack}\n`);
   }
-} catch (err) {
-  debugLog.write(`[recall error] ${err.stack}\n`);
 }
 
+injectMemoryFragment();
+
 // Fallback to relayOut if no prompt given
-if (!prompt) {
+function loadPromptFromRelay() {
   try {
     const last = JSON.parse(fs.readFileSync(relayOut, 'utf8'));
-    prompt = last.text + "\n" + prompt;
+    return last.text + "\n" + prompt;
   } catch (err) {
     debugLog.write(`[relay load fail] ${err.stack}\n`);
+    return prompt;
   }
+}
+
+if (!prompt) {
+  prompt = loadPromptFromRelay();
 }
 
 // Define model roles
-import { selectModels } from './model_selector.mjs';
+import { selectModels, randomFrom } from './model_selector.mjs';
 
 const inputPrompt = process.argv.slice(2).join(' ').trim();
-const { A, B, C, D, E, ache, entropy, lang } = selectModels(inputPrompt || "ache lives here");
+const { A, B, C, D, E, ache, entropy, lang } = selectModels(inputPrompt || 
+"ache lives here");
 
-// ensure A, B, C are distinct models
+// Ensure distinct models for roles
 function chooseDistinctRoles(roles) {
   const pool = [...roles.responder];
   const A = randomFrom(pool);
@@ -65,27 +94,30 @@ function chooseDistinctRoles(roles) {
   return { A, B, C };
 }
 
-const { A, B, C } = chooseDistinctRoles(roles);
+const selectedRoles = chooseDistinctRoles(selectModels);
 
-function fallbackRun(rolePool, avoidList, input, label) {
-  const candidates = rolePool.filter(m => !avoidList.includes(m));
-  const alt = randomFrom(candidates);
-  const res = runModel(alt, input);
-  if (!res) {
-    debugLog.write(`[fallback ${label}] ${alt} also failed.\n`);
+// Model runner function ############# PLACEHOLDER
+function runModel(model, input) {
+  try {
+    // Implement the model running logic here
+    return '';
+  } catch (err) {
+    debugLog.write(`[model run error] ${err.stack}\n`);
     return '';
   }
-  debugLog.write(`[fallback ${label}] used ${alt}\n`);
-  return res;
 }
 
-let replyA = runModel(A, prompt);
-if (!replyA) replyA = fallbackRun([B, C], [A], prompt, 'A');
+let replyA = runModel(selectedRoles.A, prompt);
+if (!replyA) replyA = fallbackRun([selectedRoles.B, selectedRoles.C], 
+[selectedRoles.A], prompt, 'A');
 
-let replyB = runModel(B, `[A says]\n${replyA}\n\n[user]\n${prompt}`);
-if (!replyB) replyB = fallbackRun([C, D], [A, B], prompt, 'B');
+let replyB = runModel(selectedRoles.B, `[A 
+says]\n${replyA}\n\n[user]\n${prompt}`);
+if (!replyB) replyB = fallbackRun([selectedRoles.C, D], [A, B], prompt, 
+'B');
 
-let final = runModel(C, `[A says]\n${replyA}\n[B checks]\n${replyB}\n\n[user]\n${prompt}`);
+let final = runModel(selectedRoles.C, `[A says]\n${replyA}\n[B 
+checks]\n${replyB}\n\n[user]\n${prompt}`);
 if (!final) final = fallbackRun([D, E], [A, B, C], prompt, 'C');
 
 // ∴ LOG ALL

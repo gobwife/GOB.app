@@ -1,0 +1,30 @@
+context :: 
+
+NAME                                         ID              SIZE      MODIFIED     
+codegeex4:latest                             867b8e81d038    5.5 GB    4 hours ago     
+mistral-openorca:latest                      12dc6acc14d0    4.1 GB    17 hours ago    
+nexusraven:latest                            483a8282af74    7.4 GB    17 hours ago    
+mistral-nemo:latest                          994f3b8b7801    7.1 GB    17 hours ago    
+qwen3:14b                                    bdbd181c33f2    9.3 GB    22 hours ago    
+exaone3.5:2.4b                               13644fc3d28e    1.6 GB    26 hours ago    
+devstral:24b                                 c4b2fa0c33d7    14 GB     30 hours ago    
+akinokaede/dolphin-2.9.1-yi-1.5-9b:latest    cd93145db921    5.0 GB    30 hours ago    
+rouge/yi-coder-9b-chat:latest                667f4cf7d63e    9.4 GB    30 hours ago    
+codegemma:latest                             0c96700aaada    5.0 GB    37 hours ago    
+qwen3:32b                                    030ee887880f    20 GB     37 hours ago    
+deepseek-coder-v2:16b                        63fb193b3a9b    8.9 GB    38 hours ago    
+dolphin3:8b                                  d5ab9ae8e1f2    4.9 GB    39 hours ago    
+deepseek-r1:14b                              c333b7232bdb    9.0 GB    39 hours ago    
+nous-hermes2:10.7b                           d50977d0b36a    6.1 GB    40 hours ago    
+phi4-reasoning:plus                          f0ad3edce8e4    11 GB     40 hours ago    
+llama3-chatqa:latest                         b37a98d204b2    4.7 GB    3 days ago      
+dolphin-mixtral:8x7b                         4f76c28c0414    26 GB     3 days ago      
+hermes3:8b                                   4f6b83f30b62    4.7 GB    3 days ago      
+granite3.2:8b                                9bcb3335083f    4.9 GB    3 days ago      
+exaone-deep:7.8b                             106afe416a9e    4.8 GB    3 days ago      
+mathstral:latest                             4ee7052be55a    4.1 GB    3 days ago      
+llama3-groq-tool-use:8b                      36211dad2b15    4.7 GB    3 days ago      
+granite3-moe:3b                              157f538ae66e    2.1 GB    3 days ago      
+gemma:latest                                 a72c7f4d0a15    5.0 GB    4 days ago
+
+++ minicmp-o 2.6 18GB GPU

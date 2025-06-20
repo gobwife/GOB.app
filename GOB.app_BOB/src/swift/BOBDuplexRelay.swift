@@ -5,47 +5,51 @@ import Foundation
 import SwiftUI
 
 struct BOBDuplexRelay {
-    static let relayPath = FileManager.default
-        .homeDirectoryForCurrentUser
-        .appendingPathComponent(".bob/bob_output.relay.json")
 
-    static func ask(_ prompt: String, completion: @escaping (String) -> Void) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let script = "$HOME/BOB/core/grow/eval_duplex_phrase.sh \"\(prompt)\""
-            let task = Process()
-            task.executableURL = URL(fileURLWithPath: "/bin/bash")
-            task.arguments = ["-c", script]
+/// Runs a given shell script with arguments, returns result as string
+    private static func runShellCommand(_ command: String) throws {
+        let task = Process()
+        task.executableURL = URL(fileURLWithPath: "/bin/bash")
+        task.arguments = ["-c", command]
 
-            let pipe = Pipe()
-            task.standardOutput = pipe
-            task.standardError = pipe
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
 
-            do {
-                try task.run()
-                task.waitUntilExit()
+        try task.run()
+        task.waitUntilExit()
+    }
 
-                let _ = pipe.fileHandleForReading.readDataToEndOfFile() // discard output
-
-                if let output = latestOutput() {
-                    DispatchQueue.main.async {
-                        completion(output)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        completion("∅ no brain output")
-                    }
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    completion("✘ Failed to run duplex model relay: \(error.localizedDescription)")
-                }
+/// Reads model output from provided relay file path
+    private static func parseLatestOutput(from path: URL) -> String? {
+        do {
+            let data = try Data(contentsOf: path)
+            if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let result = json["output"] as? String {
+                return result
             }
+        } catch {
+            print("⚠️ Failed to read relay output: \(error.localizedDescription)")
         }
+        return nil
     }
 
-    static func latestOutput() -> String? {
-        guard let data = try? Data(contentsOf: relayPath) else { return nil }
-        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return nil }
-        return json["primary"] as? String
+/// Ask a model prompt using the BOB relay mechanism
+static func loadRelayConfig() -> (url: URL, model: String) {
+    let home = FileManager.default.homeDirectoryForCurrentUser
+    let configURL = home.appendingPathComponent(".bob/relay_config.json")
+
+    do {
+        let data = try Data(contentsOf: configURL)
+        if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+           let model = json["model"] as? String,
+           let endpoint = json["endpoint"] as? String {
+            return (URL(string: endpoint) ?? URL(fileURLWithPath: "/usr/local/bin/ollama"), model)
+        }
+    } catch {
+        print("⚠️ relay_config.json load failed, defaulting")
     }
+
+    return (URL(fileURLWithPath: "/usr/local/bin/ollama"), "devstral")
 }
+} // ∴ end BOBDuplexRelay

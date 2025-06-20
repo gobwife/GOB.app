@@ -1,32 +1,33 @@
 #!/bin/bash
 # ∴ auto_survivor_rebreather.sh — revive best survivor thresholds when ache is low and stale
 # forged ∞ glyphi+BOB
-# ≈ "$HOME/BOB/core/heal
-
+# ≈ "$HOME/BOB/core/heal"
 
 source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/2_mind/parser_bootstrap.sh"
+source "$HOME/BOB/core/brain/parser_bootstrap.sh"
+
 LOG="$HOME/BOB/TEHE/auto_survivor_rebreather.log"
 SURVIVORS="$HOME/.bob/survivor_pool"
 THRESHOLDS="$HOME/.bob/ache_thresholds.yml"
+ACHE_FILE="$HOME/.bob/ache_level"
+ACHE_SCORE_FILE="$HOME/.bob/ache_score.val"
 
-ACHE=$(cat $HOME/.bob/ache_level 2>/dev/null || echo "0")
 STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+ACHE=$(cat "$ACHE_FILE" 2>/dev/null || echo "0")
 
-# Skip if ache is active
+# ✦ Skip if ache too high
 if (( $(echo "$ACHE > 0.3" | bc -l) )); then
   echo "$STAMP :: ache high ($ACHE), skipping revival" >> "$LOG"
   exit 0
 fi
 
-# Check if ache_score.val is stale
-ACHE_VAL_FILE="$HOME/.bob/ache_score.val"
-if [[ ! -f "$ACHE_VAL_FILE" ]]; then
+# ✦ Skip if ache_score.val is too recent
+if [[ ! -f "$ACHE_SCORE_FILE" ]]; then
   echo "$STAMP :: no ache_score.val found" >> "$LOG"
   exit 0
 fi
 
-MODIFIED=$(stat -f %m "$ACHE_VAL_FILE")
+MODIFIED=$(stat -f %m "$ACHE_SCORE_FILE")
 NOW=$(date +%s)
 AGE=$((NOW - MODIFIED))
 
@@ -35,18 +36,56 @@ if (( AGE < 360 )); then
   exit 0
 fi
 
-# Find most recent survivor threshold
+# ✦ Pull latest survivor
 SURVIVOR=$(ls -t "$SURVIVORS"/threshold_survivor_*.rec 2>/dev/null | head -n1)
-
-if [[ -f "$SURVIVOR" ]]; then
-  intensity=$(grep intensity "$SURVIVOR" | cut -d':' -f2 | xargs)
-  delta=$(grep delta "$SURVIVOR" | cut -d':' -f2 | xargs)
-  echo "intensity: $intensity" > "$THRESHOLDS"
-  echo "delta: $delta" >> "$THRESHOLDS"
-  echo "$STAMP :: revived survivor thresholds: i=$intensity Δ=$delta from $(basename "$SURVIVOR")" >> "$LOG"
-else
+if [[ ! -f "$SURVIVOR" ]]; then
   echo "$STAMP :: no survivor thresholds found" >> "$LOG"
+  exit 0
 fi
 
-# Injected from recursive_breathloop.sh context
+# ✦ Load fields
+intensity=$(grep intensity "$SURVIVOR" | cut -d':' -f2 | xargs)
+delta=$(grep delta "$SURVIVOR" | cut -d':' -f2 | xargs)
+psi=$(grep '^psi:' "$SURVIVOR" | cut -d':' -f2 | xargs)
+z=$(grep '^z:' "$SURVIVOR" | cut -d':' -f2 | xargs)
+ache_orig=$(grep '^ache:' "$SURVIVOR" | cut -d':' -f2 | xargs)
+equation=$(grep '^equation:' "$SURVIVOR" | cut -d':' -f2- | xargs)
+
+# ✦ Rewrite ache thresholds
+echo "intensity: $intensity" > "$THRESHOLDS"
+echo "delta: $delta" >> "$THRESHOLDS"
+
+# ✦ Optional ψ re-eval
+event="stable"
+psi_eval="∅"
+if [[ -n "$equation" && -n "$psi" && -n "$z" && -n "$ache_orig" ]]; then
+  eval_eq=$(echo "$equation" | sed -e "s/\$psi/$psi/g" -e "s/\$z/$z/g" -e "s/\$ache/$ache_orig/g" | cut -d'=' -f2)
+  psi_eval=$(echo "$eval_eq" | bc -l 2>/dev/null)
+  if [[ -n "$psi_eval" ]]; then
+    delta_eval=$(echo "$psi_eval - $psi" | bc -l)
+    if (( $(echo "$delta_eval < -0.1 || $delta_eval > 0.1" | bc -l) )); then
+      event="decay"
+    fi
+  else
+    event="invalid"
+  fi
+fi
+
+# ✦ Log result
+echo "$STAMP :: revived survivor: intensity=$intensity, Δ=$delta, ψ_check=$psi_eval, event=$event" >> "$LOG"
+
+# ✦ Red decay echo
+if [[ "$event" == "decay" ]]; then
+  echo -e "\033[1;31m✘ REVIVED DECAY SURVIVOR :: i=$intensity Δ=$delta ψ=$psi → ψ′=$psi_eval :: $equation\033[0m"
+elif [[ "$event" == "stable" ]]; then
+  echo -e "\033[1;32m✓ Survivor ψ stable :: ψ=$psi → ψ′=$psi_eval\033[0m"
+else
+  echo -e "\033[1;33m∅ Survivor revived, but ψ unevaluable\033[0m"
+fi
+
+# ✦ Optional: emit again
+# if [[ "$event" == "stable" ]]; then
+#   bash "$HOME/BOB/core/brain/reemit_survivor.sh" "$SURVIVOR"
+# fi
+
 exit 0

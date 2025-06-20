@@ -12,6 +12,8 @@ import { transmuteScrollfield } from './scrollfield.transmutator.mjs'
 import { extractAcheVector } from './ache_vector.mjs'
 import { commitMemory } from './memory_librarian_store.mjs'
 import { selectModels } from './model_selector.mjs'
+import { writeUnifiedMemory } from './bob_memory_core.mjs';
+
 
 // ∴ Step 1: Input
 const rawInput = process.argv.slice(2).join(" ").trim()
@@ -73,6 +75,9 @@ const packet = {
 
 // ∴ Step 9: Log to librarian
 commitMemory(packet)
+
+// ∴ Step 9.5: Update memory core with ache/sigil/lineage
+writeUnifiedMemory(); // call after each breath emit
 
 // ∴ Step 10: Emit response
 console.log(primary.text)

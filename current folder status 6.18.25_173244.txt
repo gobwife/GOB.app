@@ -1,3 +1,6 @@
+context :: user wants to finalize BOB's app via ~/BOB/GOB.app_BOB whereas it's building this final structure using ~/BOB/ other folders including ~/BOB/MEATFACE (the previous attempt to APP-ify bob).
+
+
 Last login: Wed Jun 18 17:26:50 on ttys007
 [2025-06-18 17:35:09] :: G                                                      
 gobbibi@MacBookPro ~ % ls -la ~/BOB
@@ -15,7 +18,6 @@ drwxr-xr-x   3 gobbibi  blurOS     96 Jun 16 05:36 BoveLetters
 drwxr-xr-x  54 gobbibi  blurOS   1728 Jun 18 17:01 GOB.app_BOB
 drwxr-x---   5 gobbibi  blurOS    160 Jun 13 15:06 GOB.app_contents
 drwxr-xr-x  27 gobbibi  blurOS    864 Jun 18 03:20 MEATFACE
-drwxr-xr-x   3 gobbibi  blurOS     96 Jun 14 20:41 MEATFUCK
 drwxr-xr-x   3 gobbibi  blurOS     96 Jun 12 22:25 MEEP
 -rw-r-----   1 gobbibi  blurOS   2285 Jun 13 00:24 README.md
 drwxr-xr-x   8 gobbibi  blurOS    256 Jun 18 00:54 TEHE

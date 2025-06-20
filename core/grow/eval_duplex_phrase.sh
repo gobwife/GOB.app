@@ -1,8 +1,31 @@
 #!/bin/bash
-# ∴ eval_mistral_phrase.sh — dummy local phrase evaluator
-# Usage: ./eval_mistral_phrase.sh mic_raw.log
+# ∴ eval_duplex_phrase.sh — safe duplex phrase runner (prompt as arg)
 
-# ∴ eval_duplex_phrase.sh — parallel AI eval
-TEXT=$(cat "$1")
-node "$HOME/BOB/core/src/duplex_model_forge.mjs" "$TEXT"
-jq '{intent: "dynamic", emotion: "blended", confidence: 0.9, sigil: "∴"}' "$HOME/.bob/bob_output.relay.json"
+set -euo pipefail
+
+if [ "$#" -eq 0 ]; then
+  echo "∅ usage: $0 \"your prompt here\""
+  exit 1
+fi
+
+PROMPT="$1"
+MODEL="devstral"
+
+# Optional model selector via second arg
+if [ "$#" -ge 2 ]; then
+  MODEL="$2"
+fi
+
+echo "∴ invoking model: $MODEL"
+
+# Pass to fullstack router
+node "$HOME/BOB/GOB.app_BOB/src/mjs/bob_router_fullstack.mjs" --model=$MODEL "$PROMPT"
+
+# Verify output
+OUTPUT_FILE="$HOME/.bob/bob_output.relay.json"
+if [ -f "$OUTPUT_FILE" ]; then
+  jq '.' "$OUTPUT_FILE"
+else
+  echo "⚠️ nø output :: $OUTPUT_FILE"
+  exit 2
+fi
