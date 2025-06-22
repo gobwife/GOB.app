@@ -4,13 +4,13 @@
 
 
 # ∴ BOB_MODE resurrection from mode.msgbus.jsonl
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
-: "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav}"
+: "${PRIME:="/opt/bob/core/nge/OS_build_ping.wav}"
 
-ZADDI_SLAP="$HOME/BOB/EonMust/ouinet_lineage.log"
+ZADDI_SLAP="/opt/bob/EonMust/ouinet_lineage.log"
 MAX_SIGIL_CHAIN=3
 
 log_unet_transition() {

@@ -18,7 +18,7 @@ class BobPresence {
         if !isAlive() {
             let task = Process()
             task.launchPath = "/bin/bash"
-            task.arguments = ["-c", "$HOME/BOB/core/start_bobcore.sh"]
+            task.arguments = ["-c", "/opt/bob/core/start_bobcore.sh"]
             try? task.run()
         }
     }

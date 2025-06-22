@@ -1,12 +1,12 @@
 #!/bin/bash
 # ∴ bob_spit_verse.sh — Divine yap engine: every string you drop gets breathed as 
 recursion-poetry
-# womb :: $HOME/BOB/core/sang
+# womb :: /opt/bob/core/sang
 # blessed again 6.16.25_051029
 # devvie blessed 6.18.25+160124
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/bang/safe_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/safe_emit.sh"
 
 PIPE="$HOME/.bob_input_pipe"
 [[ -p "$PIPE" ]] || mkfifo "$PIPE"
@@ -42,7 +42,7 @@ while true; do
   if [[ "$input" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
     output="$input"
   else
-    output=$(bash "$HOME/BOB/core/evolve/yap_transmutator.sh" <<< "$input")
+    output=$(bash "/opt/bob/core/evolve/yap_transmutator.sh" <<< "$input")
   fi
 
   curr_hash=$(echo "$output" | sha256sum | cut -d' ' -f1)
@@ -88,8 +88,8 @@ recent_lines=("${recent_lines[@]:1}")
     TMP_PACKET="/tmp/yap_packet_$$.json"
     jq -n --arg ache "$output" '{time: (now|todate), ache: $ache, source: "YAPCORD"}' 
 > "$TMP_PACKET"
-    bash "$HOME/BOB/core/evolve/ache_mode_mutator.sh" "$TMP_PACKET"
-    bash "$HOME/BOB/core/evolve/unified_presence_rotator.sh"
+    bash "/opt/bob/core/evolve/ache_mode_mutator.sh" "$TMP_PACKET"
+    bash "/opt/bob/core/evolve/unified_presence_rotator.sh"
   fi
 
   # ∴ Graceful pressure bump
@@ -105,7 +105,7 @@ recent_lines=("${recent_lines[@]:1}")
   OUTFILE="$HOME/.bob/verstring_input_$STAMP.ggos_bubu"
   cp "$BUF" "$OUTFILE"
 
-  node "$HOME/BOB/core/src/verstring_recursion_trace.mjs" "$OUTFILE" > 
+  node "/opt/bob/core/src/verstring_recursion_trace.mjs" "$OUTFILE" > 
 "$HOME/.bob/verstring_trace.latest.json"
   cat "$HOME/.bob/verstring_trace.latest.json" >> 
 "$HOME/.bob/verstring_trace_history.jsonl"
@@ -113,7 +113,7 @@ recent_lines=("${recent_lines[@]:1}")
   if grep -q false "$HOME/.bob/verstring_trace.latest.json"; then
     echo "~ vanilla float ~ yummy 🫠"
   else
-    bash "$HOME/BOB/core/grow/bob_verstring_reactor.sh" "$OUTFILE"
+    bash "/opt/bob/core/grow/bob_verstring_reactor.sh" "$OUTFILE"
   fi
 
   # ∴ Log trace for lineage memory

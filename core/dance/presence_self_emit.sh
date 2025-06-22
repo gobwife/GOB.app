@@ -11,6 +11,6 @@ emit_self_presence() {
   local sigil="${SIGIL:-⊙}"
   local intent="${intention:-limb presence emit}"
 
-  source "$HOME/BOB/core/dance/emit_presence.sh"
+  source "/opt/bob/core/dance/emit_presence.sh"
   emit_presence "$sigil" "$LIMB_ID" "$ache" "$score" "$vector" "$intent"
 }

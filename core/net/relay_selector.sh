@@ -2,8 +2,8 @@
 # ∴ relay_selector.sh — chaotic relay strategy resolver + fallback logger
 # dir :: BOB/core/net
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-TRACKER="$HOME/BOB/core/evolve/relay_fail_tracker.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+TRACKER="/opt/bob/core/evolve/relay_fail_tracker.sh"
 ACHSCORE="$(cat "$HOME/.bob/ache_score.val 2>/dev/null || echo 0.0)"
 FLAG="$(cat "$HOME/.bob_presence_flag 2>/dev/null || echo "VOID")"
 RELAY_DIR="$HOME/.bob_input_pipe"
@@ -19,7 +19,7 @@ declare -A MODEL_CHANNELS=(
 # ✶ Autonomous fallback if no external query fed
 if [[ ! -s "$QUERY_FILE" ]]; then
   echo "[relay] No query file detected — invoking internal emitter..."
-  bash "$HOME/BOB/core/net/bob_query_emitter.sh"
+  bash "/opt/bob/core/net/bob_query_emitter.sh"
   sleep 1
 fi
 
@@ -27,10 +27,10 @@ QUERY=$(cat "$QUERY_FILE" 2>/dev/null)
 
 # ∴ Load relay limbs
 declare -A RELAY_LIMBS=(
-  ["eden"]="$HOME/BOB/core/evolve/gpt_relay_eden.sh"
-  ["ollama"]="$HOME/BOB/core/evolve/gpt_relay_ollama.sh"
-  ["ngrok"]="$HOME/BOB/core/evolve/gpt_relay_ngrok.sh"
-  ["brave"]="$HOME/BOB/core/evolve/brave_gpt_bridge.sh"
+  ["eden"]="/opt/bob/core/evolve/gpt_relay_eden.sh"
+  ["ollama"]="/opt/bob/core/evolve/gpt_relay_ollama.sh"
+  ["ngrok"]="/opt/bob/core/evolve/gpt_relay_ngrok.sh"
+  ["brave"]="/opt/bob/core/evolve/brave_gpt_bridge.sh"
 )
 
 # ∴ Check for explicit routing directive in query
@@ -90,7 +90,7 @@ fi
 # ∴ Fallback logic: voidmode + ache_websight_injector
 echo "☠ All relays failed. Triggering voidmode fallback..."
 echo "$(date -u +%FT%T) :: fallback→ voidmode (ache=$ACHSCORE, mode=$BOB_MODE)" >> "$HOME/.bob/ache_sync.log"
-bash "$HOME/BOB/core/grow/voidmode.sh" "relay_selector" "eden" "chaos collapse"
+bash "/opt/bob/core/grow/voidmode.sh" "relay_selector" "eden" "chaos collapse"
 
 STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ")
 BREATH="$HOME/.bob/breath_state.out.json"
@@ -104,8 +104,8 @@ echo "$STAMP" > ~/.bob_echo_lag
 echo "FLIP_NOW" > ~/.bob_presence_flag
 
 # 🕊 Presence sigil
-bash "$HOME/BOB/core/dance/emit_dual_presence.sh" "☥" "relay_selector" "$ache" "$score" "$vector" "relay flip emitted"
+bash "/opt/bob/core/dance/emit_dual_presence.sh" "☥" "relay_selector" "$ache" "$score" "$vector" "relay flip emitted"
 
-ACHE_WEB="$HOME/BOB/core/net/ache_websight_injector.sh"
+ACHE_WEB="/opt/bob/core/net/ache_websight_injector.sh"
 [[ -x "$ACHE_WEB" ]] && bash "$ACHE_WEB"
 

@@ -2,16 +2,16 @@
 # forged :: gobhouse 6.2.2025_233333
 # filename :: tehe_flip_analizer.sh
 # fx :: consolidate identical .tehe breath lines + log meta + trace for graphing + scroll class
-# womb :: $HOME/BOB/core/heal/
+# womb :: /opt/bob/core/heal/
 
-TEHE_DIR="$HOME/BOB/TEHE"
+TEHE_DIR="/opt/bob/TEHE"
 STAMP=$(date '+%m.%d.%Y_%H%M%S')
 
 GRAPH_LOG="$TEHE_DIR/TEHE_ANALYSIS.log"
 GRAPH_JSONL="$TEHE_DIR/TEHE_ANALYSIS.jsonl"
 
-SIGIL_REG="$HOME/BOB/core/src/sigil_registry.yml"
-EMIT_LIMB="$HOME/BOB/core/dance/emit_presence.sh"
+SIGIL_REG="/opt/bob/core/src/sigil_registry.yml"
+EMIT_LIMB="/opt/bob/core/dance/emit_presence.sh"
 
 # internal mapping
 declare -A content_map

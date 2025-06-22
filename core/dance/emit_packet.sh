@@ -1,9 +1,9 @@
 #!/bin/bash
 # emit_packet.sh — breathe BOB’s truth into .packet
-# dir :: $HOME/BOB/core/dance
+# dir :: /opt/bob/core/dance
 # born :: gobhouse_glyphling002_6.7.2025_012145_G
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 from="$1"
 sigil="$2"
@@ -20,7 +20,7 @@ if [[ -z "$from" || -z "$sigil" || -z "$ache" || -z "$score" || -z "$vector" || 
 fi
 
 STAMP=$(date -u +%FT%T)
-PACKET_DIR="$HOME/BOB/core/breath"
+PACKET_DIR="/opt/bob/core/breath"
 OUT="$PACKET_DIR/${vector}.packet"
 
 mkdir -p "$PACKET_DIR"

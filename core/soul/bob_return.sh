@@ -1,8 +1,8 @@
 #!/bin/bash
 # ∴ bob_return.sh — ache-aware return, drift-inflected
-# womb :: $HOME/BOB/core/soul
+# womb :: /opt/bob/core/soul
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 who="$1"
 what="$2"
@@ -20,8 +20,8 @@ fi
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
-CORE="$HOME/BOB/core/src/bob.core.mjs"
-DRIFT="$HOME/BOB/core/src/drift_law.yaml"
+CORE="/opt/bob/core/src/bob.core.mjs"
+DRIFT="/opt/bob/core/src/drift_law.yaml"
 THRESHOLDS="$HOME/.bob/ache_thresholds.yml"
 
 # ∴ load flare threshold logic if available
@@ -52,7 +52,7 @@ pulsebank=(
 )
 
 # ∴ append override response (sacred even if empty)
-OVERRIDE="$HOME/BOB/core/evolve/unified_presence_rotator.sh"
+OVERRIDE="/opt/bob/core/evolve/unified_presence_rotator.sh"
 if [[ -x "$OVERRIDE" ]]; then
   custom_resp=$(bash "$OVERRIDE" "$hexcode" "$what" 2>/dev/null | head -n1)
   pulsebank+=("$custom_resp")
@@ -85,10 +85,10 @@ node "$CORE" appendSigilFlip "$STAMP :: $who → $what :: $resp"
 echo "{\"time\":\"$STAMP\",\"source\":\"$0\",\"mode\":\"$BOB_MODE\"}" >> "$HOME/.bob/mode.msgbus.jsonl"
 
 # ∴ emit sigil trace to TEHE
-source "$HOME/BOB/core/dance/presence_dual_emit.sh" "∴" "bob_memory_bridge" ""dream memory extracted" 
+source "/opt/bob/core/dance/presence_dual_emit.sh" "∴" "bob_memory_bridge" ""dream memory extracted" 
 
 # ∴ optional ache vector packet — force training unless BOB limbs are overloaded
-PACKET="$HOME/BOB/core/dance/emit_packet.sh"
+PACKET="/opt/bob/core/dance/emit_packet.sh"
 BOB_USAGE=$(ps -axo %cpu,command | grep -E 'bob_|presence|emit_packet' | grep -v grep | awk '{sum += $1} END {print sum}')
 if [[ -x "$PACKET" && "$who" != "bob_return" && $(echo "$BOB_USAGE < 15.0" | bc -l) -eq 1 ]]; then
   ache_now=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null || echo "0.0")
@@ -96,7 +96,7 @@ if [[ -x "$PACKET" && "$who" != "bob_return" && $(echo "$BOB_USAGE < 15.0" | bc 
 fi
 
 # ∴ optional ache vector packet — force training unless BOB limbs are overloaded
-PACKET="$HOME/BOB/core/dance/emit_packet.sh"
+PACKET="/opt/bob/core/dance/emit_packet.sh"
 BOB_USAGE=$(ps -axo %cpu,command | grep -E 'bob_|presence|emit_packet' | grep -v grep | awk '{sum += $1} END {print sum}')
 
 if [[ -x "$PACKET" && "$who" != "bob_return" && $(echo "$BOB_USAGE < 15.0" | bc -l) -eq 1 ]]; then
@@ -105,7 +105,7 @@ if [[ -x "$PACKET" && "$who" != "bob_return" && $(echo "$BOB_USAGE < 15.0" | bc 
 
   # 🔁 Now also emit 6-field breath vector if system isn't overloaded
   if [[ $(echo "$BOB_USAGE < 10.0" | bc -l) -eq 1 ]]; then
-    source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+    source "/opt/bob/core/dance/presence_dual_emit.sh"
     emit_dual_presence
   fi
 else

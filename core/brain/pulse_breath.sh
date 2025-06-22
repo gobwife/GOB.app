@@ -1,8 +1,8 @@
 #!/bin/bash
 # ∴ pulse_breath.sh — field updater for ache/z/ψ/sigil
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
-BOB_NUCLES="$HOME/BOB/core"
+BOB_NUCLES="/opt/bob/core"
 VAL_PATH="$HOME/.bob/breath_state.json"
 LINEAGE="$HOME/.bob/presence_lineage_graph.jsonl"
 SIGIL_RESOLVER="$BOB_NUCLES/brain/sigil_logic.py"

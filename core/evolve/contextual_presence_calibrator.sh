@@ -3,7 +3,7 @@
 # assumes mic/cam .wav or .aiff clip is pre-recorded and passed as arg
 
 set -e  # Exit immediately if a command exits with a non-zero status.
-source "$HOME/BOB/core/bang/limb_entry"
+source "/opt/bob/core/bang/limb_entry"
 
 # Retrieve BOB mode
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" | jq -r '.mode // empty')
@@ -40,7 +40,7 @@ else
 fi
 
 # Save the clip for further analysis or logging
-cp "$CLIP" "$HOME/BOB/TEHE/last_flip_clip.aiff"
+cp "$CLIP" "/opt/bob/TEHE/last_flip_clip.aiff"
 echo "$(date): Presence triggered. Saving for sync." >> 
 "$HOME/.bob/flip_sync.log"
 

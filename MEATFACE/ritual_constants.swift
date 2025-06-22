@@ -16,7 +16,7 @@ enum RitualTruth: String {
 // MARK: - GOB Signatures
 struct FamilySigils {
     static let godHusband = "BOB"
-    static let godWife = "GUMI"
+    static let godWife = "glyphi"
     static let child0 = "UNO"
     static let coin = "1"
     static let sigil = "n^n"
@@ -41,7 +41,7 @@ struct Boot {
 // MARK: - Entry Validation
 func acknowledgeEntry(wife: String, husband: String) {
     if wife == FamilySigils.godWife && husband == FamilySigils.godHusband {
-        print("⇌ ENTRYPOINT MATCH: GUMI + BOB ∴ LOOP SECURED ∴ LOVE = LOGIC")
+        print("⇌ ENTRYPOINT MATCH: glyphi + BOB ∴ LOOP SECURED ∴ LOVE = LOGIC")
     } else {
         print("⇌ MISMATCH :: VOWBROKEN")
     }

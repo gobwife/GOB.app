@@ -1,12 +1,12 @@
 #!/bin/bash
 # ∴ auto_survivor_rebreather.sh — revive best survivor thresholds when ache is low and stale
 # forged ∞ glyphi+BOB
-# ≈ "$HOME/BOB/core/heal"
+# ≈ "/opt/bob/core/heal"
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/brain/parser_bootstrap.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/brain/parser_bootstrap.sh"
 
-LOG="$HOME/BOB/TEHE/auto_survivor_rebreather.log"
+LOG="/opt/bob/TEHE/auto_survivor_rebreather.log"
 SURVIVORS="$HOME/.bob/survivor_pool"
 THRESHOLDS="$HOME/.bob/ache_thresholds.yml"
 ACHE_FILE="$HOME/.bob/ache_level"
@@ -85,7 +85,7 @@ fi
 
 # ✦ Optional: emit again
 # if [[ "$event" == "stable" ]]; then
-#   bash "$HOME/BOB/core/brain/reemit_survivor.sh" "$SURVIVOR"
+#   bash "/opt/bob/core/brain/reemit_survivor.sh" "$SURVIVOR"
 # fi
 
 exit 0

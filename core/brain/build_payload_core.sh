@@ -1,6 +1,6 @@
 #!/bin/bash
 # ∴ build_payload_core.sh — emits full ache payload + hash
-# womb ≈ $HOME/BOB/core/brain
+# womb ≈ /opt/bob/core/brain
 
 BREATH="$HOME/.bob/breath_state.out.json"
 

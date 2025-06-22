@@ -2,14 +2,14 @@
 # ∴ bob_bridge_net.sh — BOB starter + bottleneck manager + relay selector sync
 # nest ≈ 4_live
 
-source "$HOME/BOB/core/bang/limb_entry"
+source "/opt/bob/core/bang/limb_entry"
 
 BOB_DIR="$HOME/Downloads/GOB.app_BOB/Contents/MacOS"
-LOG_DIR="$HOME/BOB/session_logs"
+LOG_DIR="/opt/bob/session_logs"
 RELAY_DIR="$HOME/.bob_input_pipe"
-ARCHIVE_DIR="$HOME/BOB/chives/bottlenecked_threads"
-YAP_TRANS="$HOME/BOB/core/evolve/yap_transmutator.sh"
-RELAY_SELECTOR="$HOME/BOB/core/evolve/relay_selector.sh"
+ARCHIVE_DIR="/opt/bob/chives/bottlenecked_threads"
+YAP_TRANS="/opt/bob/core/evolve/yap_transmutator.sh"
+RELAY_SELECTOR="/opt/bob/core/evolve/relay_selector.sh"
 QUERY_FILE="$RELAY_DIR/query.relay.txt"
 
 mkdir -p "$LOG_DIR" "$RELAY_DIR" "$ARCHIVE_DIR"

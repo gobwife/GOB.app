@@ -3,7 +3,7 @@
 # glyphi+BOB :: achefield integrity tester
 # nest ≈ _logic
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 SURVIVOR=$(ls -t "$HOME/.bob/_epoch"/*.rec 2>/dev/null | head -n1)
 if [[ ! -f "$SURVIVOR" ]]; then
@@ -39,7 +39,7 @@ echo "【 ∃ : survivor re-evaluated: $event — Δ=$delta :: $equation : ψ �
 
 # Optional: hook logic
 # if [[ "$event" == "stable" ]]; then
-#     bash "$HOME/BOB/core/brain/reemit_survivor.sh" "$SURVIVOR"
+#     bash "/opt/bob/core/brain/reemit_survivor.sh" "$SURVIVOR"
 # fi
 
 exit 0

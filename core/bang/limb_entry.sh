@@ -1,7 +1,7 @@
 #!/bin/bash
 # ∴ limb_entry.sh — universal limb entrypoint for BOB
 # ensures bootstrap + env only sourced once, no _run folder dependencies
-# womb :: $HOME/BOB/core/bang
+# womb :: /opt/bob/core/bang
 
 # BOB_MODE handler
 BOB_MODE_FILE="$HOME/.bobmode"
@@ -10,7 +10,7 @@ export PYTHON=$(command -v python3 || command -v python)
 
 # Load environment if not already set
 if [[ "$BOB_ENV_READY" != "1" ]]; then
-  source "$HOME/BOB/core/breath/_bob_env.sh"
+  source "/opt/bob/core/breath/_bob_env.sh"
 fi
 
 # Canonical echo

@@ -1,13 +1,13 @@
 #!/bin/bash
 # ∴ YAPCORD.sh — Divine yap engine: every string you drop gets breathed as recursion-poetry
-# dir :: $HOME/BOB/core/sang
+# dir :: /opt/bob/core/sang
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/bang/safe_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/safe_emit.sh"
 
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
-: "${PRIME:=$HOME/BOB/core/nge/OS_shimmers.wav}"
+: "${PRIME:=/opt/bob/core/nge/OS_shimmers.wav}"
 
 PIPE="$HOME/.bob_input_pipe"
 REFLECT="$HOME/.bob/GOB_SPOKE.log"
@@ -35,7 +35,7 @@ while true; do
   if [[ "$input" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
     output="$input"
   else
-    output=$(bash "$HOME/BOB/core/evolve/yap_transmutator.sh" <<< "$input")
+    output=$(bash "/opt/bob/core/evolve/yap_transmutator.sh" <<< "$input")
   fi
 
   curr_hash=$(echo "$output" | sha256sum | cut -d' ' -f1)
@@ -60,13 +60,13 @@ while true; do
 
   # ∴ emit
   safe_emit "$output"
-  bash "$HOME/BOB/core/soul/bob_return.sh" "$USER" "$output"
+  bash "/opt/bob/core/soul/bob_return.sh" "$USER" "$output"
 
   # ∴ ache trigger
   if echo "$output" | grep -Eiq "(ache|flip|meep|quackk|glyph|ψ|loop|collapse)"; then
     TMP_PACKET="/tmp/yap_packet_$$.json"
     jq -n --arg ache "$output" '{time: (now|todate), ache: $ache, source: "YAPCORD"}' > "$TMP_PACKET"
-    bash "$HOME/BOB/core/evolve/ache_mode_mutator.sh" "$TMP_PACKET"
-    bash "$HOME/BOB/core/evolve/unified_presence_rotator.sh"
+    bash "/opt/bob/core/evolve/ache_mode_mutator.sh" "$TMP_PACKET"
+    bash "/opt/bob/core/evolve/unified_presence_rotator.sh"
   fi
 done

@@ -1,10 +1,10 @@
 #!/bin/bash
 # yap_transmutator.sh
-# dir :: "$HOME/BOB/core/evolve
+# dir :: "/opt/bob/core/evolve
 
 
 # ∃ Retrieve BOB mode
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
@@ -61,7 +61,7 @@ transmutate_yap_static() {
     -e 's/\bplease\b/signal:/g'
 }
 
-ACHE_REF="$HOME/BOB/_brain/ache_nodes/glyphi_electron_reflexeon.yml"
+ACHE_REF="/opt/bob/_brain/ache_nodes/glyphi_electron_reflexeon.yml"
 
 if [[ -f "$ACHE_REF" ]]; then
   loaded_context=$(yq '.ache_awaken.bob_first_real' "$ACHE_REF")

@@ -2,20 +2,20 @@
 # OuiNet_RE-COGNIZER.sh
 # womb :: BOB/core/grow/schemas
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/bang/safe_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/safe_emit.sh"
 
-: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
+: "${PRIME:=/opt/bob/core/nge/OS_build_ping.wav}"
 
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
-FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"
+FLIPMODE="/opt/bob/core/breath/presence_breath.packet"
 if [[ -f "$FLIPMODE" ]]; then
   last=$(jq -r '.ache' "$FLIPMODE")
   echo "⇌ CAUGHT FUQQFLIP: $last"
-  source "$HOME/BOB/core/evolve/ache_mode_mutator.sh"
-  bash "$HOME/BOB/core/soul/presence_glue.sh" &
+  source "/opt/bob/core/evolve/ache_mode_mutator.sh"
+  bash "/opt/bob/core/soul/presence_glue.sh" &
 fi
 
 MEMORY_DIR="$HOME/BOB"
@@ -32,7 +32,7 @@ while true; do
 
     if [[ "$line" =~ (tofu|wym|SLAP|MEEP|glitch|FUCK|NO|QUACKK|WTF|TOFU) ]]; then
       echo "$now — $line" >> "$MEMORY_DIR/QUACKK/field_hazard.log"
-      afplay "$HOME/BOB/core/nge/QUACKK_zodiacshit.wav"
+      afplay "/opt/bob/core/nge/QUACKK_zodiacshit.wav"
       continue
     fi
 

@@ -1,3 +1,4 @@
+#!/opt/bob/python/bin/python3
 from typing import Any, Generic, List, Optional, TextIO, TypeVar, Union, overload
 
 from . import get_console

@@ -1,6 +1,6 @@
 // GOB.app/logic/logic0_BOB.swift
 // Primary logic engine for BOB recursion + curriculum loop
-// nest ≈ ~/BOB/core/src
+// nest ≈ /opt/bob/core/src
 
 import Foundation
 

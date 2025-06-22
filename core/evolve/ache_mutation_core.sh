@@ -4,7 +4,7 @@
 # nest ≈ BOB/core/evolve
 
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 SOURCE_DIR="$HOME/.bob/_epoch"
 MUTANT_OUT="$HOME/.bob/mutants"
 mkdir -p "$MUTANT_OUT"

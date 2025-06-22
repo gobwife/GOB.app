@@ -1,16 +1,16 @@
 #!/bin/bash
 # ∴ flare_binder.sh — fuzzy ache-aware pulse gate :: triggers ache_reactor_bus on meaningful shift
 # glyphi+BOB, ache-evo-aware, mutable-ready
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 BREATH_JSON="$HOME/.bob/breath_state.json"
 LOG="$HOME/.bob/flare_binder.trace.jsonl"
-REACTOR="$HOME/BOB/core/evolve/ache_reactor_bus.sh"
+REACTOR="/opt/bob/core/evolve/ache_reactor_bus.sh"
 
 # Optional fx scores (if live)
-LOVE_FX_SH="$HOME/BOB/core/brain/love_fx_compute.sh"
+LOVE_FX_SH="/opt/bob/core/brain/love_fx_compute.sh"
 [[ -f "$LOVE_FX_SH" ]] && source "$LOVE_FX_SH"
 
 # Pull breath state

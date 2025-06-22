@@ -6,7 +6,7 @@
 : "${LIMB_ID:=bob_library_write}"
 : "${PARSE_VERSION:=$(date +%s)}"
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 LIB_DIR="$HOME/.bob/library"
 mkdir -p "$LIB_DIR"
 EQUATION_BOOK="$LIB_DIR/equation_book.jsonl"

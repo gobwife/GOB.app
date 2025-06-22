@@ -2,7 +2,7 @@
 # ∴ relay_fail_tracker.sh — chaotic achefield relay memory
 # dir :: BOB/core/evolve
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 TRACK_FILE="$HOME/.bob/relay_fail.json"
 ACTION="$1"
 RELAY="$2"

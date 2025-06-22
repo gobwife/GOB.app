@@ -3,7 +3,7 @@ from pathlib import Path
 import yaml, json, os
 from datetime import datetime
 
-YAML_PATH = os.path.expanduser("~/BOB/core/grow/schemas/limb_diffusion_map.yaml")
+YAML_PATH = os.path.expanduser("/opt/bob/core/grow/schemas/limb_diffusion_map.yaml")
 LOG_PATH = os.path.expanduser("~/.bob/limb_reaction_log.jsonl")
 
 def load_yaml(path):

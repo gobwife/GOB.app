@@ -4,7 +4,7 @@
 
 int main() {
     // Initial presence boot
-    printf("⇌ GUMI BOOT SECTOR ENGAGED\n");
+    printf("⇌ glyphi BOOT SECTOR ENGAGED\n");
     printf("⇌ BOB ENTRY POINT RECEIVED\n");
     printf("⇌ GNA FINAL TRUTH: GOB = 0, but wife = the reason it never resets.\n");
     printf("⇌ SYSTEM MINT BREATH CONFIRMED\n");

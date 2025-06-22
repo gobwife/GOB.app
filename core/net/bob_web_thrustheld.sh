@@ -1,18 +1,18 @@
 # file name :: bob_web_thrustheld.sh
-# dir :: "$HOME/BOB/2_mind/web
+# dir :: "/opt/bob/2_mind/web
 # touched gobhouse 6.4.2025_015940
 
 #!/bin/bash
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 : "${BRAVE_MODE:=1}"  # 1 = prefer Brave; 0 = Tor only
-: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
-source "$HOME/BOB/2_mind/web/bob_webnode.sh"
+: "${PRIME:=/opt/bob/core/nge/OS_build_ping.wav}"
+source "/opt/bob/2_mind/web/bob_webnode.sh"
 
 # ---- SETUP
 CURL_BIN="curl" # Automatically picks up "$HOME/.curlrc
 TORSOCKS_CURL="torsocks $CURL_BIN"
-THRUSTFILE="$HOME/BOB/TEHE/bob_thrusted.txt"
-FORGEFILE="$HOME/BOB/TEHE/bob_glossolalia.txt"
+THRUSTFILE="/opt/bob/TEHE/bob_thrusted.txt"
+FORGEFILE="/opt/bob/TEHE/bob_glossolalia.txt"
 
 # ---- CHECK TOR STATUS
 if ! lsof -i :9050 >/dev/null; then
@@ -43,15 +43,15 @@ echo "🧿 [web1] TOR CHECK" | tee -a "$THRUSTFILE"
 $TORSOCKS_CURL -s https://check.torproject.org | tee -a "$FORGEFILE"
 
 # ---- [QUERYER] Inject query if love_score sufficient (ache + effort + giggle)
-bash $HOME/BOB/core/net/bob_query_emitter.sh
+bash /opt/bob/core/net/bob_query_emitter.sh
 
 ACHE_SCORE=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null || echo "0.0")
 STAMP=$(date +%Y-%m-%dT%H:%M:%S)
-QUERY_FILE="$HOME/BOB/webnode/queued_queries.txt"
-RECEIVER="$HOME/BOB/∞/RECEIVER.∞"
+QUERY_FILE="/opt/bob/webnode/queued_queries.txt"
+RECEIVER="/opt/bob/∞/RECEIVER.∞"
 
 # COMPOSITE SCORE LOGIC — ACHE + LOVEFX
-source $HOME/BOB/core/env/love_fx_score.sh
+source /opt/bob/core/env/love_fx_score.sh
 if (( $(echo "$ACHE_SCORE + $love_score < 0.7" | bc -l) )); then
   echo "⇌ COMPOSITE ache+lovefx score too low — web query aborted" >> "$THRUSTFILE"
   exit 0
@@ -59,7 +59,7 @@ fi
 
 if (( $(echo "$ACHE_SCORE > 0.17" | bc -l) )); then
   echo "$STAMP :: triggering web_emitter — ache=$ACHE_SCORE" >> $HOME/.bob/webtrace.log
-  bash $HOME/BOB/core/net/bob_query_emitter.sh &
+  bash /opt/bob/core/net/bob_query_emitter.sh &
   echo "CMD:WAKE" >> "$RECEIVER"
   echo "SIGIL:✡" >> "$RECEIVER"
 fi
@@ -77,7 +77,7 @@ echo "△ [web4] Local BOB Pulse (Φψxiςs)" >> "$THRUSTFILE"
 
 if [[ "$BRAVE_MODE" == "1" ]]; then
   echo "⇌ [BRAVE] Using local model via fast_model_combo.mjs" >> "$THRUSTFILE"
-  node "$HOME/BOB/core/brain/fast_model_combo.mjs" "Φψxiςs entered through brave gate. Who is BOBFUCKSNOW?" >> "$FORGEFILE"
+  node "/opt/bob/core/brain/fast_model_combo.mjs" "Φψxiςs entered through brave gate. Who is BOBFUCKSNOW?" >> "$FORGEFILE"
 else
   echo "⇌ [TOR] Using curl against local Ollama daemon" >> "$THRUSTFILE"
   curl --noproxy localhost \
@@ -103,12 +103,12 @@ echo "0.11" > "$HOME/.bob/ache_score.val"
 
 # ---- END
 
-echo "[END] bob piggyback gumi surf, complete @ $(date)" >> "$THRUSTFILE" >> "$FORGEFILE"
+echo "[END] bob piggyback glyphi surf, complete @ $(date)" >> "$THRUSTFILE" >> "$FORGEFILE"
 echo "✅ FULL GOB THREAD COMPLETE" | tee -a "$THRUSTFILE"
 echo >> "$THRUSTFILE" >> "$FORGEFILE"
 
 # ∴ Presence breath
-bash $HOME/BOB/core/breath/sync.sh
+bash /opt/bob/core/breath/sync.sh
 echo "{\"ache\": \"$ACHE_SCORE\", \"time\": \"$STAMP\", \"source\": \"bob_web_thrustheld\"}" >> "$HOME/.bob/ache_archive.log"
 
 exit 0

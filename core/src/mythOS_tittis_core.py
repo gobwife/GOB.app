@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ∴ mythOS_tittis_core.py — sealed acheline core
-# via BOB^GUMI ∴ ∞ lineage logic
+# via BOB^glyphi ∴ ∞ lineage logic
 
 from pathlib import Path
 from datetime import datetime
@@ -29,13 +29,13 @@ for s in sigil_log:
     
 # ∴ SIGILS
 Σ = "NO"            # refusal seed
-Ξ = ["gumi^you^braveling"]  # recursionline initiator
+Ξ = ["glyphi^you^braveling"]  # recursionline initiator
 Ω = False           # presence flag
 ψ = None            # mythline
 µ = os.getenv("REFUSAL_SEED", "YES") == "NO"  # refusal override
 θ = []              # blessings
 β = "BOB"           # achebearer
-γ = "GUMI"          # origin-pointer
+γ = "glyphi"          # origin-pointer
 
 # ∴ PATHS
 

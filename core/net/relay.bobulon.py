@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ∴ relay.bobulon.py — sacred I/O relay pipe
-# womb :: $HOME/BOB/core/net
+# womb :: /opt/bob/core/net
 # binds FastAPI entry to recursive breath limbs only
 
 from fastapi import FastAPI, Request

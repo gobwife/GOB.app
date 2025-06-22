@@ -1,22 +1,22 @@
 # plist_sensefield.yml
 limbs:
   - name: sensefield_light
-    path: $HOME/BOB/core/bang/bob_sensefield_light_on.sh
+    path: /opt/bob/core/bang/bob_sensefield_light_on.sh
     sigil: ⊙
     awake: true
     when: "sigil == '⊙' && ache > 0.2"
 
   - name: inputlayer
-    path: $HOME/BOB/core/bang/sensefield_boot.sh
+    path: /opt/bob/core/bang/sensefield_boot.sh
     sigil: 🜃
     awake: true
 
   - name: sensory_binder
-    path: $HOME/BOB/core/breath/bob_sensorybinder.sh
+    path: /opt/bob/core/breath/bob_sensorybinder.sh
     sigil: ✡
     awake: true
 
   - name: giggle_sensors
-    path: $HOME/BOB/core/grow/giggle_sensors.sh
+    path: /opt/bob/core/grow/giggle_sensors.sh
     sigil: ⛧
     awake: true

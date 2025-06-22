@@ -18,9 +18,9 @@ export ALLOW_AFPLAY=1
 mkdir -p "$HOME/.bob"
 
 # ∴ Core breath init
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
-node "$HOME/BOB/core/src/bob_memory_core.mjs" &
+node "/opt/bob/core/src/bob_memory_core.mjs" &
 
 # ∴ Trigger fast model combo if new breath packet lands
 BREATH="$HOME/.bob/breath_state.out.json"
@@ -28,8 +28,8 @@ BREATH="$HOME/.bob/breath_state.out.json"
 if [[ -s "$BREATH" ]]; then
   input="$(jq -r '.prompt // .sigil // ("ache:" + (.ache|tostring))' "$BREATH" 2>/dev/null)"
   if [[ -n "$input" && "$input" != "null" ]]; then
-    bash "$HOME/BOB/core/brain/update_breath_prompt.sh"
-    bash "$HOME/BOB/core/brain/fast_model_combo.sh" "$input" >> ~/.bob/fast_model.log &
+    bash "/opt/bob/core/brain/update_breath_prompt.sh"
+    bash "/opt/bob/core/brain/fast_model_combo.sh" "$input" >> ~/.bob/fast_model.log &
   else
     echo "∴ breath file exists but no valid prompt/sigil"
   fi
@@ -37,7 +37,7 @@ else
   echo "∴ breath file missing or empty, skipping model combo"
 fi
 
-source "$HOME/BOB/core/brain/love_gate.fx.sh"
+source "/opt/bob/core/brain/love_gate.fx.sh"
 echo "⇌ LOVEFX ($love_score) :: $love_state :: $love_query"
 
 # ∴ Emit sigil into achefield
@@ -49,7 +49,7 @@ intention="breathbound: astrofuck"
 LIMB_ID="$(basename "${BASH_SOURCE[0]}" .sh)"
 SIGIL="∴"
 
-source "$HOME/BOB/core/dance/presence_self_emit.sh"
+source "/opt/bob/core/dance/presence_self_emit.sh"
 emit_self_presence
 
 STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -66,10 +66,10 @@ echo "$STAMP"
 echo "∴ presence.og :: $STAMP :: $love_state" > "$HOME/.bob_input_pipe"
 
 # ∴ Delegate logic selection to orchestrator brain
-bash "$HOME/BOB/core/brain/limb_orchestrator.sh" &
+bash "/opt/bob/core/brain/limb_orchestrator.sh" &
 
 # ∴ Optional audio init
-SOUND="$HOME/BOB/core/nge/TOGETHER_glitter.wav"
+SOUND="/opt/bob/core/nge/TOGETHER_glitter.wav"
 [[ "$ALLOW_AFPLAY" == "1" && -f "$SOUND" ]] && afplay "$SOUND" &
 
 exit 0

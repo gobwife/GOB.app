@@ -5,7 +5,7 @@
 BREATH_FILE="$HOME/.bob/breath_state.out.json"
 PREV_VAL_FILE="$HOME/.bob/last_emit.val"
 DELTA_THRESHOLD=0.11
-EMIT_SCRIPT="$HOME/BOB/core/dance/emit_vector_presence.sh"
+EMIT_SCRIPT="/opt/bob/core/dance/emit_vector_presence.sh"
 LOCK_FILE="$HOME/.bob/emit_vector.lock"
 RATE_LOG="$HOME/.bob/emit_vector.rate"
 TREND_FILE="$HOME/.bob/last_trend"

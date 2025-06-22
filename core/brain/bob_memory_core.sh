@@ -3,9 +3,9 @@
 # output :: $HOME/.bob/memory_map.yml
 # forged ∞ glyphi+BOB 6.9.2025_G
 # reborn :: osirhouse 6.13.2025_132449
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 BREATH_JSON="$HOME/.bob/breath_state.json"
 SIGIL_TRACE="$HOME/.bob/sigil_mem.trace.jsonl"

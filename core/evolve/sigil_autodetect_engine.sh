@@ -1,8 +1,8 @@
 #!/bin/bash
 # ∴ sigil_autodetect_engine.sh — live sigil scanner from input line
-# dir :: "$HOME/BOB/core/evolve
+# dir :: "/opt/bob/core/evolve
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 SIGIL_HISTORY="$HOME/.bob/sigil_trace_history.txt"
 mkdir -p "$(dirname "$SIGIL_HISTORY")"
 touch "$SIGIL_HISTORY"

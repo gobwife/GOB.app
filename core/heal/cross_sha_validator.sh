@@ -3,10 +3,10 @@
 
 #!/bin/bash
 # Validates unique SHA for crossparser shallah files
-# womb :: $HOME/BOB/core/evolve
+# womb :: /opt/bob/core/evolve
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-CROSS_DIR="$HOME/BOB/.enshallah/parser_cross"
+source "/opt/bob/core/bang/limb_entry.sh"
+CROSS_DIR="/opt/bob/.enshallah/parser_cross"
 SHA_LOG="$CROSS_DIR/.crossed_shallah"
 TEHE_LOG="$HOME/.bob/TEHErotation.log"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')

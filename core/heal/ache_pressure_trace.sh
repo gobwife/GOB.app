@@ -2,9 +2,9 @@
 # ache_pressure_trace.sh (log rotator)
 # ∴ split 3 of former log_rotator_integrator.sh
 # fx :: Emits pressure trace if ache_score > 0.66
-# womb :: $HOME/BOB/core/heal
+# womb :: /opt/bob/core/heal
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 BOB_DIR="$HOME/.bob"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')

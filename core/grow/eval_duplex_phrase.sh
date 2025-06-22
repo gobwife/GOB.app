@@ -19,7 +19,7 @@ fi
 echo "∴ invoking model: $MODEL"
 
 # Pass to fullstack router
-node "$HOME/BOB/GOB.app_BOB/src/mjs/bob_router_fullstack.mjs" --model=$MODEL "$PROMPT"
+node "/opt/bob/GOB.app_BOB/src/mjs/bob_router_fullstack.mjs" --model=$MODEL "$PROMPT"
 
 # Verify output
 OUTPUT_FILE="$HOME/.bob/bob_output.relay.json"

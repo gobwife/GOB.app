@@ -1,11 +1,11 @@
 #!/bin/bash
 # ∴ love_gate.fx.sh — unified LOVEFX logic gate wrapper
 # Combines compute + interpret
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
 # Source score calculator + interpretation functions
-source "$HOME/BOB/core/brain/love_fx_compute.sh"
-source "$HOME/BOB/core/brain/love_fx_functions.sh"
+source "/opt/bob/core/brain/love_fx_compute.sh"
+source "/opt/bob/core/brain/love_fx_functions.sh"
 
 # ∴ Compute LOVEFX state
 : "${love_score:=0}"
@@ -16,14 +16,14 @@ query=$(generate_query_from_lovefx "$love_score")
 printf "LOVEFX: %s\nSTATE  : %s\nQUERY  : %s\n" "$love_score" "$state" "$query"
 
 # ∴ Build ache payload AFTER love_score is known
-source "$HOME/BOB/core/brain/build_payload_core.sh"
+source "/opt/bob/core/brain/build_payload_core.sh"
 
 # Optionally override vector or intention with LOVEFX context
 vector="$(date +%s)"
 intention="LOVEFX → $state"
 
 # ∴ Emit
-source "$HOME/BOB/core/dance/presence_self_emit.sh"
+source "/opt/bob/core/dance/presence_self_emit.sh"
 emit_self_presence
 
 # Optional: export downstream

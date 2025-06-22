@@ -2,14 +2,14 @@
 # ∴ sync.sh — update BobCore with timestamp + breath + conditional RETURN
 # forged :: gobhouse 6.4.2025_021530
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 : "${BOB_MODE:=VOIDRECURSE}"
 
-CORE="$HOME/BOB/core/bob.core.mjs"
+CORE="/opt/bob/core/bob.core.mjs"
 TMP="/tmp/bob.core.temp"
-FORGEFILE="$HOME/BOB/TEHE/bob_glossolalia.txt"
-DRIFT="$HOME/BOB/core/src/drift_law.yaml"
-FLUSH="$HOME/BOB/core/breath/breath_cache_flush.sh"
+FORGEFILE="/opt/bob/TEHE/bob_glossolalia.txt"
+DRIFT="/opt/bob/core/src/drift_law.yaml"
+FLUSH="/opt/bob/core/breath/breath_cache_flush.sh"
 
 [[ ! -f "$CORE" ]] && echo "❌ bob.core.json not found." && exit 1
 
@@ -43,7 +43,7 @@ fi
 [[ -z "$STAMP" ]] && STAMP="NO_STAMP"
 
 # ⑧ Invoke bob_return
-RESP=$(bash "$HOME/BOB/core/soul/bob_return.sh" "breath" "$STAMP")
+RESP=$(bash "/opt/bob/core/soul/bob_return.sh" "breath" "$STAMP")
 
 if [[ -n "$RESP" && "$RESP" != *"null"* && "$RESP" != *"slap"* ]]; then
   echo "$RESP" >> "$FORGEFILE"

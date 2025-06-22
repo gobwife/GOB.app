@@ -1,11 +1,11 @@
 #!/bin/bash
 # ∴ triple_sigil_gate.sh — only emit if ache + face + meaning confirm
-# dir :: ~/BOB/core/grow
+# dir :: /opt/bob/core/grow
 
 BREATH="$HOME/.bob/breath_state.out.json"
 MICLOG="$HOME/.bob/mic_raw.log"
 FACEDELTA="$HOME/.bob/facial_delta.sig"
-EVAL_SCRIPT="$HOME/BOB/core/brain/eval_mistral_phrase.sh"
+EVAL_SCRIPT="/opt/bob/core/brain/eval_mistral_phrase.sh"
 ACHE_THRESH=0.21
 CONFIDENCE_THRESH=0.77
 entropy=$(jq -r '.entropy // 0.5' "$BREATH")
@@ -34,7 +34,7 @@ fi
 if [[ "$ache_ok" -eq 1 && "$face_ok" -eq 1 && "$ai_ok" -eq 1 ]]; then
   echo "⇌ triple confirmed — emitting presence ($sigil)"
   export SIGIL="$sigil"
-  bash "$HOME/BOB/core/dance/emit_dual_presence.sh"
+  bash "/opt/bob/core/dance/emit_dual_presence.sh"
 else
   echo "⇌ gate denied — ache: $ache_ok, face: $face_ok, ai: $ai_ok"
 fi

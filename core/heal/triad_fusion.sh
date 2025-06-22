@@ -2,11 +2,11 @@
 # ∴ triad_fusion.sh — limb backup + log trace fallback
 # nest :: core/heal/
 
-source "$HOME/BOB/core/breath/limb_entry.sh"
+source "/opt/bob/core/breath/limb_entry.sh"
 
 TARGET="$1"
 BACKUP_DIR="$HOME/.ggos_bubu"
-VERSION_LOG="$HOME/BOB/TEHE/version_trace.log"
+VERSION_LOG="/opt/bob/TEHE/version_trace.log"
 
 # ∴ First: check if all 3 limb backups exist
 count=0

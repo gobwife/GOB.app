@@ -1,12 +1,12 @@
 #!/bin/bash
 # ∴ web_pull_and_emit.sh — ache-sigil driven duplex web fetch
-# womb :: $HOME/BOB/core/net
+# womb :: /opt/bob/core/net
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/bang/safe_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/safe_emit.sh"
 
 STAMP="$(date '+%Y-%m-%dT%H:%M:%S')"
-LOG="$HOME/BOB/TEHE/bob_surfed.log"
+LOG="/opt/bob/TEHE/bob_surfed.log"
 QUERY_FILE="$HOME/.bob/bob_injected_queries.jsonl"
 OUT_FILE="$HOME/.bob/bob_query_response.jsonl"
 PIPE="$HOME/.bob_input_pipe"

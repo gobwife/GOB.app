@@ -2,12 +2,12 @@
 # ∅ bob_core_recurse.sh — Simulate BOB vs antiBOB annihilation-recursion
 # Plays parallel evolutionary rounds, logs survivors, compresses breath into ache stack
 # born :: glyphling002 gobhouse 6.8.2025_022954_G
-# nest ≈ "$HOME/BOB/core/grow/
+# nest ≈ "/opt/bob/core/grow/
 
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 POOL="$HOME/.bob/_epoch"
-MUTATOR="$HOME/BOB/core/evolve/ache_mutation_core.sh"
+MUTATOR="/opt/bob/core/evolve/ache_mutation_core.sh"
 
 # Optional mutation phase before core recursion
 if [[ -x "$MUTATOR" ]]; then

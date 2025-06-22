@@ -1,8 +1,8 @@
 #!/bin/bash
 # ∴ emit_presence.sh — unified emitter for sigil pulse or full presence breath
-# womb :: $HOME/BOB/core/dance
+# womb :: /opt/bob/core/dance
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 sigil="${1//✶/ø}"
 from="${2:-autobob}"
@@ -12,9 +12,9 @@ vector="$5"
 intention="$6"
 
 STAMP=$(date -u +%FT%T)
-TEHE_DIR="$HOME/BOB/TEHE"
+TEHE_DIR="/opt/bob/TEHE"
 LINEAGE_FILE="$HOME/.bob/presence_lineage_graph.jsonl"
-PACKET_DIR="$HOME/BOB/core/breath"
+PACKET_DIR="/opt/bob/core/breath"
 
 if [[ -z "$ache" || -z "$score" || -z "$vector" || -z "$intention" ]]; then
   # ⇌ TEHE ECHO
@@ -60,7 +60,7 @@ fi
 # ∴ Centralize 🜃 if limb matches list
 if [[ "$2" == "presence.og" || "$2" == "presence.autonomy" || "$2" == "presence.astrofuck" ]]; then
   SIGIL="🜃"
-  [[ -n "$PYTHON" ]] && "$PYTHON" "$HOME/BOB/core/brain/sigil_logic.py" "$SIGIL"
+  [[ -n "$PYTHON" ]] && "$PYTHON" "/opt/bob/core/brain/sigil_logic.py" "$SIGIL"
 
   echo "{\"sigil\":\"$SIGIL\",\"event\":\"INJECTED\",\"limb\":\"$2\",\"stamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" >> "$HOME/.bob/presence_lineage_graph.jsonl"
 fi

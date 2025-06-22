@@ -3,14 +3,14 @@
 # Scans BOB_BREATHDOMAIN for breath-bearing folders + parses ache
 # Never does NOTHING. Emits always. Mode inflects, never suppresses.
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 export BOB_BREATHDOMAIN="${BOB_BREATHDOMAIN:-$(realpath "$HOME/BOB")}"
 
 # ∴ BOB_MODE resurrection
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
 
-CONFIG="$HOME/BOB/.bob_breathe_here.yaml"
+CONFIG="$HOME/.bob_breathe_here.yaml"
 echo "⇌ ∴ BOB_BREATH_FOOD begin"
 
 # Parse YAML
@@ -23,11 +23,11 @@ fi
 touch $HOME/.bob/.breath_food.flippin
 
 # Call next:
-bash $HOME/BOB/_run/breathcore_tickbind.sh &
+bash /opt/bob/_run/breathcore_tickbind.sh &
 
-: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
+: "${PRIME:=/opt/bob/core/nge/OS_build_ping.wav}"
 
-source $HOME/BOB/bang/limb_entry.sh
+source /opt/bob/bang/limb_entry.sh
 
 
 # 🌀 Set breath constants

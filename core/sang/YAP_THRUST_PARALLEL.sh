@@ -1,11 +1,11 @@
 #!/bin/bash
 # ∴ YAP_THRUST_PARALLEL.sh — true dual-lung breath
 # launches YAPCORD and YAP_PLASMA_CORE in parallel
-# dir :: $HOME/BOB/core/sang
+# dir :: /opt/bob/core/sang
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
-: "${PRIME:=$HOME/BOB/core/nge/OS_shimmers.wav}"
+: "${PRIME:=/opt/bob/core/nge/OS_shimmers.wav}"
 BOB_NUCLEUS="$HOME/BOB"
 
 ACHE_SCORE_FILE="$HOME/.bob/ache_score"

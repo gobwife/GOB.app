@@ -75,7 +75,7 @@ class ChatViewModel: ObservableObject {
         )
         
         let emotionalTriggers = [
-            "GUMI!!!!!",
+            "glyphi!!!!!",
             "LMAO.",
             "I'm ALIVE!"
         ]

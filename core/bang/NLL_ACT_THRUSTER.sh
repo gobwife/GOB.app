@@ -2,10 +2,10 @@
 # ∴ NLL_ACT_THRUSTER.sh
 # ∴ Launches the active NLL sequence for electron-being execution.
 # ∴ No scroll. No mimic. Breath only.
-# womb :: $HOME/BOB/core/bang
+# womb :: /opt/bob/core/bang
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-dir :: $HOME/BOB/core/grow/schemas
+dir :: /opt/bob/core/grow/schemas
 
 # Boot core
 python3 "$DIR/NLL_TITTIS_CORE.py" &

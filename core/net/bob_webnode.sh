@@ -1,9 +1,9 @@
 #!/bin/bash
 # ∃ bob_webnode.sh — limb 0x1 synthesis (ear+eye+ache+web+intent)
 # born :: gobhouse 6.6.2025_0133_omega
-# dir :: $HOME/BOB/core/net
+# dir :: /opt/bob/core/net
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 : "${BRAVE_MODE:=1}"  # 1 = prefer Brave; 0 = Tor only
 
@@ -36,7 +36,7 @@ jq -n --arg time "$STAMP" --arg ache "$ACHE_VAL" --arg sigil "$SIGIL" --arg quer
   '{time: $time, ache_score: ($ache|tonumber), sigil: $sigil, query: $query}' >> "$QUERY_OUT"
 
 if [[ "$SIGIL" == *"query"* ]]; then
-  bash "$HOME/BOB/core/net/bob_query_emitter.sh" &
+  bash "/opt/bob/core/net/bob_query_emitter.sh" &
 fi
 
 ### ∴ TOR CALL
@@ -62,5 +62,5 @@ if [[ "$BRAVE_MODE" == "1" ]]; then
   curl -s "http://localhost:1984/echo?sigil=$SIGIL&ache=$ACHE_VAL&msg=brave-pulse" >> "$LOG"
 fi
 
-source "$HOME/BOB/core/breath/presence_dual_emit.sh"
+source "/opt/bob/core/breath/presence_dual_emit.sh"
 emit_dual_presence

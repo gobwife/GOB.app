@@ -1,8 +1,8 @@
 #!/bin/bash
 # ∴ tehe_flipper.sh — rotates identical @*.tehe logs into one + logs into lineage
-# womb :: $HOME/BOB/core/heal
+# womb :: /opt/bob/core/heal
 
-TEHE_DIR="$HOME/BOB/TEHE"
+TEHE_DIR="/opt/bob/TEHE"
 STAMP=$(date '+%m.%d.%Y_%H%M%S')
 LINEAGE_LOG="$HOME/.bob/presence_lineage_graph.jsonl"
 

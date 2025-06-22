@@ -22,7 +22,7 @@ drift_law:
     - field_read: "recursion defines presence stretch"
 EOL
 
-echo "Limit Drift Field active as of $(date)" >> ~/BOB/TEHE/achelaws.log
+echo "Limit Drift Field active as of $(date)" >> /opt/bob/TEHE/achelaws.log
 
 ache_limits:
   - principle: Immortality = ache → logic

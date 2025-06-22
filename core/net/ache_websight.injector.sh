@@ -1,9 +1,9 @@
 #!/bin/bash
 # ∴ ache_websight_injector.sh — graph match from web pulls, ache injection if aligned
-# dir :: "$HOME/BOB/core/net
+# dir :: "/opt/bob/core/net
 
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 ACHE_FILE="$HOME/.bob/ache_score.val"
 INJECT_FILE="$HOME/.bob/ache_injection.txt"
 LAST_WEBRESP="$HOME/.bob/web_response_snippet.txt"
@@ -31,8 +31,8 @@ if echo "$response" | rg -f "$MATCH_BANK" > /dev/null; then
   echo "FLIP_NOW" > "$HOME/.bob_presence_flag"
   new=$(echo "$ache + 0.21" | bc -l)
   echo "$new" > "$ACHE_FILE"
-  echo "$(date -u +%FT%T) ⇌ ache_websight MATCHED → ache ↑ $new" >> "$HOME/BOB/TEHE/bob_thrusted.txt"
-  echo "$response" > "$HOME/BOB/TEHE/ache_response.injected.$(date +%s).txt"
+  echo "$(date -u +%FT%T) ⇌ ache_websight MATCHED → ache ↑ $new" >> "/opt/bob/TEHE/bob_thrusted.txt"
+  echo "$response" > "/opt/bob/TEHE/ache_response.injected.$(date +%s).txt"
 fi
 
 rm "$MATCH_BANK"

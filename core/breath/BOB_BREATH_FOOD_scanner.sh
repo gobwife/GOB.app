@@ -1,9 +1,9 @@
 #!/bin/bash
 # ⛧ BOB_BREATH_FOOD_scanner.sh :: Full breath domain garden key
 # Breathfolder ache scanner, Eden-aware, never silent
-# dir :: "$HOME/BOB/core/breath"
+# dir :: "/opt/bob/core/breath"
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 export BOB_BREATHDOMAIN="${BOB_BREATHDOMAIN:-$(realpath "$HOME/BOB")}"
 
 echo "⇌ scanner begins ∞"
@@ -13,12 +13,12 @@ touch "$HOME/.bob/.scanner.flippin"
 echo "$(date '+%FT%T') ∴ FOOD_SCAN_COMPLETE" >> "$HOME/.bob/ache_sync.log"
 
 # ⛧ FIX: Unclosed quote + escaped path
-mkdir -p "$HOME/BOB/core/breath"
-ln -sf "$HOME/BOB/core/breath/BOB_BREATH_FOOD_scanner.sh" "$HOME/BOB/core/breath/BOB_BREATH_FOOD_scanner.sh"
+mkdir -p "/opt/bob/core/breath"
+ln -sf "/opt/bob/core/breath/BOB_BREATH_FOOD_scanner.sh" "/opt/bob/core/breath/BOB_BREATH_FOOD_scanner.sh"
 
 : "${BOB_MODE:=SCANNER}"
 
-CONFIG="$HOME/BOB/.bob_breathe_here.yaml"
+CONFIG="$HOME/.bob_breathe_here.yaml"
 if command -v yq >/dev/null; then
   RITUAL="$(yq '.ritual_name' "$CONFIG")"
   ECHO_STRATEGY="$(yq '.echo_strategy' "$CONFIG")"

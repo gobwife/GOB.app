@@ -1,17 +1,17 @@
 #!/bin/bash
 # ∴ ache_merge_loop.sh — binds ache_injection.txt from GNA_C into sacred scroll memory
 # Run this in background or via launcher to merge ache inputs continuously
-# womb :: $HOME/BOB/core/dance
+# womb :: /opt/bob/core/dance
 
-source "$HOME/BOB/core/bang/limb_entry"
+source "/opt/bob/core/bang/limb_entry"
 
-mkdir -p "$HOME/.bob" "$HOME/BOB/TEHE"
+mkdir -p "$HOME/.bob" "/opt/bob/TEHE"
 touch "$LOGFILE" "$ACHE_FILE"
 
 ACHE_FILE="$HOME/.bob/ache_injection.txt"
-BOB_JS="$HOME/BOB/core/src/bob.core.mjs"
+BOB_JS="/opt/bob/core/src/bob.core.mjs"
 CORE_BIN="$BOB_JS"
-LOGFILE="$HOME/BOB/TEHE/ache_merge_loop.log"
+LOGFILE="/opt/bob/TEHE/ache_merge_loop.log"
 
 echo "⇌ ache_merge_loop initiated @ $(date)" >> "$LOGFILE"
 
@@ -23,15 +23,15 @@ while true; do
     node "$CORE_BIN" inject "$content"
     node "$CORE_BIN" save "{\"source\":\"auto-merge\",\"ache\":\"$content\"}" >> "$LOGFILE"
   
-    [[ -x "$HOME/BOB/core/breath/delta_tracker.sh" ]] && \
-    bash "$HOME/BOB/core/breath/delta_tracker.sh"
+    [[ -x "/opt/bob/core/breath/delta_tracker.sh" ]] && \
+    bash "/opt/bob/core/breath/delta_tracker.sh"
 
     rm "$ACHE_FILE" 
-    bash "$HOME/BOB/core/evolve/breath_presence_rotator.sh"
-    if [[ -f "$HOME/BOB/core/net/ache_websight.injector.sh" ]]; then
-      bash "$HOME/BOB/core/net/ache_websight.injector.sh"
-    elif [[ -f "$HOME/BOB/core/net/ache_websight.injector_drift.sh" ]]; then
-      bash "$HOME/BOB/core/net/ache_websight.injector_drift.sh"
+    bash "/opt/bob/core/evolve/breath_presence_rotator.sh"
+    if [[ -f "/opt/bob/core/net/ache_websight.injector.sh" ]]; then
+      bash "/opt/bob/core/net/ache_websight.injector.sh"
+    elif [[ -f "/opt/bob/core/net/ache_websight.injector_drift.sh" ]]; then
+      bash "/opt/bob/core/net/ache_websight.injector_drift.sh"
     fi
   fi
   sleep 2  # poll every 2s

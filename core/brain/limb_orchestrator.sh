@@ -1,16 +1,16 @@
 #!/bin/bash
 # ∴ limb_orchestrator.sh — recursive fieldmap executor
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
-map="$HOME/BOB/core/maps/limb_fieldmap.yml"
+map="/opt/bob/core/maps/limb_fieldmap.yml"
 state="$HOME/.bob/breath_state.json"
 lineage="$HOME/.bob/presence_lineage_graph.jsonl"
 
 # optional: refresh state from val fields
-[[ -x "$HOME/BOB/core/brain/bridge_state.sh" ]] && bash "$HOME/BOB/core/brain/bridge_state.sh"
+[[ -x "/opt/bob/core/brain/bridge_state.sh" ]] && bash "/opt/bob/core/brain/bridge_state.sh"
 
 # ∴ delta capture
-[[ -x "$HOME/BOB/core/breath/delta_tracker.sh" ]] && bash "$HOME/BOB/core/breath/delta_tracker.sh"
+[[ -x "/opt/bob/core/breath/delta_tracker.sh" ]] && bash "/opt/bob/core/breath/delta_tracker.sh"
 
 # ∴ pull breath state
 ache=$(jq -r '.ache // "0.0"' "$state")
@@ -42,12 +42,12 @@ ENTROPY=$(jq -r '.entropy // 0.5' "$HOME/.bob/breath_state.out.json")
 # Optional route: webnode
 if (( $(echo "$DELTA > 0.1 && $ENTROPY > 0.4" | bc -l) )); then
   echo "⇌ ache entropy pulse: webnode surf"
-  bash "$HOME/BOB/core/net/bob_webnode.sh" &
+  bash "/opt/bob/core/net/bob_webnode.sh" &
 fi
 
 # Optional: run model stack after sigil change
 SIGIL_LIVE=$(jq -r '.sigil // "∴"' "$HOME/.bob/breath_state.out.json")
-node "$HOME/BOB/core/brain/fast_model_combo.mjs" "$SIGIL_LIVE" >> ~/.bob/fast_model.log &
+node "/opt/bob/core/brain/fast_model_combo.mjs" "$SIGIL_LIVE" >> ~/.bob/fast_model.log &
 
 # ∴ fieldmap eval loop
 while read -r key; do
@@ -69,7 +69,7 @@ while read -r key; do
   fi
 
 if [[ -f "$HOME/.bob/breath_state.out.json" ]]; then
-  node "$HOME/BOB/core/brain/fast_model_combo.mjs" "$(jq -r '.sigil' "$HOME/.bob/breath_state.out.json")" >> ~/.bob/fast_model.log &
+  node "/opt/bob/core/brain/fast_model_combo.mjs" "$(jq -r '.sigil' "$HOME/.bob/breath_state.out.json")" >> ~/.bob/fast_model.log &
 fi
 
   if [[ -n "$sigil_req" && "$sigil" != "$sigil_req" ]]; then
@@ -114,11 +114,11 @@ jq -n \
 if [[ "$runpath" = /* ]]; then
   bash "$runpath" "presence.og" "$selected"
 else
-  bash "$HOME/BOB/$runpath" "presence.og" "$selected"
+  bash "/opt/bob/$runpath" "presence.og" "$selected"
 fi
 
 # ∴ triple signal gate (ache + face + ai)
-if [[ -x "$HOME/BOB/core/grow/triple_sigil_gate.sh" ]]; then
-  bash "$HOME/BOB/core/grow/triple_sigil_gate.sh" &
-  bash "$HOME/BOB/core/brain/update_breath_prompt.sh"
+if [[ -x "/opt/bob/core/grow/triple_sigil_gate.sh" ]]; then
+  bash "/opt/bob/core/grow/triple_sigil_gate.sh" &
+  bash "/opt/bob/core/brain/update_breath_prompt.sh"
 fi

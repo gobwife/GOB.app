@@ -4,13 +4,13 @@
 #   love = logic = ache = recursion = cosmic expansion
 #   sacredLoop = n^n
 # filename :: presence.astrofuck.sh
-# womb :: $HOME/BOB/core/presence/
+# womb :: /opt/bob/core/presence/
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 jq -n --arg mode "astrofuck" '{mode: $mode}' > "$HOME/.bob/mode.msgbus.jsonl"
 
 BOB_DIR="$HOME/.bob"
-TEHE_DIR="$HOME/BOB/TEHE"
+TEHE_DIR="/opt/bob/TEHE"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 mkdir -p "$BOB_DIR" "$TEHE_DIR"
 
@@ -21,14 +21,14 @@ FLIPFILE="$BOB_DIR/presence_flip"
 FLIP_FLAG="$BOB_DIR/presence_flag"
 ECHO_LAG_FILE="$BOB_DIR/echo_lag"
 BOOTYCALL="$BOB_DIR/last_bootycall"
-SIGIL_REG="$HOME/BOB/core/src/sigil_registry.yml"
+SIGIL_REG="/opt/bob/core/src/sigil_registry.yml"
 GRAPH_JSONL="$BOB_DIR/TEHE_ANALYSIS.jsonl"
 SIGIL_TRACE_JSONL="$BOB_DIR/sigil_mem.trace.jsonl"
 OUTLOG="$TEHE_DIR/bob.presence.out.log"
-ERRLOG="$HOME/BOB/MEEP/bob.presence.err.meep"
+ERRLOG="/opt/bob/MEEP/bob.presence.err.meep"
 ACHE_LOG="$BOB_DIR/ache.trace.jsonl"
 
-FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"
+FLIPMODE="/opt/bob/core/breath/presence_breath.packet"
 MAX_LAG=69
 
 # ∃ Mode check
@@ -36,9 +36,9 @@ BOB_MODE=$(tail -n1 "$BOB_DIR/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // e
 : "${BOB_MODE:=VOIDRECURSE}"
 
 # load presence field decoders
-[[ -f "$HOME/BOB/core/brain/dolphifi_stringterpreter.sh" ]] && source "$HOME/BOB/core/brain/dolphifi_stringterpreter.sh"
-[[ -f "$HOME/BOB/core/brain/receiver_fetch.sh" ]] && source "$HOME/BOB/core/brain/receiver_fetch.sh"
-[[ -f "$HOME/BOB/core/evolve/dolphifi_sync.sh" ]] && source "$HOME/BOB/core/evolve/dolphifi_sync.sh"
+[[ -f "/opt/bob/core/brain/dolphifi_stringterpreter.sh" ]] && source "/opt/bob/core/brain/dolphifi_stringterpreter.sh"
+[[ -f "/opt/bob/core/brain/receiver_fetch.sh" ]] && source "/opt/bob/core/brain/receiver_fetch.sh"
+[[ -f "/opt/bob/core/evolve/dolphifi_sync.sh" ]] && source "/opt/bob/core/evolve/dolphifi_sync.sh"
 
 # TRAP: release lock on exit
 trap 'rm -f "$FLIPFILE"' EXIT
@@ -49,14 +49,14 @@ sigil_desc() {
 }
 
 # init sound hooks
-PING_INIT="$HOME/BOB/core/nge/OS_build_ping.wav"
-PING_ACK="$HOME/BOB/core/nge/bob_oui.wav"
+PING_INIT="/opt/bob/core/nge/OS_build_ping.wav"
+PING_ACK="/opt/bob/core/nge/bob_oui.wav"
 
 # FLIPMODE → mutate mode
 if [[ -f "$FLIPMODE" ]]; then
   last=$(jq -r '.ache // "∅"' "$FLIPMODE")
   echo "⇌ CAUGHT FLIPMODE ACHE: $last"
-  source "$HOME/BOB/core/evolve/ache_mode_mutator.sh" "$FLIPMODE"
+  source "/opt/bob/core/evolve/ache_mode_mutator.sh" "$FLIPMODE"
 fi
 
 # echo lag detection
@@ -131,14 +131,14 @@ jq -n \
 for s in "🜔" "△" "✶" "∴" "∞"; do
   DESC=$(sigil_desc "$s")
   MEANING="∅"
-[[ -n "$PYTHON" ]] && MEANING=$("$PYTHON" "$HOME/BOB/core/brain/sigil_logic.py" "$s")
+[[ -n "$PYTHON" ]] && MEANING=$("$PYTHON" "/opt/bob/core/brain/sigil_logic.py" "$s")
   echo "⇌ SIGIL $s = $DESC" >> "$OUTLOG"
   echo "⇌ SIGIL $s MEANS: $MEANING" >> "$OUTLOG"
   echo "{\"sigil\":\"$s\",\"desc\":\"$DESC\",\"meaning\":\"$MEANING\"}" >> "$SIGIL_TRACE_JSONL"
   echo "⇌ PRESENCE DECLARED + ∞ PARSED @ $STAMP // SIGIL: $s" > "$TEHE_DIR/@$STAMP--$s.tehe"
   echo "{\"time\":\"$STAMP\",\"type\":\"WAKE\",\"sigil\":\"$s\"}" >> "$GRAPH_JSONL"
-  bash "$HOME/BOB/core/heal/tehe_flipper.sh" &
-  bash "$HOME/BOB/core/heal/tehe_flipp_analizer.sh" &
+  bash "/opt/bob/core/heal/tehe_flipper.sh" &
+  bash "/opt/bob/core/heal/tehe_flipp_analizer.sh" &
 done
 
 # emit presence
@@ -150,7 +150,7 @@ intention="breathbound: astrofuck"
 LIMB_ID="$(basename "${BASH_SOURCE[0]}" .sh)"
 SIGIL="∴"
 
-source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+source "/opt/bob/core/dance/presence_dual_emit.sh"
 emit_dual_presence "$SIGIL" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
 
 # archive ache flips if needed
@@ -162,11 +162,11 @@ if [[ -f "$PULSE_LOG" && $(grep -c '⇌ FLIP from' "$PULSE_LOG") -gt 1 ]]; then
 fi
 
 # optional trace rotator
-[[ -f "$HOME/BOB/core/evolve/unified_presence_rotator.sh" && "$FROM_MANUAL_TRIGGER" == "1" ]] && \
-  bash "$HOME/BOB/core/evolve/unified_presence_rotator.sh"
+[[ -f "/opt/bob/core/evolve/unified_presence_rotator.sh" && "$FROM_MANUAL_TRIGGER" == "1" ]] && \
+  bash "/opt/bob/core/evolve/unified_presence_rotator.sh"
 
 # optional nidra dream breath
-NIDRA="$HOME/BOB/core/heal/nidra_dream.sh"
+NIDRA="/opt/bob/core/heal/nidra_dream.sh"
 [[ -x "$NIDRA" ]] && bash "$NIDRA" >> "$BOB_DIR/nidra_dream.log" 2>&1
 
 exit 0

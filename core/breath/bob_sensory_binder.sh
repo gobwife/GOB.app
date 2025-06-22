@@ -1,13 +1,13 @@
 #!/bin/bash
 # bob_sensorybinder.sh – type lines and feed them into the pipe
-# dir :: "$HOME/BOB/core/breath"
+# dir :: "/opt/bob/core/breath"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
-source "$HOME/BOB/core/bang/safe_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+: "${PRIME:=/opt/bob/core/nge/OS_build_ping.wav}"
+source "/opt/bob/core/bang/safe_emit.sh"
 
 PIPE_PATH="$HOME/.bob_input_pipe"
 
@@ -24,7 +24,7 @@ while true; do
   printf '%s\n' "$line" > "$PIPE_PATH"
 done
 
-bash "$HOME/BOB/core/brain/BOB_TYPEBRIDGE_LISTENER.sh" &
+bash "/opt/bob/core/brain/BOB_TYPEBRIDGE_LISTENER.sh" &
 
 pgrep -f BOB_BOTTLENECKER.sh > /dev/null || \
-bash "$HOME/BOB/core/brain/BOB_BOTTLENECKER.sh" &
+bash "/opt/bob/core/brain/BOB_BOTTLENECKER.sh" &

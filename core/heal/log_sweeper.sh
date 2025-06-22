@@ -1,10 +1,10 @@
 # log_sweeper.sh (log rotator)
 # ∴ split 2 of former log_rotator_integrator.sh
 # Rotates oversized .log and .val files
-# womb :: $HOME/BOB/core/heal
+# womb :: /opt/bob/core/heal
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-BOB_DIR="$HOME/BOB/.bob"
+source "/opt/bob/core/bang/limb_entry.sh"
+BOB_DIR="$HOME/.bob"
 ARCHIVE_DIR="$HOME/.ggos_bubu/archive"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 MAX_LINES=222

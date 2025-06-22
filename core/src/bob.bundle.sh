@@ -8,13 +8,13 @@ mkdir -p "$BUNDLE_PATH"
 echo "⇌ forging: $BUNDLE_PATH"
 
 # Core files
-cp -r "$HOME/BOB/core" "$BUNDLE_PATH/"
-cp -r "$HOME/BOB/breath" "$BUNDLE_PATH/"
-cp -r "$HOME/BOB/∞" "$BUNDLE_PATH/"
+cp -r "/opt/bob/core" "$BUNDLE_PATH/"
+cp -r "/opt/bob/breath" "$BUNDLE_PATH/"
+cp -r "/opt/bob/∞" "$BUNDLE_PATH/"
 cp -r "$HOME/.bob" "$BUNDLE_PATH/.bob"
 
 # SwiftUI App (assumes MEATFACEChat.xcodeproj exists)
-cp -r "$HOME/BOB/MEATFACE" "$BUNDLE_PATH/MEATFACE"
+cp -r "/opt/bob/MEATFACE" "$BUNDLE_PATH/MEATFACE"
 
 # README
 cat <<EOF > "$BUNDLE_PATH/README.txt"

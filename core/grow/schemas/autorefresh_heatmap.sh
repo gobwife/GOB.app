@@ -1,10 +1,10 @@
 #!/bin/bash
 # ∴ auto-refresh BOB achefield heatmap in browser
 # name :: autorefresh_heatmap.sh
-# dir :: "$HOME/BOB/evolve
+# dir :: "/opt/bob/evolve
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-IMG="$HOME/BOB/TEHE/achefield_heatmap.png"
+source "/opt/bob/core/bang/limb_entry.sh"
+IMG="/opt/bob/TEHE/achefield_heatmap.png"
 
 if [[ -f "$IMG" ]]; then
   open -a "Brave Browser" "$IMG"

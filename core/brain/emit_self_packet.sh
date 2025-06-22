@@ -10,7 +10,7 @@ emit_self_packet() {
   local sigil="${SIGIL:-⊙}"
   local intention="${intention:-limb self-packet emit}"
   local STAMP=$(date -u +%FT%T)
-  local PACKET_DIR="$HOME/BOB/core/breath"
+  local PACKET_DIR="/opt/bob/core/breath"
   local OUT="$PACKET_DIR/${vector}.packet"
 
   mkdir -p "$PACKET_DIR"

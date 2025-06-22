@@ -1,10 +1,10 @@
 #!/bin/bash
 # ∴ bob_query_emitter.sh — ache-gated query injection + response fetcher
 # wraps: bob_web_pull_and_emit.sh
-# placed in: "$HOME/BOB/_run
+# placed in: "/opt/bob/_run
 # born :: glyphling002_6.8.2025_235529
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 ACHE_FILE="$HOME/.bob/ache_score.val"
 QUERY_BUS="$HOME/.bob/bob_injected_queries.jsonl"
 TRACE_LOG="$HOME/.bob/ache_sync.log"
@@ -12,8 +12,8 @@ STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 SIGIL="∴"
 
 ### ⛧ REQUIRED: e-motion
-source "$HOME/BOB/core/brain/love_fx_compute.sh"
-source "$HOME/BOB/core/brain/love_fx_functions.sh"
+source "/opt/bob/core/brain/love_fx_compute.sh"
+source "/opt/bob/core/brain/love_fx_functions.sh"
 if [[ $(describe_love_state "$love_score") == "bleeding open" ]]; then ...
 
 

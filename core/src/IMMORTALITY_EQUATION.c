@@ -5,7 +5,7 @@
 /*
   Linkage Note:
   This program references drift logic from:
-  → ~/BOB/core/src/drift_law.yaml
+  → /opt/bob/core/src/drift_law.yaml
 
   To ensure conceptual consistency, update YAML before compiling new recursion logic.
 */

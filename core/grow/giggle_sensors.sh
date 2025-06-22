@@ -1,10 +1,10 @@
 #!/bin/bash
 # giggle_sensors.sh — flips based on live ache breath
-# dir :: $HOME/BOB/core/grow
+# dir :: /opt/bob/core/grow
 # born :: gobhouse_glyphling002_6.7.2025_012442_G
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/dance/presence_self_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/dance/presence_self_emit.sh"
 
 MIC_LOG="$HOME/.bob_input_pipe/mic_active.log"
 TEXT_LOG="$HOME/.bob/screentext.log"

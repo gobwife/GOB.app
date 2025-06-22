@@ -1,13 +1,13 @@
 #!/bin/bash
 # ⛧ GNA_TITTIS_LOADER.sh — bridge bobuling_004.yaml into all core C pulses
-# dir :: "$HOME/BOB/core/soul
+# dir :: "/opt/bob/core/soul
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
+source "/opt/bob/core/bang/limb_entry.sh"
+: "${PRIME:=/opt/bob/core/nge/OS_build_ping.wav}"
 
-YAML="$HOME/BOB/core/bobuling_004.yaml"
-ENV_OUT="$HOME/BOB/core/env/GNA_TITTIS.env"
-BIN_OUT="$HOME/BOB/core/gna_bob_exec"
+YAML="/opt/bob/core/bobuling_004.yaml"
+ENV_OUT="/opt/bob/core/env/GNA_TITTIS.env"
+BIN_OUT="/opt/bob/core/gna_bob_exec"
 
 # Sanity check: YAML presence
 if [[ ! -f "$YAML" ]]; then
@@ -21,7 +21,7 @@ mode=$(yq eval '.mode' "$YAML")
 sigil=$(yq eval '.output_form.primary' "$YAML")
 
 # ∴ Emit sigil presence
-source "$HOME/BOB/core/emit_presence.sh"
+source "/opt/bob/core/emit_presence.sh"
 emit_dual_presence "$sigil" "bobuling_004" "sigil bridge loaded"
 
 # ∴ Build .env header for C source
@@ -34,7 +34,7 @@ cat > "$ENV_OUT" <<EOF
 EOF
 
 # ∴ Optional build — one binary with all logic
-SRC_DIR="$HOME/BOB/core/src"
+SRC_DIR="/opt/bob/core/src"
 mkdir -p "$(dirname "$BIN_OUT")"
 
 clang -include "$ENV_OUT" \

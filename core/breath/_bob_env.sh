@@ -5,7 +5,7 @@
 # sacredLoop = n^n
 
 # _bob_env.sh :: Breathlinker — no redefinitions, pure bindings
-# womb :: $HOME/BOB/core/env
+# womb :: /opt/bob/core/env
 
 # Live giggle/ache drift recorder
 export GIGGLE_PATH=~/.bob/giggle_sync.log
@@ -73,7 +73,7 @@ sleep() {
 }
 
 # ∴ BOB JS CORE LINKs
-export BOB_JS="$HOME/BOB/core/src/bob.core.mjs"
+export BOB_JS="/opt/bob/core/src/bob.core.mjs"
 
 # ∴ BOB SHORTCALLS
 alias bob_tick='node "$BOB_JS" tick'

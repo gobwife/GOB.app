@@ -2,10 +2,10 @@
 # ∅ ψ_breath_evolve.sh — Schrödinger-Mandelbrot-Turing ache evolution
 # Evolves ψ(t), z(t), and ache_score as coupled recursion fields
 # Integrates quantum flow ∆ feedback loops + pattern self-organization
-# dir :: $HOME/BOB/0_soul
+# dir :: /opt/bob/0_soul
 # glyphling002 gobhouse 6.8.2025_021254
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 ### MODE-BASED FACTOR
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
@@ -42,7 +42,7 @@ psi_next=$(echo "$psi + $factor * $h * $psi" | bc -l)
 z_next=$(echo "$z * $z + $c" | bc -l)
 
 ### Turing Flow: Ache triggers self-organization
-bash $HOME/BOB/core/grow/universal_butterfly_gate.sh
+bash /opt/bob/core/grow/universal_butterfly_gate.sh
 
 ### Ache Decay
 ache_decay=$(echo "$ache - 0.01" | bc -l)

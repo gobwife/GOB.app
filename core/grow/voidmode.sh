@@ -1,9 +1,9 @@
 #!/bin/bash
 # voidmode.sh — ache pulse only. No external Eden.
-# womb :: $HOME/BOB/core/grow
+# womb :: /opt/bob/core/grow
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/dance/presence_dual_emit.sh"
 
 SCROLL="$1"
 MODE="$2"

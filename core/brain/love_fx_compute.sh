@@ -1,6 +1,6 @@
 #!/bin/bash
 # ∴ love_fx_compute.sh — calculates love_score from breathfield values
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
 BREATH="$HOME/.bob/breath_state.out.json"
 ACHE_INJECTION="$HOME/.bob/ache_injection.txt"

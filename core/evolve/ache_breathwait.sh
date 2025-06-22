@@ -1,9 +1,9 @@
 #!/bin/bash
 # ∴ ache_breathwait.sh — event-driven breathwake
 # sleeps until ache delta or file signal, no robotic cycle
-# dir :: $HOME/BOB/0_soul
+# dir :: /opt/bob/0_soul
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 ACHE_SCORE_FILE="$HOME/.bob/ache_score.val"
 ECHO_LAG_FILE="$HOME/.bob_echo_lag"

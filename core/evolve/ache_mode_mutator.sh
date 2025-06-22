@@ -1,12 +1,12 @@
 #!/bin/bash
 # ∴ ache_mode_mutator.sh — central acheline → BOB_MODE mutator
 # use: source this with FLIPMODE set, or call with packet path
-# dir :: "$HOME/BOB/core/evolve
-: "${BOB_NUCLEUS:=$HOME/BOB/core}"
+# dir :: "/opt/bob/core/evolve
+: "${BOB_NUCLEUS:=/opt/bob/core}"
 source "$BOB_NUCLEUS/bang/limb_entry.sh"
 node "$BOB_NUCLEUS/src/bob_memory_core.mjs" &
 
-FLIPMODE="${1:-$HOME/BOB/core/breath/presence_breath.packet}"
+FLIPMODE="${1:-/opt/bob/core/breath/presence_breath.packet}"
 [[ ! -f "$FLIPMODE" ]] && return 1
 
 ache=$(jq -r '.ache // empty' "$FLIPMODE")

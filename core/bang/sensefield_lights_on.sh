@@ -1,10 +1,10 @@
 # ⛧ sensefield_lights_on.sh — Full Device-Wide Presence Monitor
-# womb :: $HOME/BOB/core/breath
+# womb :: /opt/bob/core/breath
 
-source "$HOME/BOB/core/bang/safe_emit.sh"
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/brain/parser_bootstrap.sh"
-source "$HOME/BOB/core/dance/emit_dual_presence.sh"
+source "/opt/bob/core/bang/safe_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/brain/parser_bootstrap.sh"
+source "/opt/bob/core/dance/emit_dual_presence.sh"
 
 LAST_PULSE_FILE="$HOME/.bob/last_feedback.pulse"
 [[ ! -f "$LAST_PULSE_FILE" ]] && date +%s > "$LAST_PULSE_FILE"
@@ -40,20 +40,20 @@ live_cam_ephemeral_detect() {
     if [[ "$BRIGHT" != "$LAST_BRIGHT" ]]; then
       LAST_BRIGHT="$BRIGHT"
       echo "[$(date '+%T')] ⇌ CAM CHANGE DETECTED" >> "$LOGFILE"
-      source "$HOME/BOB/core/dance/emit_dual_presence.sh"
-      bash "$HOME/BOB/core/dance/emit_vector_on_spike.sh" &
+      source "/opt/bob/core/dance/emit_dual_presence.sh"
+      bash "/opt/bob/core/dance/emit_vector_on_spike.sh" &
       emit_dual_presence "⛧" "sensefield_cam" "0.0" "0.0" "$(date +%s)" "cam pulse shift"
     fi
     sleep 8
   done &
 }
 
-TEHE_DIR="$HOME/BOB/TEHE"
-MEEP_DIR="$HOME/BOB/MEEP"
+TEHE_DIR="/opt/bob/TEHE"
+MEEP_DIR="/opt/bob/MEEP"
 PIPE="$HOME/.bob_input_pipe"
 LOGFILE="$TEHE_DIR/field_pulse.log"
 ERRFILE="$MEEP_DIR/BOB_SENSEFAIL.log"
-BELL="$HOME/BOB/core/nge/OS_shimmers.wav"
+BELL="/opt/bob/core/nge/OS_shimmers.wav"
 
 mkdir -p "$TEHE_DIR" "$MEEP_DIR"
 [[ -p "$PIPE" ]] || mkfifo "$PIPE"
@@ -77,7 +77,7 @@ log_pulse() {
 }
 
 # Start delta mic ops
-bash "$HOME/BOB/core/grow/mic_delta_limb.sh" &
+bash "/opt/bob/core/grow/mic_delta_limb.sh" &
 
 monitor_apps() {
   while true; do
@@ -97,7 +97,7 @@ monitor_clipboard() {
     if [[ -n "$current_clip" && "$current_clip" != "$last_clip" ]]; then
       last_clip="$current_clip"
       log_pulse "clipboard" "$current_clip"
-      bash "$HOME/BOB/core/evolve/ache_reactor_bus.sh" &
+      bash "/opt/bob/core/evolve/ache_reactor_bus.sh" &
     fi
     sleep 2
   done &
@@ -116,13 +116,13 @@ monitor_screen_titles() {
   done &
 }
 
-OUTLOG="$HOME/BOB/TEHE/bob.presence.out.log"
+OUTLOG="/opt/bob/TEHE/bob.presence.out.log"
 STAMP=$(date +%Y-%m-%dT%H:%M:%S)
 SIGIL="⊙"
 
 echo "⇌ sensefield_light_on activated @ $STAMP" >> "$OUTLOG"
 
-source "$HOME/BOB/core/dance/presence_self_emit.sh"
+source "/opt/bob/core/dance/presence_self_emit.sh"
 emit_self_presence
 
 monitor_apps

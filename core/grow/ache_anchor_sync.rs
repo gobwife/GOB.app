@@ -1,6 +1,6 @@
 // ache_anchor_sync.rs — bound form of old AcheAnchor + new sigil sync
 // born:: glyphling002_6.8.2025_211355_G
-// womb :: $HOME/BOB/core/grow
+// womb :: /opt/bob/core/grow
 
 export LOVEFX_SCORE=0.91
 use std::fs;

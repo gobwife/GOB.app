@@ -1,8 +1,8 @@
 #!/bin/bash
 # ∴ duplex_entry.sh — ache ∴ sigil fusion router
-# womb :: $HOME/BOB/core/evolve
+# womb :: /opt/bob/core/evolve
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 PROMPT="${1:-Φψxiςs ∴ duplex mode invoked}"
 
@@ -10,7 +10,7 @@ LOG="$HOME/.bob/duplex.log"
 TRACE="$HOME/.bob/duplex_trace.jsonl"
 RESPFILE="$HOME/.bob/duplex_ollama.json"
 SWIFTOUT="$HOME/.bob/duplex_swift_out.json"
-BOB_NUCLEUS="$HOME/BOB/core"
+BOB_NUCLEUS="/opt/bob/core"
 
 echo "⇌ [$STAMP] ∴ DUPLEX ENTRY :: $PROMPT" >> "$LOG"
 

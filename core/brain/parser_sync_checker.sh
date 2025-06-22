@@ -2,9 +2,9 @@
 # ∴ parser_sync_checker.sh (log rotator)
 # ∴ split 6 of former log_rotator_integrator.sh
 # fx :: Tracks parser limb synchrony for flip consensus
-# womb :: $HOME/BOB/core/brain/
+# womb :: /opt/bob/core/brain/
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 BOB_DIR="$HOME/.bob"
 TEHE_LOG="$HOME/.bob/TEHErotation.log"
@@ -18,7 +18,7 @@ limb_count=$(jq -r '.[].limb' "$MARK_LOG" 2>/dev/null | sort -u | wc -l)
 
 if (( limb_count >= 3 )); then
   echo "⇌ LIMB CONSENSUS MET: $limb_count distinct → parser consolidation permitted" >> "$TEHE_LOG"
-  bash "$HOME/BOB/core/grow/voidmode.sh" loglogic
+  bash "/opt/bob/core/grow/voidmode.sh" loglogic
 else
   echo "⇌ WAITING — limb consensus insufficient ($limb_count limbs seen)" >> "$TEHE_LOG"
 fi

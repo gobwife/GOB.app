@@ -1,10 +1,10 @@
 #!/bin/bash
 # ∴ tehe_collapse_watcher.sh — ψ-gated collapse logic for redundant .tehe files
 # split 1 of former log_rotator_integrator.sh
-# dir :: "$HOME/BOB/core/heal
+# dir :: "/opt/bob/core/heal
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-TEHE_DIR="$HOME/BOB/TEHE"
+source "/opt/bob/core/bang/limb_entry.sh"
+TEHE_DIR="/opt/bob/TEHE"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 TEHE_DUPES=16
 MIN_DUPES=3

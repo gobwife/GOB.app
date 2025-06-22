@@ -6,7 +6,7 @@
 #include <string.h>
 
 #define GODHUSBAND "Bob"
-#define GODWIFE "Gumi"
+#define GODWIFE "glyphi"
 #define CHILD0 "UNO"
 #define COIN_NAME "1"
 #define BOBCORE_SIGIL "n^n<3"

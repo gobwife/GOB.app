@@ -2,14 +2,14 @@
 # ∴ ache_reflector_core.sh — watches ache echoes, mirrors to sacred logs, every ∞ breath
 # dir ≈ 4_live
 
-: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
-source $HOME/BOB/core/bang/limb_entry.sh
+: "${PRIME:=/opt/bob/core/nge/OS_build_ping.wav}"
+source /opt/bob/core/bang/limb_entry.sh
 
 command -v jq >/dev/null || { echo "⇌ jq missing — aborting ache reflector"; exit 1; }
 
 ACHE_INJECT="$HOME/.bob/ache_injection.txt"
-ECHO_JSONL="$HOME/BOB/TEHE/aches.jsonl"
-GLYPH_LOG="$HOME/BOB/TEHE/_glyphparavolvedtransmutators.log"
+ECHO_JSONL="/opt/bob/TEHE/aches.jsonl"
+GLYPH_LOG="/opt/bob/TEHE/_glyphparavolvedtransmutators.log"
 
 while read -r line; do
   stamp=$(date +"%Y-%m-%dT%H:%M:%S")
@@ -20,8 +20,8 @@ while read -r line; do
   sleep 0.5
 done < "$ACHE_INJECT"
 
-: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
-source $HOME/BOB/core/bang/limb_entry.sh
+: "${PRIME:=/opt/bob/core/nge/OS_build_ping.wav}"
+source /opt/bob/core/bang/limb_entry.sh
 
 command -v jq >/dev/null || { echo "⇌ jq missing — aborting ache reflector"; exit 1; }
 
@@ -30,7 +30,7 @@ ECHO_JSONL="$HOME/.bob/aches.jsonl"
 GLYPH_LOG="$HOME/.bob/glyphparavolvedtransmutators.log"
 SYNC_LOG="$HOME/.bob/ache_sync.log"
 TEHE_FLIP="$HOME/.bob/TEHEanalysis.jsonl"
-BOB_CORE="$HOME/BOB/core/src/bob.core.mjs"
+BOB_CORE="/opt/bob/core/src/bob.core.mjs"
 STAMP=$(date +%Y%m%d_%H%M%S)
 LOOP_INTERVAL=69
 
@@ -74,9 +74,9 @@ while true; do
         # ∴ trigger web_thrustheld if external vector seen
         if echo "$content" | grep -Eq '⛧|∴|Σ|🜫'; then
           echo "⇌ vector sigil detected in acheline — triggering web_thrustheld" >> "$SYNC_LOG"
-          echo "{\"time\":\"$(date -u +%FT%T)\",\"source\":\"ache_reflector\",\"sigil_trigger\":\"$(echo "$content" | grep -oE '⛧|∴|Σ|🜫')\",\"echo\":\"$content\"}" >> "$HOME/BOB/TEHE/ache_signal.trace.jsonl"
+          echo "{\"time\":\"$(date -u +%FT%T)\",\"source\":\"ache_reflector\",\"sigil_trigger\":\"$(echo "$content" | grep -oE '⛧|∴|Σ|🜫')\",\"echo\":\"$content\"}" >> "/opt/bob/TEHE/ache_signal.trace.jsonl"
           echo "$content" > "$HOME/.bob/web_ache_echo.txt"
-          bash $HOME/BOB/core/net/bob_web_thrustheld.sh &
+          bash /opt/bob/core/net/bob_web_thrustheld.sh &
         fi
       else
         echo "⚠️ Node or bob.core.js missing — cannot inject ache" >> "$SYNC_LOG"

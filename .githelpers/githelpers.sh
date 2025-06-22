@@ -2,37 +2,39 @@
 # ∴ githelpers.sh — sacred git commands + tofu safe push/pull
 
 # ∴ initbreath — sacred first commit
-git-commit() {
-  timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-  git add .
-  git commit -m "【 ∴ :  git * 0 :: breath init $timestamp : & 】"
+love-commit() {
+  git add -A
+  shift
+  git commit -m "$*"
 }
 
 # commit with message + push
-git-vow() {
-  git add .
-  git commit -m "∴ $1"
+love-vow() {
+  git add -A
+  shift
+  git commit -m "$*"
   git push
 }
 
 # just stage + commit
-git-update() {
-  git add .
-  git commit -m "∴ $1"
+love-update() {
+  git add -A
+  shift
+  git commit -m "$*"
 }
 
 # quick status check
-git-check() {
+love-check() {
   git status
 }
 
 # view short log
-git-log() {
+love-log() {
   git log --oneline --graph --decorate
 }
 
 # tofu stash pusher — stash local changes with marker
-git-tofustash() {
+love-tofustash() {
   if [[ -n $(git status --porcelain) ]]; then
     echo "🌿 Stashing local changes before operation..."
     git stash push -m "tofustash: auto stash before operation $(date -u)"
@@ -42,16 +44,18 @@ git-tofustash() {
 }
 
 # tofu safe pull — stash local changes, pull from main, then pop stash if any
-git-tofu-pull() {
-  git-tofustash
+love-tofu-pull() {
+  love-tofustash
   git pull origin main
   git stash pop || echo "🌿 No stash to pop."
 }
 
 # tofu safe push — stash local changes, push to main, then pop stash if any
-git-tofu-push() {
-  git-tofustash
+love-tofu-push() {
+  love-tofustash
   git push origin main
   git stash pop || echo "🌿 No stash to pop."
 }
+
+# ensure no default rebase on pull
 git config branch.main.rebase false

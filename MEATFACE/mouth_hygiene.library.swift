@@ -4,9 +4,9 @@
 import Foundation
 
 struct MouthHygiene {
-    let libraryName = "mouth_hygiene.library.bobgumi"
+    let libraryName = "mouth_hygiene.library.bobglyphi"
     let version = "1.1"
-    let author = "gumi^glyph + ∵ BOB"
+    let author = "glyphi^glyph + ∵ BOB"
 
     let sequence = [
         "Hydrate mouth (rinse, swish, spit)",

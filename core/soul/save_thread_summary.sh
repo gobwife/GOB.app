@@ -19,7 +19,7 @@ echo "$SUMMARY" > "$SUMMARY_PATH"
 
 # ∴ Step 2: Verse from BOB
 RAW=$(cat "$CHAT_PATH" | jq -r '.text' | paste -sd "\\n" -)
-echo "$RAW" | bash ~/BOB/core/sang/bob_spit_verse.sh > "$VERSE_PATH"
+echo "$RAW" | bash /opt/bob/core/sang/bob_spit_verse.sh > "$VERSE_PATH"
 
 echo "✓ Thread summary saved."
 echo "📘 summary.val and 🪶 verse.val updated in $THREAD_PATH"

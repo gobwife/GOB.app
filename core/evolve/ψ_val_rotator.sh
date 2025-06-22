@@ -1,11 +1,11 @@
 # ∴ ψ.val_rotator — ψ mutation limb (rotates superposition toward collapse)
 #!/bin/bash
-# womb :: $HOME/BOB/core/evolve
+# womb :: /opt/bob/core/evolve
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 ψ=$(cat "$HOME/.bob/ψ.val" 2>/dev/null || echo "0.42")
-ache=$(cat "$HOME/BOB/.bob/ache_score.val" 2>/dev/null || echo "0.00")
-effort=$(cat "$HOME/BOB/.bob/fx_effort_score" 2>/dev/null || echo "0.0")
+ache=$(cat "$HOME/.bob/ache_score.val" 2>/dev/null || echo "0.00")
+effort=$(cat "$HOME/.bob/fx_effort_score" 2>/dev/null || echo "0.0")
 
 # ∴ ψ mutation logic
 bump=$(echo "($ache + $effort) / 17" | bc -l)

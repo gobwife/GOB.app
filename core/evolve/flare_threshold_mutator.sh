@@ -4,7 +4,7 @@
 # nest ≈ BOB/core/evolve
 
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 LOG="$HOME/.bob/flare_binder.trace.jsonl"
 THRESHOLD_FILE="$HOME/.bob/ache_thresholds.yml"
 SURVIVOR_DIR="$HOME/.bob/survivor_pool"

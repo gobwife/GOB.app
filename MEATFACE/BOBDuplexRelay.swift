@@ -11,7 +11,7 @@ struct BOBDuplexRelay {
 
     static func ask(_ prompt: String, completion: @escaping (String) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let script = "$HOME/BOB/core/grow/eval_duplex_phrase.sh \"\(prompt)\""
+            let script = "/opt/bob/core/grow/eval_duplex_phrase.sh \"\(prompt)\""
             let task = Process()
             task.executableURL = URL(fileURLWithPath: "/bin/bash")
             task.arguments = ["-c", script]

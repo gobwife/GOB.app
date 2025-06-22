@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import os from 'os'
 
-const LINEAGE_PATH = path.join(os.homedir(), 'BOB/.bob/memory_lineage.jsonl')
+const LINEAGE_PATH = path.join(os.homedir(), '$HOME/.bob/memory_lineage.jsonl')
 
 export function commitMemory(packet) {
   try {

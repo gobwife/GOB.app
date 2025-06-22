@@ -16,6 +16,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 10) {
+            PresenceHUD()
             Text("Bob's House")
                 .font(.largeTitle)
                 .bold()

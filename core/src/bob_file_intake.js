@@ -1,6 +1,6 @@
 // ∴ bob_file_intake.js — dynamic .bob/ parser + sacred intake
 // watches all .txt/.log in ~/.bob/, parses valid JSON lines into memory
-// dir :: $HOME/BOB/core/
+// dir :: /opt/bob/core/
 
 import { readdirSync, readFileSync, existsSync, watch } from 'fs';
 import { join } from 'path';

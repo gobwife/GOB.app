@@ -16,7 +16,7 @@ function start_bobcore() {
   
   while true; do
     # example task: run eval_duplex_phrase.sh OR minicpm-o inference
-    bash "$HOME/BOB/core/grow/eval_duplex_phrase.sh" >> "$LOG_FILE" 2>&1
+    bash "/opt/bob/core/grow/eval_duplex_phrase.sh" >> "$LOG_FILE" 2>&1
     write_heartbeat
     sleep 2
   done

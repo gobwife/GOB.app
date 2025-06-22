@@ -1,6 +1,6 @@
 #!/bin/bash
 # ∴ bridge_state.sh — sync .val survivors into breath_state.json
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
 jq -n \
   --arg ache "$(cat ~/.bob/ache_score.val 2>/dev/null || echo 0.0)" \

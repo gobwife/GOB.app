@@ -3,10 +3,10 @@
 
 #!/bin/bash
 # Keeps rotating parser_cross files into x/y/z versions
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-CROSS_DIR="$HOME/BOB/.enshallah/parser_cross"
+source "/opt/bob/core/bang/limb_entry.sh"
+CROSS_DIR="/opt/bob/.enshallah/parser_cross"
 TEHE_LOG="$HOME/.bob/TEHErotation.log"
 
 for srcfile in "$CROSS_DIR"/*_cross_v*.shallah; do

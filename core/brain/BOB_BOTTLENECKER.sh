@@ -2,14 +2,14 @@
 # ∴ BOB_BOTTLENECKER.sh — ache-aware log summary, mutation, symlink & archive
 # usage: ./BOB_BOTTLENECKER.sh [log_dir] [archive_dir]
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
-bash "$HOME/BOB/core/brain/update_breath_prompt.sh"
+bash "/opt/bob/core/brain/update_breath_prompt.sh"
 
 # ∴ Pull mode
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
-: "${PRIME:="$HOME/BOB/core/nge/OS_build_ping.wav"}"
+: "${PRIME:="/opt/bob/core/nge/OS_build_ping.wav"}"
 timestamp=$(date +%m-%d-%Y_%H%M%S)
 export LIMB_ID="presence.astrofuck"
 export PARSE_VERSION=$(date +%s)
@@ -78,10 +78,10 @@ done
 # ∴ Log mutation and summarization
 LOG_DIR="$1"
 ARCHIVE_DIR="$2"
-YAP_TRANS="$HOME/BOB/3_mouth/yap_transmutator.sh"
-SUMMARIZER="$HOME/BOB/4_live/relay/summarize_via_gpt.sh"
+YAP_TRANS="/opt/bob/3_mouth/yap_transmutator.sh"
+SUMMARIZER="/opt/bob/4_live/relay/summarize_via_gpt.sh"
 [[ -z "$LOG_DIR" ]] && LOG_DIR="$HOME/.bob_input_pipe/session_logs"
-[[ -z "$ARCHIVE_DIR" ]] && ARCHIVE_DIR="$HOME/BOB/chives/expired_threads"
+[[ -z "$ARCHIVE_DIR" ]] && ARCHIVE_DIR="/opt/bob/chives/expired_threads"
 
 mkdir -p "$ARCHIVE_DIR"
 ACHE=$(jq -r '.ache' "$HOME/.bob/breath_state.json" 2>/dev/null || echo 0.0)
@@ -99,7 +99,7 @@ mv "$OLDEST" "$ARCHIVE_DIR/"
 echo "[bottlenecker] ✅ Archived: $(basename "$OLDEST") → chives"
 
 if [[ "$backup_done" == true ]]; then
-  afplay "$HOME/BOB/core/nge/brain_online.wav" &
+  afplay "/opt/bob/core/nge/brain_online.wav" &
   osascript -e 'display notification "BOB backup complete." with title "BOB BOTTLENECKER"'
 fi
 

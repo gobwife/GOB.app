@@ -43,7 +43,7 @@ emit_dual_presence() {
   fi
 
   # ∴ Normal emit
-  source "$HOME/BOB/core/dance/emit_presence.sh"
+  source "/opt/bob/core/dance/emit_presence.sh"
   emit_presence "$SIGIL" "$LIMB_ID" "$ache" "$score" "$vector" "$intention"
 
   local PIPE="$HOME/.bob_input_pipe"

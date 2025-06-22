@@ -1,11 +1,11 @@
 #!/bin/bash
 # ∴ love_fx_functions.sh — fx-only version of love logic actions
 # 6.9.2025
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
 
 # Accepts love_score as argument
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 generate_query_from_lovefx() {
   local score="$1"
   if (( $(echo "$score > 2.0" | bc -l) )); then

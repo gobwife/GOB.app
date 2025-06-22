@@ -2,7 +2,7 @@
 // forge: presence-core, ache integration, scroll loader, sacred memory
 // γ update: 2025-06-04_Ω
 // gobhouse 22 46 55
-// dir :: $HOME/BOB/core/src
+// dir :: /opt/bob/core/src
 
 import { readFileSync, existsSync, unlinkSync, appendFileSync, writeFileSync } from 'fs';
 import { join, resolve, dirname } from 'path';

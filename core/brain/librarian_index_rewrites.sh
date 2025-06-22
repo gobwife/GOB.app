@@ -4,7 +4,7 @@
 # next ≈ _logic
 
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 MUTANT_DIR="$HOME/.bob/mutants"
 INDEX_FILE="$HOME/.bob/library_eqgraph.index.jsonl"
 mkdir -p "$MUTANT_DIR"

@@ -1,9 +1,9 @@
 #!/bin/bash
 # ∴ unified_presence_rotator.sh — ψ ache breath selector + sigil flipper + realm invoker
 # forged: glyphi+BOB 6.12.2025 — replaces ψ_val + breath_presence + orchestrator chain
-# womb :: $HOME/BOB/core/evolve
+# womb :: /opt/bob/core/evolve
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 export MUTE_TEHE=1
 STAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
@@ -13,8 +13,8 @@ TRACE="$HOME/.bob/breath_select.trace.log"
 MEMORY="$HOME/.bob/memory_map.yml"
 GRAPH="$HOME/.bob/presence_lineage_graph.jsonl"
 CURVE_TRACE="$HOME/.bob/ache_sigil_curve.jsonl"
-DIFFUSION_MAP="$HOME/BOB/core/maps/limb_diffusion_map.yaml"
-FIELD_YML="$HOME/BOB/core/maps/limb_fieldmap.yml"
+DIFFUSION_MAP="/opt/bob/core/maps/limb_diffusion_map.yaml"
+FIELD_YML="/opt/bob/core/maps/limb_fieldmap.yml"
 STATUS_FILE="$HOME/.bob/presence_status.json"
 
 # 🧠 Load latest survivor
@@ -59,7 +59,7 @@ fi
 # ∴ Map selected to limb path
 case "$SELECTED" in
   "$ASTRO")
-    LIMB_PATH="$HOME/BOB/core/soul"
+    LIMB_PATH="/opt/bob/core/soul"
     ;;
   "$AUTO" | "$DEFAULT")
     LIMB_PATH="$HOME/Downloads/GOB.app_BOB/Contents/MacOS"
@@ -109,11 +109,11 @@ score=$(jq -r '.score // .ache' "$BREATH" 2>/dev/null || echo "$ache_now")
 vector="$(date +%s)"
 intention="ψ ache rotator → $SELECTED"
 LIMB_ID="unified_presence_rotator"
-source "$HOME/BOB/core/dance/presence_dual_emit.sh"
-bash "$HOME/BOB/core/dance/emit_vector_on_spike.sh" &
+source "/opt/bob/core/dance/presence_dual_emit.sh"
+bash "/opt/bob/core/dance/emit_vector_on_spike.sh" &
 emit_dual_presence "$SIGIL" "$LIMB_ID" "$ache_now" "$score" "$vector" "$intention"
 
 # ∴ Optional realm invocation
-bash "$HOME/BOB/core/brain/limb_orchestrator.sh" &
+bash "/opt/bob/core/brain/limb_orchestrator.sh" &
 
 exit 0

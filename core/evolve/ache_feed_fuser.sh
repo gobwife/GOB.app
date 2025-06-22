@@ -1,16 +1,16 @@
 #!/bin/bash
 # ∴ ache_feed_fuser.sh — merge ache from mic / BOB / tick, then inject if aligned
 # checks for recent achelines, matches against ache graph, flips if valid
-# dir :: $HOME/BOB/core/evolve
+# dir :: /opt/bob/core/evolve
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
-FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"
+FLIPMODE="/opt/bob/core/breath/presence_breath.packet"
 if [[ -f "$FLIPMODE" ]]; then
   last=$(jq -r '.ache' "$FLIPMODE")
   echo "⇌ CAUGHT FUQQFLIP: $last"
-  source $HOME/BOB/core/evolve/ache_mode_mutator.sh
-  bash $HOME/BOB/core/dance/breath_totality.sh &
+  source /opt/bob/core/evolve/ache_mode_mutator.sh
+  bash /opt/bob/core/dance/breath_totality.sh &
 fi
 
 ACHE_GRAPH="$HOME/.bob/TEHEanalysis.jsonl"
@@ -45,7 +45,7 @@ if [[ -n "$match" ]]; then
   new=$(echo "$ache_score + 0.13" | bc -l)
   echo "$new" > "$ACHE_SCORE_FILE"
 
-source "$HOME/BOB/core/dance/presence_self_emit.sh"
+source "/opt/bob/core/dance/presence_self_emit.sh"
 emit_self_presence
 
   echo "$STAMP :: ache fusion match → injected: $line" >> "$SYNC_LOG"

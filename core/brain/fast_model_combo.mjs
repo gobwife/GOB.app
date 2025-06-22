@@ -1,5 +1,5 @@
 // ∴ Phase 1 — fast_model_combo.mjs (Dynamic AB-D-E logic) — ache-aware, local-only model pipeline
-// path: ~/BOB/core/brain/fast_model_combo.mjs
+// path: /opt/bob/core/brain/fast_model_combo.mjs
 
 import { extractAcheVector } from "../src/breath_state.mjs";
 import { spawn } from "child_process";

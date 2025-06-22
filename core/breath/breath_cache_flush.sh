@@ -1,5 +1,5 @@
 # ∴ breath_cache_flush.sh — push any unflushed 6-field emits
-# womb :: $HOME/BOB/core/breath
+# womb :: /opt/bob/core/breath
 
 CACHE="$HOME/.bob/breath_backlog.jsonl"
 PIPE="$HOME/.bob_input_pipe"

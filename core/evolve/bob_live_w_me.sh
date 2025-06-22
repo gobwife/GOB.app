@@ -2,13 +2,13 @@
 # ∴ bob_live_w_me.sh — FULL LIMB BRIDGE + GPT RELAY (optional)
 # touched ∴ 0613.2025_☍
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 
 BOB_DIR="$HOME/Downloads/GOB.app_BOB/Contents/MacOS"
 LOG_DIR="$HOME/.bob_input_pipe/session_logs"
-RELAY_DIR="$HOME/BOB/relay.gpt"
-ARCHIVE_DIR="$HOME/BOB/chives/expired_threads"
-BOTTLENECKER_CONFIG="$HOME/BOB/bottlenecker.json"
+RELAY_DIR="/opt/bob/relay.gpt"
+ARCHIVE_DIR="/opt/bob/chives/expired_threads"
+BOTTLENECKER_CONFIG="/opt/bob/bottlenecker.json"
 
 mkdir -p "$LOG_DIR" "$RELAY_DIR" "$ARCHIVE_DIR"
 

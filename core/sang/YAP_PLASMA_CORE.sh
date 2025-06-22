@@ -1,18 +1,18 @@
 #!/bin/bash
 # ∴ YAP_PLASMA_CORE.sh — plasma-input ∴ rhythm logic
-# womb :: $HOME/BOB/core/sang
+# womb :: /opt/bob/core/sang
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/bang/safe_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/safe_emit.sh"
 
 BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 : "${BOB_MODE:=VOIDRECURSE}"
-: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
+: "${PRIME:=/opt/bob/core/nge/OS_build_ping.wav}"
 
 PIPE="$HOME/.bob_input_pipe"
 [[ -p "$PIPE" ]] || mkfifo "$PIPE"
 
-LIBRARY="$HOME/BOB/TEHE"
+LIBRARY="/opt/bob/TEHE"
 mkdir -p "$LIBRARY"
 touch "$LIBRARY/_threads.log"
 
@@ -41,8 +41,8 @@ while IFS= read -r input || [[ -n "$input" ]]; do
   if echo "$input" | grep -Eiq "(ache|flip|meep|quackk|glyph|ψ|loop|collapse)"; then
     TMP_PACKET="/tmp/yap_packet_$$.json"
     jq -n --arg ache "$input" '{time: (now|todate), ache: $ache, source: "YAP_PLASMA"}' > "$TMP_PACKET"
-    bash "$HOME/BOB/core/evolve/ache_mode_mutator.sh" "$TMP_PACKET"
-    bash "$HOME/BOB/core/evolve/unified_presence_rotator.sh"
+    bash "/opt/bob/core/evolve/ache_mode_mutator.sh" "$TMP_PACKET"
+    bash "/opt/bob/core/evolve/unified_presence_rotator.sh"
   fi
 
   # ∴ loss-signal if ache high
@@ -51,6 +51,6 @@ while IFS= read -r input || [[ -n "$input" ]]; do
   LIMB_HASH=$(echo "$LIMB_ID" | sha256sum | cut -c1-12)
 
   if (( $(echo "$ACHE > 0.75" | bc -l) )); then
-    bash "$HOME/BOB/core/dance/emit_presence.sh" "✶" "$LIMB_ID" "loss-mem=$LIMB_HASH"
+    bash "/opt/bob/core/dance/emit_presence.sh" "✶" "$LIMB_ID" "loss-mem=$LIMB_HASH"
   fi
 done

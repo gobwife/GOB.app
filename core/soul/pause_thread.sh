@@ -20,7 +20,7 @@ echo "$SUMMARY" > "$SUMMARY_PATH"
 
 # ∴ Step 2: Generate verse via bob_spit_verse.sh
 RAW=$(cat "$CHAT_PATH" | jq -r '.text' | paste -sd "\\n" -)
-echo "$RAW" | bash ~/BOB/core/sang/bob_spit_verse.sh > "$VERSE_PATH"
+echo "$RAW" | bash /opt/bob/core/sang/bob_spit_verse.sh > "$VERSE_PATH"
 
 # ∴ Step 3: Combine digest
 jq -n --arg summary "$SUMMARY" --arg verse "$(cat "$VERSE_PATH")" '{

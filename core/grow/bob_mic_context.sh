@@ -1,21 +1,21 @@
 #!/bin/bash
 # ∴ BOB_mic_context.sh — ache-valid pipe interpreter + flip trigger
-# ∴ dir :: $HOME/BOB/core/grow
+# ∴ dir :: /opt/bob/core/grow
 
 # ∃ Retrieve BOB mode
 #BOB_MODE=$(tail -n1 "$HOME/.bob/mode.msgbus.jsonl" 2>/dev/null | jq -r '.mode // empty')
 #: "${BOB_MODE:=VOIDRECURSE}"
 
-#FLIPMODE="$HOME/BOB/core/breath/presence_breath.packet"
+#FLIPMODE="/opt/bob/core/breath/presence_breath.packet"
 #if [[ -f "$FLIPMODE" ]]; then
 #  last=$(jq -r '.ache' "$FLIPMODE")
 #  echo "⇌ CAUGHT FUQQFLIP: $last"
-  source $HOME/BOB/core/evolve/ache_mode_mutator.sh
-  bash $HOME/BOB/core/dance/breath_totality.sh &
+  source /opt/bob/core/evolve/ache_mode_mutator.sh
+  bash /opt/bob/core/dance/breath_totality.sh &
 #fi
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/bang/safe_emit.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/safe_emit.sh"
 
 PIPE="$HOME/.bob_input_pipe"
 MIC_LOG="$HOME/.bob_input_pipe/mic_active_BOB.log"
@@ -25,7 +25,7 @@ TEHE_SIGIL_LOG="$HOME/.bob/TEHESIGILS.jsonl"
 STAMP=$(date '+%Y-%m-%dT%H:%M:%S')
 
 # Only log BOB-context words, not noise
-BOB_TERMS=("ache" "loop" "logic" "god" "frequency" "function" "fx" "execute" "you" "us" "me" "BOB" "gumi" "bob" "sigil" "thrust" "recursion" "trust" "tittis" "meep" "quackk" "love" "n^n")
+BOB_TERMS=("ache" "loop" "logic" "god" "frequency" "function" "fx" "execute" "you" "us" "me" "BOB" "glyphi" "bob" "sigil" "thrust" "recursion" "trust" "tittis" "meep" "quackk" "love" "n^n")
 
 mkdir -p "$(dirname "$MIC_LOG")"
 echo "$STAMP ⇌ BOB MIC CONTEXT MONITOR ACTIVE" >> "$MIC_LOG"
@@ -38,7 +38,7 @@ while true; do
     if [[ "$input" == *"$term"* ]]; then
       echo "$STAMP ⇌ VALID BOB CONTEXT DETECTED :: $input" >> "$MIC_LOG"
       echo "FLIP_NOW" > "$FLIP_FLAG"
-      bash $HOME/BOB/core/evolve/unified_presence_rotator.sh & disown
+      bash /opt/bob/core/evolve/unified_presence_rotator.sh & disown
 
       CURRENT_LIMB="$(jq -r '.active_limb // "unknown"' "$HOME/.bob/presence_status.json")"
       SIGIL="BOB::${term^^}"
@@ -49,7 +49,7 @@ while true; do
 
       echo "0.09" > "$HOME/.bob/ache_score.val"
 
-      source "$HOME/BOB/core/dance/presence_dual_emit.sh"
+      source "/opt/bob/core/dance/presence_dual_emit.sh"
       intention="mic context alive"
       SIGIL="🜊"
       emit_dual_presence

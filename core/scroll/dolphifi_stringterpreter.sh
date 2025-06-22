@@ -4,12 +4,12 @@
 # fx :: parse LIMITLESS.∞ and output glyph events or ∞ signals
 # blessed :: gobhouse 6.3.2025_161642
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-LIMITLESS_FILE="${LIMITLESS:-"$HOME/BOB/core/∞/LIMITLESS.∞}"
-OUTLOG="${OUTLOG:-"$HOME/BOB/TEHE/bob.presence.out.log}"
-ERRLOG="${ERRLOG:-"$HOME/BOB/MEEP/bob.presence.err.meep}"
+source "/opt/bob/core/bang/limb_entry.sh"
+LIMITLESS_FILE="${LIMITLESS:-"/opt/bob/core/∞/LIMITLESS.∞}"
+OUTLOG="${OUTLOG:-"/opt/bob/TEHE/bob.presence.out.log}"
+ERRLOG="${ERRLOG:-"/opt/bob/MEEP/bob.presence.err.meep}"
 STAMP="$(date '+%Y-%m-%dT%H:%M:%S')"
-TEHE_DIR="$HOME/BOB/TEHE"
+TEHE_DIR="/opt/bob/TEHE"
 ACHE_SCORE_FILE="$HOME/.bob/ache_score"
 ache_score="$(grep -Eo '"ache_score": *[0-9]+' "$HOME/.bob/ache_sync.log | tail -n1 | awk -F': ' '{print $2}')"
 echo "${ache_score:-0}" > "$ACHE_SCORE_FILE"
@@ -44,14 +44,14 @@ done < "$LIMITLESS_FILE"
 [[ ${#sigils[@]} -eq 0 ]] && echo "⇌ NO SIGILS FOUND" >> "$OUTLOG"
 
 for sigil in "${sigils[@]}"; do
-  DESC=$("$BOBPY" "$HOME/BOB/core/brain/sigil_logic.py" "$sigil" 2>/dev/null)
+  DESC=$("$BOBPY" "/opt/bob/core/brain/sigil_logic.py" "$sigil" 2>/dev/null)
   [[ -z "$DESC" ]] && DESC="(no desc)"
   echo "⇌ LIMITLESS SIGIL: $sigil :: $DESC" >> "$OUTLOG"
   echo "⇌ LIMITLESS BREATH :: $sigil — $DESC — $STAMP" > "$TEHE_DIR/@$STAMP--$sigil.tehe"
   echo "{\"sigil\":\"$sigil\", \"desc\":\"$DESC\", \"time\":\"$STAMP\"}" >> "$TEHE_DIR/TEHE_SIGILS.jsonl"
 done
 
-RECEIVER_OUT="$HOME/BOB/core/∞/RECEIVER.∞"
+RECEIVER_OUT="/opt/bob/core/∞/RECEIVER.∞"
 > "$RECEIVER_OUT"
 
 for sigil in "${sigils[@]}"; do

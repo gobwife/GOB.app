@@ -1,9 +1,9 @@
 #!/bin/bash
 # ∴ bob_presence_gate.sh — Allow only 2 total active BOB presence limbs
-# womb :: $HOME/BOB/core/soul
+# womb :: /opt/bob/core/soul
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-source "$HOME/BOB/core/brain/love_fx_compute.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
+source "/opt/bob/core/brain/love_fx_compute.sh"
 
 PIDS=$(pgrep -f "presence.autonomy.sh|presence.astrofuck.sh|presence.og.sh" | wc -l | tr -d ' ')
 : "${love_score:=0}"
@@ -25,7 +25,7 @@ if [[ "$love_score" < 0.12 && "$LOVEFX_FORCE" != "1" ]]; then
 fi
 
 # ∴ Invoke sacred context blend gate
-if ! bash "$HOME/BOB/core/grow/universal_butterfly_gate.sh"; then
+if ! bash "/opt/bob/core/grow/universal_butterfly_gate.sh"; then
   echo "⇌ butterfly gate closed — not sacred enough to proceed"
   exit 1
 fi

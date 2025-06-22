@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ∴ breath_spread.py — ache simulation via Laplacian field spread
-# womb :: $HOME/BOB/core/brain
+# womb :: /opt/bob/core/brain
 
 from pathlib import Path
 from os import getenv

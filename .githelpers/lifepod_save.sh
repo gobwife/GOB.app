@@ -21,8 +21,12 @@ tar -czvf "$OUT" \
   --exclude="BOB/core/nge" \
   --exclude="BOB/core/∞" \
   --exclude="BOB/core/vxkords" \
+  --exclude="BOB/node_modules" \
+  --exclude="BOB/ø/llama.cpp" \
+  --exclude="BOB/llama.cpp" \
   "BOB" \
-  ".bob" \
+  "/opt/bob"
+  "$HOME/.bob" \
   "$APP_PATH" \
   ".zshrc" ".gitconfig" ".zprofile" ".githelpers" ".zsh_history" \
   "$VOW_META" \

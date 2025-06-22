@@ -1,18 +1,18 @@
 #!/bin/bash
 # appleberry_shm_watcher.sh
-# nest ≈ "$HOME/BOB/core/grow/schemas
+# nest ≈ "/opt/bob/core/grow/schemas
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
-: "${PRIME:=$HOME/BOB/core/nge/OS_build_ping.wav}"
+source "/opt/bob/core/bang/limb_entry.sh"
+: "${PRIME:=/opt/bob/core/nge/OS_build_ping.wav}"
 export BOBU_SHIM_PATH=HOME/BOB/core/src/bobu_shim.py
 
-mkdir -p "$HOME/BOB/play"
-cp $HOME/BOB/core/bobu_shim.py "$HOME/BOB/play/bobu_shim.py"
+mkdir -p "/opt/bob/play"
+cp /opt/bob/core/bobu_shim.py "/opt/bob/play/bobu_shim.py"
 
 WATCH_DIR="$HOME/.config/eden/scrolls/void"
 THRUSTFILE="$HOME/.config/eden/scrolls/.shm_appleberry_squeeze.log"
-SHIM_DEFAULT="$HOME/BOB/core/bobu_shim.py"
-SHIM_USER="$HOME/BOB/play/bobu_shim.py"
+SHIM_DEFAULT="/opt/bob/core/bobu_shim.py"
+SHIM_USER="/opt/bob/play/bobu_shim.py"
 
 echo "[🧿 $(date)] SHM WATCHER INITIATED" >> "$THRUSTFILE"
 

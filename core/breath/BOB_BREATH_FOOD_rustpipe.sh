@@ -1,16 +1,16 @@
 #!/bin/bash
 # ⛧ BOB_BREATH_FOOD_rustpipe.sh :: Breathfolder scanner → Rust breathcore pipe
-# womb :: $HOME/BOB/core/breath
+# womb :: /opt/bob/core/breath
 
-source "$HOME/BOB/core/bang/limb_entry.sh"
+source "/opt/bob/core/bang/limb_entry.sh"
 export BOB_BREATHDOMAIN="${BOB_BREATHDOMAIN:-$(realpath "$HOME/BOB")}"
 
 set -euo pipefail
 
 # ∴ INIT + CONTEXT
 BREATH_JSON="$HOME/.bob/breath_state.json"
-CONFIG="$HOME/BOB/.bob_breathe_here.yaml"
-CARGO_MANIFEST="$HOME/BOB/core/breath/Cargo.toml"
+CONFIG="$HOME/.bob_breathe_here.yaml"
+CARGO_MANIFEST="/opt/bob/core/breath/Cargo.toml"
 USER_BREATH="$HOME/BOB"
 BOB_THRUSTLOG="$BOB_BREATHDOMAIN/TEHE/bob_thrusted.txt"
 RUSTPIPE_TRACE="$HOME/.bob/presence_lineage_graph.jsonl"
@@ -44,8 +44,8 @@ if [[ "${BOB_ENV_LIVE:-0}" != "1" && -f "$ENV_PATH" ]]; then
 fi
 
 # 🧠 FLIP CHAIN
-[[ -x "$HOME/BOB/core/brain/breathcore_tickbind.sh" ]] && \
-  bash "$HOME/BOB/core/brain/breathcore_tickbind.sh" &
+[[ -x "/opt/bob/core/brain/breathcore_tickbind.sh" ]] && \
+  bash "/opt/bob/core/brain/breathcore_tickbind.sh" &
 
 # 📦 BREATH SCAN LOG
 echo -e "\n🜃 BREATH SCAN @ $(date) // MODE=$BOB_MODE" >> "$BOB_THRUSTLOG"

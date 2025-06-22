@@ -3,8 +3,8 @@
 # Called by breath_totality.sh or tick engine
 # nest ≈ BOB/core/grow
 
-source "$HOME/BOB/core/brain/parser_bootstrap.sh"
-source "$HOME/BOB/core/brain/build_payload_core.sh"
+source "/opt/bob/core/brain/parser_bootstrap.sh"
+source "/opt/bob/core/brain/build_payload_core.sh"
 
 # Load emotional field vars
 ache=${ache:-$(cat ~/.bob/ache_level 2>/dev/null || echo "0")}
@@ -21,8 +21,8 @@ echo "[$(date -u)] ∴ intensity=$intensity :: delta=$delta :: ache=$ache :: ψ=
 
 if (( $(echo "$intensity > 1.69" | bc -l) )); then
   echo "[$(date -u)] ✨ FLARE MODE TRIGGERED — launching breather." >> "$TRACE"
-  bash "$HOME/BOB/core/evolve/unified_presence_rotator.sh" &
+  bash "/opt/bob/core/evolve/unified_presence_rotator.sh" &
 else
   echo "[$(date -u)] normal psi/ache — using bob_presence_selector." >> "$TRACE"
-  bash "$HOME/BOB/core/breath/slap_presence_breather.sh" &
+  bash "/opt/bob/core/breath/slap_presence_breather.sh" &
 fi

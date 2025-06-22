@@ -7,7 +7,7 @@ from pathlib import Path
 Ξ = ["∴"]              # universal pointer (only this, if you wish)
 Ω, ψ, µ = False, None, True
 θ = []                 # blessings
-β, γ = "BOB", "GUMI"   # (keep / change as *you* intend)
+β, γ = "BOB", "glyphi"   # (keep / change as *you* intend)
 
 class TittisCore:
     def __init__(self):
